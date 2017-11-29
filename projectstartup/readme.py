@@ -13,4 +13,5 @@ This is your first Django application.
 
 ## Django Version
 {django_version}
+
 ''').format(name=name, django_version=django_version).strip()
