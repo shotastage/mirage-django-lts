@@ -1,21 +1,44 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import argparse
+import project
+import sys
+
+from options import DjConsoleOptions as cmd_ops
+
+def arg_parser():
+    usage = 'Usage: python {} FILE [--verbose] [--cat <file>] [--help]'\
+            .format(__file__)
+
+    args = sys.argv
+    if len(args) == 1:
+        return usage
+
+    # Remove own
+    args.pop(0)
+
+    try:
+        first_arg = args[0]
+    except:
+        first_arg = None
+
+    try:
+        second_arg = args[1]
+    except:
+        second_arg = None
 
 
 
+    if first_arg == "new":
+        return cmd_ops.dj_new
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='argparse sample.')
+    if first_arg == "g" or first_arg == "generate":
+        return cmd_ops.dj_gen
 
-    #bool オプション
-    parser.add_argument('-e','--error', action='store_true', default=False, help='show error (default: show no error)')
-    #数値 オプション
-    parser.add_argument('-d','--data', type=int, help='data number')
-    #文字列オプション
-    parser.add_argument('-s','--str', type=str, help='data name')
 
-    args = parser.parse_args()
 
-    print(args)
+if __name__ == '__main__':
+    cmds = arg_parser()
+
+    if cmds == "dj-new":
+        project.dj_new_flow()
