@@ -38,5 +38,4 @@ if __name__ == '__main__':
 
 
     if cmds == cmd_ops.dj_new:
-        print("HHH")
         exe(cmd_ops.dj_new, second_arg)
