@@ -1,18 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import project
 import sys
-
+from executor import exe
 from options import DjConsoleOptions as cmd_ops
 
-def arg_parser():
-    usage = 'Usage: python {} FILE [--verbose] [--cat <file>] [--help]'\
-            .format(__file__)
+def arg_parser(first_arg):
+    if first_arg == "new":
+        return cmd_ops.dj_new
 
+    if first_arg == "g" or first_arg == "generate":
+        return cmd_ops.dj_gen
+
+
+
+if __name__ == '__main__':
     args = sys.argv
     if len(args) == 1:
-        return usage
+        print('Usage: python {} FILE [--verbose] [--cat <file>] [--help]'\
+            .format(__file__))
 
     # Remove own
     args.pop(0)
@@ -23,22 +29,14 @@ def arg_parser():
         first_arg = None
 
     try:
-        second_arg = args[1]
+        second_arg = []
+        second_arg.append(args[1])
     except:
-        second_arg = None
+        second_arg = []
+
+    cmds = arg_parser(first_arg)
 
 
-
-    if first_arg == "new":
-        return cmd_ops.dj_new
-
-    if first_arg == "g" or first_arg == "generate":
-        return cmd_ops.dj_gen
-
-
-
-if __name__ == '__main__':
-    cmds = arg_parser()
-
-    if cmds == "dj-new":
-        project.dj_new_flow()
+    if cmds == cmd_ops.dj_new:
+        print("HHH")
+        exe(cmd_ops.dj_new, second_arg)
