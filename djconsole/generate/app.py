@@ -28,6 +28,16 @@ def _create_url(name):
 def _check_all(third_args):
     status = True
 
+    reserved_names = [
+        "test",
+    ]
+
+    for app in third_args:
+        for name in reserved_names:
+            if app == name:
+                log("The app named " + app + " is reserved by Django!", withError = True)
+                status = False
+
     for app in third_args:
         if os.path.isdir(app):
             log("The app named " + app + " is already exists.", withError = True)
