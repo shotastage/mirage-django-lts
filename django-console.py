@@ -39,3 +39,5 @@ if __name__ == '__main__':
 
     if cmds == cmd_ops.dj_new:
         exe(cmd_ops.dj_new, second_arg)
+    elif cmds == cmd_ops.dj_gen:
+        exe(cmd_ops.dj_gen, second_arg)

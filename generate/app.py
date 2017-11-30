@@ -1,7 +1,8 @@
+from console import log
+
 
 def dj_app_flow():
-    pass
+    log("APP GEN")
 
 def _check_all():
-    
     return True
