@@ -20,9 +20,8 @@ def exe(action, action_type, args):
         _gen(action_type, args)
 
     elif action == djops.dj_server:
-        log("Runnng server...")
         debug_server.launch_server()
-        
+
     else:
         log("Unknown action!", withError = True)
 
