@@ -38,7 +38,7 @@ djc s
 or
 
 ```
-rails server
+djc server
 ```
 
 
