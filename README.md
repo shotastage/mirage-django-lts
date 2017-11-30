@@ -27,6 +27,15 @@ And shorten command is here.
 djc g mail post api
 ```
 
+# Requirements
+
+- Python3
+
+# Build
+
+```
+./utils/build.py
+```
 # Author
 
 - Shota Shimazu
