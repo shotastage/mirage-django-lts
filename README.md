@@ -10,7 +10,7 @@ Extended django admin or manage.py command.
 If you excute this command without name, the interactive shell ask you a name of project.
 
 ```
-django-console new [NAME]
+djc new [NAME]
 ```
 
 ### Create Django apps
@@ -18,13 +18,13 @@ django-console new [NAME]
 You can create multiple Django apps at once.
 
 ```
-django-console generate mail post api
+djc generate mail post api
 ```
 
 And shorten command is here.
 
 ```
-django-console g mail post api
+djc g mail post api
 ```
 
 # Author
