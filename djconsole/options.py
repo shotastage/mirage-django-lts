@@ -10,6 +10,9 @@ class DjConsoleOptions(Enum):
     # Remove app or mtvs
     dj_destory = 3
 
+    # Run Debug Server
+    dj_server = 4
+
 
 class DjGen(Enum):
     app = 1

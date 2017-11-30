@@ -11,6 +11,9 @@ def arg_parser(first_arg):
     if first_arg == "g" or first_arg == "generate":
         return cmd_ops.dj_gen
 
+    if first_arg == "s" or first_arg == "runserver":
+        return cmd_ops.dj_server
+
 
 def main():
     args = sys.argv
@@ -50,3 +53,5 @@ def main():
 
     elif cmds == cmd_ops.dj_gen:
         exe(cmd_ops.dj_gen, second_arg, third_args)
+    elif cmds == cmd_ops.dj_server:
+        exe(cmd_ops.dj_server, second_arg, third_args)

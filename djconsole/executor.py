@@ -2,7 +2,7 @@ from djconsole.console import log
 from djconsole.options import DjConsoleOptions as djops
 from djconsole.projectstartup.django_app_create import dj_new_flow
 from djconsole.generate import app
-
+from djconsole.server import debug_server
 
 def exe(action, action_type, args):
     
@@ -19,8 +19,12 @@ def exe(action, action_type, args):
     elif action == djops.dj_gen:
         _gen(action_type, args)
 
+    elif action == djops.dj_server:
+        log("Runnng server...")
+        debug_server.launch_server()
+        
     else:
-        pass
+        log("Unknown action!", withError = True)
 
     
 
