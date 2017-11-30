@@ -1,6 +1,6 @@
 import os
-from generate.urlpy import create_urlpy_script as url_script
-from console import log, command
+from djconsole.generate.urlpy import create_urlpy_script as url_script
+from djconsole.console import log, command
 
 
 def dj_app_flow(third_args):

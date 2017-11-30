@@ -1,9 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
-from executor import exe
-from options import DjConsoleOptions as cmd_ops
+from djconsole.executor import exe
+from djconsole.options import DjConsoleOptions as cmd_ops
 
 def arg_parser(first_arg):
     if first_arg == "new":
@@ -13,8 +12,7 @@ def arg_parser(first_arg):
         return cmd_ops.dj_gen
 
 
-
-if __name__ == '__main__':
+def main():
     args = sys.argv
     if len(args) == 1:
         print('Usage: python {} FILE [--verbose] [--cat <file>] [--help]'\

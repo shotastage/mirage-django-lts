@@ -1,8 +1,7 @@
 from os import getcwd, chdir
-from console import command
+from djconsole.console import log, command
 from shutil import move
-from console import log
-from projectstartup.readme import create_readme_doc
+from djconsole.projectstartup.readme import create_readme_doc
 
 def dj_new_flow(name = None):
     if name == None:

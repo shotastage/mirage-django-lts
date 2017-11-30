@@ -1,7 +1,7 @@
-from console import log
-from options import DjConsoleOptions as djops
-from projectstartup.django_app_create import dj_new_flow
-from generate import app
+from djconsole.console import log
+from djconsole.options import DjConsoleOptions as djops
+from djconsole.projectstartup.django_app_create import dj_new_flow
+from djconsole.generate import app
 
 
 def exe(action, action_type, args):
