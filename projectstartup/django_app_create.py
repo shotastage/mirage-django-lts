@@ -1,8 +1,8 @@
+from os import getcwd, chdir
 from console import command
 from shutil import move
 from console import log
 from projectstartup.readme import create_readme_doc
-from filer import chdir
 
 def dj_new_flow(name = None):
     if name == None:
@@ -11,9 +11,11 @@ def dj_new_flow(name = None):
 
     _create_new_django_app(name)
 
-    with chdir("./" + name):
-        _create_template_git_project(name)
-        _create_docs(name)
+    current = getcwd()
+    chdir("./" + name)
+    _create_template_git_project(name)
+    _create_docs(name)
+    chdir("../")
 
 
 def _create_new_django_app(name):
