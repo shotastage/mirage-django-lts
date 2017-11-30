@@ -35,6 +35,12 @@ Run Django debug derver like `rails s`.
 djc s
 ```
 
+or
+
+```
+rails server
+```
+
 
 # Requirements
 

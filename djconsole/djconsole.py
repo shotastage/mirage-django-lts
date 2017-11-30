@@ -11,7 +11,7 @@ def arg_parser(first_arg):
     if first_arg == "g" or first_arg == "generate":
         return cmd_ops.dj_gen
 
-    if first_arg == "s" or first_arg == "runserver":
+    if first_arg == "s" or first_arg == "server":
         return cmd_ops.dj_server
 
 
