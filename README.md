@@ -31,7 +31,7 @@ djc g mail post api
 
 - Python3
 
-# Build
+# Build & Install
 
 ```
 ./utils/build.py
