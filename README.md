@@ -27,6 +27,15 @@ And shorten command is here.
 djc g mail post api
 ```
 
+### Run debug server
+
+Run Django debug derver like `rails s`.
+
+```
+djc s
+```
+
+
 # Requirements
 
 - Python3
