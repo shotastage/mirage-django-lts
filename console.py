@@ -14,6 +14,7 @@ def log(string, withError = False, withExitOnError = False, withInput = False):
         print('\033[32mDjango Coneole: \033[0m' + string)
 
 
+
 def command(command, withOutput = False):
     separated_cmds = command.split(" ")
 
