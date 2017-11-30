@@ -21,7 +21,7 @@ You can create multiple Django apps at once.
 django-console generate mail post api
 ```
 
-And shorten command is there.
+And shorten command is here.
 
 ```
 django-console g mail post api
