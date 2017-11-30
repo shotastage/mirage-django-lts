@@ -2,6 +2,7 @@ from djconsole.console import log
 from djconsole.options import DjConsoleOptions as djops
 from djconsole.projectstartup.django_app_create import dj_new_flow
 from djconsole.generate import app
+from djconsole.generate import model
 from djconsole.server import debug_server
 
 def exe(action, action_type, args):
@@ -36,5 +37,11 @@ def _gen(second_arg, third_args):
             app.dj_app_flow(third_args)
         except:
             log("Failed to generate app!", withError = True)
+    elif second_arg == "model":
+        try:
+            model.dj_app_flow(third_args)
+        except:
+            log("Failed to generate model!", withError = True)
+
     else:
         log("Strategy of " + second_arg + " is not provided!", withError = True)
