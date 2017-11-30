@@ -29,15 +29,26 @@ if __name__ == '__main__':
         first_arg = None
 
     try:
-        second_arg = []
-        second_arg.append(args[1])
+        second_arg = args[1]
     except:
-        second_arg = []
+        second_arg = None
+
+
+    try:
+        third_args = []
+
+        for i in range(len(args) - 2):
+            index = i + 2
+            third_args.append(args[index])
+
+    except:
+        third_args = None
+
 
     cmds = arg_parser(first_arg)
 
-
     if cmds == cmd_ops.dj_new:
-        exe(cmd_ops.dj_new, second_arg)
+        exe(cmd_ops.dj_new, second_arg, third_args)
+
     elif cmds == cmd_ops.dj_gen:
-        exe(cmd_ops.dj_gen, second_arg)
+        exe(cmd_ops.dj_gen, second_arg, third_args)
