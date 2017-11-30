@@ -1,9 +1,6 @@
 import textwrap
 
 def create_urlpy_script(app):
-
-    django_version = "no_version"
-
     return textwrap.dedent(
 '''
 from django.conf.urls import url
