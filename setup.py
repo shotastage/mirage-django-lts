@@ -16,7 +16,7 @@ if __name__ == "__main__":
                 'djc = djconsole.djconsole:main',
             ],
         },
-        description = "Advanced Django comsole",
+        description = "Advanced Django console",
         long_description = "Advanced Django command line tools like Rails.",
         url = "https://github.com/shotastage/django-console/",
         license = "Apache",
