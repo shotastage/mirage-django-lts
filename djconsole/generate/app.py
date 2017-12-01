@@ -48,7 +48,7 @@ def _install_app(name):
     os.chdir(master_app)
 
     if os.path.isfile("settings.py"):
-        log("Install function is now under construction!")
+        __insert_app_path(name)
     else:
         log("Failed to install Django app due to missing configuration file.", withError = True)
 
@@ -101,3 +101,27 @@ def __detect_master_app():
             pass
        
     return None
+
+
+def __insert_app_path(app_name):
+    lines = []
+    insert_line = 0
+
+    try:
+        with open("settings.py" , "r") as setting:
+            try:
+                lines = setting.readlines()
+            except:
+                log("Failed to load configuration file lines.", withError = True)
+    except:
+        pass
+
+    
+    for i in range(len(lines)):
+        if "INSTALLED_APPS = [" in lines[i]:
+            insert_line = i
+    
+    with open("settings.py", "w") as setting:
+        app_config = app_name[0].upper() + app_name[1:] + "Config"
+        lines.insert(insert_line + 1, "    \'" + app_name + ".apps." + app_config + "\',\n")
+        setting.writelines(lines)
