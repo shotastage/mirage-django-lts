@@ -18,13 +18,13 @@ djc new [NAME]
 You can create multiple Django apps at once.
 
 ```
-djc generate mail post api
+djc generate app mail post api
 ```
 
 And shorten command is here.
 
 ```
-djc g mail post api
+djc g app mail post api
 ```
 
 ### Run debug server
