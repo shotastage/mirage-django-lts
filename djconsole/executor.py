@@ -39,7 +39,7 @@ def _gen(second_arg, third_args):
             log("Failed to generate app!", withError = True)
     elif second_arg == "model":
         try:
-            model.dj_app_flow(third_args)
+            model.dj_model_flow(third_args)
         except:
             log("Failed to generate model!", withError = True)
 
