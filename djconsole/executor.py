@@ -1,49 +1,49 @@
-from djconsole.console import log
-from djconsole.options import DjConsoleOptions as djops
+from djconsole.flow import GatheredArgs
 from djconsole.projectstartup.django_app_create import DjangoStartupFlow
+
+from djconsole.console import log, reserve_as_command
+
+from djconsole.options import DjConsoleOptions as djops
 from djconsole.generate import app
 from djconsole.generate import model
 from djconsole.server import debug_server
 
+
+
 def exe(action, action_type, args):
-    
-    if action == djops.dj_new:
+    action_handler = GatheredArgs(action, action_type, args)
 
-        """
-         If the args value not provided.
-        """
-        try:
-            dj_new_flow = DjangoStartupFlow(action_type)
-            dj_new_flow.execute()
-        except:
-            dj_new_flow = DjangoStartupFlow()
-            dj_new_flow.execute()
+    new(action_handler, action)
+    generate(action_handler, action)
 
-    elif action == djops.dj_gen:
-        _gen(action_type, args)
 
-    elif action == djops.dj_server:
-        debug_server.launch_server()
 
-    else:
-        log("Unknown action!", withError = True)
 
-    
+@reserve_as_command("new")
+def new(handler, action):
+    try:
+        dj_new_flow = DjangoStartupFlow(handler._action_target)
+        dj_new_flow.execute()
+    except:
+        dj_new_flow = DjangoStartupFlow()
+        dj_new_flow.execute()
 
-def _gen(second_arg, third_args):
-    if third_args == None:
+
+@reserve_as_command("generate", "g")
+def generate(handler, action):
+    if handler.args == None:
         return
 
-    if second_arg == "app":
+    if handler._action_target == "app":
         try:
-            app.dj_app_flow(third_args)
+            app.dj_app_flow(handler.args)
         except:
             log("Failed to generate app!", withError = True)
-    elif second_arg == "model":
+    elif handler._action_target == "model":
         try:
-            model.dj_model_flow(third_args)
+            model.dj_model_flow(handler.args)
         except:
             log("Failed to generate model!", withError = True)
 
     else:
-        log("Strategy of " + second_arg + " is not provided!", withError = True)
+        log("Strategy of " + handler._action_target + " is not provided!", withError = True)

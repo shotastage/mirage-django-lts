@@ -2,25 +2,43 @@
 
 from enum import Enum
 
-class Opts(Enum):
-    new = 1
-    gen = 2
+class ARG():
 
-class ExeFlow():
-
-    def __init__(self, action, dict):
+    def __init__(self, action, action_target, args):
         self._action = action
-        self._opts = dict
+        self._action_target = action_target
+        self.args = args
+    
+    def judge(self, action_name, func):
+        if self._action == action_name:
+            self._excute(func)
 
-    def execute(self):
+    def _excute(self, func):
+        func(self._action_target, self.args)
+
+
+
+class ActionLists():
+
+    def __init__(self):
+        pass
+
+class CMDS(ActionLists):
+
+        def new(self, second_action, args):
+            if second_action == "app":
+                print("CREATING APP")
+                for arg in args:
+                    print(arg)
+
+
+
 
 
 
 if __name__ == "__main__":
-    exe = ExeFlow("new", { Opts.new: new, Opts.gen: gen })
 
-    def new():
-        print("NEW")
+    args = ARG("new", "app", [1, 2, 4, 6])
+    cmds = CMDS()
 
-    def gen():
-        print("NEW")
+    args.judge("new", cmds.new)

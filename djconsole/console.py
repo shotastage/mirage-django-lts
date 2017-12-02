@@ -1,5 +1,7 @@
 import sys
+import functools
 from subprocess import check_output, DEVNULL, STDOUT
+
 
 def log(string, withError = False, withExitOnError = False, withInput = False):
     if withError:
@@ -30,3 +32,16 @@ def command(command, withOutput = False):
             check_output(separated_cmds, stderr=DEVNULL)
         except:
             log("Failed to exec " + command + "!", withError = True, withExitOnError = True)
+
+
+def reserve_as_command(*reserved_args):
+
+    def _decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for reserve in reserved_args:
+                if args[1] == reserve:
+                    re = func(*args, **kwargs)
+                    return re
+        return wrapper
+    return _decorator
