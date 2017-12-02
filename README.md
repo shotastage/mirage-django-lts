@@ -13,7 +13,7 @@ If you excute this command without name, the interactive shell ask you a name of
 djc new [NAME]
 ```
 
-### Create Django apps
+### Create Apps
 
 You can create multiple Django apps at once.
 
@@ -26,6 +26,15 @@ And shorten command is here.
 ```
 djc g app mail post api
 ```
+
+### Create Model
+
+You can create Django model class simply running one command.
+
+```
+djc g model Person name:string age:integer bio:text
+```
+
 
 ### Run debug server
 
