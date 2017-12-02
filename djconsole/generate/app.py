@@ -6,8 +6,12 @@ from djconsole.console import log, command
 
 def dj_app_flow(third_args):
 
-    if not _check_all(third_args):
+    try:
+        _check_all(third_args)
+    except:
         log("Environmental compatability is invalid.", withError = True, withExitOnError = True)
+        return
+
 
     for app in third_args:
         log("Creating a app " + app + ".")
@@ -59,7 +63,6 @@ def _install_app(name):
 Check compatibility of Django.
 """
 def _check_all(third_args):
-    status = True
 
     reserved_names = [
         "test",
@@ -69,13 +72,12 @@ def _check_all(third_args):
         for name in reserved_names:
             if app == name:
                 log("The app named " + app + " is reserved by Django!", withError = True)
-                status = False
+                raise ValueError
 
     for app in third_args:
         if os.path.isdir(app):
             log("The app named " + app + " is already exists.", withError = True)
-            status = False
-    return status
+            raise FileExistsError
 
 
 def __detect_master_app():

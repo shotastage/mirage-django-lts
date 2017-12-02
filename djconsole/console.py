@@ -1,3 +1,4 @@
+import sys
 from subprocess import check_output, DEVNULL, STDOUT
 
 def log(string, withError = False, withExitOnError = False, withInput = False):
@@ -5,7 +6,7 @@ def log(string, withError = False, withExitOnError = False, withInput = False):
         print('\033[31mDjango Console: ' + string + '\033[0m')
 
         if withExitOnError:
-            exit(1)
+            sys.exit(1)
 
     elif withInput:
         return input('\033[32m' + string + ' >> \033[0m')
