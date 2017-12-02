@@ -4,7 +4,7 @@ import sys
 from djconsole.executor import exe
 from djconsole.options import DjConsoleOptions as cmd_ops
 
-def arg_parser(first_arg):
+def action_parser(first_arg):
     if first_arg == "new":
         return cmd_ops.dj_new
 
@@ -46,12 +46,12 @@ def main():
         third_args = None
 
 
-    cmds = arg_parser(first_arg)
+    action = action_parser(first_arg)
 
-    if cmds == cmd_ops.dj_new:
+    if action == cmd_ops.dj_new:
         exe(cmd_ops.dj_new, second_arg, third_args)
 
-    elif cmds == cmd_ops.dj_gen:
+    elif action == cmd_ops.dj_gen:
         exe(cmd_ops.dj_gen, second_arg, third_args)
-    elif cmds == cmd_ops.dj_server:
+    elif action == cmd_ops.dj_server:
         exe(cmd_ops.dj_server, second_arg, third_args)

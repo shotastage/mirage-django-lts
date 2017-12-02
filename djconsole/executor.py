@@ -1,6 +1,6 @@
 from djconsole.console import log
 from djconsole.options import DjConsoleOptions as djops
-from djconsole.projectstartup.django_app_create import dj_new_flow
+from djconsole.projectstartup.django_app_create import DjangoStartupFlow
 from djconsole.generate import app
 from djconsole.generate import model
 from djconsole.server import debug_server
@@ -13,9 +13,11 @@ def exe(action, action_type, args):
          If the args value not provided.
         """
         try:
-            dj_new_flow(action_type)
+            dj_new_flow = DjangoStartupFlow(action_type)
+            dj_new_flow.execute()
         except:
-            dj_new_flow()
+            dj_new_flow = DjangoStartupFlow()
+            dj_new_flow.execute()
 
     elif action == djops.dj_gen:
         _gen(action_type, args)
