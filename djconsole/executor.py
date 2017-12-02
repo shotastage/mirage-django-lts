@@ -1,6 +1,6 @@
 from djconsole.flow import GatheredArgs
 from djconsole.projectstartup.django_app_create import DjangoStartupFlow
-
+from djconsole.generate.app import DjangoAppMakeFlow
 from djconsole.console import log, reserve_as_command
 
 from djconsole.options import DjConsoleOptions as djops
@@ -36,9 +36,11 @@ def generate(handler, action):
 
     if handler._action_target == "app":
         try:
-            app.dj_app_flow(handler.args)
+            dj_app_flow = DjangoAppMakeFlow(handler.args)
+            dj_app_flow.execute()
         except:
             log("Failed to generate app!", withError = True)
+
     elif handler._action_target == "model":
         try:
             model.dj_model_flow(handler.args)
