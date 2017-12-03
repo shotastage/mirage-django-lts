@@ -1,6 +1,7 @@
 from djconsole.flow import GatheredArgs
 from djconsole.projectstartup.django_app_create import DjangoStartupFlow
 from djconsole.generate.app import DjangoAppMakeFlow
+from djconsole.console.django_console import DjangoConsoleFlow
 from djconsole.command import log, reserve_as_command
 
 from djconsole.options import DjConsoleOptions as djops
@@ -16,6 +17,7 @@ def exe(action, action_type, args):
     new(action_handler, action)
     generate(action_handler, action)
     server(action_handler, action)
+    console(action_handler, action)
 
 
 @reserve_as_command("new")
@@ -53,3 +55,13 @@ def generate(handler, action):
 @reserve_as_command("server", "s")
 def server(handler, action):
     debug_server.launch_server()
+
+
+
+@reserve_as_command("console", "c")
+def console(handler, action):
+    try:
+        dj_console_flow = DjangoConsoleFlow()
+        dj_console_flow.execute()
+    except:
+        pass

@@ -50,6 +50,19 @@ or
 djc server
 ```
 
+### Run Interactive Shell
+
+You can launch Python interactive shell like Rails console.
+
+```
+djc console
+```
+
+or
+
+```
+djc c
+```
 
 # Requirements
 
