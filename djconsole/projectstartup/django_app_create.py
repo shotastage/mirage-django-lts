@@ -1,7 +1,7 @@
 from djconsole.flow import Flow
 
 from os import getcwd, chdir, path
-from djconsole.console import log, command
+from djconsole.command import log, command
 from shutil import move
 from djconsole.projectstartup.readme import create_readme_doc
 

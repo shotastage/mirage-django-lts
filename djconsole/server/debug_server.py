@@ -1,4 +1,4 @@
-from djconsole.console import log
+from djconsole.command import log
 from os import system
 
 def launch_server():

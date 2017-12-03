@@ -1,7 +1,7 @@
 from djconsole.flow import GatheredArgs
 from djconsole.projectstartup.django_app_create import DjangoStartupFlow
 from djconsole.generate.app import DjangoAppMakeFlow
-from djconsole.console import log, reserve_as_command
+from djconsole.command import log, reserve_as_command
 
 from djconsole.options import DjConsoleOptions as djops
 from djconsole.generate import app
@@ -15,8 +15,7 @@ def exe(action, action_type, args):
 
     new(action_handler, action)
     generate(action_handler, action)
-
-
+    server(action_handler, action)
 
 
 @reserve_as_command("new")
@@ -49,3 +48,8 @@ def generate(handler, action):
 
     else:
         log("Strategy of " + handler._action_target + " is not provided!", withError = True)
+
+
+@reserve_as_command("server", "s")
+def server(handler, action):
+    debug_server.launch_server()

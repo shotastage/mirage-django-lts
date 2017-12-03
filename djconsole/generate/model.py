@@ -1,5 +1,5 @@
 import os
-from djconsole.console import log
+from djconsole.command import log
 from djconsole.generate.model_template import create_model_py
 
 def dj_model_flow(third_args):

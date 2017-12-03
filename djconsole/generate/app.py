@@ -2,7 +2,7 @@ import os
 import readline
 from djconsole.flow import Flow
 from djconsole.generate.urlpy import create_urlpy_script as url_script
-from djconsole.console import log, command
+from djconsole.command import log, command
 
 
 
