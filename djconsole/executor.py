@@ -1,16 +1,16 @@
-from djconsole.flow import GatheredArgs
-from djconsole.projectstartup.django_app_create import DjangoStartupFlow
-from djconsole.cms_projectstartup.django_cms_create import DjangoCMSStartupFlow
-from djconsole.generate.app import DjangoAppMakeFlow
-from djconsole.console.django_console import DjangoConsoleFlow
-from djconsole.destroy.destroy import DjangoDestroyFlow
-from djconsole.git.git import DjangoGitFlow
-from djconsole.command import log, reserve_as_command
+from djconsole.flow                                     import GatheredArgs
+from djconsole.projectstartup.django_app_create         import DjangoStartupFlow
+from djconsole.cms_projectstartup.django_cms_create     import DjangoCMSStartupFlow
+from djconsole.generate.app                             import DjangoAppMakeFlow
+from djconsole.console.django_console                   import DjangoConsoleFlow
+from djconsole.destroy.destroy                          import DjangoDestroyFlow
+from djconsole.git.git                                  import DjangoGitFlow
+from djconsole.command                                  import log, reserve_as_command
 
-from djconsole.options import DjConsoleOptions as djops
-from djconsole.generate import app
-from djconsole.generate import model
-from djconsole.server import debug_server
+from djconsole.options      import DjConsoleOptions as djops
+from djconsole.generate     import app
+from djconsole.generate     import model
+from djconsole.server       import debug_server
 
 
 
@@ -36,7 +36,7 @@ def new(handler, action):
         dj_new_flow.execute()
 
 
-@reserve_as_command("new-cms", "nc")
+@reserve_as_command("new:cms", "nc")
 def cms_new(handler, action):
     try:
         dj_cms_new_flow = DjangoCMSStartupFlow(handler._action_target)
@@ -89,6 +89,7 @@ def destroy(handler, action):
         dj_destroy_flow.execute()
     except:
         pass
+
 
 @reserve_as_command("git")
 def git(handler, action):
