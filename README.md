@@ -40,7 +40,7 @@ djc g model Person name:string age:integer bio:text
 
 ### Run debug server
 
-Run Django debug derver like `rails s`.
+Run Django debug server like `rails s`.
 
 ```
 djc s
