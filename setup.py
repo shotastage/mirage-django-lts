@@ -1,5 +1,9 @@
 # -*- encoding:utf-8 -*-
 from setuptools import setup, find_packages
+import sys
+
+sys.path.append('./djconsole')
+sys.path.append('./tests')
 
 if __name__ == "__main__":
     setup(
@@ -21,4 +25,5 @@ if __name__ == "__main__":
         url = "https://github.com/shotastage/django-console/",
         license = "Apache",
         platforms = ["POSIX", "Windows", "Mac OS X"],
+        test_suite = "djconsole_test.suite",
     )

@@ -1,4 +1,6 @@
 # Django Console
+[![Build Status](https://travis-ci.org/shotastage/django-console.svg?branch=master)](https://travis-ci.org/shotastage/django-console)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Extended django admin or manage.py command.
 
