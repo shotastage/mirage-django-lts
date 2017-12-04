@@ -3,6 +3,7 @@ from djconsole.projectstartup.django_app_create import DjangoStartupFlow
 from djconsole.generate.app import DjangoAppMakeFlow
 from djconsole.console.django_console import DjangoConsoleFlow
 from djconsole.destroy.destroy import DjangoDestroyFlow
+from djconsole.git.git import DjangoGitFlow
 from djconsole.command import log, reserve_as_command
 
 from djconsole.options import DjConsoleOptions as djops
@@ -20,7 +21,7 @@ def exe(action, action_type, args):
     server(action_handler, action)
     console(action_handler, action)
     destroy(action_handler, action)
-
+    git(action_handler, action)
 
 @reserve_as_command("new")
 def new(handler, action):
@@ -73,5 +74,12 @@ def destroy(handler, action):
     try:
         dj_destroy_flow = DjangoDestroyFlow(handler._action_target, handler.args)
         dj_destroy_flow.execute()
+    except:
+        pass
+
+@reserve_as_command("git")
+def git(handler, action):
+    try:
+        dj_git_flow = DjangoGitFlow(handler._action_target)
     except:
         pass
