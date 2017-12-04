@@ -1,13 +1,15 @@
+import os
+
 from djconsole.flow import Flow
 
 from os import getcwd, chdir, path
 from djconsole.command import log, command
 from shutil import move
-from djconsole.projectstartup.readme import create_readme_doc
+from djconsole.cms_projectstartup.readme import create_readme_doc
 
 
 
-class DjangoStartupFlow(Flow):
+class DjangoCMSStartupFlow(Flow):
 
     def __init__(self, name = None):
         self._project_name = name
@@ -34,7 +36,9 @@ class DjangoStartupFlow(Flow):
 
 
     def _create_new_django_app(self, name):
-        command("django-admin startproject " + name)
+        log("Creating Django CMS application...")
+        log("Please wait for a moment.")
+        command("djangocms " + name)
 
 
     def _create_template_git_project(self, name):

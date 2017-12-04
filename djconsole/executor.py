@@ -1,5 +1,6 @@
 from djconsole.flow import GatheredArgs
 from djconsole.projectstartup.django_app_create import DjangoStartupFlow
+from djconsole.cms_projectstartup.django_cms_create import DjangoCMSStartupFlow
 from djconsole.generate.app import DjangoAppMakeFlow
 from djconsole.console.django_console import DjangoConsoleFlow
 from djconsole.destroy.destroy import DjangoDestroyFlow
@@ -17,11 +18,13 @@ def exe(action, action_type, args):
     action_handler = GatheredArgs(action, action_type, args)
 
     new(action_handler, action)
+    cms_new(action_handler, action)
     generate(action_handler, action)
     server(action_handler, action)
     console(action_handler, action)
     destroy(action_handler, action)
     git(action_handler, action)
+
 
 @reserve_as_command("new")
 def new(handler, action):
@@ -31,6 +34,16 @@ def new(handler, action):
     except:
         dj_new_flow = DjangoStartupFlow()
         dj_new_flow.execute()
+
+
+@reserve_as_command("new-cms", "nc")
+def cms_new(handler, action):
+    try:
+        dj_cms_new_flow = DjangoCMSStartupFlow(handler._action_target)
+        dj_cms_new_flow.execute()
+    except:
+        dj_cms_new_flow = DjangoCMSStartupFlow()
+        dj_cms_new_flow.execute()
 
 
 @reserve_as_command("generate", "g")
