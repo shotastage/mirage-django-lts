@@ -3,7 +3,7 @@ from os import path
 import tarfile
 
 from djconsole.command import log
-from djconsole import backup
+from djconsole.backup import backup
 
 
 def _check(name):
