@@ -15,34 +15,13 @@ Copyright 2017 Shota Shimazu.
    limitations under the License.
 """
 
-import functools
 import os
-from os import getcwd, chdir
-from contextlib import contextmanager
+
+from djconsole.flow import Flow
+from djconsole.command import log
 
 
-@contextmanager
-def chdir(next):
-    current = getcwd()
-    chdir(next)
-    yield
-    chdir(current)
+class DjangoDammyFlow(Flow):
 
-def exist(name):
-    pass
-
-
-"""
-Decorators
-"""
-
-def fileexists(*reserved_args):
-
-    def _decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            if os.path.exists(args[0]):
-                re = func(*args, **kwargs)
-                return re
-        return wrapper
-    return _decorator
+    def flow(self):
+        log("Django Console Dammy!")

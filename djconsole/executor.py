@@ -1,3 +1,20 @@
+# -*- coding: utf-8 -*-
+"""
+Copyright 2017 Shota Shimazu.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+"""
+
 from djconsole.flow                                     import GatheredArgs
 from djconsole.projectstartup.django_app_create         import DjangoStartupFlow
 from djconsole.cms_projectstartup.django_cms_create     import DjangoCMSStartupFlow
@@ -5,6 +22,7 @@ from djconsole.generate.app                             import DjangoAppMakeFlow
 from djconsole.console.django_console                   import DjangoConsoleFlow
 from djconsole.destroy.destroy                          import DjangoDestroyFlow
 from djconsole.git.git                                  import DjangoGitFlow
+from djconsole.dammy.dammy                              import DjangoDammyFlow
 from djconsole.command                                  import log, reserve_as_command
 
 from djconsole.options      import DjConsoleOptions as djops
@@ -24,6 +42,7 @@ def exe(action, action_type, args):
     console(action_handler, action)
     destroy(action_handler, action)
     git(action_handler, action)
+    dammy(action_handler, action)
 
 
 @reserve_as_command("new")
@@ -95,5 +114,15 @@ def destroy(handler, action):
 def git(handler, action):
     try:
         dj_git_flow = DjangoGitFlow(handler._action_target)
+        dj_git_flow.execute()
+    except:
+        pass
+
+
+@reserve_as_command("dammy")
+def dammy(handler, action):
+    try:
+        dj_dammy_flow = DjangoDammyFlow(handler._action_target)
+        dj_dammy_flow.execute()
     except:
         pass
