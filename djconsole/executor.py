@@ -19,6 +19,7 @@ from djconsole.flow                                     import GatheredArgs
 from djconsole.projectstartup.django_app_create         import DjangoStartupFlow
 from djconsole.cms_projectstartup.django_cms_create     import DjangoCMSStartupFlow
 from djconsole.generate.app                             import DjangoAppMakeFlow
+from djconsole.generate.model                           import DjangoModelMakeFlow
 from djconsole.console.django_console                   import DjangoConsoleFlow
 from djconsole.destroy.destroy                          import DjangoDestroyFlow
 from djconsole.git.git                                  import DjangoGitFlow
@@ -26,8 +27,8 @@ from djconsole.dammy.dammy                              import DjangoDammyFlow
 from djconsole.command                                  import log, reserve_as_command
 
 from djconsole.options      import DjConsoleOptions as djops
-from djconsole.generate     import app
-from djconsole.generate     import model
+#from djconsole.generate     import app
+#from djconsole.generate     import model
 from djconsole.server       import debug_server
 
 
@@ -79,7 +80,8 @@ def generate(handler, action):
 
     elif handler._action_target == "model":
         try:
-            model.dj_model_flow(handler.args)
+            dj_model_flow = DjangoModelMakeFlow(handler.args)
+            dj_model_flow.execute()
         except:
             log("Failed to generate model!", withError = True)
 

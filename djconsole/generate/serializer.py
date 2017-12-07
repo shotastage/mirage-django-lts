@@ -39,7 +39,7 @@ class DjangoSerializerMakeFlow(Flow):
 
 
         for app in self._must_creat_serializer:
-            log("Creating a app " + app + ".")
+            log("Creating a selia " + app + ".")
             self._create_app(app)
             self._create_url(app)
             self._install_app(app)
