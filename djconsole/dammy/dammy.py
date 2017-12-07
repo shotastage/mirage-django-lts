@@ -19,6 +19,7 @@ import os
 
 from djconsole.flow import Flow
 from djconsole.command import log
+from djconsole import filer
 
 
 class DjangoDammyFlow(Flow):

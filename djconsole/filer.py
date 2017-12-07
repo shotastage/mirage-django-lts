@@ -28,20 +28,20 @@ def chdir(next):
     yield
     chdir(current)
 
+
 def exist(name):
-    pass
+    return os.path.exists(name)
 
 
 """
 Decorators
 """
-
-def fileexists(*reserved_args):
+def fileexists(*check_file):
 
     def _decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            if os.path.exists(args[0]):
+            if os.path.isfile(check_file[0]):
                 re = func(*args, **kwargs)
                 return re
         return wrapper
