@@ -66,6 +66,16 @@ or
 djc c
 ```
 
+
+### Run destroy app
+
+You can delete Django app from your project.
+
+```
+djc destroy app [APP NAME]
+```
+
+
 # Requirements
 
 - Python3

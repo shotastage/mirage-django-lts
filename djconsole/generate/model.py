@@ -72,20 +72,37 @@ class DjangoModelMakeFlow(Flow):
                 body += '    {0}\n'.format(self.__model_text(data_name))
             elif "integer" == data_type:
                 body += '    {0}\n'.format(self.__model_integer(data_name))
+            elif "date" == data_type:
+                body += '    {0}\n'.format(self.__model_date(data_name))
+            elif "auto" == data_type:
+                body += '    {0}\n'.format(self.__model_auto(data_name))
             else:
                 log("Unsuported type " + data_type + ".", withError = True)
 
         return body
 
 
+
+    # Django Char Filed
     def __model_string(self, name):
         return '{0} = models.CharField(max_length=255)'.format(name)
 
+    # Django Long Text Filed
     def __model_text(self, name):
         return '{0} = models.CharField(max_length=65536)'.format(name)
 
+    # Django Integer Filed
     def __model_integer(self, name):
         return '{0} = models.IntegerField()'.format(name)
+
+    # Django Date Filed
+    def __model_date(self, name):
+        return '{0} = models.DateField()'.format(name)
+
+    # Django Auto Filed
+    def __model_auto(self, name):
+        return '{0} = models.AutoField(primary_key=True)'.format(name)
+
 
 
     def ___data_name_validator(self, name):
