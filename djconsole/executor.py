@@ -24,6 +24,7 @@ from djconsole.console.django_console                   import DjangoConsoleFlow
 from djconsole.destroy.destroy                          import DjangoDestroyFlow
 from djconsole.git.git                                  import DjangoGitFlow
 from djconsole.dammy.dammy                              import DjangoDammyFlow
+from djconsole.manual.version                           import DjangoVersionFlow
 from djconsole.command                                  import log, reserve_as_command
 
 from djconsole.options      import DjConsoleOptions as djops
@@ -36,14 +37,24 @@ from djconsole.server       import debug_server
 def exe(action, action_type, args):
     action_handler = GatheredArgs(action, action_type, args)
 
-    new(action_handler, action)
-    cms_new(action_handler, action)
-    generate(action_handler, action)
-    server(action_handler, action)
-    console(action_handler, action)
-    destroy(action_handler, action)
-    git(action_handler, action)
-    dammy(action_handler, action)
+    new(
+        action_handler, action)
+    cms_new(
+        action_handler, action)
+    generate(
+        action_handler, action)
+    server(
+        action_handler, action)
+    console(
+        action_handler, action)
+    destroy(
+        action_handler, action)
+    git(
+        action_handler, action)
+    dammy(
+        action_handler, action)
+    version(
+        action_handler, action)
 
 
 @reserve_as_command("new")
@@ -126,5 +137,13 @@ def dammy(handler, action):
     try:
         dj_dammy_flow = DjangoDammyFlow(handler._action_target)
         dj_dammy_flow.execute()
+    except:
+        pass
+
+@reserve_as_command("version", "v")
+def version(handler, action):
+    try:
+        dj_version_flow = DjangoVersionFlow()
+        dj_version_flow.execute()
     except:
         pass
