@@ -17,8 +17,8 @@ Copyright 2017 Shota Shimazu.
 """
 
 from djconsole.command import log
-from djconsole.flow import Flow
-from djconsole.manual import info
+from djconsole.flow    import Flow
+from djconsole.manual  import info
 
 
 class DjangoVersionFlow(Flow):
