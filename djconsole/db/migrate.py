@@ -26,8 +26,8 @@ from djconsole.command import command
 class DjangoMigrateFlow(Flow):
 
     def __init__(self, subcommand):
-        log("Django Database:migrate is now unser development!", withError = True)
         self._subcommand = subcommand
 
     def flow(self):
-        pass
+        log("Migrating database...")
+        command("python manage.py migrate")

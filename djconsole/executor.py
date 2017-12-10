@@ -20,11 +20,12 @@ from djconsole.projectstartup.django_app_create         import DjangoStartupFlow
 from djconsole.cms_projectstartup.django_cms_create     import DjangoCMSStartupFlow
 from djconsole.generate.app                             import DjangoAppMakeFlow
 from djconsole.generate.model                           import DjangoModelMakeFlow
-from djconsole.console.django_console                   import DjangoConsoleFlow
+from djconsole.console.django_console                   import DjangoConsoleFlow, DjangoDBConsoleFlow
 from djconsole.destroy.destroy                          import DjangoDestroyFlow
 from djconsole.git.git                                  import DjangoGitFlow
 from djconsole.dammy.dammy                              import DjangoDammyFlow
 from djconsole.manual.version                           import DjangoVersionFlow
+from djconsole.db.migrate                               import DjangoMigrateFlow
 from djconsole.command                                  import log, reserve_as_command
 
 from djconsole.options      import DjConsoleOptions as djops
@@ -53,8 +54,15 @@ def exe(action, action_type, args):
         action_handler, action)
     version(
         action_handler, action)
+    migrate(
+        action_handler, action
+    )
 
 
+
+"""
+Project startup command actions
+"""
 @reserve_as_command("new")
 def new(handler, action):
     try:
@@ -75,6 +83,10 @@ def cms_new(handler, action):
         dj_cms_new_flow.execute()
 
 
+
+"""
+Generate strategy actions
+"""
 @reserve_as_command("generate", "g")
 def generate(handler, action):
     if handler.args == None:
@@ -98,11 +110,19 @@ def generate(handler, action):
         log("Strategy of " + handler._action_target + " is not provided!", withError = True)
 
 
+
+"""
+Launch debug server action
+"""
 @reserve_as_command("server", "s")
 def server(handler, action):
     debug_server.launch_server()
 
 
+
+"""
+Launch interactive console
+"""
 @reserve_as_command("console", "c")
 def console(handler, action):
     try:
@@ -112,6 +132,19 @@ def console(handler, action):
         pass
 
 
+@reserve_as_command("dbconsole", "c:db")
+def console(handler, action):
+    try:
+        dj_console_flow = DjangoDBConsoleFlow()
+        dj_console_flow.execute()
+    except:
+        pass
+
+
+
+"""
+Destroying strategy actions
+"""
 @reserve_as_command("destroy")
 def destroy(handler, action):
     try:
@@ -145,3 +178,12 @@ def version(handler, action):
         dj_version_flow.execute()
     except:
         pass
+
+
+@reserve_as_command("db:migrate")
+def migrate(handler, action):
+    try:
+        dj_migrate_flow = DjangoMigrateFlow(handler.args)
+        dj_migrate_flow.execute()
+    except:
+        log("Failed to migrate database!", withError = True)

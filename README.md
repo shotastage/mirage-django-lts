@@ -66,6 +66,25 @@ or
 djc c
 ```
 
+If you want to enter in database console, 
+
+```
+djc dbconsole
+```
+
+or
+
+```
+djc c:db
+```
+
+
+### Database Commands
+Migrate database
+
+```
+djc db:migrate
+```
 
 ### Run destroy app
 
