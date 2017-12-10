@@ -29,5 +29,12 @@ class DjangoMigrateFlow(Flow):
         self._subcommand = subcommand
 
     def flow(self):
-        log("Migrating database...")
-        command("python manage.py migrate")
+        log("Making migrations...")
+        self._make_migration()
+        self._apply_migration()
+
+    def _make_migration(self):
+        os.system("python manage.py makemigrations")
+
+    def _apply_migration(self):
+        os.system("python manage.py migrate")
