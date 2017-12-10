@@ -59,6 +59,7 @@ class DjangoModelMakeFlow(Flow):
 
             data_name = content.split(":")[0]
             data_type = content.split(":")[1]
+            data_arg  = content.split(":")[2]
 
             try:
                 self.___data_name_validator(data_name)
@@ -66,33 +67,53 @@ class DjangoModelMakeFlow(Flow):
                 log("The data name is invalid!", withError = True)
         
 
-            if "string" == data_type:
-                body += '    {0}\n'.format(self.__model_string(data_name))
-            elif "text" == data_type:
-                body += '    {0}\n'.format(self.__model_text(data_name))
-            elif "integer" == data_type:
-                body += '    {0}\n'.format(self.__model_integer(data_name))
-            elif "date" == data_type:
-                body += '    {0}\n'.format(self.__model_date(data_name))
-            elif "auto" == data_type:
-                body += '    {0}\n'.format(self.__model_auto(data_name))
+            if "primary" == data_arg:
+                if "string" == data_type:
+                    body += '    {0}\n'.format(self.__model_string(data_name, asPrimaryKey = True))
+                elif "text" == data_type:
+                    body += '    {0}\n'.format(self.__model_text(data_name, asPrimaryKey = True))
+                elif "integer" == data_type:
+                    body += '    {0}\n'.format(self.__model_integer(data_name, asPrimaryKey = True))
+                elif "date" == data_type:
+                    body += '    {0}\n'.format(self.__model_date(data_name))
+                elif "auto" == data_type:
+                    body += '    {0}\n'.format(self.__model_auto(data_name))
+                else:
+                    log("Unsuported type " + data_type + ".", withError = True)
             else:
-                log("Unsuported type " + data_type + ".", withError = True)
+                if "string" == data_type:
+                    body += '    {0}\n'.format(self.__model_string(data_name))
+                elif "text" == data_type:
+                    body += '    {0}\n'.format(self.__model_text(data_name))
+                elif "integer" == data_type:
+                    body += '    {0}\n'.format(self.__model_integer(data_name))
+                elif "date" == data_type:
+                    body += '    {0}\n'.format(self.__model_date(data_name))
+                elif "auto" == data_type:
+                    body += '    {0}\n'.format(self.__model_auto(data_name))
+                else:
+                    log("Unsuported type " + data_type + ".", withError = True)
 
         return body
 
 
 
     # Django Char Filed
-    def __model_string(self, name):
+    def __model_string(self, name, asPrimaryKey = False):
+        if asPrimaryKey:
+            return '{0} = models.CharField(max_length=255, primary_key=True))'.format(name)
         return '{0} = models.CharField(max_length=255)'.format(name)
 
     # Django Long Text Filed
-    def __model_text(self, name):
+    def __model_text(self, name, asPrimaryKey = False):
+        if asPrimaryKey:
+            return '{0} = models.CharField(max_length=65536, primary_key=True)'.format(name)
         return '{0} = models.CharField(max_length=65536)'.format(name)
 
     # Django Integer Filed
-    def __model_integer(self, name):
+    def __model_integer(self, name, asPrimaryKey = False):
+        if asPrimaryKey:
+            return '{0} = models.IntegerField(primary_key=True)'.format(name)
         return '{0} = models.IntegerField()'.format(name)
 
     # Django Date Filed
@@ -111,3 +132,4 @@ class DjangoModelMakeFlow(Flow):
         for word in forbiddens:
             if name == word:
                 raise ValueError("This data name is forbidden.")
+                return
