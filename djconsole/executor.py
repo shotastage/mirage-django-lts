@@ -28,8 +28,6 @@ from djconsole.manual.version                           import DjangoVersionFlow
 from djconsole.command                                  import log, reserve_as_command
 
 from djconsole.options      import DjConsoleOptions as djops
-#from djconsole.generate     import app
-#from djconsole.generate     import model
 from djconsole.server       import debug_server
 
 
