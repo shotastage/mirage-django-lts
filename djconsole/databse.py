@@ -16,3 +16,22 @@ Copyright 2017 Shota Shimazu.
 """
 
 import sqlite3
+
+
+class DBConnection():
+
+    def __init__(self, dbfile, preventAutoSave = False):
+
+        if preventAutoSave:
+            self._connection = sqlite3.connect(dbfile)
+        else:
+            self._connection = sqlite3.connect(dbfile, isolation_level=None)
+
+        self._cursor     = self._connection.cursor()
+
+
+    def query(self, query):
+        self._connection.execute(query)
+
+    def save(self):
+        self._connection.commit()

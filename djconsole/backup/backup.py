@@ -18,14 +18,20 @@ Copyright 2017 Shota Shimazu.
 import os
 import shutil
 
-from djconsole.command import log
-from djconsole import project
-from djconsole.flow import Flow
+from djconsole.command  import log
+from djconsole          import project
+from djconsole.flow     import Flow
+from djconsole.databse  import DBConnection
 
-class DjangoBackupFlow(Flow):
+
+class DjangoBackupAppFlow(Flow):
+
+    def __init__(self):
+        pass
 
     def flow(self):
-        pass
+        self._create_buckup_dir()
+        self._create_working_dir()
     
 
     def _create_buckup_dir(self):
@@ -35,10 +41,26 @@ class DjangoBackupFlow(Flow):
                     os.makedirs(".djc/backup/")
                 except:
                     log("Failed to prepare .djc/backup with unknown error.", withError = True)
+    
 
+
+    def _create_working_dir(self):
+        if project.isproject:
+            if not os.path.isdir(".djc/cache/"):
+                try:
+                    os.makedirs(".djc/cache/")
+                except:
+                    log("Failed to prepare .djc/cache with unknown error.", withError = True)
+
+
+
+    def _copy_app(self, dir_name):
+        shutil.copytree(dir_name, ".djc/cache/")
 
     def _archive_dir(self, dir_name):
         shutil.make_archive(dir_name, "zip")
+
+
 
 ## Backup
 def create_buckup_dir():
@@ -49,3 +71,11 @@ def create_buckup_dir():
             except:
                 log("Failed to prepare .djc/backup with unknown error.", withError = True)
 
+
+def create_working_dir():
+    if project.isproject:
+        if not os.path.isdir(".djc/cache/"):
+            try:
+                os.makedirs(".djc/cache/")
+            except:
+                log("Failed to prepare .djc/cache with unknown error.", withError = True)
