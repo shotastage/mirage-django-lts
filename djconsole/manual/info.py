@@ -17,3 +17,8 @@ Copyright 2017 Shota Shimazu.
 
 version = "0.0.7"
 build = "01"
+description = """
+Copyright (C) 2017 Shot| Shimazu
+This software is licensed under the Apache v2, see LICENSE for detail.
+
+"""
