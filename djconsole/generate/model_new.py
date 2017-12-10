@@ -17,10 +17,9 @@ Copyright 2017 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
-from djconsole.command import log, command
-from djconsole.generate.model_template import create_model_py
-
+from djconsole.flow                     import Flow
+from djconsole.command                  import log, command
+from djconsole.generate.model_template  import create_model_py
 
 
 
