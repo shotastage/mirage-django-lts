@@ -36,7 +36,10 @@ def _backup(name):
     except:
         return
 
-    backup.create_buckup_dir()
+
+    backupper = backup.DjangoBackupAppFlow()
+
+    backupper._create_buckup_dir()
 
     shutil.make_archive(name, "zip")
 
