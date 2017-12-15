@@ -155,15 +155,27 @@ class DjangoModelMakeFlow(Flow):
 
         def max_length(arg):
             return arg.split("=")[1]
+
+        def choices(arg):
+            return arg.split("=")[1]
         
 
         for i in range(len(args)):
 
-            if args[i] == "primary":
+            if args[i]      == "primary":
+            
                 arg_text += "primary_key=True" + add_comma(i, args)
-            elif "maxlen" in args[i]:
-                arg_text += "max_length=" + max_length(args[i]) + add_comma(i, args)
+
+            elif "maxlen"   in args[i]:
+
+                arg_text += "max_length="      + max_length(args[i]) + add_comma(i, args)
+
+            elif "choices"  in args[i]:
+
+                arg_text += "choices="         + choices(args[i]) + add_comma(i, args)
+                
             else:
+
                 log("Unsupported arguments " + args[i] + "!")
 
         return arg_text
