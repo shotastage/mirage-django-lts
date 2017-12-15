@@ -17,10 +17,9 @@ Copyright 2017 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
-from djconsole.command import log, command
-from djconsole.generate.model_template import create_model_py
-
+from djconsole.flow                     import Flow
+from djconsole.command                  import log, command
+from djconsole.generate.model_template  import create_model_py
 
 
 
@@ -34,7 +33,7 @@ class DjangoModelMakeFlow(Flow):
 
         model_classies = self._third_args[0]
         model_contents = self._third_args[1:len(self._third_args)]        
-        model_body = self.__make_model_body(model_contents)
+        model_body     = self.__make_model_body(model_contents)
 
         modelpy = create_model_py(model_classies, model_body)
 
@@ -52,77 +51,122 @@ class DjangoModelMakeFlow(Flow):
 
 
     def __make_model_body(self, model_contents):
+        """
+        Make model body from model contents string
+        :param self:
+        :param model_contents: String     Model contents represantation
+        :return: String                   Model body as string
+        """
 
         body = ""
 
         for content in model_contents:
 
-            data_name = content.split(":")[0]
-            data_type = content.split(":")[1]
-            data_arg  = content.split(":")[2]
+            data_name = content.split(":")[0]  # model filed name
+            data_type = content.split(":")[1]  # data type
+            data_args = content.split(":")[2]  # filed arguments
 
+
+            # Validate data filed names
             try:
                 self.___data_name_validator(data_name)
             except:
                 log("The data name is invalid!", withError = True)
-        
 
-            if "primary" == data_arg:
-                if "string" == data_type:
-                    body += '    {0}\n'.format(self.__model_string(data_name, asPrimaryKey = True))
-                elif "text" == data_type:
-                    body += '    {0}\n'.format(self.__model_text(data_name, asPrimaryKey = True))
-                elif "integer" == data_type:
-                    body += '    {0}\n'.format(self.__model_integer(data_name, asPrimaryKey = True))
-                elif "date" == data_type:
-                    body += '    {0}\n'.format(self.__model_date(data_name))
-                elif "auto" == data_type:
-                    body += '    {0}\n'.format(self.__model_auto(data_name))
-                else:
-                    log("Unsuported type " + data_type + ".", withError = True)
+
+            # Get arguments string
+            args = self.__make_argumanets(data_args)
+
+           
+            # Make model body
+            if "string"           == data_type:
+                body += '    {0}\n'.format(self.__model_string(
+                                                            data_name, args))
+            elif "string+autolen" == data_type:
+                body += '    {0}\n'.format(self.__model_auto_string(
+                                                            data_name, args))
+            elif "text"           == data_type:
+                body += '    {0}\n'.format(self.__model_text(
+                                                            data_name, args))
+            elif "integer"        == data_type:
+                body += '    {0}\n'.format(self.__model_integer(
+                                                            data_name, args))
+            elif "boolean"        == data_type:
+                body += '    {0}\n'.format(self.__model_boolean(
+                                                            data_name, args))
+            elif "date"           == data_type:
+                body += '    {0}\n'.format(self.__model_date(
+                                                            data_name, args))
+            elif "auto"           == data_type:
+                body += '    {0}\n'.format(self.__model_auto(
+                                                            data_name, args))
             else:
-                if "string" == data_type:
-                    body += '    {0}\n'.format(self.__model_string(data_name))
-                elif "text" == data_type:
-                    body += '    {0}\n'.format(self.__model_text(data_name))
-                elif "integer" == data_type:
-                    body += '    {0}\n'.format(self.__model_integer(data_name))
-                elif "date" == data_type:
-                    body += '    {0}\n'.format(self.__model_date(data_name))
-                elif "auto" == data_type:
-                    body += '    {0}\n'.format(self.__model_auto(data_name))
-                else:
-                    log("Unsuported type " + data_type + ".", withError = True)
+                log("Unsuported type " + data_type + ".", withError = True)
 
         return body
+    
 
 
+    # Django string filed
+    def __model_string(self, name, arg_filed):
+        return '{0} = models.CharField(max_length=255, {1})'.format(name, arg_filed)
 
-    # Django Char Filed
-    def __model_string(self, name, asPrimaryKey = False):
-        if asPrimaryKey:
-            return '{0} = models.CharField(max_length=255, primary_key=True))'.format(name)
-        return '{0} = models.CharField(max_length=255)'.format(name)
+    # Django string auto length
+    def __model_auto_string(self, name, arg_filed):
+        return '{0} = models.CharField({1})'.format(name, arg_filed)
 
     # Django Long Text Filed
-    def __model_text(self, name, asPrimaryKey = False):
-        if asPrimaryKey:
-            return '{0} = models.CharField(max_length=65536, primary_key=True)'.format(name)
-        return '{0} = models.CharField(max_length=65536)'.format(name)
+    def __model_text(self, name, arg_filed):
+        return '{0} = models.CharField(max_length=65536, {1})'.format(name, arg_filed)
 
     # Django Integer Filed
-    def __model_integer(self, name, asPrimaryKey = False):
-        if asPrimaryKey:
-            return '{0} = models.IntegerField(primary_key=True)'.format(name)
-        return '{0} = models.IntegerField()'.format(name)
+    def __model_integer(self, name, arg_filed):
+        return '{0} = models.IntegerField({1})'.format(name, arg_filed)
+
+    # Django Boolean Filed
+    def __model_boolean(self, name, arg_filed):
+        return '{0} = models.BooleanField({1})'.format(name, arg_filed)
 
     # Django Date Filed
-    def __model_date(self, name):
-        return '{0} = models.DateField()'.format(name)
+    def __model_date(self, name, arg_filed):
+        return '{0} = models.DateField({1})'.format(name, arg_filed)
 
     # Django Auto Filed
-    def __model_auto(self, name):
-        return '{0} = models.AutoField(primary_key=True)'.format(name)
+    def __model_auto(self, name, arg_filed):
+        return '{0} = models.AutoField(primary_key=True, {1})'.format(name, arg_filed)
+
+
+
+    def __make_argumanets(self, arg_propaties):
+
+        args = arg_propaties.split(",")
+        arg_text = ""
+
+
+        def add_comma(index, args):
+            if len(args) == (index + 1):
+                return ""
+            elif index < len(args):
+                return ", "
+            else:
+                return ""
+
+
+
+        def max_length(arg):
+            return arg.split("=")[1]
+        
+
+        for i in range(len(args)):
+
+            if args[i] == "primary":
+                arg_text += "primary_key=True" + add_comma(i, args)
+            elif "maxlen" in args[i]:
+                arg_text += "max_length=" + max_length(args[i]) + add_comma(i, args)
+            else:
+                log("Unsupported arguments " + args[i] + "!")
+
+        return arg_text
 
 
 
@@ -132,4 +176,3 @@ class DjangoModelMakeFlow(Flow):
         for word in forbiddens:
             if name == word:
                 raise ValueError("This data name is forbidden.")
-                return
