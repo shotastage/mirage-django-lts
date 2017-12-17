@@ -43,6 +43,8 @@ If you want to have arguments,
 djc g model TestModel uuid:string+autolen:maxlen=30,primary script:string+autolen:maxlen=400
 ```
 
+Created model class is here.
+
 ```:python
 class TestModel(models.Model):
     uuid = models.CharField(max_length=30, primary_key=True)
