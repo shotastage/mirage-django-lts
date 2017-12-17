@@ -23,8 +23,13 @@ from djconsole.options import DjConsoleOptions as cmd_ops
 def main():
     args = sys.argv
     if len(args) == 1:
-        print('Usage: python {} FILE [--verbose] [--cat <file>] [--help]'\
-            .format(__file__))
+        print("""
+Usage: djc
+
+    new                                     Create new Django project
+    new:cms                                 Create new Django CMS project
+    generate | g [ app | model ] [name]     Create a new Django app or model
+        """)
 
     # Remove own
     args.pop(0)
