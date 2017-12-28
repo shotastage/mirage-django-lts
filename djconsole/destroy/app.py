@@ -15,7 +15,6 @@ Copyright 2017 Shota Shimazu.
    limitations under the License.
 """
 
-
 import shutil
 import tarfile
 import os
