@@ -18,10 +18,10 @@ Copyright 2017 Shota Shimazu.
 import os
 import shutil
 
-from djconsole.command  import log
-from djconsole          import project
-from djconsole.flow     import Flow
-from djconsole.database  import DBConnection
+from djconsole.command      import log
+from djconsole              import project
+from djconsole.flow         import Flow
+from djconsole.database     import DBConnection
 
 
 class DjangoBackupAppFlow(Flow):
