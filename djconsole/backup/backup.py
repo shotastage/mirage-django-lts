@@ -21,7 +21,7 @@ import shutil
 from djconsole.command  import log
 from djconsole          import project
 from djconsole.flow     import Flow
-from djconsole.databse  import DBConnection
+from djconsole.database  import DBConnection
 
 
 class DjangoBackupAppFlow(Flow):
