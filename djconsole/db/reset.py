@@ -29,12 +29,13 @@ class DjangoMigrateFlow(Flow):
         self._subcommand = subcommand
 
     def flow(self):
-        log("Making migrations...")
-        self._make_migration()
-        self._apply_migration()
+        log("Clearing all DB...")
+        self._reset_db()
 
-    def _make_migration(self):
-        os.system("python manage.py makemigrations")
+    def _reset_db(self):
+        os.system("echo Now under development")
 
-    def _apply_migration(self):
-        os.system("python manage.py migrate")
+    def _remove_sqlite(self):
+        log("Removing SQLite3 file...")
+        if os.path.exists("db.sqlite3"):
+            os.remove("db.sqlite3")
