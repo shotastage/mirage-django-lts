@@ -3,4 +3,8 @@ from os import system
 
 def launch_server():
     log("Runnng server...")
-    system("python manage.py runserver")
+
+    try:
+        system("python manage.py runserver")
+    except KeyboardInterrupt:
+        log("Good bye!")
