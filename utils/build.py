@@ -17,4 +17,4 @@ if __name__ == "__main__":
     if opt == "--update":
         system("pip uninstall djconsole")
 
-    system("pip install dist/djconsole-0.0.9.tar.gz")
+    system("pip install dist/djconsole-0.0.11.tar.gz")

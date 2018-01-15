@@ -26,6 +26,7 @@ from djconsole.git.git                                  import DjangoGitFlow
 from djconsole.dammy.dammy                              import DjangoDammyFlow
 from djconsole.manual.version                           import DjangoVersionFlow
 from djconsole.db.migrate                               import DjangoMigrateFlow
+from djconsole.package.pip                              import DjangoPipPackageFlow
 from djconsole.command                                  import log, reserve_as_command
 
 from djconsole.options      import DjConsoleOptions as djops
@@ -57,6 +58,9 @@ def exe(action, action_type, args):
     version(
         action_handler, action)
     migrate(
+        action_handler, action
+    )
+    pipinstall(
         action_handler, action
     )
 
@@ -189,3 +193,11 @@ def migrate(handler, action):
         dj_migrate_flow.execute()
     except:
         log("Failed to migrate database!", withError = True)
+
+@reserve_as_command("pip")
+def pipinstall(handler, action):
+    try:
+        dj_pip_flow = DjangoPipPackageFlow(handler._action_target)
+        dj_pip_flow.execute()
+    except:
+        log("Failed to launch dj package manager!", withError = True)

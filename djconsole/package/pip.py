@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright 2017 Shota Shimazu.
+Copyright 2017-2018 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -22,20 +22,22 @@ from djconsole.command import log
 from djconsole.command import command
 
 
-class DjangoPackageFlow(Flow):
+class DjangoPipPackageFlow(Flow):
 
     def __init__(self, subcommand):
-        log("Django Console Packager is now unser development!", withError = True)
         self._subcommand = subcommand
 
     def flow(self):
         if self._subcommand == "check":
             self._check()
+        elif self._subcommand == "install":
+            self._install()
         else:
             log("Unkown command " + self._subcommand + "!", withError = True)
 
     def _check(self):
         os.system("pip list -o")
 
-    def _puash(self):
-        command("git push -u origin master")
+    def _install(self):
+        log("Install package from requirements.txt")
+        os.system("pip install -r requirements.txt")
