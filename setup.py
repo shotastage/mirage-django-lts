@@ -8,7 +8,7 @@ sys.path.append('./tests')
 if __name__ == "__main__":
     setup(
         name = "djconsole",
-        version='0.0.10',
+        version='0.0.11',
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         packages = find_packages(),
