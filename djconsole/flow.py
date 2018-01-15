@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright 2017 Shota Shimazu.
+Copyright 2017-2018 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ class Flow():
     def execute(self):
         self.flow()
 
-    def register(*funcs):
+    def register(self, *funcs):
         for func in funcs:
             self._flows.append(func)
 
@@ -73,7 +73,6 @@ class ArgumentSwitch():
     def _excute(self, func):
 
         if self._action_target == None and self.args == []:
-            log("これファよな", withError = True)
             func()
             return
     
@@ -85,13 +84,11 @@ class ArgumentSwitch():
                 except:
                     print(self.args)
                     log("Failed to excute " + str(func) + " .", withError = True)
-                    log("1")
             else:
                 try:
                     func()
                 except:
                     log("Failed to excute " + str(func) + " .", withError = True)
-                    log("2")
             return
 
         if self.args == None:
@@ -100,13 +97,11 @@ class ArgumentSwitch():
                     func(self._action_target)
                 except:
                     log("Failed to excute " + str(func) + " .", withError = True)
-                    log("3")
             else:
                 try:
                     func()
                 except:
                     log("Failed to excute " + str(func) + " .", withError = True)
-                    log("4")
             return
 
 
