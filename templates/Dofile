@@ -1,0 +1,4 @@
+python:
+    - djconsole
+nodejs:
+    - nodejs

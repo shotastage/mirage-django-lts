@@ -46,6 +46,8 @@ def exe(action, action_type, args):
         action_handler, action)
     console(
         action_handler, action)
+    dbconsole(
+        action_handler, action)
     destroy(
         action_handler, action)
     git(
@@ -133,7 +135,7 @@ def console(handler, action):
 
 
 @reserve_as_command("dbconsole", "c:db")
-def console(handler, action):
+def dbconsole(handler, action):
     try:
         dj_console_flow = DjangoDBConsoleFlow()
         dj_console_flow.execute()
