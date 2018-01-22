@@ -16,12 +16,35 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import sys
-
+import enum
 
 class ArgumentsParser():
 
-    def __init__(self):
+    def __init__(self, usage, version):
+        self._usage = """
+Django Console Arguments Parser
+Copyright 2017-2018 Shota Shimazu.
+
+This command line tools does not define usage or help!
+                      """
+        
+        self._version = """
+Django Console Arguments Parser
+Version 0.0.1
+
+Copyright 2017-2018 Shota Shimazu.
+This software is licensed under the Apache v2, see LICENSE for detail.
+                        """
+
+    def add_argument(self, shorten_cmd, long_cmd, values, strategy = "default"):
+        if strategy == ParsingStrategies.default:
+            pass
+
+
+    def _colon_separate(self, cmd_colon_value):
         pass
 
-    def add_argument(self, shorten_cmd, long_cmd, strategy, values):
-        pass
+
+class ParsingStrategies(enum.Enum):
+    default = 0
+    colon = 1
