@@ -36,15 +36,15 @@ Version 0.0.1
 Copyright 2017-2018 Shota Shimazu.
 This software is licensed under the Apache v2, see LICENSE for detail.
                         """
-        self._excute_func = self.dammy()
+        self._excute_func = self.dammy("dammy ops", "arguments")
 
 
-    def add_argument(self, shorten_cmd, long_cmd, options = None, execute = dammy(), strategy = ParsingStrategies.default):
+    def add_argument(self, shorten_cmd, long_cmd, options = None, execute = dammy("dammy ops", "arguments"), strategy = ParsingStrategies.default):
 
         if strategy == ParsingStrategies.default:
-            pass
+            excute(options, values)
         elif strategy == ParsingStrategies.colon:
-            pass
+            excute(options, values)
 
 
     def parse(self):
@@ -55,7 +55,10 @@ This software is licensed under the Apache v2, see LICENSE for detail.
         pass
 
 
-    def dammy(self):
+    def dammy(self, option, values):
+        print("This is dammy function.")
+
+    def dammy_colon_action(self, option, values):
         print("This is dammy function.")
 
 
