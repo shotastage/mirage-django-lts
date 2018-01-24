@@ -17,6 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import sys
 import enum
+import functools
 
 class ArgumentsParser():
 
@@ -38,12 +39,11 @@ This software is licensed under the Apache v2, see LICENSE for detail.
         self._excute_func = self.dammy()
 
 
-    def add_argument(self, shorten_cmd, long_cmd, values, strategy = ParsingStrategies.default):
+    def add_argument(self, shorten_cmd, long_cmd, options = None, execute = dammy(), strategy = ParsingStrategies.default):
+
         if strategy == ParsingStrategies.default:
             pass
         elif strategy == ParsingStrategies.colon:
-            pass
-        elif strategy == ParsingStrategies.subcommand:
             pass
 
 
@@ -59,7 +59,21 @@ This software is licensed under the Apache v2, see LICENSE for detail.
         print("This is dammy function.")
 
 
+
 class ParsingStrategies(enum.Enum):
     default = 0
     colon   = 1
-    subcommand = 2
+
+
+
+def compatible_with_argparse(*reserved_args):
+
+    def _decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for reserve in reserved_args:
+                if args[1] == reserve:
+                    re = func(*args, **kwargs)
+                    return re
+        return wrapper
+    return _decorator
