@@ -35,16 +35,31 @@ Version 0.0.1
 Copyright 2017-2018 Shota Shimazu.
 This software is licensed under the Apache v2, see LICENSE for detail.
                         """
+        self._excute_func = self.dammy()
 
-    def add_argument(self, shorten_cmd, long_cmd, values, strategy = "default"):
+
+    def add_argument(self, shorten_cmd, long_cmd, values, strategy = ParsingStrategies.default):
         if strategy == ParsingStrategies.default:
             pass
+        elif strategy == ParsingStrategies.colon:
+            pass
+        elif strategy == ParsingStrategies.subcommand:
+            pass
+
+
+    def parse(self):
+        pass
 
 
     def _colon_separate(self, cmd_colon_value):
         pass
 
 
+    def dammy(self):
+        print("This is dammy function.")
+
+
 class ParsingStrategies(enum.Enum):
     default = 0
-    colon = 1
+    colon   = 1
+    subcommand = 2
