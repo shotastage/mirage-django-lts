@@ -22,13 +22,54 @@ import functools
 class ArgumentsParser():
 
     def __init__(self, usage, version):
+
+        # Doc strings
+        self._usage = None
+        self._version = None
+        self._add_doc_string()
+
+        self._option = None
+        self._values = None
+
+
+    def add_argument(self, shorten_cmd, long_cmd, option = None, execute = None, strategy = ParsingStrategies.default):
+        
+        # self._options = 
+
+
+
+        if strategy == ParsingStrategies.default:
+            execute(self._option, self._values)
+        elif strategy == ParsingStrategies.colon:
+            execute(self._option, self._values)
+
+
+    def parse(self):
+        pass
+
+    def dammy(self, option, values):
+        print("This is dammy function.")
+
+    def dammy_colon_action(self, option, values):
+        print("This is dammy function.")
+
+    def _colon_separate(self, cmd_colon_value):
+        pass
+    
+    def _set_arguments_from_cli(self):
+        args = sys.argv.pop(0)
+        self._option = args[0]
+        self._values = args[1:-1]
+
+
+    def _add_doc_string(self):
         self._usage = """
 Django Console Arguments Parser
 Copyright 2017-2018 Shota Shimazu.
 
 This command line tools does not define usage or help!
                       """
-        
+
         self._version = """
 Django Console Arguments Parser
 Version 0.0.1
@@ -36,30 +77,6 @@ Version 0.0.1
 Copyright 2017-2018 Shota Shimazu.
 This software is licensed under the Apache v2, see LICENSE for detail.
                         """
-        self._excute_func = self.dammy("dammy ops", "arguments")
-
-
-    def add_argument(self, shorten_cmd, long_cmd, options = None, execute = dammy("dammy ops", "arguments"), strategy = ParsingStrategies.default):
-
-        if strategy == ParsingStrategies.default:
-            excute(options, values)
-        elif strategy == ParsingStrategies.colon:
-            excute(options, values)
-
-
-    def parse(self):
-        pass
-
-
-    def _colon_separate(self, cmd_colon_value):
-        pass
-
-
-    def dammy(self, option, values):
-        print("This is dammy function.")
-
-    def dammy_colon_action(self, option, values):
-        print("This is dammy function.")
 
 
 
