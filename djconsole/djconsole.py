@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright 2017 Shota Shimazu.
+Copyright 2017-2018 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@ Copyright 2017 Shota Shimazu.
 """
 
 import sys
+
+from djconsole.djargparse import ArgumentsParser as ArgumentsParser
+
 from djconsole.executor import exe
 from djconsole.options import DjConsoleOptions as cmd_ops
 

@@ -28,8 +28,14 @@ class ArgumentsParser():
         self._version = None
         self._add_doc_string()
 
+        # Arguments
+        self._sub_action = None
         self._option = None
         self._values = None
+        self._set_arguments_from_cli()
+
+        # Function
+        self._excute = self.dammy_colon_action(self._sub_action, self._values)
 
 
     def add_argument(self, shorten_cmd, long_cmd, option = None, execute = None, strategy = ParsingStrategies.default):
@@ -43,9 +49,12 @@ class ArgumentsParser():
         elif strategy == ParsingStrategies.colon:
             execute(self._option, self._values)
 
+    def add_cmd_with_action(self, shorten_cmd, long_cmd, subaction):
+        pass
+
 
     def parse(self):
-        pass
+        self._excute(self._sub_action, self._values)
 
     def dammy(self, option, values):
         print("This is dammy function.")
