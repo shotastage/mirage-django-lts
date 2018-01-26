@@ -18,6 +18,44 @@ Copyright 2017-2018 Shota Shimazu.
 from djconsole.command import log
 
 
+class AbstractFlow2():
+    def __init__(self):
+        self._flows = []
+
+    def excute(self):
+        pass
+
+    def add_flow(self, flow_instance, cmd_arg):
+        pass
+
+
+class Flow2():
+
+    def __init__(self):
+        self._flows = []
+
+    def flow(self):
+
+        for flow in self._flows:
+            if "function" in str(type(flow)):
+                try:
+                    flow()
+                except:
+                    raise Exception
+            else:
+                log(str(flow) + " is not function!", withError = True)
+
+
+    def execute(self):
+        self.flow()
+
+    def register(self, *funcs):
+        for func in funcs:
+            self._flows.append(func)
+
+
+
+
 class Flow():
 
     def __init__(self, onInstance = False):
