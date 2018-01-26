@@ -28,14 +28,12 @@ class ArgumentsParser():
         # Doc strings
         self._usage = usage
         self._version = version
-
-        # Command
-        self._command_list = []
         
         # Arguments
         self._cmd = None            # ex. **new**
         self._sub_action = None     # ex. new:**cms**
         self._option = None         # ex. g **app**
+        self._option_detail = None  # ex. g app **--basic**
         self._values = None         # ex. g **app api mail user**
 
 
@@ -45,7 +43,12 @@ class ArgumentsParser():
         try: self._sub_action = self._colon_separate_action(sys.argv[1])
         except: pass
         
-        try: self._option = sys.argv[2]
+        try:
+            if "--" in sys.argv[2]:
+                self._option_detail = sys.argv[2]
+                self._option = sys.argv[3]
+            else:
+                self._option = sys.argv[2]
         except: pass
 
         try:
@@ -60,11 +63,11 @@ class ArgumentsParser():
 
         # Add version commanss
         self.add_argument("v", "version", None,
-                                lambda: print(self._version))
+                    lambda cmd, action, option, detail_option, values: print(self._version))
 
         # Add help commanss
         self.add_argument("h", "help", None,
-                                lambda: print(self._usage))
+                    lambda cmd, action, option, detail_option, values: print(self._usage))
 
 
     def add_argument(self, shorten_cmd, long_cmd, option, execute):
@@ -87,7 +90,7 @@ class ArgumentsParser():
         
         # Check excute function is not empty.
         if not self._exec_func == None: 
-            self._exec_func(self._cmd, self._sub_action, self._option, self._values)
+            self._exec_func(self._cmd, self._sub_action, self._option, self._option_detail, self._values)
             return
         else:
             log("CLI action is not appended!", withError = True)

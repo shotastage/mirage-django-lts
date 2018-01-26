@@ -19,6 +19,10 @@ import sys
 
 from djconsole.djargparse import ArgumentsParser
 
+# For Driver
+from djconsole.executor_driver import GatheredArgsDriver
+from djconsole.executor_driver import new, cms_new, generate
+
 
 
 def main():
@@ -44,7 +48,19 @@ Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
                   """
     )
-    
+
+    # For arg parse v1 driver
+    action_handler = GatheredArgsDriver(parser._cmd, parser._option, parser._values)
+    action = parser._cmd
+
+
+    # Driving commands
+    parser.add_argument("new", "new_application", None, new(action_handler, action))
+    parser.add_argument_with_subaction("new", "new_application", "cms", None, cms_new(action_handler, action))
+    parser.add_argument("g", "generate", "app", generate(action_handler, action))
+    parser.add_argument("g", "generate", "model", generate(action_handler, action))
+
+
     # Commands
     parser.add_argument("tf", "testfunc", None, test_func)
     parser.add_argument_with_subaction("tfs", "testfuncs", "exec", None, test_func)
@@ -55,9 +71,10 @@ This software is licensed under the Apache v2, see LICENSE for detail.
 
 
 # For test
-def test_func(cmd, action, option, values):
+def test_func(cmd, action, option, detail_option, values):
     print("Yeah!")
     print(str(cmd))
     print(str(action))
     print(str(option))
+    print(str(detail_option))
     print(str(values))
