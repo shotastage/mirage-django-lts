@@ -54,15 +54,26 @@ class ArgumentsParser():
         # Exec func
         self._exec_func = None
 
+        # Add version commanss
+        self.add_argument("v", "version", None, lambda: print(self._version))
+
+        # Add help commanss
+        self.add_argument("h", "help", None, lambda: print(self._usage))
+
 
     def add_argument(self, shorten_cmd, long_cmd, option, execute):
         if self._cmd == shorten_cmd or self._cmd == long_cmd:
-            self._exec_func = execute
+            if self._sub_action == None:
+                self._exec_func = execute
+
+        return
     
     def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
         if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
             if self._sub_action == action:
                 self._exec_func = execute
+
+        return
 
     def parse(self):
 
