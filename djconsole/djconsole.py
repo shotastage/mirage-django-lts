@@ -46,8 +46,8 @@ This software is licensed under the Apache v2, see LICENSE for detail.
     )
     
     # Commands
-    parser.add_argument("tf", "testfunc", None, text_func)
-    parser.add_argument_with_subaction("tfs", "testfuncs", "exec", None, text_func)
+    parser.add_argument("tf", "testfunc", None, test_func)
+    parser.add_argument_with_subaction("tfs", "testfuncs", "exec", None, test_func)
 
 
     # Excute
@@ -55,5 +55,9 @@ This software is licensed under the Apache v2, see LICENSE for detail.
 
 
 # For test
-def text_func():
+def test_func(cmd, action, option, values):
     print("Yeah!")
+    print(str(cmd))
+    print(str(action))
+    print(str(option))
+    print(str(values))

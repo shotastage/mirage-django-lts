@@ -48,7 +48,11 @@ class ArgumentsParser():
         try: self._option = sys.argv[2]
         except: pass
 
-        try: self._values = sys.argv[3:-1]
+        try:
+            if "--" in sys.argv[2]:
+                self._values = sys.argv[3: -1]
+            else:
+                self._values = sys.argv[2: -1]
         except: pass
 
         # Exec func
@@ -78,13 +82,12 @@ class ArgumentsParser():
         return
 
     def parse(self):
-
         # If there are no command, show usage.
         if len(sys.argv) == 1: return print(self._usage)
         
         # Check excute function is not empty.
         if not self._exec_func == None: 
-            self._exec_func()
+            self._exec_func(self._cmd, self._sub_action, self._option, self._values)
             return
         else:
             log("CLI action is not appended!", withError = True)
