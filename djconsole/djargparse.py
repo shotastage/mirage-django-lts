@@ -97,7 +97,8 @@ class ArgumentsParser():
         
         # Check excute function is not empty.
         if not self._exec_func == None: 
-            self._exec_func(self._cmd, self._sub_action, self._option, self._option_detail, self._values)
+            # self._exec_func(self._cmd, self._sub_action, self._option, self._option_detail, self._values)
+            self._exec_func.excute()
             return
         else:
             log("CLI action is not appended!", withError = True)
@@ -114,6 +115,22 @@ class ArgumentsParser():
             return cmd_colon_value.split(":")[1]
         else:
             raise ValueError
+
+
+
+class DetailOptionParser():
+
+    def __init__(self, detail_option):
+        self._option_detail = detail_option
+        self._excute = None
+
+    def add_argument(self, option, excute):
+        if self._option_detail == option:
+            self._excute = excute
+    
+    def parse(self):
+        self._excute.excute()
+
 
 
 class ParsingStrategies(enum.Enum):

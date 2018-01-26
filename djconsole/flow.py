@@ -18,21 +18,16 @@ Copyright 2017-2018 Shota Shimazu.
 from djconsole.command import log
 
 
-class AbstractFlow2():
-    def __init__(self):
-        self._flows = []
-
-    def excute(self):
-        pass
-
-    def add_flow(self, flow_instance, cmd_arg):
-        pass
-
-
 class Flow2():
 
-    def __init__(self):
-        self._flows = []
+    def __init__(self, cmd, subaction, option, option_detail, values):
+        self._action        = cmd
+        self._subaction     = subaction
+        self._option        = option
+        self._option_detail = option_detail
+        self._values        = values
+        self._flows         = []
+
 
     def flow(self):
 
