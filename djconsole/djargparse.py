@@ -55,10 +55,12 @@ class ArgumentsParser():
         self._exec_func = None
 
         # Add version commanss
-        self.add_argument("v", "version", None, lambda: print(self._version))
+        self.add_argument("v", "version", None,
+                                lambda: print(self._version))
 
         # Add help commanss
-        self.add_argument("h", "help", None, lambda: print(self._usage))
+        self.add_argument("h", "help", None,
+                                lambda: print(self._usage))
 
 
     def add_argument(self, shorten_cmd, long_cmd, option, execute):
