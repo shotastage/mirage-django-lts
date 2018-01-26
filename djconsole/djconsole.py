@@ -25,8 +25,18 @@ def main():
 
     parser = ArgumentsParser(
         usage = """
-Django Console
+Django Console v0.0.11
+
+
+    new             Create a new Django project
+    new:cms         Create a new Django CMS project
+    new:api         Create a new Django REST API
+
+    generate / g    Generate apps, model
+        + app       Generate Django app
+        + model     Generate Django model class
                 """,
+
         version = """
 Django Console Version 0.0.12
 
@@ -34,3 +44,6 @@ Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
                   """
     )
+
+
+    parser.parse()

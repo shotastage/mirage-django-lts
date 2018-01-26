@@ -24,9 +24,8 @@ class ArgumentsParser():
     def __init__(self, usage, version):
 
         # Doc strings
-        self._usage = None
-        self._version = None
-        self._add_doc_string()
+        self._usage = usage
+        self._version = version
 
         # Command
         self._command_list = []
@@ -37,20 +36,20 @@ class ArgumentsParser():
         self._values = None
         self._set_arguments_from_cli()
 
-        # Function
-        self._excute = self.dammy_colon_action(self._sub_action, self._values)
 
-
-
-    def add_argument(self, shorten_cmd, long_cmd, option = None, execute = None, strategy = ParsingStrategies.default):
-        self._command_list.append((shorten_cmd, long_cmd, execute))
+    def add_argument(self, shorten_cmd, long_cmd, option, execute, strategy):
+        pass
+        #self._command_list.append((shorten_cmd, long_cmd, execute))
 
     def add_cmd_with_action(self, shorten_cmd, long_cmd, subaction):
         pass
 
 
     def parse(self):
-        self._excute(self._sub_action, self._values)
+        if len(sys.argv) == 0:
+            print(self._usage)
+        
+        # self._excute(self._sub_action, self._values)
 
     def dammy(self, option, values):
         print("This is dammy function.")
@@ -65,23 +64,6 @@ class ArgumentsParser():
         args = sys.argv.pop(0)
         self._option = args[0]
         self._values = args[1:-1]
-
-
-    def _add_doc_string(self):
-        self._usage = """
-Django Console Arguments Parser
-Copyright 2017-2018 Shota Shimazu.
-
-This command line tools does not define usage or help!
-                      """
-
-        self._version = """
-Django Console Arguments Parser
-Version 0.0.1
-
-Copyright 2017-2018 Shota Shimazu.
-This software is licensed under the Apache v2, see LICENSE for detail.
-                        """
 
 
 
