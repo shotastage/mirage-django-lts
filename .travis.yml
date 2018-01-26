@@ -8,7 +8,9 @@ python:
 
 install:
   - pip install coveralls
-  - pip install -r requirements.txt
+  - pip install -r ./requirements/pipenv.txt
+  - pipenv --python 3.6.4
+  - pipenv install
 
 script:
   - coverage run --source=djconsole_test setup.py test
