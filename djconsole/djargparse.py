@@ -37,12 +37,17 @@ class ArgumentsParser():
         self._values = None         # ex. g **app api mail user**
 
 
+        # Get main command **new**:cms
         try: self._cmd = self._colon_separate_cmd(sys.argv[1])
         except: pass
 
+        # Get subaction new:**cms**
         try: self._sub_action = self._colon_separate_action(sys.argv[1])
         except: pass
         
+        # Get option and detail option
+        # optin =           djc g **app**
+        # detail option =   djc g app **--basic**
         try:
             if "--" in sys.argv[2]:
                 self._option_detail = sys.argv[2]
@@ -51,12 +56,14 @@ class ArgumentsParser():
                 self._option = sys.argv[2]
         except: pass
 
+        # Get values
         try:
             if "--" in sys.argv[2]:
                 self._values = sys.argv[3: -1]
             else:
                 self._values = sys.argv[2: -1]
         except: pass
+
 
         # Exec func
         self._exec_func = None

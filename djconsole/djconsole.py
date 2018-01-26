@@ -55,8 +55,8 @@ This software is licensed under the Apache v2, see LICENSE for detail.
 
 
     # Driving commands
-    parser.add_argument("new", "new_application", None, new(action_handler, action))
-    parser.add_argument_with_subaction("new", "new_application", "cms", None, cms_new(action_handler, action))
+    parser.add_argument("new", "new_application", None, lambda: new(action_handler, action))
+    parser.add_argument_with_subaction("new", "new_application", "cms", None, lambda: cms_new(action_handler, action))
     parser.add_argument("g", "generate", "app", generate(action_handler, action))
     parser.add_argument("g", "generate", "model", generate(action_handler, action))
 
