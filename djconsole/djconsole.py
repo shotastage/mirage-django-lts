@@ -17,7 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import sys
 
-from djconsole.djargparse import ArgumentsParser, ParsingStrategies, compatible_with_argparse
+from djconsole.djargparse import ArgumentsParser
 
 
 
@@ -44,6 +44,16 @@ Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
                   """
     )
+    
+    # Commands
+    parser.add_argument("tf", "testfunc", None, text_func)
+    parser.add_argument_with_subaction("tfs", "testfuncs", "exec", None, text_func)
 
 
+    # Excute
     parser.parse()
+
+
+# For test
+def text_func():
+    print("Yeah!")

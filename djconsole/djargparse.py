@@ -19,6 +19,8 @@ import sys
 import enum
 import functools
 
+from djconsole.command import log
+
 class ArgumentsParser():
 
     def __init__(self, usage, version):
@@ -31,56 +33,63 @@ class ArgumentsParser():
         self._command_list = []
         
         # Arguments
-        self._sub_action = None
-        self._option = None
-        self._values = None
-        self._set_arguments_from_cli()
+        self._cmd = None            # ex. **new**
+        self._sub_action = None     # ex. new:**cms**
+        self._option = None         # ex. g **app**
+        self._values = None         # ex. g **app api mail user**
 
 
-    def add_argument(self, shorten_cmd, long_cmd, option, execute, strategy):
-        pass
-        #self._command_list.append((shorten_cmd, long_cmd, execute))
+        try: self._cmd = self._colon_separate_cmd(sys.argv[1])
+        except: pass
 
-    def add_cmd_with_action(self, shorten_cmd, long_cmd, subaction):
-        pass
+        try: self._sub_action = self._colon_separate_action(sys.argv[1])
+        except: pass
+        
+        try: self._option = sys.argv[2]
+        except: pass
+
+        try: self._values = sys.argv[3:-1]
+        except: pass
+
+        # Exec func
+        self._exec_func = None
+
+
+    def add_argument(self, shorten_cmd, long_cmd, option, execute):
+        if self._cmd == shorten_cmd or self._cmd == long_cmd:
+            self._exec_func = execute
+    
+    def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
+        if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd and self._sub_action == action:
+            self._exec_func = execute
 
 
     def parse(self):
-        if len(sys.argv) == 0:
-            print(self._usage)
+
+        # If there are no command, show usage.
+        if len(sys.argv) == 1: return print(self._usage)
         
-        # self._excute(self._sub_action, self._values)
+        # Check excute function is not empty.
+        if not self._exec_func == None: 
+            self._exec_func()
+            return
+        else:
+            log("CLI action is not appended!", withError = True)
 
-    def dammy(self, option, values):
-        print("This is dammy function.")
 
-    def dammy_colon_action(self, option, values):
-        print("This is dammy function.")
+    def _colon_separate_cmd(self, cmd_colon_value):
+        if ":" in cmd_colon_value:
+            return cmd_colon_value.split(":")[0]
+        else:
+            return cmd_colon_value
 
-    def _colon_separate(self, cmd_colon_value):
-        pass
-    
-    def _set_arguments_from_cli(self):
-        args = sys.argv.pop(0)
-        self._option = args[0]
-        self._values = args[1:-1]
-
+    def _colon_separate_action(self, cmd_colon_value):
+        if ":" in cmd_colon_value:
+            return cmd_colon_value.split(":")[1]
+        else:
+            raise ValueError
 
 
 class ParsingStrategies(enum.Enum):
     default = 0
     colon   = 1
-
-
-
-def compatible_with_argparse(*reserved_args):
-
-    def _decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            for reserve in reserved_args:
-                if args[1] == reserve:
-                    re = func(*args, **kwargs)
-                    return re
-        return wrapper
-    return _decorator
