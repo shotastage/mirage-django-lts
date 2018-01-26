@@ -60,9 +60,9 @@ class ArgumentsParser():
             self._exec_func = execute
     
     def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
-        if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd and self._sub_action == action:
-            self._exec_func = execute
-
+        if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
+            if self._sub_action == action:
+                self._exec_func = execute
 
     def parse(self):
 
