@@ -59,12 +59,18 @@ class DjangoStartupWorkFlow(Workflow):
             raise FileExistsError
 
 
-class DjangoCMSStartupFlow(Flow):
 
-    def __init__(self, name = None):
-        self._project_name = name
 
-    def flow(self):
+class DjangoCMSStartupWorkFlow(Workflow):
+
+    def additional_init_(self):
+        try:
+            self._project_name = self._option
+        except:
+            self._project_name = None
+
+
+    def main(self):
 
         if self._project_name == None:
             log("Please type your new Django CMS application name.")
@@ -95,6 +101,7 @@ class DjangoCMSStartupFlow(Flow):
         command("curl -O https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore")
         shutil.move("Python.gitignore", ".gitignore")
         command("git init")
+
 
     def _create_docs(self, name):
         with open("README.md", "a") as readme:

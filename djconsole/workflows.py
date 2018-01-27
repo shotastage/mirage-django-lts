@@ -15,12 +15,12 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from djconsole.projectstartup.django_app_create import DjangoStartupWorkFlow
-from djconsole.help.usage_flow import UsageShowWorkFlow, VersionShowWorkFlow
 
-
+from djconsole.projectstartup.django_app_create import DjangoStartupWorkFlow, DjangoCMSStartupWorkFlow
 class DjangoStartup(DjangoStartupWorkFlow): pass
+class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass
 
-# Usage
+
+from djconsole.help.usage_flow import UsageShowWorkFlow, VersionShowWorkFlow
 class UsageShow(UsageShowWorkFlow): pass
 class VersionShow(VersionShowWorkFlow): pass

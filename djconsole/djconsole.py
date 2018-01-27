@@ -29,7 +29,8 @@ def main():
     parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
-    parser.add_argument("new", "new_application", None, "DjangoStartup")
-    
+    parser.add_argument("new", "new-application", None, "DjangoStartup")
+    parser.add_argument_with_subaction("new", "new-cms-application", "cms", None, "DjangoCMSStartup")
+
     # Excute
     parser.parse()
