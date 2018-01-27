@@ -24,27 +24,12 @@ def main():
 
     parser = ArgumentsParser()
 
-    # Driving commands
-    parser.add_argument("new", "new_application", None, "DjangoStartup")
-
-    #
+    # Usage & Version
     parser.add_argument("h", "help", None, "UsageShow")
     parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
-    parser.add_argument("tf", "testfunc", None, test_func)
-    parser.add_argument_with_subaction("tfs", "testfuncs", "exec", None, test_func)
-
-
+    parser.add_argument("new", "new_application", None, "DjangoStartup")
+    
     # Excute
     parser.parse()
-
-
-# For test
-def test_func(cmd, action, option, detail_option, values):
-    print("Yeah!")
-    print(str(cmd))
-    print(str(action))
-    print(str(option))
-    print(str(detail_option))
-    print(str(values))
