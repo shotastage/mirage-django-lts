@@ -16,6 +16,11 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 
+from djconsole.console.django_console import DjangoConsoleWorkFlow, DjangoDBConsoleWorkFlow
+class DjangoConsole(DjangoConsoleWorkFlow): pass
+class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass
+
+
 from djconsole.projectstartup.django_app_create import DjangoStartupWorkFlow, DjangoCMSStartupWorkFlow
 class DjangoStartup(DjangoStartupWorkFlow): pass
 class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass

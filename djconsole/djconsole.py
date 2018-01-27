@@ -32,5 +32,8 @@ def main():
     parser.add_argument("new", "new-application", None, "DjangoStartup")
     parser.add_argument_with_subaction("new", "new-cms-application", "cms", None, "DjangoCMSStartup")
 
+    parser.add_argument("c", "console", None, "DjangoConsole")
+    parser.add_argument_with_subaction("c", "console", "db", None, "DjangoDBConsole")
+
     # Excute
     parser.parse()
