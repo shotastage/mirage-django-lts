@@ -13,7 +13,7 @@ if __name__ == "__main__":
         author_email = "hornet.live.mf@gmail.com",
         packages = find_packages(),
         install_requires=[
-            "django",
+            "pipenv",
         ],
         entry_points = {
             'console_scripts':[
