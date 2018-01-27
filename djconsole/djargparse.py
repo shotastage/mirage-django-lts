@@ -34,7 +34,7 @@ class ArgumentsParser(object):
         self._option = None         # ex. g **app**
         self._option_detail = None  # ex. g app **--basic**
         self._values = None         # ex. g **app api mail user**
-        self._insert_arguments()    # <== Insert real value 
+        self.__insert_arguments()   # <== Insert real value 
 
         # Arguments Array 
         self._arguments = [
@@ -57,12 +57,14 @@ class ArgumentsParser(object):
 
         return
     
+
     def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
         if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
             if self._sub_action == action:
                 self._exec_flow = execute
 
         return
+
 
     def parse(self):
         # If there are no command, show usage.
@@ -81,13 +83,13 @@ class ArgumentsParser(object):
             log("CLI action is not appended!", withError = True)
 
 
-    def _insert_arguments(self):
+    def __insert_arguments(self):
         # Get main command **new**:cms
-        try: self._cmd = self._colon_separate_cmd(sys.argv[1])
+        try: self._cmd = self.__colon_separate_cmd(sys.argv[1])
         except: pass
 
         # Get subaction new:**cms**
-        try: self._sub_action = self._colon_separate_action(sys.argv[1])
+        try: self._sub_action = self.__colon_separate_action(sys.argv[1])
         except: pass
         
         # Get option and detail option
@@ -109,26 +111,15 @@ class ArgumentsParser(object):
                 self._values = sys.argv[2: -1]
         except: pass
 
-    def _prepare(self):
-        
-        # parser.add_argument("new", "new_application", None, "DjangoStartup")
-        # Add version commanss
-        self.add_argument("v", "version", None,
-                    lambda cmd, action, option, detail_option, values: print(self._version))
 
-        # Add help commanss
-        self.add_argument("h", "help", None,
-                    lambda cmd, action, option, detail_option, values: print(self._usage))
-
-
-
-    def _colon_separate_cmd(self, cmd_colon_value):
+    def __colon_separate_cmd(self, cmd_colon_value):
         if ":" in cmd_colon_value:
             return cmd_colon_value.split(":")[0]
         else:
             return cmd_colon_value
 
-    def _colon_separate_action(self, cmd_colon_value):
+
+    def __colon_separate_action(self, cmd_colon_value):
         if ":" in cmd_colon_value:
             return cmd_colon_value.split(":")[1]
         else:
