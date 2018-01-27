@@ -18,16 +18,15 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 import enum
 import functools
-
 from djconsole.command import log
 
-class ArgumentsParser():
+# Flow Classies
+from djconsole import workflows
 
-    def __init__(self, usage, version):
 
-        # Doc strings
-        self._usage = usage
-        self._version = version
+class ArgumentsParser(object):
+
+    def __init__(self):
         
         # Arguments
         self._cmd = None            # ex. **new**
@@ -35,8 +34,54 @@ class ArgumentsParser():
         self._option = None         # ex. g **app**
         self._option_detail = None  # ex. g app **--basic**
         self._values = None         # ex. g **app api mail user**
+        self._insert_arguments()    # <== Insert real value 
+
+        # Arguments Array 
+        self._arguments = [
+            self._cmd,
+            self._sub_action,
+            self._option,
+            self._option_detail,
+            self._values,
+        ]
+
+        # Exec flow
+        self._exec_flow = None
 
 
+
+    def add_argument(self, shorten_cmd, long_cmd, option, execute):
+        if self._cmd == shorten_cmd or self._cmd == long_cmd:
+            if self._sub_action == None:
+                self._exec_flow = execute
+
+        return
+    
+    def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
+        if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
+            if self._sub_action == action:
+                self._exec_flow = execute
+
+        return
+
+    def parse(self):
+        # If there are no command, show usage.
+        if len(sys.argv) == 1:
+            instance = getattr(workflows, "UsageShow")(self._arguments)
+            instance.run()
+            return
+        
+        # Check excute function is not empty.
+        if not self._exec_flow == None: 
+            instance = getattr(workflows, self._exec_flow)(self._arguments)
+            instance.run()
+
+            return
+        else:
+            log("CLI action is not appended!", withError = True)
+
+
+    def _insert_arguments(self):
         # Get main command **new**:cms
         try: self._cmd = self._colon_separate_cmd(sys.argv[1])
         except: pass
@@ -64,10 +109,9 @@ class ArgumentsParser():
                 self._values = sys.argv[2: -1]
         except: pass
 
-
-        # Exec func
-        self._exec_func = None
-
+    def _prepare(self):
+        
+        # parser.add_argument("new", "new_application", None, "DjangoStartup")
         # Add version commanss
         self.add_argument("v", "version", None,
                     lambda cmd, action, option, detail_option, values: print(self._version))
@@ -76,32 +120,6 @@ class ArgumentsParser():
         self.add_argument("h", "help", None,
                     lambda cmd, action, option, detail_option, values: print(self._usage))
 
-
-    def add_argument(self, shorten_cmd, long_cmd, option, execute):
-        if self._cmd == shorten_cmd or self._cmd == long_cmd:
-            if self._sub_action == None:
-                self._exec_func = execute
-
-        return
-    
-    def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
-        if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
-            if self._sub_action == action:
-                self._exec_func = execute
-
-        return
-
-    def parse(self):
-        # If there are no command, show usage.
-        if len(sys.argv) == 1: return print(self._usage)
-        
-        # Check excute function is not empty.
-        if not self._exec_func == None: 
-            # self._exec_func(self._cmd, self._sub_action, self._option, self._option_detail, self._values)
-            self._exec_func.excute()
-            return
-        else:
-            log("CLI action is not appended!", withError = True)
 
 
     def _colon_separate_cmd(self, cmd_colon_value):
@@ -130,9 +148,3 @@ class DetailOptionParser():
     
     def parse(self):
         self._excute.excute()
-
-
-
-class ParsingStrategies(enum.Enum):
-    default = 0
-    colon   = 1

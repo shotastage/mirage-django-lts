@@ -15,39 +15,69 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+from abc import ABCMeta, abstractmethod
 from djconsole.command import log
 
 
-class Flow2():
+class Workflow():
 
-    def __init__(self, cmd, subaction, option, option_detail, values):
-        self._action        = cmd
-        self._subaction     = subaction
-        self._option        = option
-        self._option_detail = option_detail
-        self._values        = values
+    def __init__(self, parser):
+        self.inherite       = parser
+        self._action        = self.inherite[0]
+        self._subaction     = self.inherite[1]
+        self._option        = self.inherite[2]
+        self._option_detail = self.inherite[3]
+        self._values        = self.inherite[4]
+        self.Stepflows      = []
+        self.additional_init_()
+
+    def additional_init_(self): pass
+    
+    def get_first_arg(self):
+        try:
+            return self._values[0]
+        except:
+            raise ValueError
+
+    def register(self, flow):
+        self.Stepflows.append(flow)
+    
+    def main(self):
+        # Main flow struct
+        pass
+
+    def run(self):
+        self.main()
+
+        # Flow
+        for flow in self.Stepflows:
+            try:
+                flow.run()
+            except:
+                raise Exception
+          
+
+
+class Stepflow():
+    def __init__(self, parser):
+        self.inherite       = parser
+        self._action        = parser._cmd
+        self._subaction     = parser._sub_action
+        self._option        = parser._option
+        self._option_detail = parser._option_detail
+        self._values        = parser._values
         self._flows         = []
 
 
-    def flow(self):
+    def add(self, func):
+        self._flows.append(func)
 
+    def run(self):
         for flow in self._flows:
-            if "function" in str(type(flow)):
-                try:
-                    flow()
-                except:
-                    raise Exception
-            else:
-                log(str(flow) + " is not function!", withError = True)
-
-
-    def execute(self):
-        self.flow()
-
-    def register(self, *funcs):
-        for func in funcs:
-            self._flows.append(func)
-
+            try:
+                flow()
+            except:
+                raise Exception
 
 
 

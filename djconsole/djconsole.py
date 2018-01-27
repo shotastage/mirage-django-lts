@@ -19,47 +19,17 @@ import sys
 
 from djconsole.djargparse import ArgumentsParser
 
-# For Driver
-from djconsole.executor_driver import GatheredArgsDriver
-from djconsole.executor_driver import new, cms_new, generate
-
-
 
 def main():
 
-    parser = ArgumentsParser(
-        usage = """
-Django Console v0.0.11
-
-
-    new             Create a new Django project
-    new:cms         Create a new Django CMS project
-    new:api         Create a new Django REST API
-
-    generate / g    Generate apps, model
-        + app       Generate Django app
-        + model     Generate Django model class
-                """,
-
-        version = """
-Django Console Version 0.0.12
-
-Copyright (c) 2017-2018 Shota Shimazu
-This software is licensed under the Apache v2, see LICENSE for detail.
-                  """
-    )
-
-    # For arg parse v1 driver
-    action_handler = GatheredArgsDriver(parser._cmd, parser._option, parser._values)
-    action = parser._cmd
-
+    parser = ArgumentsParser()
 
     # Driving commands
-    parser.add_argument("new", "new_application", None, lambda: new(action_handler, action))
-    parser.add_argument_with_subaction("new", "new_application", "cms", None, lambda: cms_new(action_handler, action))
-    parser.add_argument("g", "generate", "app", generate(action_handler, action))
-    parser.add_argument("g", "generate", "model", generate(action_handler, action))
+    parser.add_argument("new", "new_application", None, "DjangoStartup")
 
+    #
+    parser.add_argument("h", "help", None, "UsageShow")
+    parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
     parser.add_argument("tf", "testfunc", None, test_func)
