@@ -1,9 +1,9 @@
 import os
 import shutil
 
-from djconsole.flow import Flow, Workflow, Stepflow
-from djconsole.command import log, command
-from djconsole.projectstartup.readme import create_readme_doc
+from djconsole.flow                     import Flow, Workflow, Stepflow
+from djconsole.command                  import log, command
+from djconsole.projectstartup.readme    import create_readme_doc
 
 
 class DjangoStartupWorkFlow(Workflow):
@@ -93,7 +93,7 @@ class DjangoCMSStartupFlow(Flow):
 
     def _create_template_git_project(self, name):
         command("curl -O https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore")
-        move("Python.gitignore", ".gitignore")
+        shutil.move("Python.gitignore", ".gitignore")
         command("git init")
 
     def _create_docs(self, name):
