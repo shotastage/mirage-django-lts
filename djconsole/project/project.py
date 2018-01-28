@@ -7,7 +7,7 @@ def in_project():
         import manage
 
         return True
-    except:
+    except ImportError:
         return False
 
 def in_app():
