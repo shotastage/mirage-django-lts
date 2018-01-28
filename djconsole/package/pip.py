@@ -16,10 +16,43 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
+import pip
 
-from djconsole.flow import Flow
+from djconsole.flow import Flow, Workflow
 from djconsole.command import log
 from djconsole.command import command
+
+
+
+class DjangoPipPackageWorkFlow(Workflow):
+
+    def additional_init_(self):
+        try:
+            self._project_name = self._option
+        except:
+            self._project_name = None
+    
+    def __init__(self, subcommand):
+        self._subcommand = subcommand
+
+    def main(self):
+        if self._subcommand == "check":
+            self._check()
+        elif self._subcommand == "install":
+            self._install()
+        else:
+            log("Unkown command " + self._subcommand + "!", withError = True)
+
+    def _check(self):
+        os.system("pip list -o")
+
+    def _install(self):
+        log("Install package from requirements.txt")
+        os.system("pip install -r requirements.txt")
+
+    def _show_package_list(self):
+        pip.utils.get_installed_distributions(local_only = True)
+
 
 
 class DjangoPipPackageFlow(Flow):
