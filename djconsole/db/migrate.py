@@ -18,9 +18,24 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
+from djconsole.flow import Flow, Workflow
 from djconsole.command import log
 from djconsole.command import command
+
+
+
+class DjangoMigrateWorkFlow(Workflow):
+
+    def main(self):
+        log("Making migrations...")
+        self._make_migration()
+        self._apply_migration()
+
+    def _make_migration(self):
+        os.system("python manage.py makemigrations")
+
+    def _apply_migration(self):
+        os.system("python manage.py migrate")
 
 
 class DjangoMigrateFlow(Flow):

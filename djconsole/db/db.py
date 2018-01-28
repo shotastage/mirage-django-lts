@@ -18,12 +18,12 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
+from djconsole.flow import Workflow
 from djconsole.command import log
 from djconsole.command import command
 
 
-class DjangoDataBaseFlow(Flow):
+class DjangoDataBaseWorkFlow(Workflow):
 
     def __init__(self, subcommand):
         log("Django DataBase is now unser development!", withError = True)

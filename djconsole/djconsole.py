@@ -35,5 +35,8 @@ def main():
     parser.add_argument("c", "console", None, "DjangoConsole")
     parser.add_argument_with_subaction("c", "console", "db", None, "DjangoDBConsole")
 
+    parser.add_argument_with_subaction("db", "database", "migrate", None, "DjangoMigrate")
+    parser.add_argument_with_subaction("db", "database", "reset", None, "DjangoDBReset")
+
     # Excute
     parser.parse()

@@ -18,9 +18,23 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
+from djconsole.flow import Flow, Workflow
 from djconsole.command import log
 from djconsole.command import command
+
+class DjangoDBResetWorkFlow(Workflow):
+
+    def main(self):
+        log("Clearing all DB...")
+        self._reset_db()
+
+    def _reset_db(self):
+        os.system("echo Now under development")
+
+    def _remove_sqlite(self):
+        log("Removing SQLite3 file...")
+        if os.path.exists("db.sqlite3"):
+            os.remove("db.sqlite3")
 
 
 class DjangoMigrateFlow(Flow):

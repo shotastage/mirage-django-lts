@@ -29,3 +29,9 @@ class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass
 from djconsole.help.usage_flow import UsageShowWorkFlow, VersionShowWorkFlow
 class UsageShow(UsageShowWorkFlow): pass
 class VersionShow(VersionShowWorkFlow): pass
+
+from djconsole.db.migrate import DjangoMigrateWorkFlow
+class DjangoMigrate(DjangoMigrateWorkFlow): pass
+
+from djconsole.db.reset import DjangoDBResetWorkFlow
+class DjangoDBReset(DjangoDBResetWorkFlow): pass
