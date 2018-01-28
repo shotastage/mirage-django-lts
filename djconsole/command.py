@@ -28,17 +28,32 @@ def log(string, withError = False, withExitOnError = False, errorDetail = None, 
 
 def raise_error_message(func):
 
-    errored_func = func.__name__
-    errored_obj  = str(func)
+    try:
+        errored_func = func.__name__
+    except:
+        errored_func = "Failed to get func information!"
+
+    try:
+        errored_obj  = str(func)
+    except:
+        errored_obj  = "Failed to get errored object information!"
+
+    try:
+        func_sig     = inspect.signature(func)
+    except:
+        func_sig     = "Failed to get functino signature!"
+
 
     return textwrap.dedent("""
 Python Information:
 
 Excute func name : {func_name}
 Object Info      : {obj_inf}
+Signature        : {func_signature}
     """).format(
         func_name = errored_func,
-        obj_inf   = errored_obj
+        obj_inf   = errored_obj,
+        func_signature = func_sig
     ).strip()
 
 
