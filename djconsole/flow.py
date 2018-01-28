@@ -16,7 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from abc import ABCMeta, abstractmethod
-from djconsole.command import log
+from djconsole.command import log, raise_error_message
 
 
 class Workflow():
@@ -77,6 +77,7 @@ class Stepflow():
             try:
                 flow()
             except:
+                log("Something error has occured!", withError = True, errorDetail = raise_error_message(flow))
                 raise Exception
 
 
@@ -96,6 +97,7 @@ class Flow():
                 try:
                     flow()
                 except:
+                    log("Something error has occured!", withError = True, errorDetail = raise_error_message(flow))
                     raise Exception
 
     def execute(self):

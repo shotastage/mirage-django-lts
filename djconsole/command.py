@@ -1,11 +1,19 @@
+import os
+import inspect
 import sys
+import textwrap
 import functools
 from subprocess import check_output, DEVNULL, STDOUT
 
 
-def log(string, withError = False, withExitOnError = False, withInput = False):
+def log(string, withError = False, withExitOnError = False, errorDetail = None, withInput = False):
     if withError:
         print('\033[31mDjango Console: ' + string + '\033[0m')
+
+        if not errorDetail == None:
+            separator_begin = "===== Error Detail =======================================================\n"
+            separator_end   = "==========================================================================\n"
+            print('\033[31m' + separator_begin + errorDetail + "\n" + separator_end + '\033[0m')
 
         if withExitOnError:
             sys.exit(1)
@@ -16,6 +24,22 @@ def log(string, withError = False, withExitOnError = False, withInput = False):
     else:
         print('\033[32mDjango Coneole: \033[0m' + string)
 
+
+
+def raise_error_message(func):
+
+    errored_func = func.__name__
+    errored_obj  = str(func)
+
+    return textwrap.dedent("""
+Python Information:
+
+Excute func name : {func_name}
+Object Info      : {obj_inf}
+    """).format(
+        func_name = errored_func,
+        obj_inf   = errored_obj
+    ).strip()
 
 
 def command(command, withOutput = False):

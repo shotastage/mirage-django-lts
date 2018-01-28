@@ -19,6 +19,7 @@ import sys
 
 from djconsole.djargparse import ArgumentsParser
 
+from djconsole.command import log, raise_error_message
 
 def main():
 
