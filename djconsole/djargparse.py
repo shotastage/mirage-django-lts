@@ -18,7 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 import enum
 import functools
-from djconsole.command import log
+from djconsole.command import log, raise_error_message
 
 # Flow Classies
 from djconsole import workflows
@@ -80,7 +80,7 @@ class ArgumentsParser(object):
 
             return
         else:
-            log("CLI action is not appended!", withError = True)
+            log("CLI action is not appended!", withError = True, errorDetail = raise_error_message(self.parse))
 
 
     def __insert_arguments(self):

@@ -2,9 +2,16 @@ import sys
 
 def in_project():
     try:
-        sys.path.append("./")
+        set_import_root()
+
         import manage
 
         return True
     except:
         return False
+
+def in_app():
+    set_import_root()
+
+def set_import_root():
+    sys.path.append("./")
