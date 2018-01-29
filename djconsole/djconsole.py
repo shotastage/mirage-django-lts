@@ -32,7 +32,7 @@ def main():
     parser.add_argument("new", "newproject", None, "DjangoStartup")
     parser.add_argument_with_subaction("new", "newproject", "cms", None, "DjangoCMSStartup")
 
-    parser.add_argument("b", "backup", None, "DjangoBackup")
+    parser.add_argument("b", "backup", "app", "DjangoBackupApp")
 
     parser.add_argument("c", "console", None, "DjangoConsole")
     parser.add_argument_with_subaction("c", "console", "db", None, "DjangoDBConsole")

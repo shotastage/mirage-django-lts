@@ -17,8 +17,10 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import shutil
+import sys
 
-from djconsole.command      import log
+
+from djconsole.command      import log, raise_error_message
 from djconsole              import project
 from djconsole.flow         import Workflow
 from djconsole.database     import DBConnection
@@ -26,7 +28,6 @@ from djconsole.database     import DBConnection
 
 
 class DjangoBackupAppWorkFlow(Workflow):
-
     def additional_init_(self):
         self._app_name = self._values[0]
 
@@ -54,7 +55,11 @@ class DjangoBackupAppWorkFlow(Workflow):
 
 
     def _copy_app(self, dir_name):
-        shutil.copytree(dir_name, ".djc/cache/")
+        try:
+            shutil.copytree(dir_name, ".djc/cache/")
+        except:
+            log("Failed to copy app!", withError = True, errorDetail = raise_error_message(self._copy_app))
+
 
     def _archive_dir(self, dir_name):
         shutil.make_archive(".djc/cache/" + dir_name, "zip")

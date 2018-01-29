@@ -74,15 +74,22 @@ def raise_error_message(func):
     except:
         func_sig     = "Failed to get functino signature!"
 
+    try:
+        exec_info    = str(sys.exc_info())
+    except:
+        exec_info    = "Failed to get exec info!"
+
 
     return textwrap.dedent("""
 Python Information:
 
-Excute func name : {func_name}
-Object Info      : {obj_inf}
-Signature        : {func_signature}
+Exceute func name : {func_name}
+Exec Information  : {exec_info}
+Object Info       : {obj_inf}
+Signature         : {func_signature}
     """).format(
         func_name = errored_func,
+        exec_info = exec_info,
         obj_inf   = errored_obj,
         func_signature = func_sig
     ).strip()

@@ -38,3 +38,6 @@ class DjangoDBReset(DjangoDBResetWorkFlow): pass
 
 from djconsole.generate.app import DjangoAppMakeWorkFlow
 class DjangoAppMake(DjangoAppMakeWorkFlow): pass
+
+from djconsole.backup.backup import DjangoBackupAppWorkFlow
+class DjangoBackupApp(DjangoBackupAppWorkFlow): pass
