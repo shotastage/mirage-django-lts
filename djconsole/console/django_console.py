@@ -1,7 +1,8 @@
 import os
 import sys
+
+from djconsole import project
 from djconsole.command import log
-from djconsole.project import project
 from djconsole.flow import Workflow
 
 
