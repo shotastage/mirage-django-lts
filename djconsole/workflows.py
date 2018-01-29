@@ -35,3 +35,6 @@ class DjangoMigrate(DjangoMigrateWorkFlow): pass
 
 from djconsole.db.reset import DjangoDBResetWorkFlow
 class DjangoDBReset(DjangoDBResetWorkFlow): pass
+
+from djconsole.generate.app import DjangoAppMakeWorkFlow
+class DjangoAppMake(DjangoAppMakeWorkFlow): pass

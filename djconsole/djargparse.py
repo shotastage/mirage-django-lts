@@ -49,8 +49,43 @@ class ArgumentsParser(object):
         self._exec_flow = None
 
 
-
     def add_argument(self, shorten_cmd, long_cmd, option, execute):
+
+        # Check command
+
+        if not self._cmd == shorten_cmd and not self._cmd == long_cmd:
+            return
+
+        if not self._sub_action == None:
+            return
+
+        if not option == None:
+            if self._option == option:
+                self._exec_flow = execute
+        else:
+            self._exec_flow = execute
+
+        return
+    
+
+    def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
+
+        if not self._cmd == base_shorten_cmd and not self._cmd == base_long_cmd:
+            return
+    
+        if not self._sub_action == action:
+            return
+
+        if not option == None:
+            if self._option == option:
+                self._exec_flow = execute
+        else:
+            self._exec_flow = execute
+
+        return
+
+
+    def avd_add_argument(self, shorten_cmd, long_cmd, option, execute):
         if self._cmd == shorten_cmd or self._cmd == long_cmd:
             if self._sub_action == None:
                 self._exec_flow = execute
@@ -58,7 +93,7 @@ class ArgumentsParser(object):
         return
     
 
-    def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
+    def avd_add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
         if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
             if self._sub_action == action:
                 self._exec_flow = execute
