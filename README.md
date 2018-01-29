@@ -83,12 +83,6 @@ djc c
 If you want to enter in database console, 
 
 ```
-djc dbconsole
-```
-
-or
-
-```
 djc c:db
 ```
 
@@ -98,6 +92,12 @@ Migrate database
 
 ```
 djc db:migrate
+```
+
+Reset database
+
+```
+djc db:reset
 ```
 
 ### Run destroy app
