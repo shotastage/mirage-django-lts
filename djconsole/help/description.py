@@ -39,6 +39,8 @@ Actions:
 version = """
 Django Console Version 0.0.12
 
+https://github.com/shotastage/django-console
+
 Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
 """

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright 2017 Shota Shimazu.
+Copyright 2017-2018 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -20,8 +20,48 @@ import shutil
 
 from djconsole.command      import log
 from djconsole              import project
-from djconsole.flow         import Flow
+from djconsole.flow         import Flow, Workflow
 from djconsole.database     import DBConnection
+
+
+
+
+class DjangoBackupAppWorkFlow(Workflow):
+
+    def __init__(self, app):
+        self._app_name = app
+
+    def main(self):
+        self._create_buckup_dir()
+        self._create_working_dir()
+        self._copy_app(self._app_name)
+
+    def _create_buckup_dir(self):
+        if project.isproject:
+            if not os.path.isdir(".djc/backup/"):
+                try:
+                    os.makedirs(".djc/backup/")
+                except:
+                    log("Failed to prepare .djc/backup with unknown error.", withError = True)
+    
+
+    def _create_working_dir(self):
+        if project.isproject:
+            if not os.path.isdir(".djc/cache/"):
+                try:
+                    os.makedirs(".djc/cache/")
+                except:
+                    log("Failed to prepare .djc/cache with unknown error.", withError = True)
+
+
+    def _copy_app(self, dir_name):
+        shutil.copytree(dir_name, ".djc/cache/")
+
+    def _archive_dir(self, dir_name):
+        shutil.make_archive(".djc/cache/" + dir_name, "zip")
+
+    def _prepare_db(self):
+        pass
 
 
 class DjangoBackupAppFlow(Flow):
