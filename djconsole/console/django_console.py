@@ -15,8 +15,6 @@ class DjangoConsoleWorkFlow(Workflow):
         else:
             log("Current dir " + os.getcwd() + " is out of Django project!", withError = True)
 
-        # log("Error Message Test!", withError = True, errorDetail = raise_error_message(parser.add_argument_with_subaction))
-
 
 class DjangoDBConsoleWorkFlow(Workflow):
 

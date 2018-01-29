@@ -20,16 +20,15 @@ import shutil
 
 from djconsole.command      import log
 from djconsole              import project
-from djconsole.flow         import Flow, Workflow
+from djconsole.flow         import Workflow
 from djconsole.database     import DBConnection
-
 
 
 
 class DjangoBackupAppWorkFlow(Workflow):
 
-    def __init__(self, app):
-        self._app_name = app
+    def additional_init_(self):
+        self._app_name = self._values[0]
 
     def main(self):
         self._create_buckup_dir()
@@ -42,7 +41,7 @@ class DjangoBackupAppWorkFlow(Workflow):
                 try:
                     os.makedirs(".djc/backup/")
                 except:
-                    log("Failed to prepare .djc/backup with unknown error.", withError = True)
+                    log("Failed to prepare .djc/backup with unknown error.", withError = True, errorDetail = str(os.listdir()))
     
 
     def _create_working_dir(self):
