@@ -31,8 +31,15 @@ class DjangoDBResetWorkFlow(Workflow):
         self._reset_db()
 
     def _reset_db(self):
+
+        msg = "This action will remove ALL stored data in database and data can't be restored!\nDo you confirm to continue this action?"
+
         if project.in_project():
-            self._remove_sqlite()
+            if log(msg, withConfirm = True):
+                self._remove_sqlite()
+            else:
+                log("Canceled.")
+    
         else:
             log("Failed to reset database.", withError = True, errorDetail = """
 Django Console Database Manager Error!s

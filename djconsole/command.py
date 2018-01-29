@@ -1,12 +1,15 @@
 import os
 import inspect
+import warnings
 import sys
 import textwrap
 import functools
 from subprocess import check_output, DEVNULL, STDOUT
 
 
-def log(string, withError = False, withExitOnError = False, errorDetail = None, withInput = False):
+def log(string,
+            withError = False, withExitOnError = False, errorDetail = None,
+            withInput = False, withConfirm = False):
     if withError:
         print('\033[31mDjango Console: ' + string + '\033[0m')
 
@@ -16,11 +19,22 @@ def log(string, withError = False, withExitOnError = False, errorDetail = None, 
             print('\033[31m' + separator_begin + errorDetail + "\n" + separator_end + '\033[0m')
 
         if withExitOnError:
+            warnings.warn(
+            "command.log with withExitOnError will be depricated on next version!",
+            PendingDeprecationWarning)
             sys.exit(1)
 
     elif withInput:
         return input('\033[32m' + string + ' >> \033[0m')
 
+    elif withConfirm:
+        print('\033[31mDjango Console: ' + string + '\033[0m')
+        while True:
+            answer = input('\033[32m' + "Please respond with yes or no [Y/N/y/n]" + ' >> \033[0m').lower()
+            if answer in [ "y", "Y", "yes", "Yes", "YES", "Yeah"]:
+                return True
+            elif answer in [ "n", "N", "no", "No", "NO", "Nope"]:
+                return False        
     else:
         print('\033[32mDjango Coneole: \033[0m' + string)
 

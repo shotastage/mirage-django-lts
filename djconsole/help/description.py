@@ -16,16 +16,24 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 usage = """
-Django Console v0.0.11
+Django Console v0.0.12
+
+Usage:
+    djc [action] option <--sub-option> <inputs>
+
+    djc [action]:[subaction] <--sub-option> <inputs>
 
 
-    new             Create a new Django project
-    new:cms         Create a new Django CMS project
-    new:api         Create a new Django REST API
+Actions:
+    newproject         new          Create a new Django project.
+    newproject:cms     new:cms      Create a new Django CMS project. ( Django CMS is required. )
+    console            c            Launch Django Python shell.
+    console:db         c:db         Launch databse shell.
+    database:migrate   db:migrate   Make migrations and apply migrations.
+    database:reset     db:reset     Reset all database. ( Only debugging SQLite is supported. )
 
-    generate / g    Generate apps, model
-        + app       Generate Django app
-        + model     Generate Django model class
+    help               h            Show usage of Django Console.
+    version            v            Print version information.
 """
 
 version = """

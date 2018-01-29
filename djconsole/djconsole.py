@@ -18,7 +18,6 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 
 from djconsole.djargparse import ArgumentsParser
-
 from djconsole.command import log, raise_error_message
 
 def main():
@@ -30,8 +29,8 @@ def main():
     parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
-    parser.add_argument("new", "new-application", None, "DjangoStartup")
-    parser.add_argument_with_subaction("new", "new-cms-application", "cms", None, "DjangoCMSStartup")
+    parser.add_argument("new", "newproject", None, "DjangoStartup")
+    parser.add_argument_with_subaction("new", "newproject", "cms", None, "DjangoCMSStartup")
 
     parser.add_argument("c", "console", None, "DjangoConsole")
     parser.add_argument_with_subaction("c", "console", "db", None, "DjangoDBConsole")
