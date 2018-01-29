@@ -19,4 +19,3 @@ class DjGen(Enum):
     model = 2
     template = 3
     view = 4
-

@@ -18,9 +18,11 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow, Workflow
+from djconsole.flow import Workflow
+from djconsole import project
 from djconsole.command import log
 from djconsole.command import command
+
 
 class DjangoDBResetWorkFlow(Workflow):
 
@@ -29,25 +31,15 @@ class DjangoDBResetWorkFlow(Workflow):
         self._reset_db()
 
     def _reset_db(self):
-        os.system("echo Now under development")
+        if project.in_project():
+            self._remove_sqlite()
+        else:
+            log("Failed to reset database.", withError = True, errorDetail = """
+Django Console Database Manager Error!s
 
-    def _remove_sqlite(self):
-        log("Removing SQLite3 file...")
-        if os.path.exists("db.sqlite3"):
-            os.remove("db.sqlite3")
-
-
-class DjangoMigrateFlow(Flow):
-
-    def __init__(self, subcommand):
-        self._subcommand = subcommand
-
-    def flow(self):
-        log("Clearing all DB...")
-        self._reset_db()
-
-    def _reset_db(self):
-        os.system("echo Now under development")
+Currently, Django Console support SQLite database for debug.
+            """)
+                
 
     def _remove_sqlite(self):
         log("Removing SQLite3 file...")
