@@ -9,7 +9,6 @@ python:
 install:
   - pip install coveralls
   - pip install -r ./requirements/pipenv.txt
-  - pipenv --three
   - pipenv install
 
 script:
