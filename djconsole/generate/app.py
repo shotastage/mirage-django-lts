@@ -11,6 +11,7 @@ from djconsole.command import log, command
 class DjangoAppMakeWorkFlow(Workflow):
 
     def additional_init_(self):
+        log(str(self._values))
         self._must_creat_apps = self._values
 
 
