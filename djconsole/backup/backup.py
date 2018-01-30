@@ -19,6 +19,7 @@ import os
 import shutil
 import sys
 import distutils
+import time
 
 from djconsole.command      import log, raise_error_message
 from djconsole              import project
@@ -72,7 +73,13 @@ class DjangoBackupAppWorkFlow(Workflow):
 
     def _archive_dir(self, app_name):
         log("Archiving app...")
-        shutil.make_archive(".djc/cache/" + app_name, "zip")
+        filename = app_name + str(time.time())
+        shutil.make_archive(".djc/cache/" + filename, "zip")
+        return filename
+
+
+    def _clean_cache(self, app_name):
+        log("Cleaning...")
 
     def _prepare_db(self):
         log("This is not implemented!")

@@ -17,10 +17,11 @@ Copyright 2017-2018 Shota Shimazu.
 
 import platform
 import sys
-import django
 import textwrap
 
 from pip.utils import get_installed_distributions
+from djconsole.command import log
+
 
 def create_readme_doc(name):
 
@@ -31,6 +32,7 @@ def create_readme_doc(name):
 This is your first Django application.
 
 # Info
+Information of development environment.
 
 ## Environment
 OS: {os}
@@ -53,12 +55,19 @@ Python Version: `{python_version}`
 
 
 def get_django_version():
-    version = django.VERSION
-    return str(version[0]) + "." + str(version[1]) + "." + str(version[2])
+    try:
+        import django
+        version = django.VERSION
+        return str(version[0]) + "." + str(version[1]) + "." + str(version[2])
+    except:
+        log("Failed to import Django!", withError = True)
+        return "FAILED TO IMPORT DJANGO!"
+
 
 def get_python_version():
     version = sys.version_info
     return str(version[0]) + "." + str(version[1]) + "." + str(version[2])
+
 
 def get_os_name():
     os = platform.system()
@@ -69,6 +78,7 @@ def get_os_name():
         return os
     else:
         return os
+
 
 def get_pip_list():
     string = ""
