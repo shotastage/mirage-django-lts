@@ -75,4 +75,4 @@ class DjangoBackupAppWorkFlow(Workflow):
         shutil.make_archive(".djc/cache/" + app_name, "zip")
 
     def _prepare_db(self):
-        pass
+        log("This is not implemented!")

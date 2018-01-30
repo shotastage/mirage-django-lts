@@ -131,19 +131,19 @@ class ArgumentsParser(object):
         # optin =           djc g **app**
         # detail option =   djc g app **--basic**
         try:
-            if "--" in sys.argv[2]:
-                self._option_detail = sys.argv[2]
-                self._option = sys.argv[3]
+            if "--" in sys.argv[3]:
+                self._option_detail = sys.argv[3]
+                self._option = sys.argv[2]
             else:
                 self._option = sys.argv[2]
         except: pass
 
         # Get values
         try:
-            if "--" in sys.argv[2]:
-                self._values = sys.argv[3: -1]
+            if "--" in sys.argv[3]:
+                self._values = sys.argv[4:]
             else:
-                self._values = sys.argv[2: -1]
+                self._values = sys.argv[3:]
         except: pass
 
 
@@ -174,3 +174,17 @@ class DetailOptionParser():
     
     def parse(self):
         self._excute.excute()
+
+
+
+def reserve_as_command(*reserved_args):
+
+    def _decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for reserve in reserved_args:
+                if args[1] == reserve:
+                    re = func(*args, **kwargs)
+                    return re
+        return wrapper
+    return _decorator

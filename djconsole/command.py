@@ -27,8 +27,11 @@ from subprocess import check_output, DEVNULL, STDOUT
 def log(string,
             withError = False, withExitOnError = False, errorDetail = None,
             withInput = False, withConfirm = False):
+
+
     if withError:
-        print('\033[31mDjango Console: ' + string + '\033[0m')
+
+        print('\033[31mDjango Console: ' + str(string) + '\033[0m')
 
         if not errorDetail == None:
             separator_begin = "===== Error Detail =======================================================\n"
@@ -42,18 +45,20 @@ def log(string,
             sys.exit(1)
 
     elif withInput:
-        return input('\033[32m' + string + ' >> \033[0m')
+        return input('\033[32m' + str(string) + ' >> \033[0m')
 
     elif withConfirm:
-        print('\033[31mDjango Console: ' + string + '\033[0m')
+        print('\033[31mDjango Console: ' + str(string) + '\033[0m')
+
         while True:
             answer = input('\033[32m' + "Please respond with yes or no [Y/N/y/n]" + ' >> \033[0m').lower()
+
             if answer in [ "y", "Y", "yes", "Yes", "YES", "Yeah"]:
                 return True
             elif answer in [ "n", "N", "no", "No", "NO", "Nope"]:
                 return False        
     else:
-        print('\033[32mDjango Coneole: \033[0m' + string)
+        print('\033[32mDjango Coneole: \033[0m' + str(string))
 
 
 
@@ -95,6 +100,7 @@ Signature         : {func_signature}
     ).strip()
 
 
+
 def command(command, withOutput = False):
     separated_cmds = command.split(" ")
 
@@ -109,16 +115,3 @@ def command(command, withOutput = False):
             check_output(separated_cmds, stderr=DEVNULL)
         except:
             log("Failed to exec " + command + "!", withError = True, withExitOnError = True)
-
-
-def reserve_as_command(*reserved_args):
-
-    def _decorator(func):
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            for reserve in reserved_args:
-                if args[1] == reserve:
-                    re = func(*args, **kwargs)
-                    return re
-        return wrapper
-    return _decorator
