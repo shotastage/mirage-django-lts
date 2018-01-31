@@ -2,17 +2,7 @@
 """
 Copyright 2017-2018 Shota Shimazu.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+This software is licensed under the MIT, see LICENSE for detail.
 """
 
 import sys
@@ -36,17 +26,18 @@ class ArgumentsParser(object):
         self._values = None         # ex. g **app api mail user**
         self.__insert_arguments()   # <== Insert real value 
 
+        # Exec flow
+        self._exec_flow = None
+
         # Arguments Array 
         self._arguments = [
             self._cmd,
             self._sub_action,
             self._option,
             self._option_detail,
-            self._values,
+            self._values
         ]
-
-        # Exec flow
-        self._exec_flow = None
+        
 
 
     def add_argument(self, shorten_cmd, long_cmd, option, execute):
@@ -131,11 +122,10 @@ class ArgumentsParser(object):
         # optin =           djc g **app**
         # detail option =   djc g app **--basic**
         try:
+            self._option = sys.argv[2]
+
             if "--" in sys.argv[3]:
                 self._option_detail = sys.argv[3]
-                self._option = sys.argv[2]
-            else:
-                self._option = sys.argv[2]
         except: pass
 
         # Get values

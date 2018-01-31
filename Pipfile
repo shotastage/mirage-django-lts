@@ -12,6 +12,7 @@ django = "*"
 
 [dev-packages]
 
+pylint = "*"
 
 
 [requires]

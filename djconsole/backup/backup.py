@@ -2,49 +2,60 @@
 """
 Copyright 2017-2018 Shota Shimazu.
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+This software is licensed under the MIT, see LICENSE for detail.
 """
 
 import os
 import shutil
 import sys
-import distutils
 import time
+import distutils
 
-from djconsole.command      import log, raise_error_message
 from djconsole              import project
+from djconsole              import fileable
+from djconsole.command      import log, raise_error_message
 from djconsole.flow         import Workflow
 from djconsole.database     import DBConnection
-
 
 
 class DjangoBackupAppWorkFlow(Workflow):
     def additional_init_(self):
         self._app_name = self._values[0]
-        log(self._app_name)
 
     def main(self):
-        self._create_buckup_dir()
-        self._create_working_dir()
-        self._copy_app(self._app_name)
-        self._archive_dir(self._app_name)
+        try:
+            self._check_djc_workspace()
+            self._create_buckup_dir()
+            self._create_working_dir()
+            self._copy_app(self._app_name)
+            save_file = self._archive_dir(self._app_name)
+            self._save_backup(save_file)
+            self._clean_cache()
+
+            log("Backup completed.")
+
+        except:
+            log("Failed to backup " + self._app_name + ".", withError = True)
+
+
+    def _check_djc_workspace(self):
+        if not project.in_project():
+            log("You are now out of Django project!", withError = True,
+                                errorDetail = raise_error_message(self._check_djc_workspace))
+        
+            raise EnvironmentError
+
+        if not fileable.exists(self._app_name):
+            log("The app name " + self._app_name + " is not exists!", withError = True)
+            raise Exception
+    
 
     def _create_buckup_dir(self):
         log("Preparing backup directory...")
         if project.isproject():
-            if not os.path.isdir(".djc/backup/"):
+            if not fileable.exists(".djc/backup/"):
                 try:
-                    os.makedirs(".djc/backup/")
+                    fileable.mkdir(".djc/backup/")
                 except:
                     log("Failed to prepare .djc/backup with unknown error.", withError = True, errorDetail = str(os.listdir()))
             else:
@@ -54,7 +65,7 @@ class DjangoBackupAppWorkFlow(Workflow):
     def _create_working_dir(self):
         log("Preparing working directory...")
         if project.in_project():
-            if not os.path.isdir(".djc/cache/"):
+            if not fileable.exists(".djc/cache/"):
                 try:
                     os.makedirs(".djc/cache/")
                 except:
@@ -66,9 +77,12 @@ class DjangoBackupAppWorkFlow(Workflow):
     def _copy_app(self, app_name):
         log("Copying app...")
         try:
-            distutils.dir_util.copy_tree(app_name, ".djc/cache/" + app_name)
+            fileable.copy(app_name, ".djc/cache/" + app_name)
         except:
-            log("Failed to copy app!", withError = True, errorDetail = raise_error_message(self._copy_app))
+            if log("Old cache is exists! Are you sure to continue overwritting?", withConfirm = True):
+                fileable.copy(app_name, ".djc/cache/" + app_name, force = True)
+            else:
+                log("Failed to backup!", withError = True)
 
 
     def _archive_dir(self, app_name):
@@ -78,8 +92,14 @@ class DjangoBackupAppWorkFlow(Workflow):
         return filename
 
 
-    def _clean_cache(self, app_name):
+    def _save_backup(self, filename):
+        fileable.move(".djc/cache/" + filename + ".zip", ".djc/backup/")
+
+
+    def _clean_cache(self):
         log("Cleaning...")
+        fileable.rm(".djc/cache/" + self._app_name)
+
 
     def _prepare_db(self):
         log("This is not implemented!")
