@@ -7,11 +7,17 @@ This software is licensed under the MIT, see LICENSE for detail.
 
 import os
 
-from djconsole.flow                     import Flow
+from djconsole.flow                     import Flow, Workflow
 from djconsole.command                  import log, command
 from djconsole.generate.model_template  import create_model_py
 
+class DjangoModelMakeWorkflow(Workflow):
 
+    def additional_init_(self):
+        self._contents = self._values
+
+    def main(self):
+        log("Not implemented!", withError = True)
 
 class DjangoModelMakeFlow(Flow):
 

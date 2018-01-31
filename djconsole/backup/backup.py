@@ -27,9 +27,8 @@ class DjangoBackupAppWorkFlow(Workflow):
             self._check_djc_workspace()
             self._create_buckup_dir()
             self._create_working_dir()
-            self._copy_app(self._app_name)
-            save_file = self._archive_dir(self._app_name)
-            self._save_backup(save_file)
+            self._copy_app()
+            self._save_backup(self._archive_dir())
             self._clean_cache()
 
             log("Backup completed.")
@@ -74,20 +73,20 @@ class DjangoBackupAppWorkFlow(Workflow):
                 log("OK")
 
 
-    def _copy_app(self, app_name):
+    def _copy_app(self):
         log("Copying app...")
         try:
-            fileable.copy(app_name, ".djc/cache/" + app_name)
+            fileable.copy(self._app_name, ".djc/cache/" + self._app_name)
         except:
             if log("Old cache is exists! Are you sure to continue overwritting?", withConfirm = True):
-                fileable.copy(app_name, ".djc/cache/" + app_name, force = True)
+                fileable.copy(self._app_name, ".djc/cache/" + self._app_name, force = True)
             else:
                 log("Failed to backup!", withError = True)
 
 
-    def _archive_dir(self, app_name):
+    def _archive_dir(self):
         log("Archiving app...")
-        filename = app_name + str(time.time())
+        filename = self._app_name + str(time.time())
         shutil.make_archive(".djc/cache/" + filename, "zip")
         return filename
 
