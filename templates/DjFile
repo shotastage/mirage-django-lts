@@ -1,4 +1,12 @@
-python:
-    - djconsole
-nodejs:
-    - nodejs
+app:
+    name: sample
+    version: 0.0.1
+    author: Shota Shimazu
+    git: https://github.com/shotastage/django-console.git
+    license: restricted
+django:
+    path: sample
+    package: pipenv
+fronend:
+    path: .shell
+    package: yarn
