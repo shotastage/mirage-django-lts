@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DJ Scaffold</title>
+
+    <link rel="stylesheet" href="/static/style/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="columns">
+
+            <div class="column">
+                <h1 class="front_big">Config</h1>
+            </div>
+        </div>
+
+
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <article class="tile is-child notification">
+                    <div class="content">
+                        <p class="title">Configuration</p>
+                        <p class="subtitle">Config in {{ project_name }}</p>
+                        <div class="content">
+                            <p>General</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="tile is-vertical is-8">
+                <div class="field">
+                    <label class="label">Project Name</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="{{ project_name }}">
+                    </div>
+                </div>
+
+                
+
+                <div class="field">
+                    <label class="label">Subject</label>
+                    <div class="control">
+                        <div class="select">
+                            <select>
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox"> Overwrite old configuration
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-primary">SAVE</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-warning">RESTORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/front.js"></script>
+</body>
+
+</html>

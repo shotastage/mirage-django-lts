@@ -23,9 +23,10 @@
             <div class="tile is-parent">
                 <article class="tile is-child notification">
                     <div class="content">
-                        <p class="title">Apps</p>
+                        <p class="title">Peoject ></p>
                         <p class="subtitle">Apps in {{ project_name }}</p>
                         <div class="content">
+                            <p>{{ project_name }}</p>
                             {% for app in app_list %}
                                 <p>{{ app }}</p>
                             {% endfor %}
@@ -37,30 +38,32 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Vertical...</p>
-                            <p class="subtitle">Top tile</p>
+                            <p class="title">Models ></p>
+                            <p class="subtitle">Registered models</p>
                         </article>
                         <article class="tile is-child notification is-warning">
-                            <p class="title">...tiles</p>
-                            <p class="subtitle">Bottom tile</p>
+                            <p class="title">Views ></p>
+                            <p class="subtitle">Activated views</p>
                         </article>
                     </div>
                     <div class="tile is-parent">
                         <article class="tile is-child notification is-info">
-                            <p class="title">Middle tile</p>
-                            <p class="subtitle">With an image</p>
+                            <p class="title">URL</p>
+                            <p class="subtitle">Routings</p>
                             <figure class="image is-4by3">
+                                <!--
                                 <img src="https://bulma.io/images/placeholders/640x480.png">
+                                -->
                             </figure>
                         </article>
                     </div>
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-danger">
-                        <p class="title">Wide tile</p>
-                        <p class="subtitle">Aligned with the right tile</p>
+                        <p class="title">Information</p>
+                        <p class="subtitle">Update or system information</p>
                         <div class="content">
-                            <!-- Content -->
+                            <p>Update avalibale!</p>
                         </div>
                     </article>
                 </div>

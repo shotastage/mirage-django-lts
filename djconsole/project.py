@@ -33,16 +33,25 @@ def in_project():
         return True
     except ImportError:
         return False
+    except:
+        return False
+
 
 def in_app():
-    set_import_root()
-
     try:
-        import apps
+        set_import_root()
 
-        return True
+        import apps
+        
+        if os.path.isfile("apps.py"):
+            return True
+        else:
+            return False
     except ImportError:
         return False
+    except:
+        return False
+
 
 def set_import_root():
     sys.path.append("./")
@@ -70,6 +79,28 @@ def get_project_name():
         app_name = "Out of project dir"
     
     return app_name
+
+
+
+def get_app_list():
+
+    apps = []
+    list_dir = os.listdir(os.getcwd())
+    current = os.getcwd()
+
+    if not in_project:
+        return
+
+    for dir_file in list_dir:
+        if os.path.isdir(dir_file):
+            os.chdir(dir_file)
+            if in_app():
+                apps.append(dir_file)
+            os.chdir(current)
+        else:
+            continue
+
+    return apps
 
 
 # Old
