@@ -36,6 +36,13 @@ def in_project():
 def in_app():
     set_import_root()
 
+    try:
+        import apps
+
+        return True
+    except ImportError:
+        return False
+
 def set_import_root():
     sys.path.append("./")
 

@@ -14,6 +14,7 @@ if __name__ == "__main__":
         packages = find_packages(),
         install_requires=[
             "pipenv",
+            "pyyaml"
         ],
         entry_points = {
             'console_scripts':[
