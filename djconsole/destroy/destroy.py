@@ -32,16 +32,10 @@ class DjangoDestroyWorkFlow(Workflow):
     
 
     def main(self):
-        if str(self._must_target) == "app":
-            if isproject: self._destroy_app()
-        else:
-            log("No destroy strategy for " + str(self._must_target) + ".", withError = True)
+        pass
 
-    def _destroy_app(self):
-        log("Destroying app...")
-        app._backup(self._must_destroy)
-        app._destroy(self._must_destroy)
-
+    def _backup(self):
+        pass
 
 class DjangoDestroyFlow(Flow):    
     

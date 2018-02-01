@@ -18,7 +18,7 @@ Copyright 2017 Shota Shimazu.
 import shutil
 import tarfile
 import os
-from djconsole.command import log
+from djconsole.command import log, raise_error_message
 from djconsole.backup import backup
 
 
@@ -36,13 +36,16 @@ def _backup(name):
         return
 
 
-    backupper = backup.DjangoBackupAppFlow()
+    backupper = backup.DjangoBackupAppWorkFlow([
+            "b",
+            None,
+            "app",
+            None,
+            name
+    ])
 
-    backupper._create_buckup_dir()
+    backupper.main()
 
-    shutil.make_archive(name, "zip")
-
-    shutil.move(name + ".zip", ".djc/backup/")
    
 def _destroy(name):
     shutil.rmtree(name)

@@ -44,3 +44,12 @@ class DjangoBackupApp(DjangoBackupAppWorkFlow): pass
 
 from djconsole.configure.configure import ConfigureWorkFlow
 class Configure(ConfigureWorkFlow): pass
+
+from djconsole.destroy.destroy import DjangoDestroyWorkFlow
+class DjangoDestroy(DjangoDestroyWorkFlow): pass
+
+from djconsole.scaffold.launch import ScaffoldWorkflow
+class Scaffold(ScaffoldWorkflow): pass
+
+from djconsole.scaffold.server import ScaffoldServerWorkflow
+class ScaffoldServer(ScaffoldServerWorkflow): pass

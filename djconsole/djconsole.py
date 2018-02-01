@@ -39,12 +39,17 @@ def main():
     parser.add_argument("c", "console", None, "DjangoConsole")
     parser.add_argument_with_subaction("c", "console", "db", None, "DjangoDBConsole")
 
+    parser.add_argument("d", "destroy", "app", "DjangoDestroy")
+
     parser.add_argument_with_subaction("db", "database", "migrate", None, "DjangoMigrate")
     parser.add_argument_with_subaction("db", "database", "reset", None, "DjangoDBReset")
 
     # parser.add_argument("d", "destroy", None, "DjangoDestroy")
 
     parser.add_argument("g", "generate", "app", "DjangoAppMake")
+
+    parser.add_argument("ide", "scaffold", None, "Scaffold")
+    parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
 
     # Excute
     parser.parse()
