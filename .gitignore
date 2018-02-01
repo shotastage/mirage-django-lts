@@ -181,3 +181,6 @@ typings/
 
 shell/templates/scss/third-party/
 shell/templates/style/
+
+djconsole/scaffold/static/scss/third-party/
+djconsole/scaffold/static/style/main.css

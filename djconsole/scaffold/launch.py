@@ -1,8 +1,8 @@
+import subprocess
+import webbrowser
 from djconsole.flow import Workflow
 from djconsole.command import log, raise_error_message
 from djconsole.scaffold import server
-import subprocess
-import multiprocessing
 from time import sleep
 
 
@@ -22,18 +22,6 @@ class ScaffoldWorkflow(Workflow):
         log("Launching shell...")
         try:
             sleep(1)
-            shell = subprocess.Popen("./shell/node_modules/.bin/electron ./shell/", stdout=subprocess.PIPE, shell=True)
-
-            shell.wait()
-
-            try:
-                server.terminate()
-            except:
-                log("Failed to terminate server!", withError = True)
-            
-            try:
-                shell.terminate()
-            except:
-                log("Failed to terminate shell.", withError = True)
+            webbrowser.open("http://127.0.0.1:5000")
         except:
             log("Failed to launch Electron shell!", withError = True)
