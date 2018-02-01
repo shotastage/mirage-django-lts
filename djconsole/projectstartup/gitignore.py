@@ -1,4 +1,5 @@
-ignorance = '''
+def create_gitignore():
+    return '''
 
 #########################################################
 ## Python Ignore                                       ##

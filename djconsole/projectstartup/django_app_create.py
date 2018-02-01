@@ -4,6 +4,8 @@ import shutil
 from djconsole.flow                     import Flow, Workflow, Stepflow
 from djconsole.command                  import log, command
 from djconsole.projectstartup.readme    import create_readme_doc
+from djconsole.projectstartup.gitignore import create_gitignore
+from djconsole.projectstartup.djfile    import create_djfile
 
 
 class DjangoStartupWorkFlow(Workflow):
@@ -14,6 +16,7 @@ class DjangoStartupWorkFlow(Workflow):
         except:
             self._project_name = None
     
+
     def main(self):
         self.create_basic_django_app()
 
@@ -35,6 +38,7 @@ class DjangoStartupWorkFlow(Workflow):
         os.chdir("./" + self._project_name)
         self._create_template_git_project(self._project_name)
         self._create_docs(self._project_name)
+        self._create_djfile()
         os.chdir("../")
 
     
@@ -43,9 +47,23 @@ class DjangoStartupWorkFlow(Workflow):
         command("django-admin startproject " + name)
 
 
+    def _create_djfile(self):
+        
+        version     = log("App version", withInput = True)
+        author      = log("Author name", withInput = True)
+        git_url     = log("Git URL", withInput = True)
+        license_name = log("License", withInput = True)
+
+        with open("DjFile", "w") as f:
+            f.write(create_djfile(self._project_name, version, author, git_url, license_name))
+
+    
     def _create_template_git_project(self, name):
-        command("curl -O https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore")
-        shutil.move("Python.gitignore", ".gitignore")
+        ignorance = create_gitignore()
+
+        with open(".gitignore", "w") as f:
+            f.write(ignorance)
+
         command("git init")
 
 
@@ -57,8 +75,6 @@ class DjangoStartupWorkFlow(Workflow):
     def _check(self, name):
         if os.path.exists(name):
             raise FileExistsError
-
-
 
 
 class DjangoCMSStartupWorkFlow(Workflow):
@@ -98,8 +114,11 @@ class DjangoCMSStartupWorkFlow(Workflow):
 
 
     def _create_template_git_project(self, name):
-        command("curl -O https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore")
-        shutil.move("Python.gitignore", ".gitignore")
+        ignorance = create_gitignore()
+
+        with open(".gitignore", "w") as f:
+            f.write(ignorance)
+
         command("git init")
 
 
