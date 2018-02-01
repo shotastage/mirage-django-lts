@@ -177,3 +177,7 @@ typings/
 
 # next.js build output
 .next
+
+
+djconsole/scaffold/static/
+djconsole/scaffold/templates/

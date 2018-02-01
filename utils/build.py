@@ -18,3 +18,7 @@ if __name__ == "__main__":
         system("pip uninstall djconsole")
 
     system("pip install dist/djconsole-0.0.11.tar.gz")
+
+
+def copy_static():
+    pass
