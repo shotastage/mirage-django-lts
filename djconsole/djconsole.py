@@ -34,6 +34,8 @@ def main():
 
     parser.add_argument("b", "backup", "app", "DjangoBackupApp")
 
+    parser.add_argument("conf", "configure", None, "Configure")
+
     parser.add_argument("c", "console", None, "DjangoConsole")
     parser.add_argument_with_subaction("c", "console", "db", None, "DjangoDBConsole")
 

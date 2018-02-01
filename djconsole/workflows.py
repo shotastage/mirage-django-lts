@@ -41,3 +41,6 @@ class DjangoAppMake(DjangoAppMakeWorkFlow): pass
 
 from djconsole.backup.backup import DjangoBackupAppWorkFlow
 class DjangoBackupApp(DjangoBackupAppWorkFlow): pass
+
+from djconsole.configure.configure import ConfigureWorkFlow
+class Configure(ConfigureWorkFlow): pass
