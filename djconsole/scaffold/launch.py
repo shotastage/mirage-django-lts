@@ -3,19 +3,37 @@ from djconsole.command import log, raise_error_message
 from djconsole.scaffold import server
 import subprocess
 import multiprocessing
+from time import sleep
 
 
 class ScaffoldWorkflow(Workflow):
     
     def main(self):
+
+        server = None
+        shell = None
+        
         log("Launching server...")
         try:
-            subprocess.Popen("djc internal_server_launch", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            server = subprocess.Popen("djc internal_server_launch", stdout=subprocess.PIPE, shell=True)
         except:
             log("Failed to launch server!", withError = True)
 
         log("Launching shell...")
         try:
-            subprocess.call("./shell/node_modules/.bin/electron ./shell/", shell = True)
+            sleep(3)
+            shell = subprocess.Popen("./shell/node_modules/.bin/electron ./shell/", stdout=subprocess.PIPE, shell=True)
+
+            shell.wait()
+
+            try:
+                server.terminate()
+            except:
+                log("Failed to terminate server!", withError = True)
+            
+            try:
+                shell.terminate()
+            except:
+                log("Failed to terminate shell.", withError = True)
         except:
             log("Failed to launch Electron shell!", withError = True)
