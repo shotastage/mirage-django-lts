@@ -16,6 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
+import yaml
 import warnings
 from djconsole         import fileable
 from djconsole.command import log
@@ -126,3 +127,13 @@ def project_name():
                 if os.path.isfile("settings.py"):
                     return str(test)
                 os.chdir(current)
+
+
+# Config
+
+def load_djfile():
+    with open("DjFile", "r") as djfile:
+        try:
+            return yaml.load(djfile)
+        except:
+            raise Exception

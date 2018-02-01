@@ -29,7 +29,7 @@ class ScaffoldWorkflow(Workflow):
             log("Launching shell...")
             log("Ctl + C to exit scaffold.")
             sleep(1)
-            webbrowser.open("http://127.0.0.1:5000")
+            webbrowser.open("http://127.0.0.1:5050")
             server.wait()
     
         except KeyboardInterrupt:
