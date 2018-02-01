@@ -67,7 +67,7 @@ def get_project_name():
             except:
                 pass
     else:
-        app_name = "Out ou project dir"
+        app_name = "Out of project dir"
     
     return app_name
 
