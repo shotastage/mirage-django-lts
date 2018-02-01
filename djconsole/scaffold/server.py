@@ -15,6 +15,9 @@ def index():
         project_name = project.get_project_name()
     )
 
+if __name__ == "__main__":
+    app.run()
+    
 class ScaffoldServerWorkflow(Workflow):
 
     def main(self):

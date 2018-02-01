@@ -179,8 +179,5 @@ typings/
 .next
 
 
-shell/static/scss/third-party/
-shell/static/style/
-
-djconsole/scaffold/static/
-djconsole/scaffold/templates/
+shell/templates/scss/third-party/
+shell/templates/style/main.css

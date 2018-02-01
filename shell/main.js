@@ -15,8 +15,8 @@ function createWindow () {
   // var rq = require('request-promise');
 
   win.loadURL(url.format({
-    pathname: "127.0.0.1:5000",
-    protocol: 'http:',
+    pathname: path.join(__dirname, 'templates/index.html'),
+    protocol: 'file:',
     slashes: true
   }));
 

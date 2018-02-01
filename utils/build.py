@@ -12,6 +12,12 @@ def build_assets():
 
 def copy_static():
     try:
+        shutil.rmtree("djconsole/scaffold/static/")
+        shutil.rmtree("djconsole/scaffold/templates/")
+    except:
+        print("FAILED TO REMOVE OLD FILES!")
+
+    try:
         shutil.copytree("shell/static/", "djconsole/scaffold/static/")
         shutil.copytree("shell/templates/", "djconsole/scaffold/templates/")
     except:
