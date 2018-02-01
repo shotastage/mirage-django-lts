@@ -21,7 +21,7 @@ class ScaffoldWorkflow(Workflow):
 
         log("Launching shell...")
         try:
-            sleep(3)
+            sleep(1)
             shell = subprocess.Popen("./shell/node_modules/.bin/electron ./shell/", stdout=subprocess.PIPE, shell=True)
 
             shell.wait()

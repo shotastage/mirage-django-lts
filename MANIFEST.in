@@ -1,0 +1,2 @@
+recursive-include djconsole/scaffold/templates *
+recursive-include djconsole/scaffold/static *

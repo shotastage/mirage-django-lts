@@ -11,10 +11,13 @@ if __name__ == "__main__":
         version='0.0.11',
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
-        packages = find_packages(),
+        packages=find_packages(exclude=('tests', 'shell')),
+        include_package_data=True,
+        zip_safe=False,
         install_requires=[
             "pipenv",
-            "pyyaml"
+            "pyyaml",
+            "Flask"
         ],
         entry_points = {
             'console_scripts':[

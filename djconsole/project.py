@@ -17,6 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import warnings
+from djconsole         import fileable
 from djconsole.command import log
 
 
@@ -47,6 +48,28 @@ def set_import_root():
     sys.path.append("./")
 
 
+
+def get_project_name():
+    current_dir = os.getcwd()
+    directories = os.listdir(".")
+    app_name = "FAILED TO GET"
+    
+    if in_project():
+
+        for directory in directories:
+            try:
+                os.chdir(directory)
+
+                if os.path.isfile("settings.py"):
+                    app_name = str(os.getcwd()).split("/")[-1]
+
+                os.chdir(current_dir)
+            except:
+                pass
+    else:
+        app_name = "Out ou project dir"
+    
+    return app_name
 
 
 # Old
