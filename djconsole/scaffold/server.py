@@ -1,4 +1,7 @@
+import webbrowser
+
 from flask import Flask, render_template
+
 from djconsole      import project
 from djconsole.command import log, raise_error_message
 from djconsole.flow import Workflow
@@ -60,10 +63,13 @@ def config_nodejs():
     
 class ScaffoldServerWorkflow(Workflow):
     def main(self):
+        log("Server listening started on http://127.0.0.1:5050")
         app.run(host = "127.0.0.1", port = 5050)
 
 
 if __name__ == "__main__":
     log("Scaffold server for debug.")
+    log("Listening started on http://127.0.0.1:1234")
+    webbrowser.open("http://127.0.0.1:1234")
     app.debug = True
     app.run(host = "127.0.0.1", port = 1234)

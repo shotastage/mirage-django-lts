@@ -2,4 +2,9 @@
     font-size: 4.5rem;
     color: #333;
     font-weight: bold;
+
+    a, &:hover {
+        text-decoration: none;
+        color: #333;
+    }
 }

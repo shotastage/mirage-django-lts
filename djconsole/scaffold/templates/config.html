@@ -14,13 +14,14 @@
         <div class="columns">
 
             <div class="column">
-                <h1 class="front_big">Config</h1>
+                <h1 class="front_big">
+                    <a href="/">Config</a>
+                </h1>
             </div>
         </div>
 
-
         <div class="tile is-ancestor">
-            <div class="tile is-parent">
+            <div class="tile is-4 is-vertical is-parent">
                 <article class="tile is-child notification">
                     <div class="content">
                         <p class="title">Configuration</p>
@@ -30,110 +31,197 @@
                                 <a href="/config/">General</a>
                             </p>
                             <p>
-                                <a href="/config/django/">Django Project</a>
+                                <a href="/config/django/">Django</a>
                             </p>
                             <p>
-                                <a href="/config/nodejs/">Front Apps</a>
+                                <a href="/config/nodejs/">Front App</a>
                             </p>
                         </div>
                     </div>
                 </article>
             </div>
+
             <div class="tile is-vertical is-8">
-
-
-                <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
-                    <ul>
-                        <li><a href="/config/">Config</a></li>
-                        <li class="is-active"><a href="/config/" aria-current="page">General</a></li>
-                    </ul>
-                </nav>
-
-
-                <div class="field">
-                    <label class="label">Project Name</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Package name" value="{{ proj_name }}">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Version</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Version x.x.x ex. 1.0.2" value="{{ proj_ver }}">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Author</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Author Name" value="{{ proj_author }}">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Git Repository</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="ex. https://github.com/user/repository.git" value="{{ proj_git }}">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">LICENSE</label>
-                    <div class="control">
-                        <div class="select">
-                            <select>
-                                {% if proj_license == "restricted" %}
-                                    <option>RESTRICTED</option>
-                                    <option>Select license type</option>
-                                    <option>UNLICENSED</option>
-                                    <option>OSS</option>
-                                {% elif proj_license == "unlicensed" %}
-                                    <option>UNLICENSED</option>
-                                    <option>Select license type</option>
-                                    <option>RESTRICTED</option>
-                                    <option>OSS</option>
-                                {% else %}
-                                    <option>Select license type</option>
-                                    <option>UNLICENSED</option>
-                                    <option>RESTRICTED</option>
-                                    <option>OSS</option>
-                                {% endif %}
-                            </select>
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p class="title">General</p>
+                        <div class="field">
+                            <label class="label">Project Name</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Package name" value="{{ proj_name }}">
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="field">
-                    <label class="label">Description</label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Project description here.">
+                        <div class="field">
+                            <label class="label">Version</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Version x.x.x ex. 1.0.2" value="{{ proj_ver }}">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Author</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Author Name" value="{{ proj_author }}">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Git Repository</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="ex. https://github.com/user/repository.git" value="{{ proj_git }}">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">LICENSE</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select>
+                                        <option>Select license type</option>
+                                        {% if proj_license == "restricted" %}
+                                        <option>UNLICENSED</option>
+                                        <option selected>RESTRICTED</option>
+                                        <option>OSS</option>
+                                        {% elif proj_license == "unlicensed" %}
+                                        <option selected>UNLICENSED</option>
+                                        <option>RESTRICTED</option>
+                                        <option>OSS</option>
+                                        {% elif proj_license == "OSS" %}
+                                        <option>UNLICENSED</option>
+                                        <option>RESTRICTED</option>
+                                        <option selected>OSS</option>
+                                        {% else %}
+                                        <option>UNLICENSED</option>
+                                        <option>RESTRICTED</option>
+                                        <option>OSS</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Description</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="Project description here.">
 {{ proj_msg }}
-                        </textarea>
+                                </textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-danger is-rounded">SAVE</button>
+                                <button class="button is-primary is-rounded">CANCEL</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox"> Overwrite old configuration
-                        </label>
+
+
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p class="title">Django Project</p>
+                        <div class="field">
+                            <label class="label">Django Project Path</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="./project_path/" value="{{ proj_name }}">
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label class="label">Package Manager</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select>
+                                        <option>Select package manager</option>
+                                        <option>default pip</option>
+                                        <option>pipenv</option>
+                                        <option>easy_setup</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-danger is-rounded">SAVE</button>
+                                <button class="button is-primary is-rounded">CANCEL</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-primary is-rounded">SAVE</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-warning is-rounded">RESTORE</button>
+
+
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p class="title">Node.js Project</p>
+                        <div class="field">
+                            <label class="label">Project Path</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="{{ proj_name }}">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Package Manager</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select>
+                                        <option>Select package manager</option>
+                                        <option>default npm</option>
+                                        <option>yarn</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Build System</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select>
+                                        <option>Select builder</option>
+                                        <option>Grant</option>
+                                        <option>Glup</option>
+                                        <option>Webpack</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Overwrite old configuration
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-danger is-rounded">SAVE</button>
+                                <button class="button is-primary is-rounded">CANCEL</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+
+
             </div>
         </div>
-    </div>
 
-    <script src="/static/front.js"></script>
+
+        <script src="/static/front.js"></script>
 </body>
 
 </html>
