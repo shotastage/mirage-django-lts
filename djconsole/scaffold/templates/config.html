@@ -53,46 +53,52 @@
                 <div class="field">
                     <label class="label">Project Name</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_name }}">
+                        <input class="input" type="text" placeholder="Package name" value="{{ proj_name }}">
                     </div>
                 </div>
-
 
                 <div class="field">
                     <label class="label">Version</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_ver }}">
+                        <input class="input" type="text" placeholder="Version x.x.x ex. 1.0.2" value="{{ proj_ver }}">
                     </div>
                 </div>
-
-
 
                 <div class="field">
                     <label class="label">Author</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_author }}">
+                        <input class="input" type="text" placeholder="Author Name" value="{{ proj_author }}">
                     </div>
                 </div>
-
 
                 <div class="field">
                     <label class="label">Git Repository</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_git }}">
+                        <input class="input" type="text" placeholder="ex. https://github.com/user/repository.git" value="{{ proj_git }}">
                     </div>
                 </div>
-
-
 
                 <div class="field">
                     <label class="label">LICENSE</label>
                     <div class="control">
                         <div class="select">
                             <select>
-                                <option>Select license type</option>
-                                <option>UNLICENSED</option>
-                                <option>RESTRICTED</option>
-                                <option>OSS</option>
+                                {% if proj_license == "restricted" %}
+                                    <option>RESTRICTED</option>
+                                    <option>Select license type</option>
+                                    <option>UNLICENSED</option>
+                                    <option>OSS</option>
+                                {% elif proj_license == "unlicensed" %}
+                                    <option>UNLICENSED</option>
+                                    <option>Select license type</option>
+                                    <option>RESTRICTED</option>
+                                    <option>OSS</option>
+                                {% else %}
+                                    <option>Select license type</option>
+                                    <option>UNLICENSED</option>
+                                    <option>RESTRICTED</option>
+                                    <option>OSS</option>
+                                {% endif %}
                             </select>
                         </div>
                     </div>
@@ -101,7 +107,9 @@
                 <div class="field">
                     <label class="label">Description</label>
                     <div class="control">
-                        <textarea class="textarea" placeholder="{{ proj_msg }}"></textarea>
+                        <textarea class="textarea" placeholder="Project description here.">
+{{ proj_msg }}
+                        </textarea>
                     </div>
                 </div>
 
