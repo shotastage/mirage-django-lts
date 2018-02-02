@@ -41,17 +41,20 @@
             </div>
             <div class="tile is-vertical is-8">
 
-
                 <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
                     <ul>
-                        <li><a href="/config/">Config</a></li>
-                        <li class="is-active"><a href="/config/" aria-current="page">General</a></li>
+                        <li>
+                            <a href="/config/">Config</a>
+                        </li>
+                        <li class="is-active">
+                            <a href="/config/django/" aria-current="page">Django Project</a>
+                        </li>
                     </ul>
                 </nav>
 
 
                 <div class="field">
-                    <label class="label">Project Name</label>
+                    <label class="label">Project Path</label>
                     <div class="control">
                         <input class="input" type="text" placeholder="{{ proj_name }}">
                     </div>
@@ -59,51 +62,34 @@
 
 
                 <div class="field">
-                    <label class="label">Version</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_ver }}">
-                    </div>
-                </div>
-
-
-
-                <div class="field">
-                    <label class="label">Author</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_author }}">
-                    </div>
-                </div>
-
-
-                <div class="field">
-                    <label class="label">Git Repository</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="{{ proj_git }}">
-                    </div>
-                </div>
-
-
-
-                <div class="field">
-                    <label class="label">LICENSE</label>
+                    <label class="label">Package Manager</label>
                     <div class="control">
                         <div class="select">
                             <select>
-                                <option>Select license type</option>
-                                <option>UNLICENSED</option>
-                                <option>RESTRICTED</option>
-                                <option>OSS</option>
+                                <option>Select package manager</option>
+                                <option>default pip</option>
+                                <option>pipenv</option>
+                                <option>easy_setup</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
+
                 <div class="field">
-                    <label class="label">Description</label>
+                    <label class="label">Database Backend</label>
                     <div class="control">
-                        <textarea class="textarea" placeholder="{{ proj_msg }}"></textarea>
+                        <div class="select">
+                            <select>
+                                <option>Select database</option>
+                                <option>default SQLite3</option>
+                                <option>PostgreSQL</option>
+                                <option>MySQL</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
 
                 <div class="field">
                     <div class="control">

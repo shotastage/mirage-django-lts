@@ -7,14 +7,15 @@ name = "pypi"
 
 [packages]
 
-django = "*"
-pyyaml = "*"
 flask = "*"
+pyyaml = "*"
 
 
 [dev-packages]
 
+"pep8" = "*"
 pylint = "*"
+django = "*"
 
 
 [requires]

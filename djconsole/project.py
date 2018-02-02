@@ -89,7 +89,7 @@ def get_app_list():
     list_dir = os.listdir(os.getcwd())
     current = os.getcwd()
 
-    if not in_project:
+    if not in_project():
         return
 
     for dir_file in list_dir:

@@ -13,7 +13,13 @@ def get_app_ver():
 
 
 def get_proj_config(conf_name):
-    data = load_djfile()
+
+    data = None
+
+    try:
+        data = load_djfile()
+    except:
+        return "Invalid DjFile"
 
     if conf_name == "all":
         return data
@@ -29,3 +35,11 @@ def get_proj_config(conf_name):
         return data["project"]["license"]
     elif conf_name == "description":
         return data["project"]["description"]
+
+
+
+
+
+"""
+{'project': {'name': 'sample', 'version': '0.0.1', 'author': 'Shota Shimazu', 'git': 'https://github.com/shotastage/django-console.git', 'license': 'restricted', 'description': 'This is template!'}, 'django': {'path': 'sample', 'package': 'pipenv'}, 'frontend': {'path': 'shell', 'package': 'yarn'}, 'djworkspace': {'path': '.djc'}}
+"""
