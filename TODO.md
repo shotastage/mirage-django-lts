@@ -5,7 +5,7 @@
 # Create new application
 
 - `new`
-- `new:cms`
+- `new:cms` will be deprecated
 - `new:api`
 
 
@@ -39,3 +39,15 @@ Basic command: `console`
 Shorten command: `c`
 
 + `console:db`
+
+
+# DJ Scaffold
+
+- configure
+
+- create app
+
+- create model with table view
+
+- create selializer and view
+
