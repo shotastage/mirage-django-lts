@@ -15,10 +15,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    if configure.get_proj_config("iyashi"):
+        iyashi_image = iyashi.select_photo()
+    else:
+        iyashi_image = "none"
+
     return render_template('index.html',
         project_name = project.get_project_name(),
-        app_list = project.get_app_list()
+        app_list = project.get_app_list(),
+        iyashi_image    = iyashi_image
     )
+
 
 @app.route("/config/")
 def config():
@@ -50,7 +57,7 @@ def config_django():
         proj_author     = configure.get_proj_config("author"),
         proj_git        = configure.get_proj_config("git"),
         proj_license    = configure.get_proj_config("license"),
-        proj_msg        = configure.get_proj_config("description")
+        proj_msg        = configure.get_proj_config("description"),
     )
 
 

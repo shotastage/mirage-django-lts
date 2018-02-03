@@ -9,6 +9,17 @@
 </head>
 
 <body>
+    {% if iyashi_image != "none" %}
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <figure class="image is-256x256">
+                <img src="{{ iyashi_image }}">
+            </figure>
+        </div>
+        <button id="modal_close" class="modal-close is-large" aria-label="close"></button>
+    </div>
+    {% endif %}
 
     <div class="container">
         <div class="columns">
@@ -28,7 +39,7 @@
                         <div class="content">
                             <p>{{ project_name }}</p>
                             {% for app in app_list %}
-                                <p>{{ app }}</p>
+                            <p>{{ app }}</p>
                             {% endfor %}
                         </div>
                     </div>
@@ -73,5 +84,4 @@
 
     <script src="/static/front.js"></script>
 </body>
-
 </html>
