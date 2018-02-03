@@ -35,6 +35,12 @@ def get_proj_config(conf_name):
         return data["project"]["license"]
     elif conf_name == "description":
         return data["project"]["description"]
+    elif conf_name == "iyashi":
+        try:
+            return data["additional_options"]["iyashi"]
+        except:
+            return False
+
 
 
 

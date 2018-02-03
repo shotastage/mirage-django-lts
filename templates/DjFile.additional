@@ -1,0 +1,22 @@
+project:
+    name: sample
+    version: 0.0.1
+    author: Shota Shimazu
+    git: https://github.com/shotastage/django-console.git
+    license: restricted
+    description: "This is template!"
+
+django:
+    path: sample
+    package: pipenv
+    datanase: PostgreSQL
+
+frontend:
+    path: shell
+    package: yarn
+    builder: webpack
+
+djworkspace:
+    path: .djc
+
+iyashiga_hoshii: True

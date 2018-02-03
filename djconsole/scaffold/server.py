@@ -5,7 +5,9 @@ from flask import Flask, render_template
 from djconsole      import project
 from djconsole.command import log, raise_error_message
 from djconsole.flow import Workflow
+
 from djconsole.scaffold import configure
+from djconsole.scaffold import iyashi
 
 
 app = Flask(__name__)
@@ -20,6 +22,11 @@ def index():
 
 @app.route("/config/")
 def config():
+    if configure.get_proj_config("iyashi"):
+        iyashi_image = iyashi.select_photo()
+    else:
+        iyashi_image = "none"
+
     return render_template('config.html',
         project_name    = project.get_project_name(),
         app_list        = project.get_app_list(),
@@ -28,7 +35,8 @@ def config():
         proj_author     = configure.get_proj_config("author"),
         proj_git        = configure.get_proj_config("git"),
         proj_license    = configure.get_proj_config("license"),
-        proj_msg        = configure.get_proj_config("description")
+        proj_msg        = configure.get_proj_config("description"),
+        iyashi_image    = iyashi_image
     )
 
 

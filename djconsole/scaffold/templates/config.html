@@ -44,9 +44,11 @@
             <div class="tile is-vertical is-8">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                            <figure class="image is-256x256">
-                                    <img src="https://d3ndb5jjirqkbj.cloudfront.net/wp/wp-content/uploads/2016/01/honyomi001_img01.jpg">
-                                  </figure>
+                        {% if iyashi_image != "none" %}
+                        <figure class="image is-256x256">
+                            <img src="{{ iyashi_image }}">
+                        </figure>
+                        {% endif %}
                         <p class="title">General</p>
                         <div class="field">
                             <label class="label">Project Name</label>
