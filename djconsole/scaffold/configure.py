@@ -44,8 +44,5 @@ def get_proj_config(conf_name):
 
 
 
-
-
-"""
-{'project': {'name': 'sample', 'version': '0.0.1', 'author': 'Shota Shimazu', 'git': 'https://github.com/shotastage/django-console.git', 'license': 'restricted', 'description': 'This is template!'}, 'django': {'path': 'sample', 'package': 'pipenv'}, 'frontend': {'path': 'shell', 'package': 'yarn'}, 'djworkspace': {'path': '.djc'}}
-"""
+def save_djfile(yaml_struct):
+    pass
