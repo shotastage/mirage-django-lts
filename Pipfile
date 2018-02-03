@@ -9,6 +9,7 @@ name = "pypi"
 
 flask = "*"
 pyyaml = "*"
+google-api-python-client = "*"
 
 
 [dev-packages]

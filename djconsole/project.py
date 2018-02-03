@@ -137,3 +137,19 @@ def load_djfile():
             return yaml.load(djfile)
         except:
             raise Exception
+
+
+def load_additional_conf():
+    with open("DjFile.additional", "r") as djfile:
+        try:
+            return yaml.load(djfile)
+        except:
+            raise Exception
+
+
+def load_secret_conf():
+    with open("DjFile.secret", "r") as djfile:
+        try:
+            return yaml.load(djfile)
+        except:
+            raise Exception
