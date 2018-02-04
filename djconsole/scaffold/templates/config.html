@@ -44,18 +44,6 @@
             <div class="tile is-vertical is-8">
                 <div class="tile is-parent">
                     <div class="tile is-child box">
-                        {% if iyashi_image != "none" %}
-
-                        <div class="modal is-active">
-                            <div class="modal-background"></div>
-                            <div class="modal-content">
-                                <figure class="image is-256x256">
-                                    <img src="{{ iyashi_image }}">
-                                </figure>
-                            </div>
-                            <button id="modal_close" class="modal-close is-large" aria-label="close"></button>
-                        </div>
-                        {% endif %}
                         <p class="title">General</p>
                         <div class="field">
                             <label class="label">Project Name</label>
@@ -204,14 +192,6 @@
                                         <option>Webpack</option>
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="control">
-                                <label class="checkbox">
-                                    <input type="checkbox"> Overwrite old configuration
-                                </label>
                             </div>
                         </div>
 
