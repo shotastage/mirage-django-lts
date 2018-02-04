@@ -1,8 +1,8 @@
+from flask import Flask, render_template
+
 from djconsole import project
 from djconsole.scaffold.manager import ScaffoldManager
 from djconsole.scaffold import configure
-
-from flask import Flask, render_template
 
 
 class ConfigManager(ScaffoldManager):

@@ -6,6 +6,8 @@ This software is licensed under the MIT, see LICENSE for detail.
 """
 
 import os
+import time
+import webbrowser
 from djconsole         import project
 from djconsole.flow    import Workflow
 from djconsole.command import log
@@ -18,6 +20,8 @@ class DjangoDebugServerWorkFlow(Workflow):
         if project.in_project():
             try:
                 os.system("python manage.py runserver")
+                # time.sleep(1)
+                # webbrowser.open("http://127.0.0.1:8000/")
             except KeyboardInterrupt:
                 log("Good bye!")
         else:

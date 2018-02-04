@@ -53,6 +53,10 @@ def config_nodejs():
     )
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html')
+
     
 class ScaffoldServerWorkflow(Workflow):
     def main(self):
