@@ -1,11 +1,11 @@
 import os
 import shutil
 
-from djconsole.flow                     import Flow, Workflow, Stepflow
-from djconsole.command                  import log, command
-from djconsole.projectstartup.readme    import create_readme_doc
-from djconsole.projectstartup.gitignore import create_gitignore
-from djconsole.projectstartup.djfile    import create_djfile
+from djconsole.flow     import Flow, Workflow, Stepflow
+from djconsole.command  import log, command
+from .readme            import create_readme_doc
+from .gitignore         import create_gitignore
+from .djfile            import create_djfile
 
 
 class DjangoStartupWorkFlow(Workflow):
@@ -53,9 +53,10 @@ class DjangoStartupWorkFlow(Workflow):
         author      = log("Author name", withInput = True)
         git_url     = log("Git URL", withInput = True)
         license_name = log("License", withInput = True)
+        description = log("Description", withInput = True)
 
         with open("DjFile", "w") as f:
-            f.write(create_djfile(self._project_name, version, author, git_url, license_name))
+            f.write(create_djfile(self._project_name, version, author, git_url, license_name, description))
 
     
     def _create_template_git_project(self, name):
