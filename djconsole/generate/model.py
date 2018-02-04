@@ -11,6 +11,7 @@ from djconsole.flow                     import Flow, Workflow
 from djconsole.command                  import log, command
 from djconsole.generate.model_template  import create_model_py
 
+
 class DjangoModelMakeWorkflow(Workflow):
 
     def additional_init_(self):
