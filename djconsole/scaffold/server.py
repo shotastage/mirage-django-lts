@@ -6,7 +6,7 @@ from djconsole.command import log, raise_error_message
 from djconsole.flow import Workflow
 from .controllers.index.manager import IndexManager
 from .controllers.app.manager import AppManager
-from .controllers.config.manager import ConfigManager
+from .controllers.config import manager as m
 from . import configure
 
 
@@ -23,34 +23,16 @@ def app_view():
 
 @app.route("/config/")
 def config():
-    return ConfigManager.make_view()
+    return m.ConfigManager.make_view()
 
 @app.route("/config/django/")
 def config_django():
-    return render_template('config_django.html',
-        project_name    = project.get_project_name(),
-        app_list        = project.get_app_list(),
-        proj_name       = configure.get_proj_config("name"),
-        proj_ver        = configure.get_proj_config("version"),
-        proj_author     = configure.get_proj_config("author"),
-        proj_git        = configure.get_proj_config("git"),
-        proj_license    = configure.get_proj_config("license"),
-        proj_msg        = configure.get_proj_config("description"),
-    )
+    return m.DjangoConfigManager.make_view()
 
 
 @app.route("/config/nodejs/")
 def config_nodejs():
-    return render_template('config_nodejs.html',
-        project_name    = project.get_project_name(),
-        app_list        = project.get_app_list(),
-        proj_name       = configure.get_proj_config("name"),
-        proj_ver        = configure.get_proj_config("version"),
-        proj_author     = configure.get_proj_config("author"),
-        proj_git        = configure.get_proj_config("git"),
-        proj_license    = configure.get_proj_config("license"),
-        proj_msg        = configure.get_proj_config("description")
-    )
+    return m.DjangoConfigManager.make_view()
 
 
 @app.errorhandler(404)
