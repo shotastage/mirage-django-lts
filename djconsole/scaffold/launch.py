@@ -1,14 +1,12 @@
 import os
+import time
 import shlex
 import subprocess
 import webbrowser
-import threading
-
-from time import sleep
 
 from djconsole.flow     import Workflow
 from djconsole.command  import log, raise_error_message
-from djconsole.scaffold import server
+from . import server
 
 
 class ScaffoldWorkflow(Workflow):
@@ -27,8 +25,9 @@ class ScaffoldWorkflow(Workflow):
                 log("Failed to launch server!", withError = True)
 
             log("Launching shell...")
+            log("Server listening started on http://127.0.0.1:5050")
             log("Ctl + C to exit scaffold.")
-            sleep(1)
+            time.sleep(1)
             webbrowser.open("http://127.0.0.1:5050")
             server.wait()
     

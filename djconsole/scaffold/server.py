@@ -1,17 +1,13 @@
 import webbrowser
 
 from flask import Flask, render_template
-
-from djconsole.scaffold.app_manager.manager import AppManager
-from djconsole.scaffold.config_manager.manager import ConfigManager
-
-
-from djconsole      import project
+from djconsole import project
 from djconsole.command import log, raise_error_message
 from djconsole.flow import Workflow
-
-from djconsole.scaffold import configure
-from djconsole.scaffold import iyashi
+from .controllers.index.manager import IndexManager
+from .controllers.app.manager import AppManager
+from .controllers.config.manager import ConfigManager
+from . import configure
 
 
 app = Flask(__name__)
@@ -19,21 +15,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    if configure.get_proj_config("iyashi"):
-        iyashi_image = iyashi.select_photo()
-    else:
-        iyashi_image = "none"
-
-    return render_template('index.html',
-        project_name = project.get_project_name(),
-        app_list = project.get_app_list(),
-        iyashi_image    = iyashi_image
-    )
+    return IndexManager.make_view()
 
 @app.route("/app/")
 def app_view():
     return AppManager.make_view()
-
 
 @app.route("/config/")
 def config():
@@ -70,7 +56,6 @@ def config_nodejs():
     
 class ScaffoldServerWorkflow(Workflow):
     def main(self):
-        log("Server listening started on http://127.0.0.1:5050")
         app.run(host = "127.0.0.1", port = 5050)
 
 
