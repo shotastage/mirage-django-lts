@@ -53,3 +53,6 @@ class Scaffold(ScaffoldWorkflow): pass
 
 from djconsole.scaffold.server import ScaffoldServerWorkflow
 class ScaffoldServer(ScaffoldServerWorkflow): pass
+
+from djconsole.server.debug_server import DjangoDebugServerWorkFlow
+class DjangoDebugServer(DjangoDebugServerWorkFlow): pass
