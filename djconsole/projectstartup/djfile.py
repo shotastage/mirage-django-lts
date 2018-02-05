@@ -36,7 +36,7 @@ project:
     description: {description}
 
 django:
-    path: sample
+    path: .
     package: pipenv
     database: PostgreSQL
 

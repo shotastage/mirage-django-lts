@@ -16,6 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import webbrowser
+import os
 
 from flask import Flask, render_template, request
 from djconsole import project

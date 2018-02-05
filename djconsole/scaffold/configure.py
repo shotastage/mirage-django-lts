@@ -64,5 +64,26 @@ def get_proj_config(conf_name):
             return False
 
 
+
+def get_django_config(conf_name):
+
+    data = None
+
+    try:
+        data = load_djfile()
+    except:
+        return "Invalid DjFile"
+
+    if conf_name == "path":
+        if data["django"]["path"] == ".":
+            return os.getcwd()
+        else:
+            return data["django"]["path"]
+    elif conf_name == "package":
+        return data["django"]["package"]
+    elif conf_name == "database":
+        return data["django"]["database"]
+
+
 def save_djfile(yaml_struct):
     pass

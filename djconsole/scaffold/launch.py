@@ -24,6 +24,7 @@ import webbrowser
 from djconsole.flow     import Workflow
 from djconsole.command  import log, raise_error_message
 from . import server
+from . import configure
 
 
 class ScaffoldWorkflow(Workflow):
@@ -33,6 +34,13 @@ class ScaffoldWorkflow(Workflow):
 
         log("Launching server...")
        
+        try:
+            django_path = configure.get_django_config("path")
+            os.chdir(django_path)
+        except:
+            log("Failed to move Django project directory.", withError = True,
+                errorDetail = "Config directory: " + str(os.getcwd()) + "/" + configure.get_django_config("path"))
+            return
 
         try:
             try:
