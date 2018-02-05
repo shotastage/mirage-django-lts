@@ -15,7 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-
 from djconsole.console.django_console import DjangoConsoleWorkFlow, DjangoDBConsoleWorkFlow
 class DjangoConsole(DjangoConsoleWorkFlow): pass
 class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass

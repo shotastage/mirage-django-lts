@@ -23,7 +23,8 @@ from pip.utils import get_installed_distributions
 from djconsole.command import log
 
 
-def create_djfile(name, version, author, git_url, license, description):
+def create_djfile(name, version, author, git_url, license, description, dj_app_path, python_pkg_m, default_db, 
+    front_app_path, front_pkg_m, front_app_builder, workspace_path):
 
     return textwrap.dedent(
 '''
@@ -36,17 +37,17 @@ project:
     description: {description}
 
 django:
-    path: sample
-    package: pipenv
-    database: PostgreSQL
+    path: {django_app_path}
+    package: {python_package_m}
+    database: {default_database}
 
 frontend:
-    path: shell
-    package: yarn
-    builder: webpack
+    path: {front_app_path}
+    package: {front_package_manager}
+    builder: {front_app_builder}
 
 djworkspace:
-    path: .djc
+    path: {workspace_path}
 
 ''').format(
     app_name = name,
@@ -54,5 +55,12 @@ djworkspace:
     author = author,
     git_url = git_url,
     license = license,
-    description = description
+    description = description,
+    django_app_path = dj_app_path,
+    python_package_m = python_pkg_m,
+    default_database = default_db,
+    front_app_path = front_app_path,
+    front_package_manager = front_pkg_m,
+    front_app_builder = front_app_builder,
+    workspace_path = workspace_path
 ).strip()
