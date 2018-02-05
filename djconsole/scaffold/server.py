@@ -1,12 +1,12 @@
 import webbrowser
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from djconsole import project
 from djconsole.command import log, raise_error_message
 from djconsole.flow import Workflow
 from .controllers.index.manager import IndexManager
 from .controllers.app.manager import AppManager
-from .controllers.config import manager as m
+from .controllers.config.manager import ConfigManager, DjangoConfigManager, NodeConfigManager
 from . import configure
 
 
@@ -21,30 +21,30 @@ def index():
 def app_view():
     return AppManager.make_view()
 
-@app.route("/config/")
+@app.route("/config/", methods=["GET", "POST"])
 def config():
-    return m.ConfigManager.make_view()
+    return ConfigManager.make_view(request)
 
 @app.route("/config/django/")
 def config_django():
-    return m.DjangoConfigManager.make_view()
+    return DjangoConfigManager.make_view()
 
 
 @app.route("/config/nodejs/")
 def config_nodejs():
-    return m.DjangoConfigManager.make_view()
+    return NodeConfigManager.make_view()
 
 
 @app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html')
+def dj_errorhandler(error):
+    return render_template("error.html", error_status = "404")
 
 
 @app.errorhandler(500)
-def internal_error(error):
-    return render_template('500.html')
+def internal_server_error(error):
+    return render_template("error.html", error_status = "500")
 
-    
+
 class ScaffoldServerWorkflow(Workflow):
     def main(self):
         app.run(host = "127.0.0.1", port = 5050)

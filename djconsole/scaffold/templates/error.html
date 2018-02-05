@@ -13,7 +13,11 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
+                    {% if error_status == "500" %}
                     500 Internal Server Error
+                    {% elif error_status == "404" %}
+                    404 Not Found
+                    {% endif %}
                 </h1>
                 <h2 class="subtitle">
                     Make your web development more efficient.
@@ -25,7 +29,11 @@
                             <button class="delete" aria-label="delete"></button>
                         </div>
                         <div class="message-body">
+                            {% if error_status == "500" %}
                             Sorry, something <string>error</string> has occured on server.
+                            {% elif error_status == "404" %}
+                            Sorry, requested page doesn't exist on <strong>Django Scaffold</strong>.
+                            {% endif %}
                         </div>
                     </article>
                 </div>
