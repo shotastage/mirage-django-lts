@@ -39,16 +39,10 @@
                         <div class="content">
                             <p>{{ project_name }}</p>
                             {% for app in app_list %}
-                            <label class="checkbox">
-                                <input type="checkbox">
-                                <p>{{ app }}</p>
-                            </label>
-
+                            <p>{{ app }}</p>
                             {% endfor %}
                             <div class="buttons has-addons">
-                                <span class="button is-info">Create App</span>
-                                <span class="button is-success">Uninstall App</span>
-                                <span class="button">None</span>
+                                <button class="button is-primary create_app_button">CREATE APP</button>
                             </div>
                         </div>
                     </div>

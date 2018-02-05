@@ -15,6 +15,11 @@ build_all:
 	python setup.py check
 	python setup.py sdist
 
+
+build_node:
+	./node_modules/.bin/node-sass ./djconsole/scaffold/static/scss/main.scss djconsole/scaffold/static/style/main.css
+
+
 upload:
 	@echo "Building Django Console..."
 	python setup.py check
