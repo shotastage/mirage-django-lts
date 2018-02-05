@@ -1,12 +1,17 @@
-before:
+before_all:
+	@echo "WARNING: BT"
 	@echo "Installing reqiorements..."
 	pip install pipenv
 	pipenv install
 	yarn install
 
-build:
+before_node:
+	@echo "Installing node requirements..."
+	yarn install
+
+build_all:
 	@echo "Building scaffold Sass..."
-	./node_module
+	./node_modules/.bin/node-sass ./djconsole/scaffold/static/scss/main.scss djconsole/scaffold/static/style/main.css
 	@echo "Django Console Building Started!"
 	python setup.py check
 	python setup.py sdist
@@ -27,11 +32,14 @@ clean:
 	rm -rf site/
 	rm -rf djconsole.egg-info/
 	rm -rf dist/
+	rm -rf node_modules/
+	rm -rf testing/
 
 test:
 	@echo "Removing recent buildings..."
-	rm -rf djconsole.egg-info/
 	rm -rf dist/
+	@echo "Building scaffold Sass..."
+	./node_modules/.bin/node-sass ./djconsole/scaffold/static/scss/main.scss djconsole/scaffold/static/style/main.css
 	@echo "Building Django Console..."
 	python setup.py check
 	python setup.py sdist
