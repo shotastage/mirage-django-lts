@@ -68,10 +68,10 @@ djworkspace:
 
 
 def create_additional(options):
-
     return textwrap.dedent(
 '''
-additional_options: {options}
+additional_options:
+    {options}
 ''').format(
     options = options
 ).strip()

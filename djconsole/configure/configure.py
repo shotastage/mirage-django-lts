@@ -23,14 +23,25 @@ from djconsole.command  import log, raise_error_message
 from djconsole.command  import command
 
 from djconsole.projectstartup.djfile import create_djfile
+from djconsole.configure.djfile import create_additional
 
 
 class ConfigureWorkFlow(Workflow):
 
+    def additional_init_(self):
+        self._configure_target = self._option
+        log(str(self._configure_target))
+
     def main(self):
-        self._configure()
+        if self._configure_target == "addition":
+            self._configure_addition()
+        elif self._configure_target == "secret":
+            self._configure_secret()
+        else:
+            self._configure()
 
     def _configure(self):
+
         if fileable.exists("DjFile"):
             if log("DjFile is exists. Are you sure to overwrite DjFile?", withConfirm = True):
                 os.remove("DjFile")
@@ -48,3 +59,22 @@ class ConfigureWorkFlow(Workflow):
 
         with open("DjFile", "w") as f:
             f.write(create_djfile(app_name, version, author, git_url, license_name, description))
+
+    def _configure_addition(self):
+        if fileable.exists("DjFile.additional"):
+            if log("DjFile (Additional) is exists. Are you sure to overwrite?", withConfirm = True):
+                os.remove("DjFile.additional")
+            else:
+                log("DjFile is already exists!", withError = True)
+                raise FileExistsError
+                return
+        
+        option_string = log("Additional option string", withInput = True)
+
+        with open("DjFile.additional", "w") as f:
+            f.write(create_additional(option_string))
+
+
+    def _configure_secret(self):
+        with open("DjFile.secret", "w") as f:
+            f.write("")

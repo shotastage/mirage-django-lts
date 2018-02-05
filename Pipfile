@@ -18,6 +18,7 @@ google-api-python-client = "*"
 pylint = "*"
 django = "*"
 mkdocs = "*"
+djconsole = "*"
 
 
 [requires]
