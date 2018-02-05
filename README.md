@@ -116,7 +116,8 @@ djc destroy app [APP NAME]
 # Build & Install
 
 ```
-pip install djconsole
+make before_all
+make build_all
 ```
 # Author
 

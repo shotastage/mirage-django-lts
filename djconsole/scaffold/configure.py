@@ -15,7 +15,8 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from djconsole.project import load_djfile
+import os
+from djconsole.project import load_djfile, load_additional_conf, load_secret_conf
 
 def get_all_conf():
     return load_djfile()
@@ -35,6 +36,10 @@ def get_proj_config(conf_name):
 
     try:
         data = load_djfile()
+        if os.path.exists("DjFile.additional"):
+            additional = load_additional_conf()
+        elif os.path.exists("DjFile.secret"):
+            secret = load_secret_conf()
     except:
         return "Invalid DjFile"
 
@@ -54,11 +59,9 @@ def get_proj_config(conf_name):
         return data["project"]["description"]
     elif conf_name == "iyashi":
         try:
-            return data["additional_options"]["iyashi"]
+            return additional["additional_options"]["iyashi"]
         except:
             return False
-
-
 
 
 def save_djfile(yaml_struct):

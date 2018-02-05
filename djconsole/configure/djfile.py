@@ -64,3 +64,14 @@ djworkspace:
     front_app_builder = front_app_builder,
     workspace_path = workspace_path
 ).strip()
+
+
+
+def create_additional(options):
+
+    return textwrap.dedent(
+'''
+additional_options: {options}
+''').format(
+    options = options
+).strip()

@@ -15,10 +15,62 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import yaml
 import os
+import yaml
 from djconsole import project
 
+def get_all_conf():
+    return project.load_djfile()
+
+def get_app_name():
+    data = project.load_djfile()
+    return data["project"]["name"]
+
+def get_app_ver():
+    data = project.load_djfile()
+    return data["project"]["version"]
+
+
+def get_proj_config(conf_name):
+
+    data = None
+
+    try:
+        data = project.load_djfile()
+        if os.path.exists("DjFile.additional"):
+            additional = project.load_additional_conf()
+        elif os.path.exists("DjFile.secret"):
+            secret = project.load_secret_conf()
+    except:
+        return "Invalid DjFile"
+
+    if conf_name == "all":
+        return data
+    elif conf_name == "name":
+        return data["project"]["name"]
+    elif conf_name == "version":
+        return data["project"]["version"]
+    elif conf_name == "author":
+        return data["project"]["author"]
+    elif conf_name == "git":
+        return data["project"]["git"]
+    elif conf_name == "license":
+        return data["project"]["license"]
+    elif conf_name == "description":
+        return data["project"]["description"]
+    elif conf_name == "iyashi":
+        try:
+            return additional["additional_options"]["iyashi"]
+        except:
+            return False
+
+
+def save_djfile(yaml_struct):
+    pass
+
+
+
+# Backup
 
 class DjConfig():
 

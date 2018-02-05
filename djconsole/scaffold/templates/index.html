@@ -34,13 +34,22 @@
             <div class="tile is-parent">
                 <article class="tile is-child notification">
                     <div class="content">
-                        <p class="title">Peoject ></p>
+                        <p class="title">Peoject</p>
                         <p class="subtitle">Apps in {{ project_name }}</p>
                         <div class="content">
                             <p>{{ project_name }}</p>
                             {% for app in app_list %}
-                            <p>{{ app }}</p>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <p>{{ app }}</p>
+                            </label>
+
                             {% endfor %}
+                            <div class="buttons has-addons">
+                                <span class="button is-info">Create App</span>
+                                <span class="button is-success">Uninstall App</span>
+                                <span class="button">None</span>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -49,11 +58,11 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Models ></p>
+                            <p class="title">Models</p>
                             <p class="subtitle">Registered models</p>
                         </article>
                         <article class="tile is-child notification is-warning">
-                            <p class="title">Views ></p>
+                            <p class="title">Views</p>
                             <p class="subtitle">Activated views</p>
                         </article>
                     </div>
@@ -84,4 +93,5 @@
 
     <script src="/static/front.js"></script>
 </body>
+
 </html>
