@@ -184,3 +184,5 @@ shell/templates/style/
 
 djconsole/scaffold/static/scss/third-party/
 djconsole/scaffold/static/style/main.css
+
+site/

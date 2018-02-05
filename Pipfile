@@ -17,6 +17,7 @@ google-api-python-client = "*"
 "pep8" = "*"
 pylint = "*"
 django = "*"
+mkdocs = "*"
 
 
 [requires]
