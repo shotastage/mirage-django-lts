@@ -1,5 +1,4 @@
 before_all:
-	@echo "WARNING: BT"
 	@echo "Installing reqiorements..."
 	pip install pipenv
 	pipenv install
@@ -49,4 +48,6 @@ test:
 fetch:
 	@echo "Fetching assets..."
 	curl -O https://raw.githubusercontent.com/jgthms/bulma/master/css/bulma.css
+	curl -O https://raw.githubusercontent.com/jgthms/bulma/master/css/bulma.css.map
 	mv bulma.css ./djconsole/scaffold/static/scss/third-party/_bulma.scss
+	mv bulma.css.map ./djconsole/scaffold/static/scss/third-party/bulma.css.map

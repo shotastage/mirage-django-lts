@@ -7,16 +7,15 @@ name = "pypi"
 
 [packages]
 
-flask = "*"
-pyyaml = "*"
-google-api-python-client = "*"
+Flask = "*"
+PyYAML = "*"
 
 
 [dev-packages]
 
 "pep8" = "*"
 pylint = "*"
-django = "*"
+Django = "*"
 mkdocs = "*"
 djconsole = "*"
 
