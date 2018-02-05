@@ -1,4 +1,12 @@
+before:
+	@echo "Installing reqiorements..."
+	pip install pipenv
+	pipenv install
+	yarn install
+
 build:
+	@echo "Building scaffold Sass..."
+	./node_module
 	@echo "Django Console Building Started!"
 	python setup.py check
 	python setup.py sdist
@@ -32,3 +40,5 @@ test:
 
 fetch:
 	@echo "Fetching assets..."
+	curl -O https://raw.githubusercontent.com/jgthms/bulma/master/css/bulma.css
+	mv bulma.css ./djconsole/scaffold/static/scss/third-party/_bulma.scss

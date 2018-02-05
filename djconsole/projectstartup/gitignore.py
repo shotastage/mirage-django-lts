@@ -199,5 +199,6 @@ typings/
 #########################################################
 
 .djc/
-
+DjFile.additional
+DjFile.secret
 '''
