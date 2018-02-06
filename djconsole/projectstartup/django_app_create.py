@@ -45,7 +45,7 @@ class DjangoStartupWorkFlow(Workflow):
 
         self._create_template_git_project()
         self._create_docs()
-        self._create_djfile(version, author, git_url, license_name, description)
+        self._create_djfile(version, author, email, git_url, license_name, description)
 
         # Additional creation
         os.mkdir("shell")
@@ -58,9 +58,9 @@ class DjangoStartupWorkFlow(Workflow):
         command("django-admin startproject " + self._project_name)
 
 
-    def _create_djfile(self, version, author, git_url, license_name, description):
+    def _create_djfile(self, version, author, email, git_url, license_name, description):
         with open("DjFile", "w") as f:
-            f.write(create_djfile(self._project_name, version, author, git_url, license_name, description))
+            f.write(create_djfile(self._project_name, version, author, email, git_url, license_name, description))
 
     
     def _create_template_git_project(self):

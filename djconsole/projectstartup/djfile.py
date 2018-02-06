@@ -23,14 +23,14 @@ from pip.utils import get_installed_distributions
 from djconsole.command import log
 
 
-def create_djfile(name, version, author, git_url, license, description):
+def create_djfile(name, version, author, email, git_url, license, description):
 
     return textwrap.dedent(
 '''
 project:
     name: {app_name}
     version: {version}
-    author: {author}
+    author: {author} <{email}>
     git: {git_url}
     license: {license}
     description: {description}
@@ -52,6 +52,7 @@ djworkspace:
     app_name = name,
     version = version,
     author = author,
+    email = email,
     git_url = git_url,
     license = license,
     description = description
