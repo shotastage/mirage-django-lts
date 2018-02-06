@@ -15,22 +15,27 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-def create_djfile(proj_name, version, description, git_repository, license, description):
+import textwrap
+
+def create_package_json(proj_name, ver, desc, git_url, author, author_email, license_name):
 
     return textwrap.dedent(
 '''
 {
-  "name": "{proj_name}-shell",
+  "name": "{project_name}-shell",
   "version": "{version}",
   "description": "{description}",
   "main": "index.js",
   "repository": "{git_repository}",
-  "author": "Shota Shimazu <hornet.live.mf@gmail.com>",
-  "license": "MIT"
+  "author": "{author_name} <{email}>",
+  "license": "{license_type}"
 }
 ''').format(
-    proj_name = proj_name,
-    version = version,
-    description = description,
-    git_repository = git_repositorys,
-).strip()
+        project_name = proj_name,
+        version = ver,
+        description = desc,
+        git_repository = git_url,
+        author_name = author,
+        email = author_email,
+        license_type = license_name
+    ).strip()

@@ -6,7 +6,7 @@ from djconsole.command  import log, command
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
 from .djfile            import create_djfile
-
+from .package_json      import create_package_json
 
 class DjangoStartupWorkFlow(Workflow):
     
@@ -46,7 +46,8 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_template_git_project()
         self._create_docs()
         self._create_djfile(version, author, email, git_url, license_name, description)
-
+        self._create_package_json(version, description, git_url, author, email, license_name)
+        
         # Additional creation
         os.mkdir("shell")
 
@@ -63,6 +64,12 @@ class DjangoStartupWorkFlow(Workflow):
             f.write(create_djfile(self._project_name, version, author, email, git_url, license_name, description))
 
     
+    def _create_package_json(self, version, description, git_repository, author_name, email, license_name):
+        with open("package.json", "w") as f:
+            data = create_package_json(self._project_name, version, description, git_repository, author_name, email, license_name)
+            f.write(data)
+
+
     def _create_template_git_project(self):
         ignorance = create_gitignore()
 
