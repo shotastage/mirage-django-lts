@@ -16,39 +16,44 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
+import yaml
 
 
-def get_all_conf():
+def get_all_config():
     return load_djfile()
 
 
 def get_proj_config(conf_name):
 
-    data = None
-
     try:
         data = load_djfile()
-        if os.path.exists("DjFile.additional"):
-            additional = load_additional_conf()
-        elif os.path.exists("DjFile.secret"):
-            secret = load_secret_conf()
+
+        if os.path.exists("DjFile.additional"): additional = load_additional_conf()
+        elif os.path.exists("DjFile.secret"):   secret = load_secret_conf()
     except:
         return "Invalid DjFile"
 
     if conf_name == "all":
         return data
+
     elif conf_name == "name":
         return data["project"]["name"]
+
     elif conf_name == "version":
         return data["project"]["version"]
+
     elif conf_name == "author":
         return data["project"]["author"]
+
     elif conf_name == "git":
         return data["project"]["git"]
+
     elif conf_name == "license":
         return data["project"]["license"]
+
     elif conf_name == "description":
         return data["project"]["description"]
+        
     elif conf_name == "iyashi":
         try:
             return additional["additional_options"]["iyashi"]
@@ -59,7 +64,25 @@ def get_proj_config(conf_name):
 
 def get_django_config(conf_name):
 
-    data = None
+    try:
+        data = load_djfile()
+    except:
+        return "Invalid DjFile"
+
+    if conf_name == "path":
+        if data["django"]["path"] == ".": return os.getcwd()
+        else: return data["django"]["path"]
+
+    elif conf_name == "package":
+        return data["django"]["package"]
+
+    elif conf_name == "database":
+        return data["django"]["database"]
+
+
+
+
+def get_node_config(conf_name):
 
     try:
         data = load_djfile()
@@ -67,19 +90,14 @@ def get_django_config(conf_name):
         return "Invalid DjFile"
 
     if conf_name == "path":
-        if data["django"]["path"] == ".":
-            return os.getcwd()
-        else:
-            return data["django"]["path"]
+        if data["frontend"]["path"] == ".": return os.getcwd()
+        else: return data["frontend"]["path"]
+
     elif conf_name == "package":
-        return data["django"]["package"]
-    elif conf_name == "database":
-        return data["django"]["database"]
+        return data["frontend"]["package"]
 
-
-def save_djfile(yaml_struct):
-    pass
-
+    elif conf_name == "builder":
+        return data["frontend"]["builder"]
 
 
 
@@ -107,19 +125,5 @@ def load_secret_conf():
             raise Exception
 
 
-# Backup
-
-class DjConfig():
-
-    def __init__(self):
-        self._config = None
-        self._load()
-
-
-    def _load(self):
-        if project.in_app():
-            os.chdir("../")
-
-        if project.in_project():
-            with open("DjFile") as conf:
-                self._config = yaml.load(conf)
+def save_djfile(yaml_struct):
+    pass
