@@ -16,19 +16,10 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import yaml
-from djconsole import project
+
 
 def get_all_conf():
-    return project.load_djfile()
-
-def get_app_name():
-    data = project.load_djfile()
-    return data["project"]["name"]
-
-def get_app_ver():
-    data = project.load_djfile()
-    return data["project"]["version"]
+    return load_djfile()
 
 
 def get_proj_config(conf_name):
@@ -36,11 +27,11 @@ def get_proj_config(conf_name):
     data = None
 
     try:
-        data = project.load_djfile()
+        data = load_djfile()
         if os.path.exists("DjFile.additional"):
-            additional = project.load_additional_conf()
+            additional = load_additional_conf()
         elif os.path.exists("DjFile.secret"):
-            secret = project.load_secret_conf()
+            secret = load_secret_conf()
     except:
         return "Invalid DjFile"
 
@@ -65,9 +56,55 @@ def get_proj_config(conf_name):
             return False
 
 
+
+def get_django_config(conf_name):
+
+    data = None
+
+    try:
+        data = load_djfile()
+    except:
+        return "Invalid DjFile"
+
+    if conf_name == "path":
+        if data["django"]["path"] == ".":
+            return os.getcwd()
+        else:
+            return data["django"]["path"]
+    elif conf_name == "package":
+        return data["django"]["package"]
+    elif conf_name == "database":
+        return data["django"]["database"]
+
+
 def save_djfile(yaml_struct):
     pass
 
+
+
+
+def load_djfile():
+    with open("DjFile", "r") as djfile:
+        try:
+            return yaml.load(djfile)
+        except:
+            raise Exception
+
+
+def load_additional_conf():
+    with open("DjFile.additional", "r") as djfile:
+        try:
+            return yaml.load(djfile)
+        except:
+            raise Exception
+
+
+def load_secret_conf():
+    with open("DjFile.secret", "r") as djfile:
+        try:
+            return yaml.load(djfile)
+        except:
+            raise Exception
 
 
 # Backup
