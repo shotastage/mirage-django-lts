@@ -26,7 +26,7 @@ from subprocess import check_output, DEVNULL, STDOUT
 
 def log(string,
             withError = False, withExitOnError = False, errorDetail = None,
-            withInput = False, withConfirm = False):
+            withInput = False, withConfirm = False, default = None):
 
 
     if withError:
@@ -45,7 +45,12 @@ def log(string,
             sys.exit(1)
 
     elif withInput:
-        return input('\033[32m' + str(string) + ' >> \033[0m')
+        string = str(input('\033[32m' + str(string) + ' >> \033[0m'))
+        
+        if string == "" and default != None:
+            return default
+        else:
+            return string
 
     elif withConfirm:
         print('\033[31mDjango Console: ' + str(string) + '\033[0m')

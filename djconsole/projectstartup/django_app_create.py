@@ -15,16 +15,21 @@ class DjangoStartupWorkFlow(Workflow):
             self._project_name = self._option
         except:
             self._project_name = None
-    
+
 
     def main(self):
-        self.create_basic_django_app()
 
+        # Input information
+        log("Please type your new Django application information.")
 
-    def create_basic_django_app(self):
-        if self._project_name == None:
-            log("Please type your new Django application name.")
-            self._project_name = log("Django project name", withInput = True)
+        if self._project_name == None: self._project_name = log("Project name", withInput = True)
+        version      = log("App version", withInput = True, default = "0.0.1")
+        author       = log("Author name", withInput = True)
+        email        = log("Email",       withInput = True)
+        git_url      = log("Git URL",     withInput = True)
+        license_name = log("License",     withInput = True)
+        description  = log("Description", withInput = True)
+
 
         try:
             self._check(self._project_name)
@@ -32,34 +37,33 @@ class DjangoStartupWorkFlow(Workflow):
             log("Project {0} is already exists.".format(self._project_name), withError = True)
 
         
-        self._create_new_django_app(self._project_name)
+        self._create_new_django_app()
 
         current = os.getcwd()
+
         os.chdir("./" + self._project_name)
-        self._create_template_git_project(self._project_name)
-        self._create_docs(self._project_name)
-        self._create_djfile()
+
+        self._create_template_git_project()
+        self._create_docs()
+        self._create_djfile(version, author, git_url, license_name, description)
+
+        # Additional creation
+        os.mkdir("shell")
+
         os.chdir("../")
 
     
 
-    def _create_new_django_app(self, name):
-        command("django-admin startproject " + name)
+    def _create_new_django_app(self):
+        command("django-admin startproject " + self._project_name)
 
 
-    def _create_djfile(self):
-        
-        version     = log("App version", withInput = True)
-        author      = log("Author name", withInput = True)
-        git_url     = log("Git URL", withInput = True)
-        license_name = log("License", withInput = True)
-        description = log("Description", withInput = True)
-
+    def _create_djfile(self, version, author, git_url, license_name, description):
         with open("DjFile", "w") as f:
             f.write(create_djfile(self._project_name, version, author, git_url, license_name, description))
 
     
-    def _create_template_git_project(self, name):
+    def _create_template_git_project(self):
         ignorance = create_gitignore()
 
         with open(".gitignore", "w") as f:
@@ -68,14 +72,15 @@ class DjangoStartupWorkFlow(Workflow):
         command("git init")
 
 
-    def _create_docs(self, name):
+    def _create_docs(self):
         with open("README.md", "a") as readme:
-            readme.write(create_readme_doc(name))
+            readme.write(create_readme_doc(self._project_name))
 
 
     def _check(self, name):
         if os.path.exists(name):
             raise FileExistsError
+
 
 
 class DjangoCMSStartupWorkFlow(Workflow):
