@@ -43,17 +43,37 @@ class DjangoStartupWorkFlow(Workflow):
 
         os.chdir("./" + self._project_name)
 
+        # Generate .gitignore
+        log("Generating gitignore...")
         self._create_template_git_project()
+
+        # Generate README.md
+        log("Generating readme...")
         self._create_docs()
+
+        # Generate DjFile
+        log("Generating configuration...")
         self._create_djfile(version, author, email, git_url, license_name, description)
+
+        # Generate package.json
+        log("Generating package configuration...")
         self._create_package_json(version, description, git_url, author, email, license_name)
+
+        # Add remote repo
+        log("Adding remote repository...")
         command("git remote add origin " + git_url)
-        
-        # Additional creation
+
+        # Install webpack
+        log("Installing assets builder...")
+        command("yarn add --dev webpack")
+
+        # Make shell directory
         os.mkdir("shell")
 
         os.chdir("../")
 
+        # Completed
+        log("Completed!")
     
 
     def _create_new_django_app(self):
