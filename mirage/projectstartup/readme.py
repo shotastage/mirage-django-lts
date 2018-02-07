@@ -20,7 +20,7 @@ import sys
 import textwrap
 
 from pip.utils import get_installed_distributions
-from djconsole.command import log
+from mirage.command import log
 
 
 def create_readme_doc(name):

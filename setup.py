@@ -21,12 +21,12 @@ if __name__ == "__main__":
         ],
         entry_points = {
             'console_scripts':[
-                'dj = mirage.mirage:main',
+                'mg = mirage.mirage:main',
             ],
         },
         description = "Advanced Django console",
         long_description = "Advanced Django command line tools like Rails.",
-        url = "https://github.com/shotastage/django-console/",
+        url = "https://github.com/shotastage/mirage/",
         license = "Apache",
         platforms = ["POSIX", "Windows", "Mac OS X"],
         test_suite = "djconsole_test.suite",

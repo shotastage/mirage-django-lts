@@ -18,8 +18,8 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import yaml
 import warnings
-from djconsole         import fileable
-from djconsole.command import log
+from mirage         import fileable
+from mirage.command import log
 
 
 # New

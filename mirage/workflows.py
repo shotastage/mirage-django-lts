@@ -15,43 +15,43 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from djconsole.console.django_console import DjangoConsoleWorkFlow, DjangoDBConsoleWorkFlow
+from mirage.console.django_console import DjangoConsoleWorkFlow, DjangoDBConsoleWorkFlow
 class DjangoConsole(DjangoConsoleWorkFlow): pass
 class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass
 
 
-from djconsole.projectstartup.django_app_create import DjangoStartupWorkFlow, DjangoCMSStartupWorkFlow
+from mirage.projectstartup.django_app_create import DjangoStartupWorkFlow, DjangoCMSStartupWorkFlow
 class DjangoStartup(DjangoStartupWorkFlow): pass
 class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass
 
 
-from djconsole.help.usage_flow import UsageShowWorkFlow, VersionShowWorkFlow
+from mirage.help.usage_flow import UsageShowWorkFlow, VersionShowWorkFlow
 class UsageShow(UsageShowWorkFlow): pass
 class VersionShow(VersionShowWorkFlow): pass
 
-from djconsole.db.migrate import DjangoMigrateWorkFlow
+from mirage.db.migrate import DjangoMigrateWorkFlow
 class DjangoMigrate(DjangoMigrateWorkFlow): pass
 
-from djconsole.db.reset import DjangoDBResetWorkFlow
+from mirage.db.reset import DjangoDBResetWorkFlow
 class DjangoDBReset(DjangoDBResetWorkFlow): pass
 
-from djconsole.generate.app import DjangoAppMakeWorkFlow
+from mirage.generate.app import DjangoAppMakeWorkFlow
 class DjangoAppMake(DjangoAppMakeWorkFlow): pass
 
-from djconsole.backup.backup import DjangoBackupAppWorkFlow
+from mirage.backup.backup import DjangoBackupAppWorkFlow
 class DjangoBackupApp(DjangoBackupAppWorkFlow): pass
 
-from djconsole.configure.configure import ConfigureWorkFlow
+from mirage.configure.configure import ConfigureWorkFlow
 class Configure(ConfigureWorkFlow): pass
 
-from djconsole.destroy.destroy import DjangoDestroyWorkFlow
+from mirage.destroy.destroy import DjangoDestroyWorkFlow
 class DjangoDestroy(DjangoDestroyWorkFlow): pass
 
-from djconsole.scaffold.launch import ScaffoldWorkflow
+from mirage.scaffold.launch import ScaffoldWorkflow
 class Scaffold(ScaffoldWorkflow): pass
 
-from djconsole.scaffold.server import ScaffoldServerWorkflow
+from mirage.scaffold.server import ScaffoldServerWorkflow
 class ScaffoldServer(ScaffoldServerWorkflow): pass
 
-from djconsole.server.debug_server import DjangoDebugServerWorkFlow
+from mirage.server.debug_server import DjangoDebugServerWorkFlow
 class DjangoDebugServer(DjangoDebugServerWorkFlow): pass

@@ -8,9 +8,9 @@ This software is licensed under the MIT, see LICENSE for detail.
 import os
 import time
 import webbrowser
-from djconsole         import project
-from djconsole.flow    import Workflow
-from djconsole.command import log
+from mirage         import project
+from mirage.flow    import Workflow
+from mirage.command import log
 
 
 class DjangoDebugServerWorkFlow(Workflow):

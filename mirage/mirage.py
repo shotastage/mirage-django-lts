@@ -17,8 +17,8 @@ Copyright 2017-2018 Shota Shimazu.
 
 import sys
 
-from djconsole.djargparse import ArgumentsParser
-from djconsole.command import log, raise_error_message
+from mirage.djargparse import ArgumentsParser
+from mirage.command import log, raise_error_message
 
 def main():
 

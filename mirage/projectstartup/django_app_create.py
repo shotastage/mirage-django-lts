@@ -1,8 +1,8 @@
 import os
 import shutil
 
-from djconsole.flow     import Flow, Workflow, Stepflow
-from djconsole.command  import log, command
+from mirage.flow     import Flow, Workflow, Stepflow
+from mirage.command  import log, command
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
 from .djfile            import create_djfile

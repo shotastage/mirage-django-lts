@@ -16,7 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from abc import ABCMeta, abstractmethod
-from djconsole.command import log, raise_error_message
+from mirage.command import log, raise_error_message
 
 
 class Workflow():

@@ -1,4 +1,4 @@
-from djconsole.flow import Flow
+from mirage.flow import Flow
 
 class DjangoRestoreFlow(Flow):
   

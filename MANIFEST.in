@@ -1,2 +1,2 @@
-recursive-include djconsole/scaffold/templates *
-recursive-include djconsole/scaffold/static *
+recursive-include mirage/scaffold/templates *
+recursive-include mirage/scaffold/static *

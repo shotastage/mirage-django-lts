@@ -1,6 +1,6 @@
-from djconsole.flow    import Workflow
-from djconsole.command import log, raise_error_message
-from djconsole         import fileable
+from mirage.flow    import Workflow
+from mirage.command import log, raise_error_message
+from mirage         import fileable
 
 
 class DjangoWorkspaceTogetherWorkFlow(Workflow):

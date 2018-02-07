@@ -18,10 +18,10 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 import enum
 import functools
-from djconsole.command import log, raise_error_message
+from mirage.command import log, raise_error_message
 
 # Flow Classies
-from djconsole import workflows
+from mirage import workflows
 
 
 class ArgumentsParser(object):
