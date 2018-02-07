@@ -33,7 +33,7 @@ class DjangoModelMakeWorkflow(Workflow):
         pass
 
     def _parse_data(self, data_string):
-        # data_name:data_type<option=value,option=value>
+        # data_name:data_type<<option=value,option=value
         # ex. name:string<<maxlen=100,as_primary=True
         data_name = data_string.split(":")[0]
         data_type = self._parse_data_type(data_string)
