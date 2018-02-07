@@ -17,9 +17,9 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import enum
-from djconsole.flow                     import Flow, Workflow
-from djconsole.command                  import log, command
-from djconsole.generate.model_template  import create_model_py
+from djconsole.flow import Flow, Workflow
+from djconsole.command import log, command
+from .model_template import create_model_py
 
 
 class DjangoModelMakeWorkflow(Workflow):
