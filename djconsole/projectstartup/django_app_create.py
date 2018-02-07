@@ -47,6 +47,7 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_docs()
         self._create_djfile(version, author, email, git_url, license_name, description)
         self._create_package_json(version, description, git_url, author, email, license_name)
+        command("git remote add origin " + git_url)
         
         # Additional creation
         os.mkdir("shell")
