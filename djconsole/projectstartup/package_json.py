@@ -19,17 +19,15 @@ import textwrap
 
 def create_package_json(proj_name, ver, desc, git_url, author, author_email, license_name):
 
-    return textwrap.dedent(
+    return "{\n" + textwrap.dedent(
 '''
-{
-  "name": "{project_name}-shell",
-  "version": "{version}",
-  "description": "{description}",
-  "main": "index.js",
-  "repository": "{git_repository}",
-  "author": "{author_name} <{email}>",
-  "license": "{license_type}"
-}
+    "name": "{project_name}-shell",
+    "version": "{version}",
+    "description": "{description}",
+    "main": "index.js",
+    "repository": "{git_repository}",
+    "author": "{author_name} <{email}>",
+    "license": "{license_type}"
 ''').format(
         project_name = proj_name,
         version = ver,
@@ -38,4 +36,4 @@ def create_package_json(proj_name, ver, desc, git_url, author, author_email, lic
         author_name = author,
         email = author_email,
         license_type = license_name
-    ).strip()
+    ).strip() + "\n}"
