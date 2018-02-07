@@ -7,7 +7,7 @@ sys.path.append('./tests')
 
 if __name__ == "__main__":
     setup(
-        name = "djconsole",
+        name = "django-mirage",
         version = "0.0.11",
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
@@ -21,7 +21,7 @@ if __name__ == "__main__":
         ],
         entry_points = {
             'console_scripts':[
-                'djc = djconsole.djconsole:main',
+                'dj = mirage.mirage:main',
             ],
         },
         description = "Advanced Django console",
