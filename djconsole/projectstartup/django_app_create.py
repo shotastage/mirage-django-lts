@@ -11,10 +11,7 @@ from .package_json      import create_package_json
 class DjangoStartupWorkFlow(Workflow):
     
     def additional_init_(self):
-        try:
-            self._project_name = self._option
-        except:
-            self._project_name = None
+        self._project_name = None
 
 
     def main(self):
@@ -22,7 +19,7 @@ class DjangoStartupWorkFlow(Workflow):
         # Input information
         log("Please type your new Django application information.")
 
-        if self._project_name == None: self._project_name = log("Project name", withInput = True)
+        self._project_name = log("Project name", withInput = True)
         version      = log("App version", withInput = True, default = "0.0.1")
         author       = log("Author name", withInput = True)
         email        = log("Email",       withInput = True)
