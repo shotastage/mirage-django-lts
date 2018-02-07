@@ -20,7 +20,7 @@ import sys
 import textwrap
 
 from pip.utils import get_installed_distributions
-from djconsole.command import log
+from mirage.command import log
 
 
 def create_djfile(name, version, author, git_url, license, description, dj_app_path, python_pkg_m, default_db, 

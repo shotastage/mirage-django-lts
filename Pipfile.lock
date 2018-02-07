@@ -111,7 +111,7 @@
             ],
             "version": "==2.0.2"
         },
-        "djconsole": {
+        "mirage": {
             "hashes": [
                 "sha256:bb648911349851927c51002f05f94037e13c1b9b82812685ff5d36d3c4bee685"
             ],

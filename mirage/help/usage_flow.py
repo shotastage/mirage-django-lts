@@ -15,8 +15,8 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from djconsole.flow import Workflow
-from djconsole.help import description
+from mirage.flow import Workflow
+from mirage.help import description
 
 class UsageShowWorkFlow(Workflow):
     

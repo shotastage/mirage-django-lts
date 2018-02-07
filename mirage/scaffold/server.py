@@ -19,9 +19,9 @@ import webbrowser
 import os
 
 from flask import Flask, render_template, request
-from djconsole import project
-from djconsole.command import log, raise_error_message
-from djconsole.flow import Workflow
+from mirage import project
+from mirage.command import log, raise_error_message
+from mirage.flow import Workflow
 from .controllers.index.manager import IndexManager
 from .controllers.app.manager import AppManager
 from .controllers.config.manager import ConfigManager, DjangoConfigManager, NodeConfigManager

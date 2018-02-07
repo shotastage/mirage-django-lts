@@ -18,9 +18,9 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Workflow
-from djconsole.command import log
-from djconsole.command import command
+from mirage.flow import Workflow
+from mirage.command import log
+from mirage.command import command
 
 
 class DjangoDataBaseWorkFlow(Workflow):

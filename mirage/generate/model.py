@@ -17,8 +17,8 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import enum
-from djconsole.flow import Flow, Workflow
-from djconsole.command import log, command
+from mirage.flow import Flow, Workflow
+from mirage.command import log, command
 from .model_template import create_model_py
 
 

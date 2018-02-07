@@ -17,7 +17,7 @@ PyYAML = "*"
 pylint = "*"
 Django = "*"
 mkdocs = "*"
-djconsole = "*"
+mirage = "*"
 
 
 [requires]

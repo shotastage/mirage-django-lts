@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 
-from djconsole import project
-from djconsole.scaffold.manager import ScaffoldManager
-from djconsole.scaffold import configure
+from mirage import project
+from mirage.scaffold.manager import ScaffoldManager
+from mirage.scaffold import configure
 from ... import iyashi
 
 

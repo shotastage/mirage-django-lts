@@ -17,9 +17,9 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
-from djconsole.command import log, command
-from djconsole.generate.model_template import create_model_py
+from mirage.flow import Flow
+from mirage.command import log, command
+from mirage.generate.model_template import create_model_py
 
 
 

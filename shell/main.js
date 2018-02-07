@@ -11,7 +11,7 @@ function createWindow () {
   win = new BrowserWindow({width: 800, height: 600});
 
   // and load the index.html of the app.
-  // var subpy = require('child_process').spawn('python', ['./djconsole/scaffold/server.py']);
+  // var subpy = require('child_process').spawn('python', ['./mirage/scaffold/server.py']);
   // var rq = require('request-promise');
 
   win.loadURL(url.format({

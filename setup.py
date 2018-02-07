@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 import sys
 
-sys.path.append('./djconsole')
+sys.path.append('./mirage')
 sys.path.append('./tests')
 
 if __name__ == "__main__":
@@ -29,5 +29,5 @@ if __name__ == "__main__":
         url = "https://github.com/shotastage/mirage/",
         license = "Apache",
         platforms = ["POSIX", "Windows", "Mac OS X"],
-        test_suite = "djconsole_test.suite",
+        test_suite = "mirage_test.suite",
     )

@@ -17,13 +17,13 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from djconsole          import fileable
-from djconsole.flow     import Workflow
-from djconsole.command  import log, raise_error_message
-from djconsole.command  import command
+from mirage          import fileable
+from mirage.flow     import Workflow
+from mirage.command  import log, raise_error_message
+from mirage.command  import command
 
-from djconsole.projectstartup.djfile import create_djfile
-from djconsole.configure.djfile import create_additional
+from mirage.projectstartup.djfile import create_djfile
+from mirage.configure.djfile import create_additional
 
 
 class ConfigureWorkFlow(Workflow):

@@ -17,9 +17,9 @@ Copyright 2017 Shota Shimazu.
 
 import os
 
-from djconsole.flow import Flow
-from djconsole.command import log
-from djconsole.command import command
+from mirage.flow import Flow
+from mirage.command import log
+from mirage.command import command
 
 
 class DjangoGitFlow(Flow):

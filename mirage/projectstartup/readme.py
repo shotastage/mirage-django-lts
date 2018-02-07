@@ -83,7 +83,7 @@ def get_os_name():
 def get_pip_list():
     string = ""
 
-    ignore_packages = ["setuptools", "pip", "python", "djconsole"]
+    ignore_packages = ["setuptools", "pip", "python", "mirage"]
     
     packages = get_installed_distributions(local_only = True, skip = ignore_packages)
     

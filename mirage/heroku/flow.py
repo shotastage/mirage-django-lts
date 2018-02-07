@@ -1,4 +1,4 @@
-from djconsole.flow import Workflow
+from mirage.flow import Workflow
 
 
 class DjangoHerokuWorkFlow(Workflow):

@@ -17,9 +17,9 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import readline
-from djconsole.flow import Workflow
-from djconsole.generate.urlpy import create_urlpy_script as url_script
-from djconsole.command import log, command
+from mirage.flow import Workflow
+from mirage.generate.urlpy import create_urlpy_script as url_script
+from mirage.command import log, command
 
 
 

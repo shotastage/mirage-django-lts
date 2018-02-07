@@ -1,11 +1,11 @@
 # coding: utf-8
 
 import unittest
-from djconsole.command import log
-from djconsole import djconsole
+from mirage.command import log
+from mirage import mirage
 
 
-class DjconsoleTest(unittest.TestCase):
+class mirageTest(unittest.TestCase):
 
     def setUp(self):
         log("Setup")
@@ -16,5 +16,5 @@ class DjconsoleTest(unittest.TestCase):
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTests(unittest.makeSuite(DjconsoleTest))
+    suite.addTests(unittest.makeSuite(mirageTest))
     return suite

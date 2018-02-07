@@ -16,9 +16,9 @@ Copyright 2017 Shota Shimazu.
    limitations under the License.
 """
 
-from djconsole.command import log
-from djconsole.flow    import Flow
-from djconsole.manual  import info
+from mirage.command import log
+from mirage.flow    import Flow
+from mirage.manual  import info
 
 
 class DjangoVersionFlow(Flow):

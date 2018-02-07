@@ -18,8 +18,8 @@ Copyright 2017 Shota Shimazu.
 import shutil
 import tarfile
 import os
-from djconsole.command import log, raise_error_message
-from djconsole.backup import backup
+from mirage.command import log, raise_error_message
+from mirage.backup import backup
 
 
 def _check(name):

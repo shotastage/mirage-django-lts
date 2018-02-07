@@ -11,11 +11,11 @@ import sys
 import time
 import distutils
 
-from djconsole              import project
-from djconsole              import fileable
-from djconsole.command      import log, raise_error_message
-from djconsole.flow         import Workflow
-from djconsole.database     import DBConnection
+from mirage              import project
+from mirage              import fileable
+from mirage.command      import log, raise_error_message
+from mirage.flow         import Workflow
+from mirage.database     import DBConnection
 
 
 class DjangoBackupAppWorkFlow(Workflow):

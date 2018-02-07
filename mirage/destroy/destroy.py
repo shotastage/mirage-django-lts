@@ -16,10 +16,10 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 
-from djconsole.command import log
-from djconsole.flow import Flow, Workflow
-from djconsole.destroy import app
-from djconsole.project import isproject
+from mirage.command import log
+from mirage.flow import Flow, Workflow
+from mirage.destroy import app
+from mirage.project import isproject
 
 
 

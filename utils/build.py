@@ -20,6 +20,6 @@ if __name__ == "__main__":
     system("python setup.py sdist")
 
     if opt == "--update":
-        system("pip uninstall djconsole")
+        system("pip uninstall mirage")
 
-    system("pip install dist/djconsole-0.0.11.tar.gz")
+    system("pip install dist/mirage-0.0.11.tar.gz")

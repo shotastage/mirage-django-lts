@@ -16,7 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-from djconsole.project import load_djfile, load_additional_conf, load_secret_conf
+from mirage.project import load_djfile, load_additional_conf, load_secret_conf
 
 def get_all_conf():
     return load_djfile()

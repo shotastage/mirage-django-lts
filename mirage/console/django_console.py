@@ -1,9 +1,9 @@
 import os
 import sys
 
-from djconsole import project
-from djconsole.command import log
-from djconsole.flow import Workflow
+from mirage import project
+from mirage.command import log
+from mirage.flow import Workflow
 
 
 class DjangoConsoleWorkFlow(Workflow):

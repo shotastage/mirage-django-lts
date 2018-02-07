@@ -21,8 +21,8 @@ import shlex
 import subprocess
 import webbrowser
 
-from djconsole.flow     import Workflow
-from djconsole.command  import log, raise_error_message
+from mirage.flow     import Workflow
+from mirage.command  import log, raise_error_message
 from . import server
 from . import configure
 
