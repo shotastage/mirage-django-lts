@@ -65,7 +65,7 @@ class ConfigureWorkFlow(Workflow):
             if log("Miragefile (Additional) is exists. Are you sure to overwrite?", withConfirm = True):
                 os.remove("Miragefile.addon")
             else:
-                log("DjFile is already exists!", withError = True)
+                log("Miragefile is already exists!", withError = True)
                 raise FileExistsError
                 return
         
