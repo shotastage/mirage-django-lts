@@ -132,7 +132,7 @@ def project_name():
 # Config
 
 def load_djfile():
-    with open("DjFile", "r") as djfile:
+    with open("Miragefile", "r") as djfile:
         try:
             return yaml.load(djfile)
         except:
@@ -140,7 +140,7 @@ def load_djfile():
 
 
 def load_additional_conf():
-    with open("DjFile.additional", "r") as djfile:
+    with open("Miragefile.addon", "r") as djfile:
         try:
             return yaml.load(djfile)
         except:
@@ -148,7 +148,7 @@ def load_additional_conf():
 
 
 def load_secret_conf():
-    with open("DjFile.secret", "r") as djfile:
+    with open("Miragefile.secret", "r") as djfile:
         try:
             return yaml.load(djfile)
         except:

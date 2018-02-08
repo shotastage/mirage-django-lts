@@ -33,7 +33,7 @@ class ConfigureWorkFlow(Workflow):
         log(str(self._configure_target))
 
     def main(self):
-        if self._configure_target == "addition":
+        if self._configure_target == "addon":
             self._configure_addition()
         elif self._configure_target == "secret":
             self._configure_secret()
