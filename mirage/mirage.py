@@ -50,6 +50,7 @@ def main():
 
     parser.add_argument("ide", "scaffold", None, "Scaffold")
     parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
+    parser.add_argument("internal_debug_server_launch", "internal_debug_server_launch", None, "ScaffoldDebugServer")
 
     parser.add_argument("s", "server", None, "DjangoDebugServer")
 

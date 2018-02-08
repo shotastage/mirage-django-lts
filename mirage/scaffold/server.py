@@ -68,9 +68,11 @@ class ScaffoldServerWorkflow(Workflow):
         app.run(host = "127.0.0.1", port = 5050)
 
 
-if __name__ == "__main__":
-    log("Scaffold server for debug.")
-    log("Listening started on http://127.0.0.1:1234")
-    webbrowser.open("http://127.0.0.1:1234")
-    app.debug = True
-    app.run(host = "127.0.0.1", port = 1234)
+class ScaffoldDebugServerWorkflow(Workflow):
+    
+    def main(self):
+        log("Scaffold server for debug.")
+        log("Listening started on http://127.0.0.1:1234")
+        webbrowser.open("http://127.0.0.1:1234")
+        app.debug = True
+        app.run(host = "127.0.0.1", port = 1234)

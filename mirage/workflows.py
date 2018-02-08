@@ -53,5 +53,8 @@ class Scaffold(ScaffoldWorkflow): pass
 from mirage.scaffold.server import ScaffoldServerWorkflow
 class ScaffoldServer(ScaffoldServerWorkflow): pass
 
+from mirage.scaffold.server import ScaffoldDebugServerWorkflow
+class ScaffoldDebugServer(ScaffoldDebugServerWorkflow): pass
+
 from mirage.server.debug_server import DjangoDebugServerWorkFlow
 class DjangoDebugServer(DjangoDebugServerWorkFlow): pass
