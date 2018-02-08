@@ -31,7 +31,7 @@ def log(string,
 
     if withError:
 
-        print('\033[31mDjango Console: ' + str(string) + '\033[0m')
+        print('\033[31mMirage: ' + str(string) + '\033[0m')
 
         if not errorDetail == None:
             separator_begin = "===== Error Detail =======================================================\n"
@@ -53,7 +53,7 @@ def log(string,
             return string
 
     elif withConfirm:
-        print('\033[31mDjango Console: ' + str(string) + '\033[0m')
+        print('\033[31mMirage: ' + str(string) + '\033[0m')
 
         while True:
             answer = input('\033[32m' + "Please respond with yes or no [Y/N/y/n]" + ' >> \033[0m').lower()
@@ -63,7 +63,7 @@ def log(string,
             elif answer in [ "n", "N", "no", "No", "NO", "Nope"]:
                 return False        
     else:
-        print('\033[32mDjango Coneole: \033[0m' + str(string))
+        print('\033[32mMirage: \033[0m' + str(string))
 
 
 

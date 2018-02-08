@@ -47,8 +47,8 @@ test:
 	@echo "Building Django Console..."
 	python setup.py check
 	python setup.py sdist
-	pip uninstall mirage
-	pip install dist/mirage-0.0.11.tar.gz
+	pip uninstall django-mirage
+	pip install dist/django-mirage-0.0.11.tar.gz
 
 fetch:
 	@echo "Fetching assets..."
