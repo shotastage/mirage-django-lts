@@ -27,7 +27,7 @@ def create_readme_doc(name):
 
     return textwrap.dedent(
 '''
-# {name}
+# {NAME}
 
 This is your first Django application.
 
@@ -35,22 +35,22 @@ This is your first Django application.
 Information of development environment.
 
 ## Environment
-OS: {os}
+OS: {OS}
 
 ## Versions
-Django Version: `{django_version}`
+Django Version: `{DJANGO_VER}`
 
-Python Version: `{python_version}`
+Python Version: `{PYTHON_VER}`
 
 ## Installed pip packages
-{installed_pip_packages}
+{INSTALLED_PIP_PACKAGES}
 
 ''').format(
-    name = name,
-    os = get_os_name(),
-    django_version = get_django_version(),
-    python_version = get_python_version(),
-    installed_pip_packages = get_pip_list()
+    NAME = name,
+    OS = get_os_name(),
+    DJANGO_VER = get_django_version(),
+    PYTHON_VER = get_python_version(),
+    INSTALLED_PIP_PACKAGES = get_pip_list()
 ).strip()
 
 

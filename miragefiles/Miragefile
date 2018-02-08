@@ -1,5 +1,5 @@
 project:
-    name: sample
+    name: Sample Project
     version: 0.0.1
     author: Shota Shimazu
     git: https://github.com/shotastage/django-console.git
@@ -18,3 +18,9 @@ frontend:
 
 djworkspace:
     path: .mirage
+
+copyright:
+    start_year: 2017
+    copyrights:
+        - Shota Shimazu
+        - Aika Yamashita

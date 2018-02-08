@@ -21,19 +21,19 @@ def create_package_json(proj_name, ver, desc, git_url, author, author_email, lic
 
     return "{\n" + textwrap.dedent(
 '''
-    "name": "{project_name}-shell",
-    "version": "{version}",
-    "description": "{description}",
+    "name": "{PROJECT_NAME}-shell",
+    "version": "{VERSION}",
+    "description": "{DESCRIPTION}",
     "main": "index.js",
-    "repository": "{git_repository}",
-    "author": "{author_name} <{email}>",
-    "license": "{license_type}"
+    "repository": "{GIT_REPOSITORY}",
+    "author": "{AUTHOR_NAME} <{EMAIL}>",
+    "license": "{LICENSE}"
 ''').format(
-        project_name = proj_name,
-        version = ver,
-        description = desc,
-        git_repository = git_url,
-        author_name = author,
-        email = author_email,
-        license_type = license_name
+        PROJECT_NAME = proj_name,
+        VERSION = ver,
+        DESCRIPTION = desc,
+        GIT_REPOSITORY = git_url,
+        AUTHOR_NAME = author,
+        EMAIL = author_email,
+        LICENSE = license_name
     ).strip() + "\n}"

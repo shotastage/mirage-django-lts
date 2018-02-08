@@ -28,12 +28,12 @@ def create_djfile(name, version, author, email, git_url, license, description):
     return textwrap.dedent(
 '''
 project:
-    name: {app_name}
-    version: {version}
-    author: {author} <{email}>
-    git: {git_url}
-    license: {license}
-    description: {description}
+    name: {APP_NAME}
+    version: {VERSION}
+    author: {author} <{EMAIL}>
+    git: {GIT_URL}
+    license: {LICENSE}
+    description: {DESCRIPTION}
 
 django:
     path: .
@@ -49,11 +49,11 @@ djworkspace:
     path: .mirage
 
 ''').format(
-    app_name = name,
-    version = version,
+    APP_NAME = name,
+    VERSION = version,
     author = author,
-    email = email,
-    git_url = git_url,
-    license = license,
-    description = description
+    EMAIL = email,
+    GIT_URL = git_url,
+    LICENSE = license,
+    DESCRIPTION = description
 ).strip()
