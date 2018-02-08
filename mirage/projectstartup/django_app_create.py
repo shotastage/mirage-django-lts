@@ -5,7 +5,7 @@ from mirage.flow     import Flow, Workflow, Stepflow
 from mirage.command  import log, command
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
-from .djfile            import create_djfile
+from .miragefile        import create_djfile
 from .package_json      import create_package_json
 
 class DjangoStartupWorkFlow(Workflow):
@@ -78,7 +78,7 @@ class DjangoStartupWorkFlow(Workflow):
 
 
     def _create_djfile(self, version, author, email, git_url, license_name, description):
-        with open("DjFile", "w") as f:
+        with open("Miragefile", "w") as f:
             f.write(create_djfile(self._project_name, version, author, email, git_url, license_name, description))
 
     

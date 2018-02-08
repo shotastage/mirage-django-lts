@@ -22,8 +22,8 @@ from mirage.flow     import Workflow
 from mirage.command  import log, raise_error_message
 from mirage.command  import command
 
-from mirage.projectstartup.djfile import create_djfile
-from mirage.configure.djfile import create_additional
+from mirage.projectstartup.miragefile import create_djfile
+from mirage.configure.miragefile import create_additional
 
 
 class ConfigureWorkFlow(Workflow):
@@ -42,11 +42,11 @@ class ConfigureWorkFlow(Workflow):
 
     def _configure(self):
 
-        if fileable.exists("DjFile"):
-            if log("DjFile is exists. Are you sure to overwrite DjFile?", withConfirm = True):
+        if fileable.exists("Miragefile"):
+            if log("Miragefile is exists. Are you sure to overwrite Miragefile?", withConfirm = True):
                 os.remove("DjFile")
             else:
-                log("DjFile is already exists!", withError = True)
+                log("Miragefile is already exists!", withError = True)
                 raise FileExistsError
                 return
         
@@ -57,13 +57,13 @@ class ConfigureWorkFlow(Workflow):
         license_name = log("License", withInput = True)
         description  = log("Description", withInput = True)
 
-        with open("DjFile", "w") as f:
+        with open("Miragefile", "w") as f:
             f.write(create_djfile(app_name, version, author, git_url, license_name, description))
 
     def _configure_addition(self):
-        if fileable.exists("DjFile.additional"):
-            if log("DjFile (Additional) is exists. Are you sure to overwrite?", withConfirm = True):
-                os.remove("DjFile.additional")
+        if fileable.exists("Miragefile.addon"):
+            if log("Miragefile (Additional) is exists. Are you sure to overwrite?", withConfirm = True):
+                os.remove("Miragefile.addon")
             else:
                 log("DjFile is already exists!", withError = True)
                 raise FileExistsError
@@ -71,10 +71,10 @@ class ConfigureWorkFlow(Workflow):
         
         option_string = log("Additional option string", withInput = True)
 
-        with open("DjFile.additional", "w") as f:
+        with open("Miragefile.addon", "w") as f:
             f.write(create_additional(option_string))
 
 
     def _configure_secret(self):
-        with open("DjFile.secret", "w") as f:
+        with open("Miragefile.secret", "w") as f:
             f.write("")
