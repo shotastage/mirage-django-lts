@@ -24,3 +24,7 @@ copyright:
     copyrights:
         - Shota Shimazu
         - Aika Yamashita
+
+clean:
+    - rm -rf site/
+    - rm -rf node_modules/
