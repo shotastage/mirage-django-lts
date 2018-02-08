@@ -68,7 +68,7 @@ mg server
 
 ### Run Interactive Shell
 
-You can launch Python interactive shell like Rails console.
+You can launch Python interactive shell.
 
 ```
 mg console

@@ -25,7 +25,7 @@ if __name__ == "__main__":
             ],
         },
         description = "Advanced Django console",
-        long_description = "Advanced Django command line tools like Rails.",
+        long_description = "Advanced extended command line tool for Django.",
         url = "https://github.com/shotastage/mirage/",
         license = "Apache",
         platforms = ["POSIX", "Windows", "Mac OS X"],
