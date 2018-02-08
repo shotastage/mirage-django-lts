@@ -30,7 +30,6 @@ class ConfigureWorkFlow(Workflow):
 
     def additional_init_(self):
         self._configure_target = self._option
-        log(str(self._configure_target))
 
     def main(self):
         if self._configure_target == "addon":
@@ -44,7 +43,7 @@ class ConfigureWorkFlow(Workflow):
 
         if fileable.exists("Miragefile"):
             if log("Miragefile is exists. Are you sure to overwrite Miragefile?", withConfirm = True):
-                os.remove("DjFile")
+                os.remove("Miragefile")
             else:
                 log("Miragefile is already exists!", withError = True)
                 raise FileExistsError
@@ -53,12 +52,13 @@ class ConfigureWorkFlow(Workflow):
         app_name     = log("App name", withInput = True)
         version      = log("App version", withInput = True)
         author       = log("Author name", withInput = True)
+        email        = log("Email", withInput = True)
         git_url      = log("Git URL", withInput = True)
         license_name = log("License", withInput = True)
         description  = log("Description", withInput = True)
 
         with open("Miragefile", "w") as f:
-            f.write(create_djfile(app_name, version, author, git_url, license_name, description))
+            f.write(create_djfile(app_name, version, author, email, git_url, license_name, description))
 
     def _configure_addition(self):
         if fileable.exists("Miragefile.addon"):
