@@ -45,7 +45,7 @@ class ScaffoldWorkflow(Workflow):
         try:
             try:
                 devnull = open('/dev/null', 'w')
-                server = subprocess.Popen(shlex.split("djc internal_server_launch"), stdout=devnull, stderr=devnull)
+                server = subprocess.Popen(shlex.split("mg internal_server_launch"), stdout=devnull, stderr=devnull)
             except:
                 log("Failed to launch server!", withError = True)
 

@@ -1,6 +1,6 @@
 # TODO
 
->> `djc`
+>> `mg`
 
 # Create new application
 

@@ -198,6 +198,7 @@ typings/
 ## Django Console Ignore                               ##
 #########################################################
 
+.mirage/
 .djc/
 Miragefile.addon
 Miragefile.secret

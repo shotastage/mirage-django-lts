@@ -12,7 +12,7 @@ Extended django admin or manage.py command.
 If you excute this command without name, the interactive shell ask you a name of project.
 
 ```
-djc new [NAME]
+mg new [NAME]
 ```
 
 ### Create Apps
@@ -20,13 +20,13 @@ djc new [NAME]
 You can create multiple Django apps at once.
 
 ```
-djc generate app mail post api
+mg generate app mail post api
 ```
 
 And shorten command is here.
 
 ```
-djc g app mail post api
+mg g app mail post api
 ```
 
 ### Create Model
@@ -34,13 +34,13 @@ djc g app mail post api
 You can create Django model class simply running one command.
 
 ```
-djc g model Person name:string age:integer bio:text
+mg g model Person name:string age:integer bio:text
 ```
 
 If you want to have arguments,
 
 ```
-djc g model TestModel uuid:string+autolen:maxlen=30,primary script:string+autolen:maxlen=400
+mg g model TestModel uuid:string+autolen:maxlen=30,primary script:string+autolen:maxlen=400
 ```
 
 Created model class is here.
@@ -57,13 +57,13 @@ class TestModel(models.Model):
 Run Django debug server like `rails s`.
 
 ```
-djc s
+mg s
 ```
 
 or
 
 ```
-djc server
+mg server
 ```
 
 ### Run Interactive Shell
@@ -71,19 +71,19 @@ djc server
 You can launch Python interactive shell like Rails console.
 
 ```
-djc console
+mg console
 ```
 
 or
 
 ```
-djc c
+mg c
 ```
 
 If you want to enter in database console, 
 
 ```
-djc c:db
+mg c:db
 ```
 
 
@@ -91,13 +91,13 @@ djc c:db
 Migrate database
 
 ```
-djc db:migrate
+mg db:migrate
 ```
 
 Reset database
 
 ```
-djc db:reset
+mg db:reset
 ```
 
 ### Run destroy app
@@ -105,7 +105,7 @@ djc db:reset
 You can delete Django app from your project.
 
 ```
-djc destroy app [APP NAME]
+mg destroy app [APP NAME]
 ```
 
 

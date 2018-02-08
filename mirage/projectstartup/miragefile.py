@@ -46,7 +46,7 @@ frontend:
     builder: webpack
 
 djworkspace:
-    path: .djc
+    path: .mirage
 
 ''').format(
     app_name = name,

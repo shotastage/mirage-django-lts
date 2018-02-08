@@ -24,7 +24,7 @@ class DjangoBackupAppWorkFlow(Workflow):
 
     def main(self):
         try:
-            self._check_djc_workspace()
+            self._check_mirage_workspace()
             self._create_buckup_dir()
             self._create_working_dir()
             self._copy_app()
@@ -37,10 +37,10 @@ class DjangoBackupAppWorkFlow(Workflow):
             log("Failed to backup " + self._app_name + ".", withError = True)
 
 
-    def _check_djc_workspace(self):
+    def _check_mirage_workspace(self):
         if not project.in_project():
             log("You are now out of Django project!", withError = True,
-                                errorDetail = raise_error_message(self._check_djc_workspace))
+                                errorDetail = raise_error_message(self._check_mirage_workspace))
         
             raise EnvironmentError
 
@@ -52,11 +52,11 @@ class DjangoBackupAppWorkFlow(Workflow):
     def _create_buckup_dir(self):
         log("Preparing backup directory...")
         if project.isproject():
-            if not fileable.exists(".djc/backup/"):
+            if not fileable.exists(".mirage/backup/"):
                 try:
-                    fileable.mkdir(".djc/backup/")
+                    fileable.mkdir(".mirage/backup/")
                 except:
-                    log("Failed to prepare .djc/backup with unknown error.", withError = True, errorDetail = str(os.listdir()))
+                    log("Failed to prepare .mirage/backup with unknown error.", withError = True, errorDetail = str(os.listdir()))
             else:
                 log("OK")
     
@@ -64,11 +64,11 @@ class DjangoBackupAppWorkFlow(Workflow):
     def _create_working_dir(self):
         log("Preparing working directory...")
         if project.in_project():
-            if not fileable.exists(".djc/cache/"):
+            if not fileable.exists(".mirage/cache/"):
                 try:
-                    os.makedirs(".djc/cache/")
+                    os.makedirs(".mirage/cache/")
                 except:
-                    log("Failed to prepare .djc/cache with unknown error.", withError = True)
+                    log("Failed to prepare .mirage/cache with unknown error.", withError = True)
             else:
                 log("OK")
 
@@ -76,10 +76,10 @@ class DjangoBackupAppWorkFlow(Workflow):
     def _copy_app(self):
         log("Copying app...")
         try:
-            fileable.copy(self._app_name, ".djc/cache/" + self._app_name)
+            fileable.copy(self._app_name, ".mirage/cache/" + self._app_name)
         except:
             if log("Old cache is exists! Are you sure to continue overwritting?", withConfirm = True):
-                fileable.copy(self._app_name, ".djc/cache/" + self._app_name, force = True)
+                fileable.copy(self._app_name, ".mirage/cache/" + self._app_name, force = True)
             else:
                 log("Failed to backup!", withError = True)
 
@@ -87,17 +87,17 @@ class DjangoBackupAppWorkFlow(Workflow):
     def _archive_dir(self):
         log("Archiving app...")
         filename = self._app_name + str(time.time())
-        shutil.make_archive(".djc/cache/" + filename, "zip")
+        shutil.make_archive(".mirage/cache/" + filename, "zip")
         return filename
 
 
     def _save_backup(self, filename):
-        fileable.move(".djc/cache/" + filename + ".zip", ".djc/backup/")
+        fileable.move(".mirage/cache/" + filename + ".zip", ".mirage/backup/")
 
 
     def _clean_cache(self):
         log("Cleaning...")
-        fileable.rm(".djc/cache/" + self._app_name)
+        fileable.rm(".mirage/cache/" + self._app_name)
 
 
     def _prepare_db(self):

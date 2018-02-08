@@ -19,9 +19,9 @@ usage = """
 Django Console v0.0.12
 
 Usage:
-    djc [action] option <--sub-option> <inputs>
+    mg [action] option <--sub-option> <inputs>
 
-    djc [action]:[subaction] <--sub-option> <inputs>
+    mg [action]:[subaction] <--sub-option> <inputs>
 
 
 Actions:
