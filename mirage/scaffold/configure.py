@@ -36,12 +36,12 @@ def get_proj_config(conf_name):
 
     try:
         data = load_djfile()
-        if os.path.exists("DjFile.additional"):
+        if os.path.exists("Miragefile.addon"):
             additional = load_additional_conf()
-        elif os.path.exists("DjFile.secret"):
+        elif os.path.exists("Miragefile.secret"):
             secret = load_secret_conf()
     except:
-        return "Invalid DjFile"
+        return "Invalid Miragefile"
 
     if conf_name == "all":
         return data
@@ -72,7 +72,7 @@ def get_django_config(conf_name):
     try:
         data = load_djfile()
     except:
-        return "Invalid DjFile"
+        return "Invalid Miragefile"
 
     if conf_name == "path":
         if data["django"]["path"] == ".":
