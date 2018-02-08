@@ -14,3 +14,23 @@ Copyright 2017 Shota Shimazu.
    See the License for the specific language governing permissions and
    limitations under the License.
 """
+
+from mirage.flow import Workflow
+from mirage import project
+from . import copyright_source
+
+class TouchWorkFlow(Workflow):
+
+    def additional_init_(self):
+        self._fname = None
+
+    def main(self):
+
+        if project.in_project():
+            try:
+                with open(self._fname, "w") as f:
+                    f.write(copyright_source.copyright_doc())
+            except:
+                log("Good bye!")
+        else:
+            log("Failed to launch server!", withError = True, errorDetail = "You are now out of Django project.")
