@@ -32,6 +32,11 @@ Copyright (c) {START_YEAR}-{CURRENT_YEAR} {COPYRIGHT_AUTHOR} All Rights Reserved
 This software is released under the terms of {LICENSE_NAME}, see LICENSE for detail.
 {LICENSE_URL}
 """
+
+# Import Library
+
+# Code Here
+
     ''').format(
         PROJECT_NAME = proj_name,
         FILE_NAME = fname,

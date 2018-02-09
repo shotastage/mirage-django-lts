@@ -20,18 +20,18 @@ import yaml
 
 
 def get_all_config():
-    return load_djfile()
+    return load_miragefile()
 
 
 def get_proj_config(conf_name):
 
     try:
-        data = load_djfile()
+        data = load_miragefile()
 
-        if os.path.exists("DjFile.additional"): additional = load_additional_conf()
-        elif os.path.exists("DjFile.secret"):   secret = load_secret_conf()
+        if os.path.exists("Miragefile.addon"): additional = load_additional_conf()
+        elif os.path.exists("Miragefile.secret"):   secret = load_secret_conf()
     except:
-        return "Invalid DjFile"
+        return "Invalid Miragefile"
 
     if conf_name == "all":
         return data
@@ -65,9 +65,9 @@ def get_proj_config(conf_name):
 def get_django_config(conf_name):
 
     try:
-        data = load_djfile()
+        data = load_miragefile()
     except:
-        return "Invalid DjFile"
+        return "Invalid Miragefile"
 
     if conf_name == "path":
         if data["django"]["path"] == ".": return os.getcwd()
@@ -85,9 +85,9 @@ def get_django_config(conf_name):
 def get_node_config(conf_name):
 
     try:
-        data = load_djfile()
+        data = load_miragefile()
     except:
-        return "Invalid DjFile"
+        return "Invalid Miragefile"
 
     if conf_name == "path":
         if data["frontend"]["path"] == ".": return os.getcwd()
@@ -101,8 +101,8 @@ def get_node_config(conf_name):
 
 
 
-def load_djfile():
-    with open("DjFile", "r") as djfile:
+def load_miragefile():
+    with open("Miragefile", "r") as djfile:
         try:
             return yaml.load(djfile)
         except:
@@ -110,7 +110,7 @@ def load_djfile():
 
 
 def load_additional_conf():
-    with open("DjFile.additional", "r") as djfile:
+    with open("Miragefile.addon", "r") as djfile:
         try:
             return yaml.load(djfile)
         except:
@@ -118,12 +118,43 @@ def load_additional_conf():
 
 
 def load_secret_conf():
-    with open("DjFile.secret", "r") as djfile:
+    with open("Miragefile.secret", "r") as djfile:
         try:
             return yaml.load(djfile)
         except:
             raise Exception
 
 
-def save_djfile(yaml_struct):
-    pass
+"""
+project:
+    name: Sample Project
+    version: 0.0.1
+    author: Shota Shimazu
+    git: https://github.com/shotastage/django-console.git
+    license: restricted
+    description: "This is template!"
+
+    django:
+        path: sample
+        package: pipenv
+        database: PostgreSQL
+
+    frontend:
+        path: shell
+        package: yarn
+        builder: webpack
+
+    djworkspace:
+        path: .mirage
+
+    copyright:
+        start_year: 2017
+        copyrights:
+            - Shota Shimazu
+            - Aika Yamashita
+
+clean:
+    - rm -rf site/
+    - rm -rf node_modules/
+
+"""
