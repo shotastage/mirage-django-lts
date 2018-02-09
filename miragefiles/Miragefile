@@ -6,24 +6,24 @@ project:
     license: restricted
     description: "This is template!"
 
-django:
-    path: sample
-    package: pipenv
-    database: PostgreSQL
+    django:
+        path: sample
+        package: pipenv
+        database: PostgreSQL
 
-frontend:
-    path: shell
-    package: yarn
-    builder: webpack
+    frontend:
+        path: shell
+        package: yarn
+        builder: webpack
 
-djworkspace:
-    path: .mirage
+    djworkspace:
+        path: .mirage
 
-copyright:
-    start_year: 2017
-    copyrights:
-        - Shota Shimazu
-        - Aika Yamashita
+    copyright:
+        start_year: 2017
+        copyrights:
+            - Shota Shimazu
+            - Aika Yamashita
 
 clean:
     - rm -rf site/
