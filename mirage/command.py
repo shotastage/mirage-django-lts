@@ -25,7 +25,7 @@ from subprocess import check_output, DEVNULL, STDOUT
 
 
 def log(string,
-            withError = False, withExitOnError = False, errorDetail = None,
+            withError = False, errorDetail = None,
             withInput = False, withConfirm = False, default = None):
 
 
@@ -38,11 +38,6 @@ def log(string,
             separator_end   = "==========================================================================\n"
             print('\033[31m' + separator_begin + errorDetail + "\n" + separator_end + '\033[0m')
 
-        if withExitOnError:
-            warnings.warn(
-            "command.log with withExitOnError will be depricated on next version!",
-            DeprecationWarning)
-            sys.exit(1)
 
     elif withInput:
         string = str(input('\033[32m' + str(string) + ' >> \033[0m'))
@@ -113,10 +108,12 @@ def command(command, withOutput = False):
         try:
             check_output(separated_cmds, stderr=STDOUT)
         except:
-            log("Failed to exec " + command + "!", withError = True, withExitOnError = True)
+            log("Failed to exec " + command + "!", withError = True)
+            return
 
     else:
         try:
             check_output(separated_cmds, stderr=DEVNULL)
         except:
-            log("Failed to exec " + command + "!", withError = True, withExitOnError = True)
+            log("Failed to exec " + command + "!", withError = True)
+            return

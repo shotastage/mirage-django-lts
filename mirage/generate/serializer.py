@@ -34,7 +34,7 @@ class DjangoSerializerMakeFlow(Flow):
         try:
             self._check_all()
         except:
-            log("Environmental compatability is invalid.", withError = True, withExitOnError = True)
+            log("Environmental compatability is invalid.", withError = True)
             return
 
 
