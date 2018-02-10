@@ -31,7 +31,6 @@ class MirageEvironmet():
     def __del__(self):
         log("Out Mirage Environ")
 
-
     @staticmethod
     def in_project():
         try:

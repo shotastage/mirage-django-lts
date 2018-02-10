@@ -1,0 +1,1 @@
+class InDir(): pass
