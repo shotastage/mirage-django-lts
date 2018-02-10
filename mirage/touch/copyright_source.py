@@ -24,7 +24,7 @@ def copyright_doc(proj_name, fname, your_name, start, copyrightors, license, lic
 {PROJECT_NAME}
 {FILE_NAME}
 
-Created by {YOUR_NAME} on {CURRENT_YEAR}
+Created by {YOUR_NAME} on {CURRENT}
 
 {COPYRIGHTS}
 
@@ -41,8 +41,8 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
         FILE_NAME = fname,
         YOUR_NAME = your_name,
         START_YEAR = start,
-        CURRENT_YEAR = get_current(),
-        COPYRIGHTS = gen_copyrights(start, get_current(), copyrightors),
+        CURRENT = get_current(),
+        COPYRIGHTS = gen_copyrights(start, get_current_year(), copyrightors),
         LICENSE_NAME = license,
         LICENSE_URL = license_url
     ).strip()
@@ -51,11 +51,20 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
 def get_current():
     return datetime.datetime.now().strftime("%Y/%m/%d")
 
+
+def get_current_year():
+    return datetime.datetime.now().strftime("%Y")
+
+
 def gen_copyrights(start, current, copyrightors):
 
     string = ""
 
-    for copyrightor in copyrightors:
-        string += "Copyright (c) {0}-{1} {2} All Rights Reserved.\n".format(start, current, copyrightor)
+    if str(start) == str(current):
+        for copyrightor in copyrightors:
+            string += "Copyright (c) {0} {1} All Rights Reserved.\n".format(current, copyrightor)
+    else:
+        for copyrightor in copyrightors:
+            string += "Copyright (c) {0}-{1} {2} All Rights Reserved.\n".format(start, current, copyrightor)
 
     return string

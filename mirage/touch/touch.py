@@ -44,25 +44,21 @@ class TouchWorkFlow(Workflow):
             your_name = miragefile.utils.get_private_profile("name")
         except:
             your_name = log("What's your name?", withInput = True)
-        log(your_name)
+
 
         start_year  = miragefile.utils.get_copyright(
                                 MiragefileDataCategory.copyright_start_year)
-        log(start_year)
 
         copyrights  = miragefile.utils.get_copyright(
                                 MiragefileDataCategory.copyright_copyrigtors)
-        log(copyrights)
 
         licensename = miragefile.utils.get_project(
                                 MiragefileDataCategory.project_license)
-        log(licensename)
 
         try:
             license_url = miragefile.utils.get_private_profile("license")
         except:
             license_url = log("License doc URL", withInput = True)
-        log(license_url)
 
 
         if project.in_project():
