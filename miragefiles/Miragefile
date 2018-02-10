@@ -1,7 +1,7 @@
 project:
     name: Sample Project
     version: 0.0.1
-    author: Shota Shimazu
+    author: Shota Shimazu <hornet.live.mf@gmail.com>
     git: https://github.com/shotastage/django-console.git
     license: restricted
     description: "This is template!"

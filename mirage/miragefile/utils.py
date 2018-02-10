@@ -84,13 +84,18 @@ def load_miragefile_addon():
 def load_miragefile_secret():
     return _load_yaml("Miragefile.secret")
 
+
 def _load_yaml(filename):
+
+    if not os.path.exists(filename):
+        return filename + " does not exist!"
+
     with open(filename, "r") as yamlfile:
         try: 
             return yaml.load(yamlfile)
         except:
             log("Failed to load Miragefile!", withError = True, errorDetail = raise_error_message(_load_yaml))
-            return "Invalid Miragefile"
+            return load_failed()
 
 def load_failed():
     return "Invalid Miragefile"
