@@ -27,7 +27,6 @@ def copyright_doc(proj_name, fname, your_name, start, copyrights, license, licen
 Created by {YOUR_NAME} on {CURRENT_YEAR}
 
 Copyright (c) {START_YEAR}-{CURRENT_YEAR} {COPYRIGHT_AUTHOR} All Rights Reserved.
-Copyright (c) {START_YEAR}-{CURRENT_YEAR} {COPYRIGHT_AUTHOR} All Rights Reserved.
 
 This software is released under the terms of {LICENSE_NAME}, see LICENSE for detail.
 {LICENSE_URL}
@@ -41,8 +40,8 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
         PROJECT_NAME = proj_name,
         FILE_NAME = fname,
         YOUR_NAME = your_name,
-        CURRENT_YEAR = get_current(),
         START_YEAR = start,
+        CURRENT_YEAR = get_current(),
         COPYRIGHT_AUTHOR = copyrights,
         LICENSE_NAME = license,
         LICENSE_URL = license_url
@@ -50,10 +49,4 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
 
 
 def get_current():
-    now = datetime.datetime.now()
-
-    year = str(now.year)
-    month = str(now.month)
-    day = str(now.day)
-
-    return year + "/" + month + "/" + day
+    return datetime.datetime.now().strftime("%Y/%m/%d")

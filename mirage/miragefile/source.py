@@ -73,5 +73,4 @@ test:
 
 
 def get_start_year():
-    # return datetime.datetime.now().strftime("%Y/%m/%d")
     return datetime.datetime.now().strftime("%Y")
