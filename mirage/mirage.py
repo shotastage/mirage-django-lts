@@ -54,5 +54,7 @@ def main():
 
     parser.add_argument("s", "server", None, "DjangoDebugServer")
 
+    parser.add_argument("f", "file", None, "Touch")
+
     # Excute
     parser.parse()

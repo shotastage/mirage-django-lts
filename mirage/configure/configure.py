@@ -19,10 +19,8 @@ import os
 
 from mirage          import fileable
 from mirage.flow     import Workflow
-from mirage.command  import log, raise_error_message
-from mirage.command  import command
-
-from mirage.projectstartup.miragefile import create_djfile
+from mirage.command  import command, log, raise_error_message
+from mirage.miragefile import source
 from mirage.configure.miragefile import create_additional
 
 
@@ -49,6 +47,7 @@ class ConfigureWorkFlow(Workflow):
                 raise FileExistsError
                 return
         
+        
         app_name     = log("App name", withInput = True)
         version      = log("App version", withInput = True)
         author       = log("Author name", withInput = True)
@@ -56,9 +55,11 @@ class ConfigureWorkFlow(Workflow):
         git_url      = log("Git URL", withInput = True)
         license_name = log("License", withInput = True)
         description  = log("Description", withInput = True)
+        copyrightor  = log("Copyrightor", withInput = True, default = author)
+
 
         with open("Miragefile", "w") as f:
-            f.write(create_djfile(app_name, version, author, email, git_url, license_name, description))
+            f.write(source.create(app_name, version, author, email, git_url, license_name, description, copyrightor))
 
     def _configure_addition(self):
         if fileable.exists("Miragefile.addon"):

@@ -73,6 +73,19 @@ def get_copyright(item):
         return load_failed()
 
 
+def get_private_profile(item):
+
+    data = load_miragefile_secret()
+
+    if item == "name":
+        return ["private_profile"]["name"]
+    elif item == "license":
+        return ["private_license"]["url"]
+    else:
+        log("The config information named " + item + " does not exist!", withError = True) 
+        return load_failed()
+
+
 def load_miragefile():
     return _load_yaml("Miragefile")
 

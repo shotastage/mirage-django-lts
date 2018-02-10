@@ -26,24 +26,53 @@ from . import copyright_source
 class TouchWorkFlow(Workflow):
 
     def additional_init_(self):
-        self._fname = None
+        
+        self._fname = self._option
+      
+        if self._fname == None:
+            self._fname = log("File Name", withInput = True)
+
 
     def main(self):
 
-        filename  = log("File Name", withInput = True)
-        proj_name = miragefile.utils.get_project(MiragefileDataCategory.project_name)
-        your_name = ""
-        start_year = miragefile.utils.get_copyright(MiragefileDataCategory.copyright_start_year)
-        copyrights = miragefile.utils.get_copyright(MiragefileDataCategory.copyright_copyrigtors)
-        license = miragefile.utils.get_project(MiragefileDataCategory.project_license)
-        license_url = ""
+
+        proj_name   = miragefile.utils.get_project(
+                                MiragefileDataCategory.project_name)
+        log(proj_name)
+
+        try:
+            your_name = miragefile.utils.get_private_profile("name")
+        except:
+            your_name = log("What's your name?", withInput = True)
+        log(your_name)
+
+        start_year  = miragefile.utils.get_copyright(
+                                MiragefileDataCategory.copyright_start_year)
+        log(start_year)
+
+        copyrights  = miragefile.utils.get_copyright(
+                                MiragefileDataCategory.copyright_copyrigtors)
+        log(copyrights)
+
+        licensename = miragefile.utils.get_project(
+                                MiragefileDataCategory.project_license)
+        log(licensename)
+
+        try:
+            license_url = miragefile.utils.get_private_profile("license")
+        except:
+            license_url = log("License doc URL", withInput = True)
+        log(license_url)
+
 
         if project.in_project():
             try:
-                with open(self._fname, "w") as f:
-                    f.write(copyright_source.copyright_doc(proj_name, filename, your_name, start_year, 
-                        copyrights, license, license_url))
+                with open(str(self._fname), "w") as f:
+                    f.write(
+                        copyright_source.copyright_doc(proj_name, self._fname, your_name,
+                                                            start_year, copyrights, licensename, license_url)
+                    )
             except:
-                log("Good bye!")
+                log("Failed to touch new python script!", withError = True, errorDetail = raise_error_message(self.main))
         else:
             log("Failed to launch server!", withError = True, errorDetail = "You are now out of Django project.")

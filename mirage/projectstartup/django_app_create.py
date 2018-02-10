@@ -6,7 +6,6 @@ from mirage.command import log, command
 from mirage.miragefile import source
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
-from .miragefile        import create_djfile
 from .package_json      import create_package_json
 
 class DjangoStartupWorkFlow(Workflow):

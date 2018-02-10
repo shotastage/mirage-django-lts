@@ -58,3 +58,6 @@ class ScaffoldDebugServer(ScaffoldDebugServerWorkflow): pass
 
 from mirage.server.debug_server import DjangoDebugServerWorkFlow
 class DjangoDebugServer(DjangoDebugServerWorkFlow): pass
+
+from mirage.touch.touch import TouchWorkFlow
+class Touch(TouchWorkFlow): pass
