@@ -16,21 +16,26 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
+import warnings
 from mirage.project import load_djfile, load_additional_conf, load_secret_conf
 
 def get_all_conf():
+    warnings.warn("get_all_conf will be deprecated on next release.", PendingDeprecationWarning)
     return load_djfile()
 
 def get_app_name():
+    warnings.warn("get_app_name will be deprecated on next release.", PendingDeprecationWarning)
     data = load_djfile()
     return data["project"]["name"]
 
 def get_app_ver():
+    warnings.warn("get_app_ver will be deprecated on next release.", PendingDeprecationWarning)
     data = load_djfile()
     return data["project"]["version"]
 
 
 def get_proj_config(conf_name):
+    warnings.warn("get_proj_config will be deprecated on next release.", PendingDeprecationWarning)
 
     data = None
 
@@ -66,6 +71,7 @@ def get_proj_config(conf_name):
 
 
 def get_django_config(conf_name):
+    warnings.warn("get_django_config will be deprecated on next release.", PendingDeprecationWarning)
 
     data = None
 
@@ -86,4 +92,5 @@ def get_django_config(conf_name):
 
 
 def save_djfile(yaml_struct):
+    warnings.warn("save_djfile will be deprecated on next release.", PendingDeprecationWarning)
     pass

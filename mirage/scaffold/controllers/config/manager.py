@@ -3,6 +3,8 @@ from flask import Flask, render_template, request
 from mirage import project
 from mirage.scaffold.manager import ScaffoldManager
 from mirage.scaffold import configure
+from mirage.miragefile import utils as mfile
+from mirage.miragefile.utils import MiragefileDataCategory as Category
 
 
 class ConfigManager(ScaffoldManager):
@@ -11,26 +13,26 @@ class ConfigManager(ScaffoldManager):
     def make_view(req):
         if req.method == "GET":
             return render_template('config.html',
-                project_name    = project.get_project_name(),
+                project_name    = mfile.get_project(Category.project_name),
                 app_list        = project.get_app_list(),
-                proj_name       = configure.get_proj_config("name"),
-                proj_ver        = configure.get_proj_config("version"),
-                proj_author     = configure.get_proj_config("author"),
-                proj_git        = configure.get_proj_config("git"),
-                proj_license    = configure.get_proj_config("license"),
-                proj_msg        = configure.get_proj_config("description")
+                proj_name       = mfile.get_project(Category.project_name),
+                proj_ver        = mfile.get_project(Category.project_version),
+                proj_author     = mfile.get_project(Category.project_author),
+                proj_git        = mfile.get_project(Category.project_git),
+                proj_license    = mfile.get_project(Category.project_license),
+                proj_msg        = mfile.get_project(Category.project_description)
             )
         
         if req.method == "POST":
             return render_template('config.html',
                 project_name    = project.get_project_name(),
                 app_list        = project.get_app_list(),
-                proj_name       = configure.get_proj_config("name"),
-                proj_ver        = configure.get_proj_config("version"),
-                proj_author     = configure.get_proj_config("author"),
-                proj_git        = configure.get_proj_config("git"),
-                proj_license    = configure.get_proj_config("license"),
-                proj_msg        = configure.get_proj_config("description")
+                proj_name       = mfile.get_project(Category.project_name),
+                proj_ver        = mfile.get_project(Category.project_version),
+                proj_author     = mfile.get_project(Category.project_author),
+                proj_git        = mfile.get_project(Category.project_git),
+                proj_license    = mfile.get_project(Category.project_license),
+                proj_msg        = mfile.get_project(Category.project_description)
             )
 
 class DjangoConfigManager(ScaffoldManager):
@@ -40,12 +42,12 @@ class DjangoConfigManager(ScaffoldManager):
         return render_template('config_django.html',
             project_name    = project.get_project_name(),
             app_list        = project.get_app_list(),
-            proj_name       = configure.get_proj_config("name"),
-            proj_ver        = configure.get_proj_config("version"),
-            proj_author     = configure.get_proj_config("author"),
-            proj_git        = configure.get_proj_config("git"),
-            proj_license    = configure.get_proj_config("license"),
-            proj_msg        = configure.get_proj_config("description"),
+            proj_name       = mfile.get_project(Category.project_name),
+            proj_ver        = mfile.get_project(Category.project_version),
+            proj_author     = mfile.get_project(Category.project_author),
+            proj_git        = mfile.get_project(Category.project_git),
+            proj_license    = mfile.get_project(Category.project_license),
+            proj_msg        = mfile.get_project(Category.project_description),
         )
 
 
@@ -56,10 +58,10 @@ class NodeConfigManager(ScaffoldManager):
         return render_template('config_nodejs.html',
             project_name    = project.get_project_name(),
             app_list        = project.get_app_list(),
-            proj_name       = configure.get_proj_config("name"),
-            proj_ver        = configure.get_proj_config("version"),
-            proj_author     = configure.get_proj_config("author"),
-            proj_git        = configure.get_proj_config("git"),
-            proj_license    = configure.get_proj_config("license"),
-            proj_msg        = configure.get_proj_config("description")
+            proj_name       = mfile.get_project(Category.project_name),
+            proj_ver        = mfile.get_project(Category.project_version),
+            proj_author     = mfile.get_project(Category.project_author),
+            proj_git        = mfile.get_project(Category.project_git),
+            proj_license    = mfile.get_project(Category.project_license),
+            proj_msg        = mfile.get_project(Category.project_description),
         )

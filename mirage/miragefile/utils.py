@@ -60,6 +60,21 @@ def get_project(item):
         return load_failed()
 
 
+def get_django(item):
+
+    data = load_miragefile()
+
+    if item == MiragefileDataCategory.django_path:
+        return data["project"]["django"]["path"]
+    elif item == MiragefileDataCategory.django_package_manager:
+        return data["project"]["django"]["package"]
+    elif item == MiragefileDataCategory.django_db_backend:
+        return data["project"]["django"]["database"]
+    else:
+        log("The config information named " + item + " does not exist!", withError = True) 
+        return load_failed()
+
+
 def get_copyright(item):
 
     data = load_miragefile()
@@ -81,6 +96,21 @@ def get_private_profile(item):
         return data["private_profile"]["name"]
     elif item == "license":
         return data["private_license"]["url"]
+    else:
+        log("The config information named " + item + " does not exist!", withError = True) 
+        return load_failed()
+
+
+
+def get_reserved_addon_config(item):
+
+    data = load_miragefile_addon()
+
+    if item == "iyashi":
+        try:
+            return data["additional_options"]["iyashi"]
+        except:
+            return False
     else:
         log("The config information named " + item + " does not exist!", withError = True) 
         return load_failed()

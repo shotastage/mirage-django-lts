@@ -23,6 +23,8 @@ import webbrowser
 
 from mirage.flow     import Workflow
 from mirage.command  import log, raise_error_message
+from mirage.miragefile import utils as mfile 
+from mirage.miragefile.utils import MiragefileDataCategory as Category
 from . import server
 from . import configure
 
@@ -35,11 +37,13 @@ class ScaffoldWorkflow(Workflow):
         log("Launching server...")
        
         try:
-            django_path = configure.get_django_config("path")
-            os.chdir(django_path)
+            django_path = mfile.get_django(Category.django_path)
+
+            if not django_path == ".":
+                os.chdir(django_path)
         except:
             log("Failed to move Django project directory.", withError = True,
-                errorDetail = "Config directory: " + str(os.getcwd()) + "/" + configure.get_django_config("path"))
+                errorDetail = "Config directory: " + str(os.getcwd()) + "/" + mfile.get_django(Category.django_path))
             return
 
         try:

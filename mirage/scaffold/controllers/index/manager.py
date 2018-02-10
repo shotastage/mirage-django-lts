@@ -3,6 +3,7 @@ from flask import Flask, render_template
 from mirage import project
 from mirage.scaffold.manager import ScaffoldManager
 from mirage.scaffold import configure
+from mirage.miragefile import utils
 from ... import iyashi
 
 
@@ -10,7 +11,7 @@ class IndexManager(ScaffoldManager):
     
     @staticmethod
     def make_view():
-        if configure.get_proj_config("iyashi"):
+        if utils.get_reserved_addon_config("iyashi"):
             iyashi_image = iyashi.select_photo()
         else:
             iyashi_image = "none"
