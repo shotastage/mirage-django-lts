@@ -34,7 +34,7 @@ doc: docs/
 clean:
 	@echo "Cleaning..."
 	rm -rf site/
-	rm -rf mirage.egg-info/
+	rm -rf django_mirage.egg-info/
 	rm -rf dist/
 	rm -rf node_modules/
 	rm -rf testing/
