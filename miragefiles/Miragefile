@@ -16,12 +16,12 @@ project:
         package: yarn
         builder: webpack
 
-    djworkspace:
+    workspace:
         path: .mirage
 
     copyright:
         start_year: 2017
-        copyrights:
+        copyrightors:
             - Shota Shimazu
             - Aika Yamashita
 
