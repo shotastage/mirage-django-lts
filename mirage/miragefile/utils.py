@@ -78,9 +78,9 @@ def get_private_profile(item):
     data = load_miragefile_secret()
 
     if item == "name":
-        return ["private_profile"]["name"]
+        return data["private_profile"]["name"]
     elif item == "license":
-        return ["private_license"]["url"]
+        return data["private_license"]["url"]
     else:
         log("The config information named " + item + " does not exist!", withError = True) 
         return load_failed()

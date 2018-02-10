@@ -27,7 +27,6 @@ def copyright_doc(proj_name, fname, your_name, start, copyrightors, license, lic
 Created by {YOUR_NAME} on {CURRENT}
 
 {COPYRIGHTS}
-
 This software is released under the terms of {LICENSE_NAME}, see LICENSE for detail.
 {LICENSE_URL}
 """

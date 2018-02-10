@@ -38,7 +38,6 @@ class TouchWorkFlow(Workflow):
 
         proj_name   = miragefile.utils.get_project(
                                 MiragefileDataCategory.project_name)
-        log(proj_name)
 
         try:
             your_name = miragefile.utils.get_private_profile("name")
