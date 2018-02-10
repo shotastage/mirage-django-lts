@@ -1,8 +1,9 @@
 import os
 import shutil
 
-from mirage.flow     import Flow, Workflow, Stepflow
-from mirage.command  import log, command
+from mirage.flow import Flow, Workflow, Stepflow
+from mirage.command import log, command
+from mirage.miragefile import source
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
 from .miragefile        import create_djfile
@@ -26,6 +27,7 @@ class DjangoStartupWorkFlow(Workflow):
         git_url      = log("Git URL",     withInput = True)
         license_name = log("License",     withInput = True)
         description  = log("Description", withInput = True)
+        copyrightor  = log("Copyrightor", withInput = True, default = author)
 
 
         try:
@@ -48,9 +50,9 @@ class DjangoStartupWorkFlow(Workflow):
         log("Generating readme...")
         self._create_docs()
 
-        # Generate DjFile
-        log("Generating configuration...")
-        self._create_djfile(version, author, email, git_url, license_name, description)
+        # Generate Miragefile
+        log("Generating Miragefile...")
+        self._create_miragefile(version, author, email, git_url, license_name, description, copyrightor)
 
         # Generate package.json
         log("Generating package configuration...")
@@ -77,9 +79,10 @@ class DjangoStartupWorkFlow(Workflow):
         command("django-admin startproject " + self._project_name)
 
 
-    def _create_djfile(self, version, author, email, git_url, license_name, description):
+    def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):    
         with open("Miragefile", "w") as f:
-            f.write(create_djfile(self._project_name, version, author, email, git_url, license_name, description))
+            f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
+     
 
     
     def _create_package_json(self, version, description, git_repository, author_name, email, license_name):

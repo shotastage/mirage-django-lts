@@ -16,9 +16,12 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import textwrap
+import datetime
 
-def create(proj_name, proj_ver, proj_author, author_email, git_url, proj_license,
-        proj_desc, copyrightors):
+
+def create(proj_name, proj_ver, proj_author, author_email, git_url,
+                                        proj_license, proj_desc, copyrightor):
+
     return textwrap.dedent('''
 project:
     name: {PROJECT_NAME}
@@ -42,25 +45,33 @@ project:
         path: .mirage
 
     copyright:
-        start_year: 2017
+        start_year: {COPYRIGHT_START}
         copyrightors:
-            - Shota Shimazu
-            - Aika Yamashita
+            - {COPYRIGHTOR}
 
 
 build:
     - echo "Build script is here."
+
 clean:
     - echo "Clean script is here."
 
 test:
     - echo "Test script is here."
+
 ''').format(
-    PROJECT_NAME = proj_name,
-    PROJECT_VERSION = proj_ver,
-    PROJECT_AUTHOR = proj_author,
+    PROJECT_NAME        = proj_name,
+    PROJECT_VERSION     = proj_ver,
+    PROJECT_AUTHOR      = proj_author,
     PROJECT_AUHOR_EMAIL = author_email,
-    GIT_URL = git_url,
-    PROJECT_LICENSE = proj_license,
-    PROJECT_DESC = proj_desc
+    GIT_URL             = git_url,
+    PROJECT_LICENSE     = proj_license,
+    PROJECT_DESC        = proj_desc,
+    COPYRIGHT_START     = get_start_year(),
+    COPYRIGHTOR         = copyrightor
 ).strip()
+
+
+def get_start_year():
+    # return datetime.datetime.now().strftime("%Y/%m/%d")
+    return datetime.datetime.now().strftime("%Y")
