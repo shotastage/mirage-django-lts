@@ -41,7 +41,7 @@ def log(string,
         if withExitOnError:
             warnings.warn(
             "command.log with withExitOnError will be depricated on next version!",
-            PendingDeprecationWarning)
+            DeprecationWarning)
             sys.exit(1)
 
     elif withInput:
