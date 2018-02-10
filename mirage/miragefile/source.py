@@ -23,6 +23,8 @@ def create(proj_name, proj_ver, proj_author, author_email, git_url,
                                         proj_license, proj_desc, copyrightor):
 
     return textwrap.dedent('''
+miragefile: v0.0.1
+
 project:
     name: {PROJECT_NAME}
     version: {PROJECT_VERSION}

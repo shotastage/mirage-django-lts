@@ -105,18 +105,16 @@ def get_app_list():
 
 
 # Old
-def isproject():
-    warnings.warn(
-            "project.isproject will be depricated on next version!",
-            PendingDeprecationWarning)
-    
-    if os.path.isfile("manage.py"):
-        return True
-    else:
-        return False
-
 def project_name():
-    if isproject:
+
+    status = False
+
+    if os.path.isfile("manage.py"):
+        status = True
+    else:
+        status = False
+
+    if status:
 
         contents = os.listdir(os.getcwd())
 

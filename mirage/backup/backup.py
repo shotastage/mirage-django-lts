@@ -51,7 +51,7 @@ class DjangoBackupAppWorkFlow(Workflow):
 
     def _create_buckup_dir(self):
         log("Preparing backup directory...")
-        if project.isproject():
+        if project.in_project():
             if not fileable.exists(".mirage/backup/"):
                 try:
                     fileable.mkdir(".mirage/backup/")
