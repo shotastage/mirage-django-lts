@@ -17,7 +17,6 @@ PyYAML = "*"
 pylint = "*"
 Django = "*"
 mkdocs = "*"
-mirage = "*"
 
 
 [requires]
