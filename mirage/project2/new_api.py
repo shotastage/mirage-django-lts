@@ -28,16 +28,26 @@ class MirageEvironmet():
         log("Enter Mirage Environ")
         self._level = env_level
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exception_type, exception_value, traceback):
+        return False
+
     def __del__(self):
         log("Out Mirage Environ")
+
+
+    @staticmethod
+    def set_import_root():
+        sys.path.append("./")
+
 
     @staticmethod
     def in_project():
         try:
             set_import_root()
-
             import manage
-
             return True
         except ImportError:
             return False
@@ -49,9 +59,7 @@ class MirageEvironmet():
     def in_app():
         try:
             set_import_root()
-
             import apps
-        
             if os.path.isfile("apps.py"):
                 return True
             else:
@@ -89,11 +97,6 @@ class MirageEvironmetLevel(enum.Enum):
     inapp       = 1
     outproject  = 2
 
-
-
-
-def set_import_root():
-    sys.path.append("./")
 
 
 
