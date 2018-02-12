@@ -7,16 +7,17 @@ name = "pypi"
 
 [packages]
 
-Flask = "*"
-PyYAML = "*"
+flask = "*"
+pyyaml = "*"
 
 
 [dev-packages]
 
 "pep8" = "*"
 pylint = "*"
-Django = "*"
+django = "*"
 mkdocs = "*"
+mkdocs-material = "*"
 
 
 [requires]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "58abace07526934ec884117f1d61d03545c84650529e461088b09b7f9d61f09f"
+            "sha256": "4cb840d6a411073f674fad048d8f9057a5d12a23fc66d9bea1f99dc4d6118205"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -194,6 +194,13 @@
             ],
             "version": "==0.17.2"
         },
+        "mkdocs-material": {
+            "hashes": [
+                "sha256:4ed45a0043c6c8a5644c44444179227eb9c5bc642bab26a7dab9ecd172edb447",
+                "sha256:1a6e73c246ddd5e9639460ba6891daf9b6e7c519ebb6f7946a582451c75428eb"
+            ],
+            "version": "==2.6.1"
+        },
         "pep8": {
             "hashes": [
                 "sha256:b22cfae5db09833bb9bd7c8463b53e1a9c9b39f12e304a8d0bba729c501827ee",
@@ -201,12 +208,26 @@
             ],
             "version": "==1.7.1"
         },
+        "pygments": {
+            "hashes": [
+                "sha256:78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d",
+                "sha256:dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
+            ],
+            "version": "==2.2.0"
+        },
         "pylint": {
             "hashes": [
                 "sha256:156839bedaa798febee72893beef00c650c2e7abafb5586fc7a6a56be7f80412",
                 "sha256:4fe3b99da7e789545327b75548cee6b511e4faa98afe268130fea1af4b5ec022"
             ],
             "version": "==1.8.2"
+        },
+        "pymdown-extensions": {
+            "hashes": [
+                "sha256:2da4ccbc4c9893a02bb9c5d03a88496a5813fbb191b14f895713fa79af8441a7",
+                "sha256:d222d494031bb4f8e528dfd158955428018d5fe985ba14e1daa89c4d484371ff"
+            ],
+            "version": "==4.8"
         },
         "pytz": {
             "hashes": [
