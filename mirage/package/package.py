@@ -18,11 +18,32 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import pip
 
-from pip.commands.install import InstallCommand
+from mirage.flow import Workflow
 from mirage.command import log, raise_error_message
 from mirage.command import command
 
 
-def pip_install(package_name):
-    log("Installing {0} ...".format(package_name))
-    pip.main(['install', package_name])
+class DjangoPackageWorkFlow(Workflow):
+
+    def constructor(self):
+        
+        self._action = self._option
+        self._packages = self._values
+
+    def main(self):
+        log("Mirage package manager...")
+
+    def _init(self):
+        ignore_packages = ["setuptools", "pip", "python"]
+        already_pip = pip.utils.get_installed_distributions(local_only = True, skip = ignore_packages)
+
+
+    def _install(self, package_name):
+        log("Installing package " + package_name + " ...")
+
+    def _uninstall(self, package_name):
+        log("Uninstalling package " + package_name + " ...")
+
+
+    def _integrate(self, pipfile):
+        pass
