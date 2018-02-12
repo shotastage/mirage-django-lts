@@ -17,7 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import textwrap
 
-def create_model_py(class_name, contents):
+def create_model_class(class_name, contents):
 
     return "\n\n" + textwrap.dedent(
 '''

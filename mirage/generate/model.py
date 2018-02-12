@@ -32,8 +32,13 @@ class DjangoModelMakeWorkflow(Workflow):
     def main(self):
         # ModelClass name:string<<maxlen=40 no:integer<<as_primary=True
 
+        model_contents = ""
+        
         for data in self._data:
-            self._parse_data(data)
+            model_contents += self._parse_data(data)
+            
+        # Write model file
+        
 
 
     def _parse_data(self, data_string):
@@ -42,7 +47,8 @@ class DjangoModelMakeWorkflow(Workflow):
         data_name = data_string.split(":")[0]
         data_type = self._parse_data_type(data_string)
         data_options = self._parse_option(data_string)
-        log(self._make_col(data_name, data_type, data_options))
+        
+        return self._make_col(data_name, data_type, data_options)
 
 
     def _parse_data_type(self, data_string):
