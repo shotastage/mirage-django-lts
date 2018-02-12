@@ -24,7 +24,7 @@ from .model_template import create_model_class
 
 class DjangoModelMakeWorkflow(Workflow):
 
-    def additional_init_(self):
+    def constructor(self):
         self._model_name = self._values[0]
         self._values.pop(0)
         self._data = self._values

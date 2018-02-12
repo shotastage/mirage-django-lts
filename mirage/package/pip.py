@@ -18,59 +18,28 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import pip
 
-from mirage.flow import Flow, Workflow
-from mirage.command import log
+from mirage.flow import Workflow
+from mirage.command import log, raise_error_message
 from mirage.command import command
 
 
+class DjangoPackageWorkFlow(Workflow):
 
-class DjangoPipPackageWorkFlow(Workflow):
-
-    def additional_init_(self):
-        try:
-            self._project_name = self._option
-        except:
-            self._project_name = None
-    
-    def __init__(self, subcommand):
-        self._subcommand = subcommand
+    def constructor(self):
+        
+        self._action = self._option
+        self._packages = self._values
 
     def main(self):
-        if self._subcommand == "check":
-            self._check()
-        elif self._subcommand == "install":
-            self._install()
-        else:
-            log("Unkown command " + self._subcommand + "!", withError = True)
+        log("Mirage package manager...")
 
-    def _check(self):
-        os.system("pip list -o")
-
-    def _install(self):
-        log("Install package from requirements.txt")
-        os.system("pip install -r requirements.txt")
-
-    def _show_package_list(self):
-        pip.utils.get_installed_distributions(local_only = True)
+    def _init(self):
+        ignore_packages = ["setuptools", "pip", "python"]
+        already_pip = pip.utils.get_installed_distributions(local_only = True, skip = ignore_packages)
 
 
+    def _install(self, package_name):
+        log("Installing package " + package_name + " ...")
 
-class DjangoPipPackageFlow(Flow):
-
-    def __init__(self, subcommand):
-        self._subcommand = subcommand
-
-    def flow(self):
-        if self._subcommand == "check":
-            self._check()
-        elif self._subcommand == "install":
-            self._install()
-        else:
-            log("Unkown command " + self._subcommand + "!", withError = True)
-
-    def _check(self):
-        os.system("pip list -o")
-
-    def _install(self):
-        log("Install package from requirements.txt")
-        os.system("pip install -r requirements.txt")
+    def _uninstall(self, package_name):
+        log("Uninstalling package " + package_name + " ...")

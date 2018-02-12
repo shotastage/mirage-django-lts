@@ -29,10 +29,13 @@ class Workflow():
         self._option_detail = self.inherite[3]
         self._values        = self.inherite[4]
         self.Stepflows      = []
-        self.additional_init_()
+        self.constructor()
 
     def additional_init_(self): pass
-    
+
+    def constructor(self):
+        self.additional_init_()
+
     def get_first_arg(self):
         try:
             return self._values[0]
