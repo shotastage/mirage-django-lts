@@ -92,15 +92,24 @@ class DjangoModelMakeWorkflow(Workflow):
             return "models.AutoField"
 
     def _make_option(self, type, ops):
-        if type == None:
-            return ""
-        elif type == "string" and not "maxlen" in ops:
-            return "max_length=255"
-        elif type == "text" and not "maxlen" in ops:
-            return "max_length=65536"
-        elif ops[0] == "maxlen":
-            return "max_length={0}".format(ops[1])
-        elif ops[0] == "asprimary":
-            return "as_primary=True"
-        else:
-            return ""
+
+        opstring = ""
+
+        if ops == None: return ""
+
+        for op in ops:
+            if type == "string" and not "maxlen" in ops:
+                opstring += "max_length=255"
+            elif type == "text" and not "maxlen" in ops:
+                opstring += "max_length=65536"
+            elif ops[0] == "maxlen":
+                opstring += "max_length={0}".format(ops[1])
+            elif ops[0] == "asprimary":
+                opstring += "as_primary=True"
+            else:
+                opstring += ""
+
+            if not op == ops[len(ops) - 1]:
+                opstring += ","
+
+        return opstring
