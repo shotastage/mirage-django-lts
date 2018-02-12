@@ -44,10 +44,6 @@ class DjangoModelMakeWorkflow(Workflow):
         data_options = self._parse_option(data_string)
         log(self._make_col(data_name, data_type, data_options))
 
-        log("Name: " + data_name)
-        log("Type: " + data_type)
-        log("Option: " + str(data_options))
-
 
     def _parse_data_type(self, data_string):
         if "+" in data_string:
@@ -96,20 +92,26 @@ class DjangoModelMakeWorkflow(Workflow):
         opstring = ""
 
         if ops == None: return ""
-
+        
+        # Max len check
+        text_is_maxlen = False
         for op in ops:
-            if type == "string" and not "maxlen" in ops:
-                opstring += "max_length=255"
-            elif type == "text" and not "maxlen" in ops:
-                opstring += "max_length=65536"
-            elif ops[0] == "maxlen":
-                opstring += "max_length={0}".format(ops[1])
-            elif ops[0] == "asprimary":
-                opstring += "as_primary=True"
+            if "maxlen" in op[0]: text_is_maxlen = True
+            
+        #
+        for op in ops:
+            if type == "string" and text_is_maxlen == False:
+                opstring += "max_length = 255"
+            elif type == "text" and text_is_maxlen == False:
+                opstring += "max_length = 65536"
+            elif op[0] == "maxlen":
+                opstring += "max_length = {0}".format(op[1])
+            elif op[0] == "asprimary":
+                opstring += "as_primary = True"
             else:
                 opstring += ""
 
-            if not op == ops[len(ops) - 1]:
-                opstring += ","
+            if not op[0] == ops[len(ops) - 1][0]:
+                opstring += ", "
 
         return opstring
