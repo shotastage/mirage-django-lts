@@ -19,7 +19,7 @@ import os
 
 from mirage.flow import Flow
 from mirage.command import log, command
-from mirage.generate.model_template import create_model_py
+from mirage.generate.model_template import create_model_class
 
 
 
@@ -36,7 +36,7 @@ class DjangoModelMakeFlow(Flow):
         model_contents = self._third_args[1:len(self._third_args)]        
         model_body = self.__make_model_body(model_contents)
 
-        modelpy = create_model_py(model_classies, model_body)
+        modelpy = create_model_class(model_classies, model_body)
 
 
         if os.path.isfile("manage.py"):

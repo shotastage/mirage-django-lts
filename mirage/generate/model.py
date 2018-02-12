@@ -18,8 +18,8 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import enum
 from mirage.flow import Flow, Workflow
-from mirage.command import log, command
-from .model_template import create_model_py
+from mirage.command import log, command, raise_error_message
+from .model_template import create_model_class
 
 
 class DjangoModelMakeWorkflow(Workflow):
@@ -34,11 +34,19 @@ class DjangoModelMakeWorkflow(Workflow):
 
         model_contents = ""
         
+        log("Generating model class...")
+
         for data in self._data:
-            model_contents += self._parse_data(data)
+            model_contents += "{0}\n".format(self._parse_data(data))
             
         # Write model file
-        
+        log("Writing models...")
+
+        try:
+            with open("models.py", "a") as writing:
+                writing.write(create_model_class(self._model_name, model_contents))
+        except:
+            log("Failed to create / overwrite models.py!", withError = True, errorDetail = raise_error_message(self.main))
 
 
     def _parse_data(self, data_string):
