@@ -21,7 +21,6 @@ from mirage.flow import Flow, Workflow
 from mirage.command import log, command, raise_error_message
 from .model_template import create_model_class
 
-
 class DjangoModelMakeWorkflow(Workflow):
 
     def constructor(self):
@@ -120,10 +119,11 @@ class DjangoModelMakeWorkflow(Workflow):
                 opstring += "max_length = 65536"
             elif op[0] == "maxlen":
                 opstring += "max_length = {0}".format(op[1])
-            elif op[0] == "asprimary":
-                opstring += "as_primary = True"
+            elif op[0] == "primary":
+                opstring += "primary_key = True"
             else:
-                opstring += ""
+                log("Failed to create filed option " + op + "!", withError = True)
+                continue
 
             if not op[0] == ops[len(ops) - 1][0]:
                 opstring += ", "

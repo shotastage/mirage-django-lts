@@ -113,11 +113,11 @@
         },
         "isort": {
             "hashes": [
-                "sha256:75e94757591197eb0afeb1f3b54f6517c1a26fecaeab2b373885739f63de3e66",
-                "sha256:77502c541ad5c40a158932498bf6177bb663d8a2662b50f02a59b906419ba699",
-                "sha256:34929af733faadf884da29d83e7df1884363b3cc647a48e000b3c5cc13d17549"
+                "sha256:ec9ef8f4a9bc6f71eec99e1806bfa2de401650d996c59330782b89a5555c1497",
+                "sha256:1153601da39a25b14ddc54955dbbacbb6b2d19135386699e2ad58517953b34af",
+                "sha256:b9c40e9750f3d77e6e4d441d8b0266cf555e7cdabdcff33c4fd06366ca761ef8"
             ],
-            "version": "==4.3.3"
+            "version": "==4.3.4"
         },
         "jinja2": {
             "hashes": [
@@ -196,10 +196,10 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:4ed45a0043c6c8a5644c44444179227eb9c5bc642bab26a7dab9ecd172edb447",
-                "sha256:1a6e73c246ddd5e9639460ba6891daf9b6e7c519ebb6f7946a582451c75428eb"
+                "sha256:4fd8ce4568f7363818b8c62d18279722d71ef7c3eef5b6cc1ca0d22646adecb5",
+                "sha256:379e3f55898775e6bfca0b750e00df0441d35f066d36e64d10567b0913c623ce"
             ],
-            "version": "==2.6.1"
+            "version": "==2.6.2"
         },
         "pep8": {
             "hashes": [
