@@ -9,6 +9,7 @@ name = "pypi"
 
 flask = "*"
 pyyaml = "*"
+django = "*"
 
 
 [dev-packages]

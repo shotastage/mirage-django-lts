@@ -4,6 +4,7 @@ import shutil
 from mirage.flow import Flow, Workflow, Stepflow
 from mirage.command import log, command
 from mirage.miragefile import source
+from mirage import project2
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
 from .package_json      import create_package_json
@@ -15,11 +16,25 @@ class DjangoStartupWorkFlow(Workflow):
 
 
     def main(self):
+        # Check 
+
+        try:
+            self._check_before()
+        except:
+            return
 
         # Input information
         log("Please type your new Django application information.")
 
-        self._project_name = log("Project name", withInput = True)
+        # Check namespace
+        try:
+            self._project_name = log("Project name", withInput = True)
+            self._check_namesapce(self._project_name)
+        except:
+            log("Project \"{0}\" is already exists.".format(self._project_name), withError = True,
+                    errorDetail = "Please remove duplication of Django project namespace.")
+            return
+
         version      = log("App version", withInput = True, default = "0.0.1")
         author       = log("Author name", withInput = True)
         email        = log("Email",       withInput = True)
@@ -29,13 +44,12 @@ class DjangoStartupWorkFlow(Workflow):
         copyrightor  = log("Copyrightor", withInput = True, default = author)
 
 
-        try:
-            self._check(self._project_name)
-        except:
-            log("Project {0} is already exists.".format(self._project_name), withError = True)
 
         
         self._create_new_django_app()
+
+
+        #with project2.tmpwd.InDir("./" + self._project_name):
 
         current = os.getcwd()
 
@@ -68,7 +82,7 @@ class DjangoStartupWorkFlow(Workflow):
         # Make shell directory
         os.mkdir("shell")
 
-        os.chdir("../")
+        os.chdir(current)
 
         # Completed
         log("Completed!")
@@ -104,10 +118,19 @@ class DjangoStartupWorkFlow(Workflow):
             readme.write(create_readme_doc(self._project_name))
 
 
-    def _check(self, name):
+    def _check_before(self):
+        
+        try:
+            import django
+        except ImportError:
+            log("Failed to import Django!", withError = True,
+                                errorDetail = "You have to install Django before creating a new Django project.")
+            raise ImportError
+
+
+    def _check_namesapce(self, name):
         if os.path.exists(name):
             raise FileExistsError
-
 
 
 class DjangoCMSStartupWorkFlow(Workflow):

@@ -100,7 +100,7 @@ class DjangoModelMakeWorkflow(Workflow):
         elif type == "auto":
             return "models.AutoField"
 
-    def _make_option(self, type, ops):
+    def _make_option(self, data_type, ops):
 
         opstring = ""
 
@@ -113,9 +113,9 @@ class DjangoModelMakeWorkflow(Workflow):
             
         #
         for op in ops:
-            if type == "string" and text_is_maxlen == False:
+            if data_type == "string" and text_is_maxlen == False:
                 opstring += "max_length = 255"
-            elif type == "text" and text_is_maxlen == False:
+            elif data_type == "text" and text_is_maxlen == False:
                 opstring += "max_length = 65536"
             elif op[0] == "maxlen":
                 opstring += "max_length = {0}".format(op[1])
