@@ -46,7 +46,7 @@ class MirageEvironmet():
     @staticmethod
     def in_project():
         try:
-            set_import_root()
+            MirageEvironmet.set_import_root()
             import manage
             return True
         except ImportError:
@@ -58,7 +58,7 @@ class MirageEvironmet():
     @staticmethod
     def in_app():
         try:
-            set_import_root()
+            MirageEvironmet.set_import_root()
             import apps
             if os.path.isfile("apps.py"):
                 return True
@@ -77,12 +77,12 @@ class MirageEvironmet():
         list_dir = os.listdir(os.getcwd())
         current = os.getcwd()
 
-        if not in_project(): return
+        if not MirageEvironmet.in_project(): return
 
         for dir_file in list_dir:
             if os.path.isdir(dir_file):
                 os.chdir(dir_file)
-                if in_app():
+                if MirageEvironmet.in_app():
                     apps.append(dir_file)
                 os.chdir(current)
             else:
@@ -105,7 +105,7 @@ def get_project_name():
     directories = os.listdir(".")
     app_name = "FAILED TO GET"
     
-    if in_project():
+    if MirageEvironmet.in_project():
 
         for directory in directories:
             try:
