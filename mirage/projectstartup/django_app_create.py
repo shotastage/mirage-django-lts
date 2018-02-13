@@ -4,7 +4,7 @@ import shutil
 from mirage.flow import Flow, Workflow, Stepflow
 from mirage.command import log, command
 from mirage.miragefile import source
-from mirage import project2
+from mirage import proj
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
 from .package_json      import create_package_json
@@ -49,40 +49,34 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
 
-        #with project2.tmpwd.InDir("./" + self._project_name):
+        with proj.InDir("./" + self._project_name):
+            
+            # Generate .gitignore
+            log("Generating gitignore...")
+            self._create_template_git_project()
 
-        current = os.getcwd()
+            # Generate README.md
+            log("Generating readme...")
+            self._create_docs()
 
-        os.chdir("./" + self._project_name)
+            # Generate Miragefile
+            log("Generating Miragefile...")
+            self._create_miragefile(version, author, email, git_url, license_name, description, copyrightor)
 
-        # Generate .gitignore
-        log("Generating gitignore...")
-        self._create_template_git_project()
+            # Generate package.json
+            log("Generating package configuration...")
+            self._create_package_json(version, description, git_url, author, email, license_name)
 
-        # Generate README.md
-        log("Generating readme...")
-        self._create_docs()
+            # Add remote repo
+            log("Adding remote repository...")
+            command("git remote add origin " + git_url)
 
-        # Generate Miragefile
-        log("Generating Miragefile...")
-        self._create_miragefile(version, author, email, git_url, license_name, description, copyrightor)
+            # Install webpack
+            log("Installing assets builder...")
+            command("yarn add --dev webpack")
 
-        # Generate package.json
-        log("Generating package configuration...")
-        self._create_package_json(version, description, git_url, author, email, license_name)
-
-        # Add remote repo
-        log("Adding remote repository...")
-        command("git remote add origin " + git_url)
-
-        # Install webpack
-        log("Installing assets builder...")
-        command("yarn add --dev webpack")
-
-        # Make shell directory
-        os.mkdir("shell")
-
-        os.chdir(current)
+            # Make shell directory
+            os.mkdir("shell")
 
         # Completed
         log("Completed!")
@@ -156,11 +150,9 @@ class DjangoCMSStartupWorkFlow(Workflow):
         
         self._create_new_django_app(self._project_name)
 
-        current = os.getcwd()
-        os.chdir("./" + self._project_name)
-        self._create_template_git_project(self._project_name)
-        self._create_docs(self._project_name)
-        os.chdir("../")
+        with proj.InDir("./" + self._project_name):
+            self._create_template_git_project(self._project_name)
+            self._create_docs(self._project_name)
 
 
     def _create_new_django_app(self, name):
