@@ -1,0 +1,37 @@
+miragefile: v0.0.1
+
+project:
+    name: sample
+    version: 0.0.1
+    author: Shota Shimazu <hornet.live.mf@gmail.com>
+    git: https://github.com/shotastage/django-console.git
+    license: MIT
+    description: This is your first Django project.
+
+    django:
+        path: .
+        package: pipenv
+        database: PostgreSQL
+
+    frontend:
+        path: shell
+        package: yarn
+        builder: webpack
+
+    workspace:
+        path: .mirage
+
+    copyright:
+        start_year: 2018
+        copyrightors:
+            - Shota Shimazu
+
+
+build:
+    - echo "Build script is here."
+
+clean:
+    - echo "Clean script is here."
+
+test:
+    - echo "Test script is here."

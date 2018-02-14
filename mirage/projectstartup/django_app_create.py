@@ -4,7 +4,7 @@ import shutil
 from mirage.flow import Flow, Workflow, Stepflow
 from mirage.command import log, command
 from mirage.miragefile import source
-from mirage import proj
+from mirage import project2
 from .readme            import create_readme_doc
 from .gitignore         import create_gitignore
 from .package_json      import create_package_json
@@ -49,7 +49,7 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
 
-        with proj.InDir("./" + self._project_name):
+        with project2.InDir("./" + self._project_name):
             
             # Generate .gitignore
             log("Generating gitignore...")
@@ -150,7 +150,7 @@ class DjangoCMSStartupWorkFlow(Workflow):
         
         self._create_new_django_app(self._project_name)
 
-        with proj.InDir("./" + self._project_name):
+        with project2.InDir("./" + self._project_name):
             self._create_template_git_project(self._project_name)
             self._create_docs(self._project_name)
 

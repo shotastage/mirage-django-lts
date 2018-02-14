@@ -22,7 +22,7 @@ import sys
 import textwrap
 import functools
 from subprocess import check_output, DEVNULL, STDOUT
-
+from .log import log
 
 
 def command(command, withOutput = False):

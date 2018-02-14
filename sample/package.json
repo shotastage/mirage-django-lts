@@ -1,0 +1,12 @@
+{
+  "name": "sample-shell",
+  "version": "0.0.1",
+  "description": "This is your first Django project.",
+  "main": "index.js",
+  "repository": "https://github.com/shotastage/django-console.git",
+  "author": "Shota Shimazu <hornet.live.mf@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.11.0"
+  }
+}

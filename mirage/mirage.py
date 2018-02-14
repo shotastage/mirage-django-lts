@@ -20,6 +20,7 @@ import sys
 from mirage.djargparse import ArgumentsParser
 from mirage.command import log, raise_error_message
 
+
 def main():
 
     parser = ArgumentsParser()
