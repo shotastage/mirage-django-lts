@@ -35,8 +35,8 @@ class DjangoStartupWorkFlow(Workflow):
 
 
     def main(self):
-        # Check 
 
+        # Check 
         try:
             self._check_before()
         except:
@@ -86,19 +86,11 @@ class DjangoStartupWorkFlow(Workflow):
             log("Adding remote repository...")
             command("git remote add origin " + git_url)
 
-            # Make shell directory
-            os.mkdir("shell")
-
-
-        with proj.InDir("./shell"):
-
-            # Generate package.json
-            log("Generating package configuration...")
-            self._create_package_json(version, description, git_url, author, email, license_name)
-
-            # Install webpack
-            log("Installing assets builder...")
-            command("yarn add --dev webpack")
+            # Create React App
+            log("Creating React app...")
+            self._create_package_json()
+            command("yarn add --dev create-react-app")
+            command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
 
 
         # Completed
@@ -115,10 +107,9 @@ class DjangoStartupWorkFlow(Workflow):
      
 
     
-    def _create_package_json(self, version, description, git_repository, author_name, email, license_name):
+    def _create_package_json(self):
         with open("package.json", "w") as f:
-            data = package_json.src(self._project_name, version, description, git_repository, author_name, email, license_name)
-            f.write(data)
+            f.write('{"name": "tmpapp", "version": "0.0.1"}')
 
 
     def _create_template_git_project(self):
@@ -146,58 +137,5 @@ class DjangoStartupWorkFlow(Workflow):
 
 
     def _check_namesapce(self, name):
-        if os.path.exists(name):
-            raise FileExistsError
-
-
-class DjangoCMSStartupWorkFlow(Workflow):
-
-    def additional_init_(self):
-        try:
-            self._project_name = self._option
-        except:
-            self._project_name = None
-
-
-    def main(self):
-
-        if self._project_name == None:
-            log("Please type your new Django CMS application name.")
-            self._project_name = log("Django CMS name", withInput = True)
-
-        try:
-            self._check(self._project_name)
-        except:
-            log("Project {0} is already exists.".format(self._project_name), withError = True)
-
-        
-        self._create_new_django_app(self._project_name)
-
-        with proj.InDir("./" + self._project_name):
-            self._create_template_git_project(self._project_name)
-            self._create_docs(self._project_name)
-
-
-    def _create_new_django_app(self, name):
-        log("Creating Django CMS application...")
-        log("Please wait for a moment.")
-        command("djangocms " + name)
-
-
-    def _create_template_git_project(self, name):
-        ignorance = gitignore.src()
-
-        with open(".gitignore", "w") as f:
-            f.write(ignorance)
-
-        command("git init")
-
-
-    def _create_docs(self, name):
-        with open("README.md", "a") as readme:
-            readme.write(readme_md.src(name))
-
-
-    def _check(self, name):
         if os.path.exists(name):
             raise FileExistsError

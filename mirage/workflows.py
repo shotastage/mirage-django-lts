@@ -20,7 +20,8 @@ class DjangoConsole(DjangoConsoleWorkFlow): pass
 class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass
 
 
-from mirage.projectstartup.django_app_create import DjangoStartupWorkFlow, DjangoCMSStartupWorkFlow
+from mirage.projectstartup.general_app_create import DjangoStartupWorkFlow
+from mirage.projectstartup.django_app_create import DjangoCMSStartupWorkFlow
 class DjangoStartup(DjangoStartupWorkFlow): pass
 class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass
 
