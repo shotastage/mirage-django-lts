@@ -14,3 +14,20 @@ Copyright 2017-2018 Shota Shimazu.
    See the License for the specific language governing permissions and
    limitations under the License.
 """
+
+import enum
+from . import licenses
+
+
+class LicenseTextSource(enum.Enum):
+    AGPLv3      = licenses.agpl_v3.text
+    Apachae2    = licenses.apache_v2.text
+    GPLv3       = licenses.gpl_v3.text
+    LGPLv3      = licenses.lgpl_v3.text
+    MIT         = licenses.mit.text
+    MPLv2       = licenses.mpl_v2.text
+    Unlicensed  = licenses.unlicense.text
+
+
+def src(license_enum):
+    return license_enum
