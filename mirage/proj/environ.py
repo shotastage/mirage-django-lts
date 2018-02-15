@@ -20,7 +20,7 @@ import sys
 import enum
 from mirage import fileable
 from mirage.command import log
-from . import tmpwd
+
 
 class MirageEvironmet():
     

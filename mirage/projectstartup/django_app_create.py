@@ -22,9 +22,10 @@ from mirage.flow import Flow, Workflow, Stepflow
 from mirage.command import log, command
 from mirage.miragefile import source
 from mirage import proj
-from .readme            import create_readme_doc
-from .gitignore         import create_gitignore
-from .package_json      import create_package_json
+from mirage.template import readme_md
+from mirage.template import gitignore
+from mirage.template import package_json
+from mirage.template import webpack_config
 
 
 class DjangoStartupWorkFlow(Workflow):
@@ -112,12 +113,12 @@ class DjangoStartupWorkFlow(Workflow):
     
     def _create_package_json(self, version, description, git_repository, author_name, email, license_name):
         with open("package.json", "w") as f:
-            data = create_package_json(self._project_name, version, description, git_repository, author_name, email, license_name)
+            data = package_json.src(self._project_name, version, description, git_repository, author_name, email, license_name)
             f.write(data)
 
 
     def _create_template_git_project(self):
-        ignorance = create_gitignore()
+        ignorance = gitignore.src()
 
         with open(".gitignore", "w") as f:
             f.write(ignorance)
@@ -127,7 +128,7 @@ class DjangoStartupWorkFlow(Workflow):
 
     def _create_docs(self):
         with open("README.md", "a") as readme:
-            readme.write(create_readme_doc(self._project_name))
+            readme.write(readme_md.src(self._project_name))
 
 
     def _check_before(self):
@@ -180,7 +181,7 @@ class DjangoCMSStartupWorkFlow(Workflow):
 
 
     def _create_template_git_project(self, name):
-        ignorance = create_gitignore()
+        ignorance = gitignore.src()
 
         with open(".gitignore", "w") as f:
             f.write(ignorance)
@@ -190,7 +191,7 @@ class DjangoCMSStartupWorkFlow(Workflow):
 
     def _create_docs(self, name):
         with open("README.md", "a") as readme:
-            readme.write(create_readme_doc(name))
+            readme.write(readme_md.src(name))
 
 
     def _check(self, name):

@@ -23,7 +23,7 @@ from pip.utils import get_installed_distributions
 from mirage.command import log
 
 
-def create_readme_doc(name):
+def src(name):
 
     return textwrap.dedent(
 '''
