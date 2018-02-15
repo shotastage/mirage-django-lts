@@ -29,7 +29,7 @@ from mirage.template import package_json
 from mirage.template import webpack_config
 
 
-class DjangoStartupWorkFlow(Workflow):
+class ReactStartupWorkFlow(Workflow):
     
     def additional_init_(self):
         self._project_name = None
@@ -92,6 +92,11 @@ class DjangoStartupWorkFlow(Workflow):
             self._create_package_json()
             command("yarn add --dev create-react-app")
             command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
+
+            log("Installing additional packages...")
+            with proj.InDir("./shell"):
+                command("yarn add redux react-redux")
+                command("yarn add react-router react-router-dom")
 
             # Cleaning
             log("Cleaning...")

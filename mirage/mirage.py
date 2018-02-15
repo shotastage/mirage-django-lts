@@ -31,6 +31,7 @@ def main():
 
     # Commands
     parser.add_argument("new", "newproject", None, "DjangoStartup")
+    parser.add_argument_with_subaction("new", "newproject", "react", None, "ReactStartup")
     parser.add_argument_with_subaction("new", "newproject", "cms", None, "DjangoCMSStartup")
 
     parser.add_argument("b", "backup", "app", "DjangoBackupApp")
