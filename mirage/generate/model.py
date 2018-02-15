@@ -55,10 +55,6 @@ class DjangoModelMakeWorkflow(Workflow):
         data_name = data_string.split(":")[0]
         data_type = self._parse_data_type(data_string)
         data_options = self._parse_option(data_string)
-
-        log(data_name)
-        log(data_type)
-        log(data_options)
         
         return self._make_col(data_name, data_type, data_options)
 
