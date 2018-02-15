@@ -21,6 +21,7 @@ from mirage.flow import Flow, Workflow
 from mirage.command import log, command, raise_error_message
 from .model_template import create_model_class
 
+
 class DjangoModelMakeWorkflow(Workflow):
 
     def constructor(self):
@@ -33,8 +34,6 @@ class DjangoModelMakeWorkflow(Workflow):
 
         model_contents = ""
         
-        log("Generating model class...")
-
         for data in self._data:
             model_contents += "{0}\n".format(self._parse_data(data))
             
@@ -49,11 +48,17 @@ class DjangoModelMakeWorkflow(Workflow):
 
 
     def _parse_data(self, data_string):
+        
         # data_name:data_type+option=value,option=value
         # ex. name:string+maxlen=100,as_primary=True
+
         data_name = data_string.split(":")[0]
         data_type = self._parse_data_type(data_string)
         data_options = self._parse_option(data_string)
+
+        log(data_name)
+        log(data_type)
+        log(data_options)
         
         return self._make_col(data_name, data_type, data_options)
 
@@ -100,6 +105,7 @@ class DjangoModelMakeWorkflow(Workflow):
         elif type == "auto":
             return "models.AutoField"
 
+
     def _make_option(self, data_type, ops):
 
         opstring = ""
@@ -110,17 +116,25 @@ class DjangoModelMakeWorkflow(Workflow):
         text_is_maxlen = False
         for op in ops:
             if "maxlen" in op[0]: text_is_maxlen = True
-            
-        #
-        for op in ops:
-            if data_type == "string" and text_is_maxlen == False:
-                opstring += "max_length = 255"
-            elif data_type == "text" and text_is_maxlen == False:
+        
+        if data_type == "string" and text_is_maxlen == False:
+            if ops is not None:
+                opstring += "max_length = 255, "
+            else:
+                opstring += "max_length = 255, "
+        elif data_type == "text" and text_is_maxlen == False:
+            if ops is not None:
+                opstring += "max_length = 65536, "
+            else:
                 opstring += "max_length = 65536"
-            elif op[0] == "maxlen":
+
+
+        # Generate filed options
+        for op in ops:
+            if op[0] == "maxlen":
                 opstring += "max_length = {0}".format(op[1])
             elif op[0] == "primary":
-                opstring += "primary_key = True"
+                opstring += "primary_key = {0}".format(op[1])
             else:
                 log("Failed to create filed option " + op + "!", withError = True)
                 continue

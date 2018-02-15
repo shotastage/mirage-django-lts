@@ -40,7 +40,7 @@ mg g model Person name:string age:integer bio:text
 If you want to have arguments,
 
 ```
-mg g model TestModel uuid:string+autolen:maxlen=30,primary script:string+autolen:maxlen=400
+mg g model TestModel uuid:string+maxlen=30,asprimary script:string+maxlen=400
 ```
 
 Created model class is here.
