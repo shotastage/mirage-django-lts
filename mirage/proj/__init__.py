@@ -15,6 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from . import old_api
+
 from .environ import MirageEvironmet, MirageEvironmetLevel, get_project_name
 from .utils import InDir
