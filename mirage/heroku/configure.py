@@ -28,8 +28,27 @@ class DjangoHerokuConfigureWorkFlow(Workflow):
 
     def _create_heroku_configuation(self):
         with open("Procfile", "w") as pf:
-            pf.write(procfile.src("APP_NAME"))
+            pf.write(procfile.src(self._get_wsgi_app_name()))
         with open("runtime.txt", "w") as rf:
             rf.write(runtime.src())
 
-    def _check_wsgi_app_name(self): pass
+    def _get_wsgi_app_name(self):
+        """
+        Get Django WSGI application name from manage.py
+        """
+        try:
+            from . import manage
+        except ImportError:
+            system.log("Failed to get WSGI app name!", withError = True,
+                errorDetail = "You may be out of Django application, please run this command in Django project root directory.")
+            return
+
+
+        try:
+            from django.core.wsgi import get_wsgi_application
+        except ImportError:
+            system.log("Failed to import Django!", withError = True,
+                        errorDetail = system.raise_error_message(self._get_wsgi_app_name))
+            return
+
+        return get_wsgi_application()
