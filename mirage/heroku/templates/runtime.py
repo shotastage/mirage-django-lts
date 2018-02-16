@@ -15,19 +15,5 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from mirage import system
-from mirage.flow import Workflow
-from .templates import procfile, runtime
-
-class DjangoHerokuWorkFlow(Workflow):
-
-    def main(self):
-        system.log("Creating heroku configurations...")
-        self._create_heroku_configuation()
-
-
-    def _create_heroku_configuation(self):
-        with open("Procfile", "w") as pf:
-            pf.write(procfile.src("APP_NAME"))
-        with open("runtime.txt", "w") as rf:
-            rf.write(runtime.src())
+def src():
+    return "python-3.6.4"

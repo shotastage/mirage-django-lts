@@ -19,7 +19,7 @@ from mirage import system
 from mirage.flow import Workflow
 from .templates import procfile, runtime
 
-class DjangoHerokuWorkFlow(Workflow):
+class DjangoHerokuConfigureWorkFlow(Workflow):
 
     def main(self):
         system.log("Creating heroku configurations...")
@@ -31,3 +31,5 @@ class DjangoHerokuWorkFlow(Workflow):
             pf.write(procfile.src("APP_NAME"))
         with open("runtime.txt", "w") as rf:
             rf.write(runtime.src())
+
+    def _check_wsgi_app_name(self): pass
