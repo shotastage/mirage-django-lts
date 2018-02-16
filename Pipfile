@@ -19,6 +19,7 @@ pylint = "*"
 django = "*"
 mkdocs = "*"
 mkdocs-material = "*"
+django-mirage = "*"
 
 
 [requires]

@@ -16,30 +16,40 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 usage = """
-Django Console v0.0.12
+Django Console v0.0.15
 
 Usage:
     mg [action] option <--sub-option> <inputs>
 
-    mg [action]:[subaction] <--sub-option> <inputs>
+    mg [action]:[subaction] option <--sub-option> <inputs>
 
 
 Actions:
-    newproject         new          Create a new Django project.
-    newproject:cms     new:cms      Create a new Django CMS project. ( Django CMS is required. )
-    console            c            Launch Django Python shell.
-    console:db         c:db         Launch databse shell.
-    database:migrate   db:migrate   Make migrations and apply migrations.
-    database:reset     db:reset     Reset all database. ( Only debugging SQLite is supported. )
+    newproject         new                      Create a new Django project.
+    newproject:react   new:react                Create a new Django API project with React.js front-end.
+    newproject:cms     new:cms                  Create a new Django CMS project. ( Django CMS is required. )
+    backup             b            app         Backup exsiting app.
+    configure          conf                     Generate miragefile or reconfig mirage.
+    console            c                        Launch Django Python shell.
+    console:db         c:db                     Launch databse shell.
+    database:migrate   db:migrate               Make migrations and apply migrations.
+    database:reset     db:reset                 Reset all database. ( Only debugging SQLite is supported. )
+    generate           g            app         Create multiple Django apps at once.
+    generate           g            model       Create Django model class.
+    scaffold           ide                      Launch mirgae Web UI. (Now under development.)
+    server             s                        Launch debugging server.
+    file               f                        Create a new Python source file with copyrights doc string.
 
-    help               h            Show usage of Django Console.
-    version            v            Print version information.
+    help               h                        Show usage of Mirage.
+    version            v                        Print version information.
+
+
 """
 
 version = """
-Django Console Version 0.0.12
+Django Console Version 0.0.15
 
-https://github.com/shotastage/django-console
+https://github.com/shotastage/mirage
 
 Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
