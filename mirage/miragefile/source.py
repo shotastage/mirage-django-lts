@@ -23,7 +23,7 @@ def create(proj_name, proj_ver, proj_author, author_email, git_url,
                                         proj_license, proj_desc, copyrightor):
 
     return textwrap.dedent('''
-miragefile: v0.0.1
+miragefile: v0.0.3
 
 project:
     name: {PROJECT_NAME}
@@ -35,6 +35,7 @@ project:
 
     django:
         path: .
+        module: {MODULE_NAME}
         package: pipenv
         database: PostgreSQL
 
@@ -52,14 +53,18 @@ project:
             - {COPYRIGHTOR}
 
 
-build:
-    - echo "Build script is here."
+target:
+    build:
+        - python setup.py check
+	    - python setup.py sdist
 
-clean:
-    - echo "Clean script is here."
+    clean:
+        - rm -rf ./shell/site/
+        - rm -rf ./shell/node_modules/
 
-test:
-    - echo "Test script is here."
+    test:
+        - echo Launching debug server... 
+        - mg s
 
 ''').format(
     PROJECT_NAME        = proj_name,
@@ -69,6 +74,7 @@ test:
     GIT_URL             = git_url,
     PROJECT_LICENSE     = proj_license,
     PROJECT_DESC        = proj_desc,
+    MODULE_NAME         = proj_name,
     COPYRIGHT_START     = get_start_year(),
     COPYRIGHTOR         = copyrightor
 ).strip()

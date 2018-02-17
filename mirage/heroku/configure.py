@@ -16,6 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from mirage import system
+from mirage.miragefile import utils
 from mirage.proj import environ
 from mirage.flow import Workflow
 from .templates import procfile, runtime
@@ -30,28 +31,8 @@ class DjangoHerokuConfigureWorkFlow(Workflow):
 
     def _create_heroku_configuation(self):
         with open("Procfile", "w") as pf:
-            pf.write(procfile.src(self._get_wsgi_app_name()))
+            pf.write(procfile.src(
+                str(utils.get_django(utils.MiragefileDataCategory.django_module))
+            ))
         with open("runtime.txt", "w") as rf:
             rf.write(runtime.src())
-
-    def _get_wsgi_app_name(self):
-        """
-        Get Django WSGI application name from manage.py
-        """
-        try:
-            environ.MirageEvironmet.set_import_root()
-            import manage
-        except ImportError:
-            system.log("Failed to get WSGI app name!", withError = True,
-                errorDetail = "You may be out of Django application, please run this command in Django project root directory.")
-            return
-
-
-        try:
-            from django.core.wsgi import get_wsgi_application
-        except ImportError:
-            system.log("Failed to import Django!", withError = True,
-                        errorDetail = system.raise_error_message(self._get_wsgi_app_name))
-            return
-
-        return get_wsgi_application()

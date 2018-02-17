@@ -68,7 +68,5 @@ class Touch(TouchWorkFlow): pass
 from mirage.generate.model import DjangoModelMakeWorkflow
 class DjangoModelMake(DjangoModelMakeWorkflow): pass
 
-from mirage.heroku.flow import DjangoHerokuWorkFlow
 from mirage.heroku.configure import DjangoHerokuConfigureWorkFlow
-class DjangoHeroku(DjangoHerokuWorkFlow): pass
 class DjangoHerokuConfigure(DjangoHerokuConfigureWorkFlow): pass

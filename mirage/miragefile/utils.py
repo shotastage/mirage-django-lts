@@ -18,6 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import enum
 import yaml
+from mirage import system as sys
 from mirage.command import log, raise_error_message
 
 
@@ -29,14 +30,15 @@ class MiragefileDataCategory(enum.Enum):
     project_license = 4
     project_description = 5
     django_path = 6
-    django_package_manager = 7
-    django_db_backend = 8
-    front_path = 9
-    front_package = 10
-    front_builder = 11
-    workspace_path = 12
-    copyright_start_year = 13
-    copyright_copyrigtors = 14
+    django_module = 7
+    django_package_manager = 8
+    django_db_backend = 9
+    front_path = 10
+    front_package = 11
+    front_builder = 12
+    workspace_path = 13
+    copyright_start_year = 14
+    copyright_copyrigtors = 15
 
 
 def get_project(item):
@@ -66,6 +68,8 @@ def get_django(item):
 
     if item == MiragefileDataCategory.django_path:
         return data["project"]["django"]["path"]
+    elif item == MiragefileDataCategory.django_module:
+        return data["project"]["django"]["module"]
     elif item == MiragefileDataCategory.django_package_manager:
         return data["project"]["django"]["package"]
     elif item == MiragefileDataCategory.django_db_backend:

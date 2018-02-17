@@ -26,7 +26,6 @@ from mirage.miragefile import source
 from mirage.template import readme_md
 from mirage.template import gitignore
 from mirage.template import package_json
-from mirage.template import webpack_config
 
 
 class ReactStartupWorkFlow(Workflow):

@@ -1,4 +1,4 @@
-miragefile: v0.0.2
+miragefile: v0.0.3
 
 project:
     name: Sample Project
@@ -10,6 +10,7 @@ project:
 
     django:
         path: sample
+        module: sample
         package: pipenv
         database: PostgreSQL
 
@@ -26,24 +27,6 @@ project:
         copyrightors:
             - Shota Shimazu
             - Aika Yamashita
-
-
-package_manager:
-    environments:
-        namespace: miragesample
-        python: 3.6.4
-
-    dependencies:
-        - Django = "*"
-        - djangorestframework = "*"
-        - channels = "*"
-        - Pygments = "*"
-
-    dev_dependencies:
-        - pylint = "*"
-        - mkdocs = "*"
-        - jupyter = "*"
-        - mkdocs-material = "*"
 
 
 target:

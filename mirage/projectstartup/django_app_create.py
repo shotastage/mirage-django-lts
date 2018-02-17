@@ -25,7 +25,6 @@ from mirage import proj
 from mirage.template import readme_md
 from mirage.template import gitignore
 from mirage.template import package_json
-from mirage.template import webpack_config
 
 
 class DjangoStartupWorkFlow(Workflow):
