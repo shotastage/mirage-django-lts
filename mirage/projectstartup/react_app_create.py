@@ -20,7 +20,8 @@ import shutil
 
 from mirage import proj
 from mirage import fileable
-from mirage.flow import Flow, Workflow, Stepflow
+from mirage.system import progress
+from mirage.flow import Workflow
 from mirage.command import log, command
 from mirage.miragefile import source
 from mirage.template import readme_md
@@ -68,37 +69,40 @@ class ReactStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
 
+        # Logger instance 
+        logger = progress.Progress()
+
         with proj.InDir("./" + self._project_name):
             
             # Generate .gitignore
-            log("Generating gitignore...")
+            logger.write("Generating gitignore...", withLazy = True)
             self._create_template_git_project()
 
             # Generate README.md
-            log("Generating readme...")
+            logger.update("Generating readme...", withLazy = True)
             self._create_docs()
 
             # Generate Miragefile
-            log("Generating Miragefile...")
+            logger.update("Generating Miragefile...", withLazy = True)
             self._create_miragefile(version, author, email, git_url, license_name, description, copyrightor)
 
             # Add remote repo
-            log("Adding remote repository...")
+            logger.update("Adding remote repository...", withLazy = True)
             command("git remote add origin " + git_url)
 
             # Create React App
-            log("Creating React app...")
+            logger.update("Creating React app...")
             self._create_package_json()
             command("yarn add --dev create-react-app")
             command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
 
-            log("Installing additional packages...")
+            logger.update("Installing additional packages...")
             with proj.InDir("./shell"):
                 command("yarn add redux react-redux")
                 command("yarn add react-router react-router-dom")
 
             # Cleaning
-            log("Cleaning...")
+            logger.update("Cleaning...", withLazy = True)
             fileable.rm("yarn.lock")
             fileable.rm("package.json")
             fileable.rm("node_modules/")
@@ -109,7 +113,7 @@ class ReactStartupWorkFlow(Workflow):
 
 
         # Completed
-        log("Completed!")
+        logger.update("Completed!")
     
 
     def _create_new_django_app(self):
