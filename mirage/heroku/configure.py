@@ -16,7 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from mirage import system
-from mirage.miragefile import utils
+from mirage.miragefile.conf import Config, Category, Detail
 from mirage.proj import environ
 from mirage.flow import Workflow
 from .templates import procfile, runtime
@@ -31,8 +31,6 @@ class DjangoHerokuConfigureWorkFlow(Workflow):
 
     def _create_heroku_configuation(self):
         with open("Procfile", "w") as pf:
-            pf.write(procfile.src(
-                str(utils.get_django(utils.MiragefileDataCategory.django_module))
-            ))
+            pf.write(procfile.src(Config().get(Category.django, Detail.django_module)))
         with open("runtime.txt", "w") as rf:
             rf.write(runtime.src())

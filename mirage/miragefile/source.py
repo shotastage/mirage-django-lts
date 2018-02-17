@@ -51,21 +51,6 @@ project:
         start_year: {COPYRIGHT_START}
         copyrightors:
             - {COPYRIGHTOR}
-
-
-target:
-    build:
-        - python setup.py check
-	    - python setup.py sdist
-
-    clean:
-        - rm -rf ./shell/site/
-        - rm -rf ./shell/node_modules/
-
-    test:
-        - echo Launching debug server... 
-        - mg s
-
 ''').format(
     PROJECT_NAME        = proj_name,
     PROJECT_VERSION     = proj_ver,
