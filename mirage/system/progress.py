@@ -43,4 +43,6 @@ class Progress():
 
         self.write(string, withLazy)
 
-    def clear(self): sys.stdout.flush()
+    def clear(self):
+        sys.stdout.flush()
+        sys.stdout.write("\r{0}".format("                                                                               "))
