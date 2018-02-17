@@ -19,18 +19,17 @@ Copyright 2017-2018 Shota Shimazu.
 # This module will be discarded. Please replace new API mirage.miragefile #
 ###########################################################################
 
-import warnings
 import os
 import yaml
-
+from mirage import system as sys
 
 def get_all_config():
-    warnings.warn("mirage.config.get_all_config will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.get_all_config will be deprecated on next version.", PendingDeprecationWarning)
     return load_miragefile()
 
 
 def get_proj_config(conf_name):
-    warnings.warn("mirage.config.get_proj_config will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.get_proj_config will be deprecated on next version.", PendingDeprecationWarning)
     try:
         data = load_miragefile()
 
@@ -69,7 +68,7 @@ def get_proj_config(conf_name):
 
 
 def get_django_config(conf_name):
-    warnings.warn("mirage.config.get_django_config will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.get_django_config will be deprecated on next version.", PendingDeprecationWarning)
     try:
         data = load_miragefile()
     except:
@@ -89,7 +88,7 @@ def get_django_config(conf_name):
 
 
 def get_node_config(conf_name):
-    warnings.warn("mirage.config.get_node_config will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.get_node_config will be deprecated on next version.", PendingDeprecationWarning)
     try:
         data = load_miragefile()
     except:
@@ -108,7 +107,7 @@ def get_node_config(conf_name):
 
 
 def load_miragefile():
-    warnings.warn("mirage.config.load_miragefile will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.load_miragefile will be deprecated on next version.", PendingDeprecationWarning)
     with open("Miragefile", "r") as djfile:
         try:
             return yaml.load(djfile)
@@ -117,7 +116,7 @@ def load_miragefile():
 
 
 def load_additional_conf():
-    warnings.warn("mirage.config.load_additional_conf will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.load_additional_conf will be deprecated on next version.", PendingDeprecationWarning)
     with open("Miragefile.addon", "r") as djfile:
         try:
             return yaml.load(djfile)
@@ -126,7 +125,7 @@ def load_additional_conf():
 
 
 def load_secret_conf():
-    warnings.warn("mirage.config.load_secret_conf will be deprecated on next version.", PendingDeprecationWarning)
+    sys.warn("mirage.config.load_secret_conf will be deprecated on next version.", PendingDeprecationWarning)
     with open("Miragefile.secret", "r") as djfile:
         try:
             return yaml.load(djfile)

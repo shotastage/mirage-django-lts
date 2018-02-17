@@ -15,7 +15,8 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from .log import log
-from .command import command
-from .error import raise_error_message
-from .warning import warn
+import warnings
+
+def warn(string, warning_class = None):
+    if not warning_class == None: warnings.warn(str(string), warning_class)
+    print('\033[31mMirage (WARNING): ' + str(string) + '\033[0m')

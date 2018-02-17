@@ -15,6 +15,10 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+###########  WARNING  #####################################################
+# This module will be discarded. Please replace new API mirage.miragefile #
+###########################################################################
+
 import os
 import enum
 import yaml
