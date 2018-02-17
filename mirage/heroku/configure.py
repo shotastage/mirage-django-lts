@@ -16,8 +16,10 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from mirage import system
+from mirage.proj import environ
 from mirage.flow import Workflow
 from .templates import procfile, runtime
+
 
 class DjangoHerokuConfigureWorkFlow(Workflow):
 
@@ -37,7 +39,8 @@ class DjangoHerokuConfigureWorkFlow(Workflow):
         Get Django WSGI application name from manage.py
         """
         try:
-            from . import manage
+            environ.MirageEvironmet.set_import_root()
+            import manage
         except ImportError:
             system.log("Failed to get WSGI app name!", withError = True,
                 errorDetail = "You may be out of Django application, please run this command in Django project root directory.")

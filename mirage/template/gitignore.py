@@ -19,7 +19,11 @@ def src():
     return '''
 #
 # .gitignore for Mirage project 
-# Version 2018/2/14
+#
+#  Version 2018/2/17
+#
+# Based on github useful .gitignore collections
+# https://github.com/github/gitignore
 #
 
 #########################################################
@@ -73,6 +77,7 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+.pytest_cache/
 
 # Translations
 *.mo
@@ -200,17 +205,29 @@ typings/
 
 
 #########################################################
-## Mirage                                              ##
+## Django Ignore                                       ##
 #########################################################
 
-.mirage/
+*.pyc
+*.sqlite3
+
+
+#########################################################
+## Mirage Ignore                                       ##
+#########################################################
+
+# Previous workspace & configuration file
 .djc/
+DjFile.secret
+
+# Current workspace & configuration file
+.mirage/
 Miragefile.addon
 Miragefile.secret
 
 
 #########################################################
-## Front-end ignore                                    ##
+## Front-end Ignore                                    ##
 #########################################################
 
 shell/dist/
