@@ -148,9 +148,9 @@
         },
         "django-mirage": {
             "hashes": [
-                "sha256:d814dfc3bc715b84f0f93b8a85301970aacd7361ce6e7efc8e8540b3ca9608c0"
+                "sha256:073ba515092f13044589c8bae41230b34c4b80caa1a3f425b9b1e8da96a855f6"
             ],
-            "version": "==0.0.15"
+            "version": "==0.0.17"
         },
         "flake8": {
             "hashes": [
