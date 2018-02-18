@@ -7,9 +7,10 @@
 [![PyPI](https://img.shields.io/pypi/format/django-mirage.svg)]()
 [![PyPI](https://img.shields.io/pypi/l/django-mirage.svg)](https://opensource.org/licenses/Apache-2.0)
 
+
 >> Work in progress now!
 
-Extended django admin or manage.py command.
+**[mirage ~ ♪](https://youtu.be/nhrXbPlpdQQ?t=3m4s)** extended django admin or manage.py command.
 
 # ⬇️  Installation
 
