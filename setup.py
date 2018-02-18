@@ -30,7 +30,7 @@ if __name__ == "__main__":
         },
         description = "Advanced Django console",
         long_description = "Advanced extended command line tool for Django.",
-        url = "https://github.com/shotastage/mirage/",
+        url = "https://github.com/shotastage/django-mirage/",
         license = "Apache",
         platforms = ["POSIX", "Windows", "Mac OS X"],
         test_suite = "mirage_test.suite",
