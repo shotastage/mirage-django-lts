@@ -16,7 +16,7 @@ For full documentation visit [mkdocs.org](http://mkdocs.org).
 
 * `console` `c` - Launch Django python shell to manage or test Django project directory.
 
-*  `console:db` `c:db` - Launch database console.
+* `console:db` `c:db` - Launch database console.
 
 
 ## Rest registred commands

@@ -11,6 +11,21 @@
 
 Extended django admin or manage.py command.
 
+# ⬇️  Installation
+
+Installing with pip is easiest way.
+
+```
+pip install django-mirage
+```
+
+You can build this package manually.
+
+```
+make before_node
+make build_all
+```
+
 # 🖥  Usage
 
 * `mg new` to create Django project.
@@ -23,3 +38,7 @@ More usage is [here]().
 
 - Shota Shimazu
 
+# ©  License
+
+Copyright © 2017-2018 Shota Shimazu All Rights Reserved.
+This software is released under the Apache License, see LICENSE for detail.
