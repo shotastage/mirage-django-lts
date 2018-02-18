@@ -27,17 +27,3 @@ project:
         copyrightors:
             - Shota Shimazu
             - Aika Yamashita
-
-
-target:
-    build:
-        - python setup.py check
-	    - python setup.py sdist
-
-    clean:
-        - rm -rf site/
-        - rm -rf node_modules/
-
-    test:
-        - echo Launching debug server... 
-        - mg s
