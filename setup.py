@@ -11,6 +11,10 @@ if __name__ == "__main__":
         version = "0.0.17",
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
+        classifiers=[
+            'Programming Language :: Python :: 3.5',
+            'Programming Language :: Python :: 3.6',
+        ],
         packages = find_packages(exclude=('tests', 'shell')),
         include_package_data = True,
         zip_safe = False,

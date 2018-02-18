@@ -1,8 +1,11 @@
 ![Mirage](./docs/assets/logo.png)
 
 [![PyPI version](https://badge.fury.io/py/django-mirage.svg)](https://badge.fury.io/py/django-mirage)
+[![PyPI](https://img.shields.io/pypi/pyversions/django-mirage.svg)]()
 [![Build Status](https://travis-ci.org/shotastage/mirage.svg?branch=master)](https://travis-ci.org/shotastage/mirage)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![GitHub release](https://img.shields.io/github/release/shotastage/mirage.svg)](https://github.com/shotastage/mirage/releases)
+[![PyPI](https://img.shields.io/pypi/format/django-mirage.svg)]()
+[![PyPI](https://img.shields.io/pypi/l/django-mirage.svg)](https://opensource.org/licenses/Apache-2.0)
 
 >> Work in progress now!
 
