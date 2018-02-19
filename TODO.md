@@ -4,9 +4,9 @@
 
 # Create new application
 
-- `new`
-- `new:cms` will be deprecated
 - `new:api`
+- `new:angular`
+- `new:react`
 
 
 # Generate models, apps and so on
@@ -22,24 +22,6 @@ Shorten command: `g`
 + routing
 + migration
 
-# Launch debug server
-
-Basic command: `server`  
-Shorten command: `s`
- 
-# Database
-
-`db:migrate`
-
-`db:console` & `dbconsole` as alias
-
-
-# Console
-Basic command: `console`  
-Shorten command: `c`
-
-+ `console:db`
-
 
 # DJ Scaffold
 
@@ -50,4 +32,3 @@ Shorten command: `c`
 - create model with table view
 
 - create selializer and view
-

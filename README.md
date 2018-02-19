@@ -41,5 +41,5 @@ More usage is [here]().
 
 # ©  License
 
-Copyright © 2017-2018 Shota Shimazu All Rights Reserved.
+Copyright © 2017-2018 Shota Shimazu All Rights Reserved.  
 This software is released under the Apache License, see LICENSE for detail.
