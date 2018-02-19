@@ -25,7 +25,9 @@ if __name__ == "__main__":
         ],
         entry_points = {
             'console_scripts':[
+                'djc = mirage.mirage:main',
                 'mg = mirage.mirage:main',
+                'mi = mirage.mirage:main'
             ],
         },
         description = "Advanced Django console",

@@ -15,13 +15,15 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+from . import version
+
 usage = """
-Django Console v0.0.15
+Mirage v{0}
 
 Usage:
-    mg [action] option <--sub-option> <inputs>
+    mi [action] option <--sub-option> <inputs>
 
-    mg [action]:[subaction] option <--sub-option> <inputs>
+    mi [action]:[subaction] option <--sub-option> <inputs>
 
 
 Actions:
@@ -44,13 +46,13 @@ Actions:
     version            v                        Print version information.
 
 
-"""
+""".format(version.text)
 
 version = """
-Django Console Version 0.0.15
+Mirage Version {0}
 
-https://github.com/shotastage/mirage
+https://github.com/shotastage/django-mirage
 
 Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
-"""
+""".format(version.text)

@@ -18,7 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 import enum
 import functools
-from mirage.command import log, raise_error_message
+from mirage import system
 
 # Flow Classies
 from mirage import workflows
@@ -116,7 +116,9 @@ class ArgumentsParser(object):
 
             return
         else:
-            log("CLI action is not appended!", withError = True, errorDetail = raise_error_message(self.parse))
+            system.log("Unable to invoke action \"{0}\"!".format(sys.argv[1]), withError = True)
+            instance = getattr(workflows, "UsageShow")(self._arguments)
+            instance.run()
 
 
     def __insert_arguments(self):
