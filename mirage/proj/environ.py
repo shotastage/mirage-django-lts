@@ -18,6 +18,8 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import sys
 import enum
+import pathlib
+from mirage import proj
 from mirage import fileable
 from mirage.command import log
 
@@ -29,13 +31,35 @@ class MirageEvironmet():
         self._level = env_level
 
     def __enter__(self):
-        return self
+
+        proj_root = MirageEvironmet.search_project_root()
+
+        with proj.InDir(proj_root):
+            if self._level == MirageEvironmetLevel.inproject:
+                os.chdir()
 
     def __exit__(self, exception_type, exception_value, traceback):
         return False
 
-    def __del__(self):
-        log("Out Mirage Environ")
+
+
+    @staticmethod
+    def search_project_root():
+        """
+        Search your Django project root.
+
+        returns:
+            - path:string  Django project root
+        """
+
+        while True:
+
+            current = os.getcwd()
+            
+            if pathlib.Path("Miragefile").is_file():
+                return current
+            else:
+                os.chdir("../")
 
 
     @staticmethod
