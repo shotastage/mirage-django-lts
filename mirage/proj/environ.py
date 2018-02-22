@@ -21,6 +21,7 @@ import enum
 import pathlib
 from mirage import proj
 from mirage import fileable
+from mirage.miragefile import conf
 from mirage.command import log
 
 
@@ -33,11 +34,15 @@ class MirageEvironmet():
     def __enter__(self):
 
         proj_root = MirageEvironmet.search_project_root()
+        django_root = conf.Config()
 
         with proj.InDir(proj_root):
             if self._level == MirageEvironmetLevel.inproject:
-                os.chdir()
+                os.chdir(django_root.get(conf.Category.django, conf.Detail.django_path))
 
+            if self._level == MirageEvironmetLevel.inapp:
+                pass
+                
     def __exit__(self, exception_type, exception_value, traceback):
         return False
 

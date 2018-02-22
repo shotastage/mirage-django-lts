@@ -264,10 +264,10 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:4fd8ce4568f7363818b8c62d18279722d71ef7c3eef5b6cc1ca0d22646adecb5",
-                "sha256:379e3f55898775e6bfca0b750e00df0441d35f066d36e64d10567b0913c623ce"
+                "sha256:049b68130e20e7df96ec885a9ee1d5637815f46308c9231b2bfa64cd291131e5",
+                "sha256:93936b7d71399da6260b1057cb91d57f47c230654b079c4e000fff5b12570862"
             ],
-            "version": "==2.6.2"
+            "version": "==2.6.5"
         },
         "pep8": {
             "hashes": [
@@ -285,9 +285,9 @@
         },
         "pipenv": {
             "hashes": [
-                "sha256:6c9b9d8e551a3086fc8300e18f93336fabbe3d8b9743dd1145e50a766f60e8f1"
+                "sha256:df37f03f84e8e7dd0ea1166d3e4bbd505332cdc1f5b10feb1435d52506f0c670"
             ],
-            "version": "==9.0.3"
+            "version": "==9.1.0"
         },
         "pycodestyle": {
             "hashes": [
