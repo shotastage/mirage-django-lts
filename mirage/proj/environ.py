@@ -21,8 +21,8 @@ import enum
 import pathlib
 from mirage import proj
 from mirage import fileable
+from mirage.system import warning, log
 from mirage.miragefile import conf
-from mirage.command import log
 
 
 class MirageEvironmet():
@@ -30,6 +30,7 @@ class MirageEvironmet():
     def __init__(self, env_level):
         self._current = os.getcwd()
         self._level = env_level
+
 
     def __enter__(self):
 
@@ -99,7 +100,7 @@ class MirageEvironmet():
 
 
     @staticmethod
-    def in_project():
+    def in_django_project():
         """
         Judge where current working directory is in Django project or not.
 
@@ -114,6 +115,11 @@ class MirageEvironmet():
             return False
         except:
             return False
+
+    
+    @staticmethod
+    def in_project():
+        return pathlib.Path("Miragefile").is_file()
 
 
     @staticmethod
@@ -146,6 +152,8 @@ class MirageEvironmet():
             - (Array<String>) cwd is in app dir returns True
         """
 
+        warning.warn("This method is now under construction.", warning.UnderConstructionWarning)
+
         apps = []
         list_dir = os.listdir(os.getcwd())
         current = os.getcwd()
@@ -170,28 +178,3 @@ class MirageEvironmetLevel(enum.Enum):
     indjango    = 1
     inapp       = 2
     outproject  = 3
-
-
-
-
-def get_project_name():
-    current_dir = os.getcwd()
-    directories = os.listdir(".")
-    app_name = "FAILED TO GET"
-    
-    if MirageEvironmet.in_project():
-
-        for directory in directories:
-            try:
-                os.chdir(directory)
-
-                if os.path.isfile("settings.py"):
-                    app_name = str(os.getcwd()).split("/")[-1]
-
-                os.chdir(current_dir)
-            except:
-                pass
-    else:
-        app_name = "Out of project dir"
-    
-    return app_name
