@@ -20,12 +20,14 @@ import yaml
 import warnings
 from mirage         import fileable
 from mirage.command import log
+from mirage.system import warning
 
 
 # New
 import sys
 
 def in_project():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
     try:
         set_import_root()
 
@@ -39,6 +41,7 @@ def in_project():
 
 
 def in_app():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
     try:
         set_import_root()
 
@@ -55,11 +58,13 @@ def in_app():
 
 
 def set_import_root():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
     sys.path.append("./")
 
 
 
 def get_project_name():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
     current_dir = os.getcwd()
     directories = os.listdir(".")
     app_name = "FAILED TO GET"
@@ -84,7 +89,8 @@ def get_project_name():
 
 
 def get_app_list():
-
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
+    
     apps = []
     list_dir = os.listdir(os.getcwd())
     current = os.getcwd()
@@ -106,7 +112,8 @@ def get_app_list():
 
 # Old
 def project_name():
-
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
+    
     status = False
 
     if os.path.isfile("manage.py"):
@@ -130,6 +137,8 @@ def project_name():
 # Config
 
 def load_djfile():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
+    
     with open("Miragefile", "r") as djfile:
         try:
             return yaml.load(djfile)
@@ -138,6 +147,8 @@ def load_djfile():
 
 
 def load_additional_conf():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
+    
     with open("Miragefile.addon", "r") as djfile:
         try:
             return yaml.load(djfile)
