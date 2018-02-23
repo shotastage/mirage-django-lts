@@ -37,3 +37,9 @@ class DeprecatedWarning():
 
 class NotImplementedWarning():
     title = "Not Implemented"
+
+class UnderConstructionWarning():
+    title = "Under Construction"
+
+class UnstableFeatureWarning():
+    title = "Unstable"

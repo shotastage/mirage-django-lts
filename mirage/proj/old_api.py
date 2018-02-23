@@ -17,7 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import yaml
-import warnings
+from mirage.system import warning
 from mirage         import fileable
 from mirage.command import log
 
@@ -26,7 +26,7 @@ from mirage.command import log
 import sys
 
 def in_project():
-    warnings.warn("in_project will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("in_project will be deprecated on next release.", warning.PendingDeprecationWarning)
     try:
         set_import_root()
 
@@ -40,7 +40,7 @@ def in_project():
 
 
 def in_app():
-    warnings.warn("in_app will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("in_app will be deprecated on next release.", warning.PendingDeprecationWarning)
     try:
         set_import_root()
 
@@ -57,13 +57,13 @@ def in_app():
 
 
 def set_import_root():
-    warnings.warn("set_import_root will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("set_import_root will be deprecated on next release.", warning.PendingDeprecationWarning)
     sys.path.append("./")
 
 
 
 def get_project_name():
-    warnings.warn("get_project_name will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("get_project_name will be deprecated on next release.", warning.PendingDeprecationWarning)
     current_dir = os.getcwd()
     directories = os.listdir(".")
     app_name = "FAILED TO GET"
@@ -88,7 +88,7 @@ def get_project_name():
 
 
 def get_app_list():
-    warnings.warn("get_app_list will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("get_app_list will be deprecated on next release.", warning.PendingDeprecationWarning)
 
     apps = []
     list_dir = os.listdir(os.getcwd())
@@ -111,7 +111,7 @@ def get_app_list():
 
 # Old
 def project_name():
-    warnings.warn("project_name will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("project_name will be deprecated on next release.", warning.PendingDeprecationWarning)
 
     status = False
 
@@ -136,7 +136,7 @@ def project_name():
 # Config
 
 def load_djfile():
-    warnings.warn("load_djfile will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("load_djfile will be deprecated on next release.", warning.PendingDeprecationWarning)
 
     with open("Miragefile", "r") as djfile:
         try:
@@ -146,7 +146,7 @@ def load_djfile():
 
 
 def load_additional_conf():
-    warnings.warn("load_additional_conf will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("load_additional_conf will be deprecated on next release.", warning.PendingDeprecationWarning)
 
     with open("Miragefile.addon", "r") as djfile:
         try:
@@ -156,7 +156,7 @@ def load_additional_conf():
 
 
 def load_secret_conf():
-    warnings.warn("load_secret_conf will be deprecated on next release.", PendingDeprecationWarning)
+    warning.warn("load_secret_conf will be deprecated on next release.", warning.PendingDeprecationWarning)
 
     with open("Miragefile.secret", "r") as djfile:
         try:
