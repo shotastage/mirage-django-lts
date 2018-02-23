@@ -28,23 +28,29 @@ from mirage.command import log
 class MirageEvironmet():
     
     def __init__(self, env_level):
-        log("Enter Mirage Environ")
+        self._current = os.getcwd()
         self._level = env_level
 
     def __enter__(self):
 
-        proj_root = MirageEvironmet.search_project_root()
-        django_root = conf.Config()
+        if self._level == MirageEvironmetLevel.inproject:
+            proj_root = MirageEvironmet.search_project_root()
+            os.chdir(proj_root)
+            return
+        
+        if self._level == MirageEvironmetLevel.indjango:
+            django_root = conf.Config().get(conf.Category.django, conf.Detail.django_path)
+            os.chdir(django_root)
+            return
 
-        with proj.InDir(proj_root):
-            if self._level == MirageEvironmetLevel.inproject:
-                os.chdir(django_root.get(conf.Category.django, conf.Detail.django_path))
+        if self._level == MirageEvironmetLevel.inapp:
+            app_root = MirageEvironmet.search_app_root()
+            os.chdir(app_root)
+            return
 
-            if self._level == MirageEvironmetLevel.inapp:
-                pass
-                
+        
     def __exit__(self, exception_type, exception_value, traceback):
-        return False
+        os.chdir(self._current)
 
 
 
@@ -161,8 +167,9 @@ class MirageEvironmet():
 
 class MirageEvironmetLevel(enum.Enum):
     inproject   = 0
-    inapp       = 1
-    outproject  = 2
+    indjango    = 1
+    inapp       = 2
+    outproject  = 3
 
 
 
