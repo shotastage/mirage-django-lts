@@ -15,8 +15,25 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import warnings
-
 def warn(string, warning_class = None):
-    if not warning_class == None: warnings.warn(str(string), warning_class)
-    print('\033[31mMirage (WARNING): ' + str(string) + '\033[0m')
+    if not warning_class == None:
+        print('\033[31mMirage (WARNING): {0}\033[0m'.format(str(string)))
+    else:
+        print('\033[31mMirage ({0}): {1}\033[0m'.format(warning_class.title, str(string)))
+
+
+
+"""
+Mirage warning classies
+"""
+class Warning():
+    title = "WARNING"
+
+class PendingDeprecationWarning():
+    title = "Pending Deprecation"
+
+class DeprecatedWarning():
+    title = "Deprecated"
+
+class NotImplementedWarning():
+    title = "Not Implemented"

@@ -54,7 +54,7 @@ class MirageEvironmet():
         Search your Django project root.
 
         returns:
-            - path:string  Django project root
+            - path:string  Django project root path
         """
 
         while True:
@@ -66,14 +66,40 @@ class MirageEvironmet():
             else:
                 os.chdir("../")
 
+    @staticmethod
+    def search_app_root():
+        """
+        Search your Django application root
+
+        returns:
+            - (String) Django application root path
+        """
+        while True:
+
+            current = os.getcwd()
+            
+            if pathlib.Path("app.py").is_file():
+                return current
+            else:
+                os.chdir("../")
+
 
     @staticmethod
     def set_import_root():
+        """
+        Set path to import current dir Python module.
+        """
         sys.path.append("./")
 
 
     @staticmethod
     def in_project():
+        """
+        Judge where current working directory is in Django project or not.
+
+        returns:
+            - (Bool) cwd is in proj dir returns True
+        """
         try:
             MirageEvironmet.set_import_root()
             import manage
@@ -86,6 +112,12 @@ class MirageEvironmet():
 
     @staticmethod
     def in_app():
+        """
+        Judge where current working directory is in Django application or not.
+
+        returns:
+            - (Bool) cwd is in app dir returns True
+        """
         try:
             MirageEvironmet.set_import_root()
             import apps
@@ -101,6 +133,12 @@ class MirageEvironmet():
 
     @staticmethod
     def get_app_list():
+        """
+        Return application lists.
+
+        returns:
+            - (Array<String>) cwd is in app dir returns True
+        """
 
         apps = []
         list_dir = os.listdir(os.getcwd())
