@@ -29,6 +29,7 @@ from mirage              import fileable
 from mirage.flow         import Workflow
 from mirage.database     import DBConnection
 
+from mirage.workspace import storage
 
 class DjangoBackupAppWorkFlow(Workflow):
 
@@ -37,10 +38,9 @@ class DjangoBackupAppWorkFlow(Workflow):
 
 
     def main(self):
-        
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.inproject):
-            print(os.listdir())
-        print(os.listdir())
+
+        storage.MirageWorkspace.initialize()
+        storage.MirageWorkspace.persist(self._app_name, "mi_backup")
         
         """
         try:

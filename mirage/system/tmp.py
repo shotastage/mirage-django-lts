@@ -15,8 +15,25 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from .log import log
-from .command import command
-from .error import raise_error_message
-from .warning import warn
-from .tmp import tmpWorking
+import contextlib
+import uuid
+import os
+
+from mirage import fileable
+
+
+@contextlib.contextmanager
+def tmpWorking(tmp_name):
+
+    # Directories
+    working = tmp_name + uuid.uuid4()
+    current = os.getcwd()
+    
+    # Enter
+    fileable.mkdir(working)
+    os.chdir(working)
+    yield
+
+    # Exit
+    os.chdir(current)
+    fileable.rm(working)
