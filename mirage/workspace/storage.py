@@ -14,24 +14,3 @@ Copyright 2017-2018 Shota Shimazu.
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-
-import sqlite3
-
-
-class DBConnection():
-
-    def __init__(self, dbfile, preventAutoSave = False):
-
-        if preventAutoSave:
-            self._connection = sqlite3.connect(dbfile)
-        else:
-            self._connection = sqlite3.connect(dbfile, isolation_level=None)
-
-        self._cursor     = self._connection.cursor()
-
-
-    def query(self, query):
-        self._connection.execute(query)
-
-    def save(self):
-        self._connection.commit()
