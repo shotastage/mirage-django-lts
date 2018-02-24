@@ -22,6 +22,9 @@ def create_model_class(class_name, contents):
     return "\n\n" + textwrap.dedent(
 '''
 class {class_name}(models.Model):
+    """
+    Models docstring is here.
+    """
 {contents}
 
 ''').format(class_name=class_name, contents=contents).strip() + "\n"

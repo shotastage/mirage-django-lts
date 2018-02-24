@@ -39,6 +39,9 @@ clean:
 	rm -rf node_modules/
 	rm -rf testing/
 
+pyclean:
+	find ./mirage -name '*.pyc' -delete -not -path './mirage/scaffold/static/'
+
 test:
 	@echo "Removing recent buildings..."
 	rm -rf dist/
@@ -48,7 +51,7 @@ test:
 	python setup.py check
 	python setup.py sdist
 	pip uninstall django-mirage
-	pip install dist/django-mirage-0.0.17.tar.gz
+	pip install dist/django-mirage-0.0.18.tar.gz
 
 fetch:
 	@echo "Fetching assets..."

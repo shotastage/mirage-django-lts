@@ -58,3 +58,4 @@ Data Type:         Rerating Fields:
  uuid                UUIDField"
 
 """
+        print(datatypes)
