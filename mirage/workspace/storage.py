@@ -43,19 +43,24 @@ class MirageWorkspace():
         object_id = str(uuid.uuid4())
         absolute_path = os.getcwd() + "/" + file_path
 
+        # Logger instance
+        logger = mys.progress.Progress()
+
         with MirageEvironmet(MirageEvironmetLevel.inproject):
 
-            mys.log("Safety caching...")
+            logger.write("Safety caching...", withLazy = True)
             fileable.cd(".mirage/cache/")
             fileable.copy(absolute_path, os.getcwd() + "/" + file_path, force = True)
 
-            mys.log("Archiving files...")
+            logger.update("Archiving files...", withLazy = True)
             shutil.make_archive(object_id, "zip", root_dir = absolute_path)
             
             fileable.move(object_id + ".zip", "../persistence/")
 
             MirageWorkspace.__write_persistence_file_meta(object_id, ".mirage/persistence/", domain)
-            
+
+            logger.update("Saving file completed!", withLazy = True)
+
 
     @staticmethod
     def cache(file):
