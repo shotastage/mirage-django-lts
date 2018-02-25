@@ -18,6 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import enum
 import yaml
+from mirage import proj
 from mirage import system as sys
 
 
@@ -46,14 +47,15 @@ class Config():
 
     def __init__(self, file_type = None):
 
-        if file_type == "secret":
-            self._data = self._load_yaml("Miragefile.secret")
-        elif file_type == "addon":
-            self._data = self._load_yaml("Miragefile.addon")
-        elif file_type == None:
-            self._data = self._load_yaml("Miragefile")
-        else:
-            sys.log("Wrong configuration type {0}.".format(file_type), withError = True)
+        with proj.MirageEvironmet(proj.MirageEvironmetLevel.inproject):
+            if file_type == "secret":
+                self._data = self._load_yaml("Miragefile.secret")
+            elif file_type == "addon":
+                self._data = self._load_yaml("Miragefile.addon")
+            elif file_type == None:
+                self._data = self._load_yaml("Miragefile")
+            else:
+                sys.log("Wrong configuration type {0}.".format(file_type), withError = True)
 
 
     def get(self, category, detail):

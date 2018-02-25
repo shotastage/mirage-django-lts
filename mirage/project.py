@@ -157,6 +157,8 @@ def load_additional_conf():
 
 
 def load_secret_conf():
+    warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
+
     with open("Miragefile.secret", "r") as djfile:
         try:
             return yaml.load(djfile)
