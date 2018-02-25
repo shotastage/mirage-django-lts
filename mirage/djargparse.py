@@ -86,22 +86,6 @@ class ArgumentsParser(object):
         return
 
 
-    def avd_add_argument(self, shorten_cmd, long_cmd, option, execute):
-        if self._cmd == shorten_cmd or self._cmd == long_cmd:
-            if self._sub_action == None:
-                self._exec_flow = execute
-
-        return
-    
-
-    def avd_add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
-        if self._cmd == base_shorten_cmd or self._cmd == base_long_cmd:
-            if self._sub_action == action:
-                self._exec_flow = execute
-
-        return
-
-
     def parse(self):
         # If there are no command, show usage.
         if len(sys.argv) == 1:
