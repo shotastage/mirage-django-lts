@@ -22,11 +22,14 @@ import sys
 import textwrap
 import functools
 from subprocess import check_output, DEVNULL, STDOUT
+from mirage.system import warning
 
 
 def log(string,
             withError = False, errorDetail = None,
             withInput = False, withConfirm = False, default = None):
+    
+    warning.warn("command.log will be deprecated on nect release!", warning.PendingDeprecationWarning)
 
 
     if withError:
@@ -63,6 +66,9 @@ def log(string,
 
 
 def raise_error_message(func):
+
+    warning.warn("command.raise_error_message will be deprecated on nect release!", warning.PendingDeprecationWarning)
+
 
     try:
         errored_func = func.__name__
@@ -102,6 +108,9 @@ Signature         : {func_signature}
 
 
 def command(command, withOutput = False):
+
+    warning.warn("command.command will be deprecated on nect release!", warning.PendingDeprecationWarning)
+
     separated_cmds = command.split(" ")
 
     if withOutput:
