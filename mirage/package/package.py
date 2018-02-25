@@ -19,8 +19,8 @@ import os
 import pip
 
 from mirage.flow import Workflow
-from mirage.command import log, raise_error_message
 from mirage.command import command
+from mirage import system as mys
 
 
 class DjangoPackageWorkFlow(Workflow):
@@ -31,7 +31,7 @@ class DjangoPackageWorkFlow(Workflow):
         self._packages = self._values
 
     def main(self):
-        log("Mirage package manager...")
+        mys.log("Mirage package manager...")
 
     def _init(self):
         ignore_packages = ["setuptools", "pip", "python"]
@@ -39,10 +39,10 @@ class DjangoPackageWorkFlow(Workflow):
 
 
     def _install(self, package_name):
-        log("Installing package " + package_name + " ...")
+        mys.log("Installing package " + package_name + " ...")
 
     def _uninstall(self, package_name):
-        log("Uninstalling package " + package_name + " ...")
+        mys.log("Uninstalling package " + package_name + " ...")
 
 
     def _integrate(self, pipfile):
