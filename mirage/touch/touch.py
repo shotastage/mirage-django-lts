@@ -16,10 +16,10 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from mirage.flow import Workflow
-from mirage.command import log, raise_error_message
-from mirage.miragefile.utils import MiragefileDataCategory
-from mirage import miragefile
+from mirage.miragefile.conf import Config, Category, Detail
 from mirage import project
+from mirage import system as mys
+
 from . import copyright_source
 
 
@@ -30,44 +30,36 @@ class TouchWorkFlow(Workflow):
         self._fname = self._option
       
         if self._fname == None:
-            self._fname = log("File Name", withInput = True)
+            self._fname = mys.log("File Name", withInput = True)
 
 
     def main(self):
 
-
-        proj_name   = miragefile.utils.get_project(
-                                MiragefileDataCategory.project_name)
+        proj_name = Config().get(Category.project_basic, Detail.project_name)
 
         try:
-            your_name = miragefile.utils.get_private_profile("name")
+            your_name = Config("secret").get(Category.private_profile, Detail.private_name)
         except:
-            your_name = log("What's your name?", withInput = True)
+            your_name = mys.log("What's your name?", withInput = True)
 
 
-        start_year  = miragefile.utils.get_copyright(
-                                MiragefileDataCategory.copyright_start_year)
+        start_year = Config().get(Category.copyright, Detail.copyright_start_year)
 
-        copyrights  = miragefile.utils.get_copyright(
-                                MiragefileDataCategory.copyright_copyrigtors)
+        copyrights = Config().get(Category.copyright, Detail.copyright_copyrigtors)
 
-        licensename = miragefile.utils.get_project(
-                                MiragefileDataCategory.project_license)
+        licensename = Config().get(Category.project_basic, Detail.project_license)
 
         try:
-            license_url = miragefile.utils.get_private_profile("license")
+            license_url = Config("secret").get(Category.private_profile, Detail.private_license_url)
         except:
-            license_url = log("License doc URL", withInput = True)
+            license_url = mys.log("License doc URL", withInput = True)
 
 
-        if project.in_project():
-            try:
-                with open(str(self._fname), "w") as f:
-                    f.write(
-                        copyright_source.copyright_doc(proj_name, self._fname, your_name,
+        try:
+            with open(str(self._fname), "w") as f:
+                f.write(
+                    copyright_source.copyright_doc(proj_name, self._fname, your_name,
                                                             start_year, copyrights, licensename, license_url)
-                    )
-            except:
-                log("Failed to touch new python script!", withError = True, errorDetail = raise_error_message(self.main))
-        else:
-            log("Failed to launch server!", withError = True, errorDetail = "You are now out of Django project.")
+                )
+        except:
+            mys.log("Failed to touch new python script!", withError = True, errorDetail = mys.raise_error_message(self.main))

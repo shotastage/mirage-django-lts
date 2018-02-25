@@ -28,6 +28,7 @@ class Category(enum.Enum):
     frontend        = 2
     workspace       = 3
     copyright       = 4
+    private_profile = 5
 
 
 class Detail(enum.Enum):
@@ -41,6 +42,10 @@ class Detail(enum.Enum):
     django_module   = 7
     django_package_manager = 8
     django_db_backend = 9
+    copyright_start_year = 10
+    copyright_copyrigtors = 11
+    private_name = 12
+    private_license_url = 13
 
 
 class Config():
@@ -64,6 +69,10 @@ class Config():
             return self._get_project(detail)
         if category == Category.django:
             return self._get_django(detail)
+        if category == Category.copyright:
+            return self._get_copyright(detail)
+        if category == Category.private_profile:
+            return self._get_private_profile(detail)
 
 
 
@@ -101,6 +110,29 @@ class Config():
             return self._load_failed()
 
 
+    def _get_copyright(self, detail):
+
+        if detail == Detail.copyright_start_year:
+            return self._data["project"]["copyright"]["start_year"]
+        elif detail == Detail.copyright_copyrigtors:
+            return self._data["project"]["copyright"]["copyrightors"]
+        else:
+            sys.log("The config information named " + detail + " does not exist!", withError = True) 
+            return self._load_failed()
+
+
+
+    def _get_private_profile(self, detail):
+
+        if detail == Detail.private_name:
+            return self._data["private_profile"]["name"]
+        elif detail == Detail.private_license_url:
+            return self._data["private_license"]["url"]
+        else:
+            sys.log("The config information named " + detail + " does not exist!", withError = True) 
+            return self._load_failed()
+
+
     def _load_yaml(self, filename):
 
         if not os.path.exists(filename):
@@ -124,34 +156,6 @@ class Config():
 # BACKUP
 #
 #
-
-
-def get_copyright(item):
-
-    data = load_miragefile()
-
-    if item == MiragefileDataCategory.copyright_start_year:
-        return data["project"]["copyright"]["start_year"]
-    elif item == MiragefileDataCategory.copyright_copyrigtors:
-        return data["project"]["copyright"]["copyrightors"]
-    else:
-        log("The config information named " + item + " does not exist!", withError = True) 
-        return load_failed()
-
-
-def get_private_profile(item):
-
-    data = load_miragefile_secret()
-
-    if item == "name":
-        return data["private_profile"]["name"]
-    elif item == "license":
-        return data["private_license"]["url"]
-    else:
-        log("The config information named " + item + " does not exist!", withError = True) 
-        return load_failed()
-
-
 
 def get_reserved_addon_config(item):
 
