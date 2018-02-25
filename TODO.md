@@ -1,6 +1,6 @@
 # TODO
 
->> `mg`
+>> `mi`
 
 # Create new application
 

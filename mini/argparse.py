@@ -131,8 +131,8 @@ class ArgumentsParser(object):
         except: pass
         
         # Get option and detail option
-        # optin =           mg g **app**
-        # detail option =   mg g app **--basic**
+        # optin =           mi g **app**
+        # detail option =   mi g app **--basic**
         try:
             self._option = sys.argv[2]
 

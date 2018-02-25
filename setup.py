@@ -24,8 +24,7 @@ if __name__ == "__main__":
         ],
         entry_points = {
             'console_scripts':[
-                'djc = mirage.mirage:main',
-                'mg = mirage.mirage:main',
+                'djc = mirage.mirage:main',  # Recent command
                 'mi = mirage.mirage:main'
             ],
         },
