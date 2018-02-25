@@ -21,9 +21,9 @@ usage = """
 Mirage v{0}
 
 Usage:
-    mi [action] option <--sub-option> <inputs>
+    mg [action] option <--sub-option> <inputs>
 
-    mi [action]:[subaction] option <--sub-option> <inputs>
+    mg [action]:[subaction] option <--sub-option> <inputs>
 
 
 Actions:

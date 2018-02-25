@@ -26,7 +26,7 @@ if __name__ == "__main__":
             'console_scripts':[
                 'djc = mirage.mirage:main',  # Recent command
                 'mirage = mirage.mirage:main',
-                'mi = mirage.mirage:main'
+                'mg = mirage.mirage:main'
             ],
         },
         description = "Advanced Django console",

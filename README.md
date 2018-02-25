@@ -29,9 +29,9 @@ make build_all
 
 # 🖥  Usage
 
-* `mi new` to create Django project.
+* `mg new` to create Django project.
 
-* `mi g` to generate new app & model.
+* `mg g` to generate new app & model.
 
 More usage is [here]().
 

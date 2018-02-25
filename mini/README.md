@@ -10,7 +10,7 @@ Mirage mini is CLI for your Django Web Application. It provides general console 
 To install Mirage mini, run this command in your Django application root. It requires Miragefile configuration that you have to configure it before. If the file is not found, this installation will be failed.
 
 ```
-mi extend bin
+mg extend bin
 ```
 
 # Usage
