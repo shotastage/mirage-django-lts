@@ -19,13 +19,10 @@ import os
 import shutil
 from mirage import proj
 from mirage import fileable
-from mirage.system import progress
-from mirage.flow import Flow, Workflow, Stepflow
-from mirage.command import log, command
+from mirage.flow import Workflow
+from mirage import system as mys
+from mirage.template import readme_md, gitignore, package_json
 from mirage.miragefile import source
-from mirage.template import readme_md
-from mirage.template import gitignore
-from mirage.template import package_json
 
 
 class DjangoStartupWorkFlow(Workflow):
@@ -43,24 +40,24 @@ class DjangoStartupWorkFlow(Workflow):
             return
 
         # Input information
-        log("Please type your new Django application information.")
+        mys.log("Please type your new Django application information.")
 
         # Check namespace
         try:
-            self._project_name = log("Project name", withInput = True)
+            self._project_name = mys.log("Project name", withInput = True)
             self._check_namesapce(self._project_name)
         except:
-            log("Project \"{0}\" is already exists.".format(self._project_name), withError = True,
+            mys.log("Project \"{0}\" is already exists.".format(self._project_name), withError = True,
                     errorDetail = "Please remove duplication of Django project namespace.")
             return
 
-        version      = log("App version", withInput = True, default = "0.0.1")
-        author       = log("Author name", withInput = True)
-        email        = log("Email",       withInput = True)
-        git_url      = log("Git URL",     withInput = True)
-        license_name = log("License",     withInput = True)
-        description  = log("Description", withInput = True)
-        copyrightor  = log("Copyrightor", withInput = True, default = author)
+        version      = mys.log("App version", withInput = True, default = "0.0.1")
+        author       = mys.log("Author name", withInput = True)
+        email        = mys.log("Email",       withInput = True)
+        git_url      = mys.log("Git URL",     withInput = True)
+        license_name = mys.log("License",     withInput = True)
+        description  = mys.log("Description", withInput = True)
+        copyrightor  = mys.log("Copyrightor", withInput = True, default = author)
 
 
 
@@ -68,7 +65,7 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
         # Create logging instance
-        logger = progress.Progress()
+        logger = mys.progress.Progress()
 
         with proj.InDir("./" + self._project_name):
 
@@ -87,13 +84,13 @@ class DjangoStartupWorkFlow(Workflow):
 
             # Add remote repo
             logger.update("Adding remote repository...", withLazy = True)
-            command("git remote add origin " + git_url)
+            mys.command("git remote add origin " + git_url)
 
             # Create React App
             logger.update("Creating React app...")
             self._create_package_json()
-            command("yarn add --dev create-react-app")
-            command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
+            mys.command("yarn add --dev create-react-app")
+            mys.command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
 
             # Cleaning
             logger.update("Cleaning...", withLazy = True)
@@ -111,7 +108,7 @@ class DjangoStartupWorkFlow(Workflow):
     
 
     def _create_new_django_app(self):
-        command("django-admin startproject " + self._project_name)
+        mys.command("django-admin startproject " + self._project_name)
 
 
     def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):    
@@ -131,7 +128,7 @@ class DjangoStartupWorkFlow(Workflow):
         with open(".gitignore", "w") as f:
             f.write(ignorance)
 
-        command("git init")
+        mys.command("git init")
 
 
     def _create_docs(self):
@@ -144,7 +141,7 @@ class DjangoStartupWorkFlow(Workflow):
         try:
             import django
         except ImportError:
-            log("Failed to import Django!", withError = True,
+            mys.log("Failed to import Django!", withError = True,
                                 errorDetail = "You have to install Django before creating a new Django project.")
             raise ImportError
 
