@@ -19,7 +19,7 @@ import os
 import readline
 from mirage.flow import Workflow
 from mirage.generate.urlpy import create_urlpy_script as url_script
-from mirage.command import log, command
+from mirage import system as mys
 
 
 
@@ -33,19 +33,19 @@ class DjangoAppMakeWorkFlow(Workflow):
         try:
             self._check_all()
         except:
-            log("Environmental compatability is invalid.", withError = True, errorDetail = "")
+            mys.log("Environmental compatability is invalid.", withError = True, errorDetail = "")
             return
 
 
         for app in self._must_creat_apps:
-            log("Creating a app " + app + ".")
+            mys.log("Creating a app " + app + ".")
             self._create_app(app)
             self._create_url(app)
             self._install_app(app)
 
 
     def _create_app(self, name):
-        command("python manage.py startapp " + name)
+        mys.command("python manage.py startapp " + name)
 
 
     def _create_url(self, name):
@@ -64,21 +64,21 @@ class DjangoAppMakeWorkFlow(Workflow):
         try:
             current = os.getcwd()
         except:
-            log("Failed to get current.", withError = True)
+            mys.log("Failed to get current.", withError = True)
 
         try:
             master_app = self.__detect_master_app()
         except:
-            log("Failed to detect master app.", withError = True)
+            mys.log("Failed to detect master app.", withError = True)
 
 
-        log("Installing created app...")
+        mys.log("Installing created app...")
         os.chdir(master_app)
 
         if os.path.isfile("settings.py"):
             self.__insert_app_path(name)
         else:
-            log("Failed to install Django app due to missing configuration file.", withError = True)
+            mys.log("Failed to install Django app due to missing configuration file.", withError = True)
 
         os.chdir(current)
 
@@ -95,12 +95,12 @@ class DjangoAppMakeWorkFlow(Workflow):
         for app in self._must_creat_apps:
             for name in reserved_names:
                 if app == name:
-                    log("The app named " + app + " is reserved by Django!", withError = True)
+                    mys.log("The app named " + app + " is reserved by Django!", withError = True)
                     raise ValueError
 
         for app in self._must_creat_apps:
             if os.path.isdir(app):
-                log("The app named " + app + " is already exists.", withError = True)
+                mys.log("The app named " + app + " is already exists.", withError = True)
                 raise FileExistsError
 
 
@@ -109,7 +109,7 @@ class DjangoAppMakeWorkFlow(Workflow):
         try:
             dirs = os.listdir(os.getcwd())
         except:
-            log("Failed to detect Django apps.", withError = True)
+            mys.log("Failed to detect Django apps.", withError = True)
 
         current = os.getcwd()
 
@@ -137,7 +137,7 @@ class DjangoAppMakeWorkFlow(Workflow):
                 try:
                     lines = setting.readlines()
                 except:
-                    log("Failed to load configuration file lines.", withError = True)
+                    mys.log("Failed to load configuration file lines.", withError = True)
         except:
             pass
 
