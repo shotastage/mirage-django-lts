@@ -16,7 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from abc import ABCMeta, abstractmethod
-from mirage.command import log, raise_error_message
+from mirage import system as mys
 
 
 class Workflow():
@@ -31,7 +31,10 @@ class Workflow():
         self.Stepflows      = []
         self.constructor()
 
-    def additional_init_(self): pass
+    def additional_init_(self):
+        mys.warning.warn(
+            "additional_init_ will be deprecated on next version!\nPlease use \"constructor\".",
+            mys.warning.PendingDeprecationWarning)
 
     def constructor(self):
         self.additional_init_()
@@ -80,7 +83,7 @@ class Stepflow():
             try:
                 flow()
             except:
-                log("Something error has occured!", withError = True, errorDetail = raise_error_message(flow))
+                mys.log("Something error has occured!", withError = True, errorDetail = mys.raise_error_message(flow))
                 raise Exception
 
 
@@ -100,7 +103,7 @@ class Flow():
                 try:
                     flow()
                 except:
-                    log("Something error has occured!", withError = True, errorDetail = raise_error_message(flow))
+                    mys.log("Something error has occured!", withError = True, errorDetail = mys.raise_error_message(flow))
                     raise Exception
 
     def execute(self):

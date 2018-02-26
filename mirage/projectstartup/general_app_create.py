@@ -21,6 +21,7 @@ from mirage import proj
 from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
+from mirage.system.progress import Progress
 from mirage.template import readme_md, gitignore, package_json
 from mirage.miragefile import source
 
@@ -65,7 +66,7 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
         # Create logging instance
-        logger = mys.progress.Progress()
+        logger = Progress()
 
         with proj.InDir("./" + self._project_name):
 
