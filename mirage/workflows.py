@@ -73,3 +73,6 @@ class DjangoHerokuConfigure(DjangoHerokuConfigureWorkFlow): pass
 
 from mirage.manage.test import DjangoTestWorkflow
 class DjangoTest(DjangoTestWorkflow): pass
+
+from mirage.manage.superuser import DjangoCreateSuperUserWorkflow
+class DjangoCreateSuperUser(DjangoCreateSuperUserWorkflow): pass
