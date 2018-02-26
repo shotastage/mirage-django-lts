@@ -26,7 +26,7 @@ from mirage.configure.miragefile import create_additional
 
 class ConfigureWorkFlow(Workflow):
 
-    def additional_init_(self):
+    def constructor(self):
         self._configure_target = self._option
 
     def main(self):

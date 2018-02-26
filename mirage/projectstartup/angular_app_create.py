@@ -30,7 +30,7 @@ from mirage.template import package_json
 
 class ReactStartupWorkFlow(Workflow):
     
-    def additional_init_(self):
+    def constructor(self):
         self._project_name = None
 
 

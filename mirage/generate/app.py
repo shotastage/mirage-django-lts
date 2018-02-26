@@ -25,7 +25,7 @@ from mirage import system as mys
 
 class DjangoAppMakeWorkFlow(Workflow):
 
-    def additional_init_(self):
+    def constructor(self):
         self._must_creat_apps = self._values
 
 

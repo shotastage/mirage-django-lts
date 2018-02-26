@@ -33,7 +33,7 @@ from mirage.workspace import storage
 
 class DjangoBackupAppWorkFlow(Workflow):
 
-    def additional_init_(self):
+    def constructor(self):
         self._app_name = self._values[0]
 
 

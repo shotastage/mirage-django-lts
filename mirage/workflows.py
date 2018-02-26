@@ -70,3 +70,6 @@ class DjangoModelMake(DjangoModelMakeWorkflow): pass
 
 from mirage.heroku.configure import DjangoHerokuConfigureWorkFlow
 class DjangoHerokuConfigure(DjangoHerokuConfigureWorkFlow): pass
+
+from mirage.manage.test import DjangoTestWorkflow
+class DjangoTest(DjangoTestWorkflow): pass

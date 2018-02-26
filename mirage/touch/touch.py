@@ -25,7 +25,7 @@ from . import copyright_source
 
 class TouchWorkFlow(Workflow):
 
-    def additional_init_(self):
+    def constructor(self):
         
         self._fname = self._option
       

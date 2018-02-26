@@ -26,7 +26,7 @@ from mirage.project import in_project
 
 class DjangoDestroyWorkFlow(Workflow):    
 
-    def additional_init_(self):
+    def constructor(self):
         self._must_target = "app"
         self._must_destroy = self._values
     

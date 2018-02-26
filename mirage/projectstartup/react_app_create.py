@@ -27,7 +27,7 @@ from mirage.miragefile import source
 
 class ReactStartupWorkFlow(Workflow):
     
-    def additional_init_(self):
+    def constructor(self):
         self._project_name = None
 
 

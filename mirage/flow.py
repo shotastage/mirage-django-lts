@@ -31,13 +31,8 @@ class Workflow():
         self.Stepflows      = []
         self.constructor()
 
-    def additional_init_(self):
-        mys.warning.warn(
-            "additional_init_ will be deprecated on next version!\nPlease use \"constructor\".",
-            mys.warning.PendingDeprecationWarning)
 
-    def constructor(self):
-        self.additional_init_()
+    def constructor(self): pass
 
     def get_first_arg(self):
         try:

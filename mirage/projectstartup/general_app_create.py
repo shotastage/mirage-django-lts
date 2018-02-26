@@ -28,7 +28,7 @@ from mirage.miragefile import source
 
 class DjangoStartupWorkFlow(Workflow):
     
-    def additional_init_(self):
+    def constructor(self):
         self._project_name = None
 
 

@@ -50,6 +50,8 @@ def main():
 
     parser.add_argument("g", "generate", "app", "DjangoAppMake")
 
+    parser.add_argument("m", "manage", "test", "DjangoTest")
+
     parser.add_argument("g", "generate", "model", "DjangoModelMake")
 
     parser.add_argument("heroku", "heroku_util", "configure", "DjangoHerokuConfigure")

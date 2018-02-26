@@ -29,7 +29,7 @@ from mirage.template import package_json
 
 class DjangoStartupWorkFlow(Workflow):
     
-    def additional_init_(self):
+    def constructor(self):
         self._project_name = None
 
 
@@ -151,7 +151,7 @@ class DjangoStartupWorkFlow(Workflow):
 
 class DjangoCMSStartupWorkFlow(Workflow):
 
-    def additional_init_(self):
+    def constructor(self):
         try:
             self._project_name = self._option
         except:

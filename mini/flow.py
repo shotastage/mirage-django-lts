@@ -31,10 +31,8 @@ class Workflow():
         self.Stepflows      = []
         self.constructor()
 
-    def additional_init_(self): pass
 
-    def constructor(self):
-        self.additional_init_()
+    def constructor(self): pass
 
     def get_first_arg(self):
         try:
