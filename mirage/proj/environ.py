@@ -40,6 +40,7 @@ class MirageEvironmet():
             return
         
         if self._level == MirageEvironmetLevel.indjango:
+            os.chdir(MirageEvironmet.search_project_root())
             django_root = conf.Config().get(conf.Category.django, conf.Detail.django_path)
             os.chdir(django_root)
             return
