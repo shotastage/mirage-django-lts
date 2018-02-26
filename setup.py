@@ -8,7 +8,7 @@ sys.path.append('./tests')
 if __name__ == "__main__":
     setup(
         name = "django-mirage",
-        version = "0.0.18",
+        version = "0.0.19",
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
