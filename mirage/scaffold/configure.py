@@ -91,6 +91,6 @@ def get_django_config(conf_name):
         return data["django"]["database"]
 
 
-def save_djfile(yaml_struct):
+def save_djfile(json_struct):
     warnings.warn("save_djfile will be deprecated on next release.", PendingDeprecationWarning)
     pass

@@ -21,7 +21,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import enum
-import yaml
+import json
 from mirage import system as sys
 from mirage.command import log, raise_error_message
 
@@ -125,27 +125,27 @@ def get_reserved_addon_config(item):
 
 
 def load_miragefile():
-    return _load_yaml("Miragefile")
+    return _load_json("Miragefile")
 
 
 def load_miragefile_addon():
-    return _load_yaml("Miragefile.addon")
+    return _load_json("Miragefile.addon")
 
 
 def load_miragefile_secret():
-    return _load_yaml("Miragefile.secret")
+    return _load_json("Miragefile.secret")
 
 
-def _load_yaml(filename):
+def _load_json(filename):
 
     if not os.path.exists(filename):
         return filename + " does not exist!"
 
-    with open(filename, "r") as yamlfile:
+    with open(filename, "r") as jsonfile:
         try: 
-            return yaml.load(yamlfile)
+            return json.load(jsonfile)
         except:
-            log("Failed to load Miragefile!", withError = True, errorDetail = raise_error_message(_load_yaml))
+            log("Failed to load Miragefile!", withError = True, errorDetail = raise_error_message(_load_json))
             return load_failed()
 
 def load_failed():

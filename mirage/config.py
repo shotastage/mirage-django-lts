@@ -20,7 +20,7 @@ Copyright 2017-2018 Shota Shimazu.
 ###########################################################################
 
 import os
-import yaml
+import json
 from mirage import system as sys
 
 def get_all_config():
@@ -110,7 +110,7 @@ def load_miragefile():
     sys.warn("mirage.config.load_miragefile will be deprecated on next version.", PendingDeprecationWarning)
     with open("Miragefile", "r") as djfile:
         try:
-            return yaml.load(djfile)
+            return json.load(djfile)
         except:
             raise Exception
 
@@ -119,7 +119,7 @@ def load_additional_conf():
     sys.warn("mirage.config.load_additional_conf will be deprecated on next version.", PendingDeprecationWarning)
     with open("Miragefile.addon", "r") as djfile:
         try:
-            return yaml.load(djfile)
+            return json.load(djfile)
         except:
             raise Exception
 
@@ -128,6 +128,6 @@ def load_secret_conf():
     sys.warn("mirage.config.load_secret_conf will be deprecated on next version.", PendingDeprecationWarning)
     with open("Miragefile.secret", "r") as djfile:
         try:
-            return yaml.load(djfile)
+            return json.load(djfile)
         except:
             raise Exception

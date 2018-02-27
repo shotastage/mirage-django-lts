@@ -16,7 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import yaml
+import json
 import warnings
 from mirage         import fileable
 from mirage.command import log
@@ -141,7 +141,7 @@ def load_djfile():
     
     with open("Miragefile", "r") as djfile:
         try:
-            return yaml.load(djfile)
+            return json.load(djfile)
         except:
             raise Exception
 
@@ -151,7 +151,7 @@ def load_additional_conf():
     
     with open("Miragefile.addon", "r") as djfile:
         try:
-            return yaml.load(djfile)
+            return json.load(djfile)
         except:
             raise Exception
 
@@ -161,6 +161,6 @@ def load_secret_conf():
 
     with open("Miragefile.secret", "r") as djfile:
         try:
-            return yaml.load(djfile)
+            return json.load(djfile)
         except:
             raise Exception

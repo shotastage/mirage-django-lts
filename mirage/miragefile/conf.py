@@ -17,7 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import enum
-import yaml
+import json
 from mirage import proj
 from mirage import system as sys
 
@@ -54,11 +54,11 @@ class Config():
 
         with proj.MirageEvironmet(proj.MirageEvironmetLevel.inproject):
             if file_type == "secret":
-                self._data = self._load_yaml("Miragefile.secret")
+                self._data = self._load_json("Miragefile.secret")
             elif file_type == "addon":
-                self._data = self._load_yaml("Miragefile.addon")
+                self._data = self._load_json("Miragefile.addon")
             elif file_type == None:
-                self._data = self._load_yaml("Miragefile")
+                self._data = self._load_json("Miragefile")
             else:
                 sys.log("Wrong configuration type {0}.".format(file_type), withError = True)
 
@@ -133,40 +133,17 @@ class Config():
             return self._load_failed()
 
 
-    def _load_yaml(self, filename):
-
+    def _load_json(self, filename):
         if not os.path.exists(filename):
             sys.log("Failed to find Miragefile!", withError = True)
             raise FileNotFoundError
 
-        with open(filename, "r") as yamlfile:
-            try: 
-                return yaml.load(yamlfile)
+        with open(filename, "r") as jsonfile:
+            try:
+                return json.load(jsonfile)
             except:
-                sys.log("Failed to load Miragefile!", withError = True, errorDetail = sys.raise_error_message(self._load_yaml))
+                sys.log("Failed to load Miragefile!", withError = True, errorDetail = sys.raise_error_message(self._load_json))
                 return self._load_failed()
-    
 
     def _load_failed(self):
         return "Invalid Miragefile"
-
-
-"""
-#
-# BACKUP
-#
-#
-
-def get_reserved_addon_config(item):
-
-    data = load_miragefile_addon()
-
-    if item == "iyashi":
-        try:
-            return data["additional_options"]["iyashi"]
-        except:
-            return False
-    else:
-        log("The config information named " + item + " does not exist!", withError = True) 
-        return load_failed()
-"""

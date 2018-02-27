@@ -23,34 +23,43 @@ def create(proj_name, proj_ver, proj_author, author_email, git_url,
                                         proj_license, proj_desc, copyrightor):
 
     return textwrap.dedent('''
-miragefile: v0.0.3
+{{
+    "miragefile": "v0.0.4",
+    
+    "project": {{
+        "name": "{PROJECT_NAME}",
+        "version": "{PROJECT_VERSION}",
+        "author": "{PROJECT_AUTHOR} <{PROJECT_AUHOR_EMAIL}>",
+        "git": "{GIT_URL}",
+        "license": "{PROJECT_LICENSE}",
+        "description": "{PROJECT_DESC}",
 
-project:
-    name: {PROJECT_NAME}
-    version: {PROJECT_VERSION}
-    author: {PROJECT_AUTHOR} <{PROJECT_AUHOR_EMAIL}>
-    git: {GIT_URL}
-    license: {PROJECT_LICENSE}
-    description: {PROJECT_DESC}
+        "django": {{
+            "path": ".",
+            "module": "{MODULE_NAME}",
+            "package": "pipenv",
+            "database": "PostgreSQL"
+        }},
 
-    django:
-        path: .
-        module: {MODULE_NAME}
-        package: pipenv
-        database: PostgreSQL
+        "frontend": {{
+            "path": "shell",
+            "package": "yarn",
+            "builder": "webpack"
+        }},
 
-    frontend:
-        path: shell
-        package: yarn
-        builder: webpack
+        "workspace": {{
+            "path": ".mirage"
+        }},
 
-    workspace:
-        path: .mirage
+        "copyright": {{
+            "start_year": {COPYRIGHT_START},
+            "copyrightors": [
+                "{COPYRIGHTOR}"
+            ]
+        }}
+    }}
+}}
 
-    copyright:
-        start_year: {COPYRIGHT_START}
-        copyrightors:
-            - {COPYRIGHTOR}
 ''').format(
     PROJECT_NAME        = proj_name,
     PROJECT_VERSION     = proj_ver,

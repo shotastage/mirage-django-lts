@@ -20,6 +20,7 @@ import readline
 from mirage.flow import Workflow
 from mirage.generate.urlpy import create_urlpy_script as url_script
 from mirage import system as mys
+from mirage import proj
 
 
 
@@ -75,10 +76,14 @@ class DjangoAppMakeWorkFlow(Workflow):
         mys.log("Installing created app...")
         os.chdir(master_app)
 
-        if os.path.isfile("settings.py"):
-            self.__insert_app_path(name)
+        if os.path.isdir("environment"):
+            with proj.InDir("./environment"):
+                self.__insert_app_path(name, "common.py")
         else:
-            mys.log("Failed to install Django app due to missing configuration file.", withError = True)
+            if os.path.isfile("settings.py"):
+                self.__insert_app_path(name, "settings.py")
+            else:
+                mys.log("Failed to install Django app due to missing configuration file.", withError = True)
 
         os.chdir(current)
 
@@ -128,12 +133,12 @@ class DjangoAppMakeWorkFlow(Workflow):
         return None
 
 
-    def __insert_app_path(self, app_name):
+    def __insert_app_path(self, app_name, setting_file):
         lines = []
         insert_line = 0
 
         try:
-            with open("settings.py" , "r") as setting:
+            with open(setting_file, "r") as setting:
                 try:
                     lines = setting.readlines()
                 except:
