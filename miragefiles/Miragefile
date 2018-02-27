@@ -13,7 +13,7 @@
             "path": "sample",
             "module": "sample",
             "package": "pipenv",
-            "database": "PostgreSQL",
+            "database": "PostgreSQL"
         },
 
         "frontend": {
