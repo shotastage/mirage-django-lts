@@ -15,4 +15,4 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-text = "0.0.20"
+text = "0.0.21"

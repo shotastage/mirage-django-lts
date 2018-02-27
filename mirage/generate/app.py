@@ -34,7 +34,7 @@ class DjangoAppMakeWorkFlow(Workflow):
         try:
             self._check_all()
         except:
-            mys.log("Environmental compatability is invalid.", withError = True, errorDetail = "")
+            mys.log("Environmental compatability is invalid.", withError = True)
             return
 
 
@@ -46,15 +46,14 @@ class DjangoAppMakeWorkFlow(Workflow):
 
 
     def _create_app(self, name):
-        mys.command("python manage.py startapp " + name)
+        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+            mys.command("python manage.py startapp " + name)
 
 
     def _create_url(self, name):
-        current = os.getcwd()
-        os.chdir("./" + name)
-        with open("urls.py", "a") as newscript:
-            newscript.write(url_script(name))
-        os.chdir(current)
+        with proj.InDir("./" + name):
+            with open("urls.py", "a") as newscript:
+                newscript.write(url_script(name))
 
 
     """
@@ -63,29 +62,22 @@ class DjangoAppMakeWorkFlow(Workflow):
     def _install_app(self, name):
 
         try:
-            current = os.getcwd()
-        except:
-            mys.log("Failed to get current.", withError = True)
-
-        try:
             master_app = self.__detect_master_app()
         except:
             mys.log("Failed to detect master app.", withError = True)
 
 
-        mys.log("Installing created app...")
-        os.chdir(master_app)
+        mys.log("Installing app...")
 
-        if os.path.isdir("environment"):
-            with proj.InDir("./environment"):
-                self.__insert_app_path(name, "common.py")
-        else:
-            if os.path.isfile("settings.py"):
-                self.__insert_app_path(name, "settings.py")
+        with proj.InDir(master_app):
+            if os.path.isdir("environment"):
+                with proj.InDir("./environment"):
+                    self.__insert_app_path(name, "common.py")
             else:
-                mys.log("Failed to install Django app due to missing configuration file.", withError = True)
-
-        os.chdir(current)
+                if os.path.isfile("settings.py"):
+                    self.__insert_app_path(name, "settings.py")
+                else:
+                    mys.log("Failed to install Django app due to missing configuration file.", withError = True)
 
 
     """
@@ -95,6 +87,7 @@ class DjangoAppMakeWorkFlow(Workflow):
 
         reserved_names = [
             "test",
+            "os"
         ]
 
         for app in self._must_creat_apps:
@@ -111,10 +104,7 @@ class DjangoAppMakeWorkFlow(Workflow):
 
     def __detect_master_app(self):
         
-        try:
-            dirs = os.listdir(os.getcwd())
-        except:
-            mys.log("Failed to detect Django apps.", withError = True)
+        dirs = os.listdir(os.getcwd())
 
         current = os.getcwd()
 
@@ -151,7 +141,7 @@ class DjangoAppMakeWorkFlow(Workflow):
             if "INSTALLED_APPS = [" in lines[i]:
                 insert_line = i
     
-        with open("settings.py", "w") as setting:
+        with open(setting_file, "w") as setting:
             app_config = app_name[0].upper() + app_name[1:] + "Config"
             lines.insert(insert_line + 1, "    \'" + app_name + ".apps." + app_config + "\',\n")
             setting.writelines(lines)

@@ -8,7 +8,7 @@ sys.path.append('./tests')
 if __name__ == "__main__":
     setup(
         name = "django-mirage",
-        version = "0.0.20",
+        version = "0.0.21",
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
@@ -29,7 +29,7 @@ if __name__ == "__main__":
                 'mg = mirage.mirage:main'
             ],
         },
-        description = "Advanced Django console",
+        description = "Advanced Django Console",
         long_description = "Advanced extended command line tool for Django.",
         url = "https://github.com/shotastage/django-mirage/",
         license = "Apache",
