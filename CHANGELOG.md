@@ -1,3 +1,15 @@
+# v0.0.22
+
+- Support `blank`, `default` model filed option.
+
+# v0.0.21
+
+- Minor bug fixes
+
+# v0.0.20
+
+- Replace YAML to JSON format for Miragefile
+
 # v0.0.19
 
 - Remove some deprecations

@@ -29,7 +29,7 @@ def log(string,
             withError = False, errorDetail = None,
             withInput = False, withConfirm = False, default = None):
     
-    warning.warn("command.log will be deprecated on nect release!", warning.PendingDeprecationWarning)
+    warning.warn("command.log will be deprecated on next release!", warning.PendingDeprecationWarning)
 
 
     if withError:
@@ -67,7 +67,7 @@ def log(string,
 
 def raise_error_message(func):
 
-    warning.warn("command.raise_error_message will be deprecated on nect release!", warning.PendingDeprecationWarning)
+    warning.warn("command.raise_error_message will be deprecated on next release!", warning.PendingDeprecationWarning)
 
 
     try:
@@ -109,7 +109,7 @@ Signature         : {func_signature}
 
 def command(command, withOutput = False):
 
-    warning.warn("command.command will be deprecated on nect release!", warning.PendingDeprecationWarning)
+    warning.warn("command.command will be deprecated on next release!", warning.PendingDeprecationWarning)
 
     separated_cmds = command.split(" ")
 

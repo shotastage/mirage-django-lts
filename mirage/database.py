@@ -29,6 +29,8 @@ class DBConnection():
 
         self._cursor     = self._connection.cursor()
 
+    def create_table(self):
+        query = "CREATE TABLE"
 
     def query(self, query):
         self._connection.execute(query)

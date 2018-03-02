@@ -1,6 +1,6 @@
 {
   "name": "mirage",
-  "version": "0.0.12",
+  "version": "0.0.21",
   "description": "Mirage Scaffold",
   "main": "index.js",
   "repository": "https://github.com/shotastage/mirage.git",

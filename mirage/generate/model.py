@@ -166,6 +166,14 @@ class DjangoModelMakeWorkflow(Workflow):
                 opstring += "max_length = {0}".format(op[1])
             elif op[0] == "primary":
                 opstring += "primary_key = {0}".format(op[1])
+            elif op[0] == "default":
+                opstring += "default = {0}".format(op[1])
+            elif op[0] == "blank":
+                opstring += "blank = {0}".format(op[1])
+            elif op[0] == "null":
+                opstring += "null = {0}".format(op[1])
+            elif op[0] == "db_column":
+                opstring += "db_column = {0}".format(op[1])
             else:
                 sys.log("Failed to create filed option " + op + "!", withError = True)
                 continue
