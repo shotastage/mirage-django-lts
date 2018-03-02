@@ -15,18 +15,19 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from mirage import system
 from mirage.miragefile.conf import Config, Category, Detail
-from mirage.proj import environ
 from mirage.flow import Workflow
+from mirage import proj
+from mirage import system as mys
 from .templates import procfile, runtime
 
 
 class DjangoHerokuConfigureWorkFlow(Workflow):
 
     def main(self):
-        system.log("Creating heroku configurations...")
-        self._create_heroku_configuation()
+        with proj.MirageEvironmet(proj.MirageEvironmetLevel.inproject):
+            mys.log("Creating heroku configurations...")
+            self._create_heroku_configuation()
 
 
     def _create_heroku_configuation(self):

@@ -38,6 +38,9 @@ Actions:
     database:reset     db:reset                 Reset all database. ( Only debugging SQLite is supported. )
     generate           g            app         Create multiple Django apps at once.
     generate           g            model       Create Django model class.
+    heroku             heroku_util  configure   Configure setting files for deploing to heroku.
+    manage             m            test        RUn test of Django application.
+    manage             m            superuser   Create super user for Django admin.
     scaffold           ide                      Launch mirgae Web UI. (Now under development.)
     server             s                        Launch debugging server.
     file               f                        Create a new Python source file with copyrights doc string.

@@ -50,9 +50,6 @@ def main():
 
     parser.add_argument("g", "generate", "app", "DjangoAppMake")
 
-    parser.add_argument("m", "manage", "test", "DjangoTest")
-    parser.add_argument("m", "manage", "superuser", "DjangoCreateSuperUserWorkflow")
-
     parser.add_argument("g", "generate", "model", "DjangoModelMake")
 
     parser.add_argument("heroku", "heroku_util", "configure", "DjangoHerokuConfigure")
@@ -61,6 +58,9 @@ def main():
     parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
     parser.add_argument("internal_debug_server_launch", "internal_debug_server_launch", None, "ScaffoldDebugServer")
 
+    parser.add_argument("m", "manage", "test", "DjangoTest")
+    parser.add_argument("m", "manage", "superuser", "DjangoCreateSuperUserWorkflow")
+    
     parser.add_argument("s", "server", None, "DjangoDebugServer")
 
     parser.add_argument("f", "file", None, "Touch")
