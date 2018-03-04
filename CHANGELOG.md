@@ -1,3 +1,9 @@
+# v0.0.24
+
+- Remove project & command deprecation
+
+- Support django.urls.path
+
 # v0.0.23
 
 - Improve help & minor bug fixes.
