@@ -80,30 +80,3 @@ class Stepflow():
             except:
                 mys.log("Something error has occured!", withError = True, errorDetail = mys.raise_error_message(flow))
                 raise Exception
-
-
-
-class Flow():
-
-    def __init__(self, onInstance = False):
-        self._flows = []
-
-        if onInstance:
-            self.flow()
-
-    def flow(self):
-
-        for flow in self._flows:
-            if "function" in str(type(flow)):
-                try:
-                    flow()
-                except:
-                    mys.log("Something error has occured!", withError = True, errorDetail = mys.raise_error_message(flow))
-                    raise Exception
-
-    def execute(self):
-        self.flow()
-
-    def register(self, *funcs):
-        for func in funcs:
-            self._flows.append(func)
