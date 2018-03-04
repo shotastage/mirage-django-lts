@@ -15,16 +15,14 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import textwrap
+import os
+import pip
 
-def create_urlpy_script(app):
-    return textwrap.dedent(
-'''
-from django.urls import path
-from {app}.views import """YOUR_VIEW_CLASSIES"""
+from pip.commands.install import InstallCommand
+from mirage.command import log, raise_error_message
+from mirage.command import command
 
-urlpatterns = [
-    path(r'^url_letter/', """YOUR_VIEW_CLASS""".as_view(), name='starts'),
-]
 
-''').format(app=app).strip()
+def pip_install(package_name):
+    log("Installing {0} ...".format(package_name))
+    pip.main(['install', package_name])

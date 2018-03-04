@@ -20,11 +20,11 @@ import textwrap
 def create_url(app):
     return textwrap.dedent(
 '''
-from django.conf.urls import url
-from {app}.views import """YOUR_VIEW_CLASSIES"""
+from django.urls import path
 
 urlpatterns = [
-    url(r'^url_letter/', """YOUR_VIEW_CLASS""".as_view(), name='starts'),
+    path(r'^url_letter/', """YOUR_VIEW_CLASS""".as_view(), name='INSERT NAME HERE'),
 ]
+
 
 ''').format(app=app).strip()
