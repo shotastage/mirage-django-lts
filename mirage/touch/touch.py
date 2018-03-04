@@ -17,9 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 from mirage.flow import Workflow
 from mirage.miragefile.conf import Config, Category, Detail
-from mirage import project
 from mirage import system as mys
-
 from . import copyright_source
 
 
