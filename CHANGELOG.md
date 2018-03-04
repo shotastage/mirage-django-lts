@@ -1,3 +1,7 @@
+# v0.0.25
+
+- Add `mg browser` to launch web browser.
+
 # v0.0.24
 
 - Remove project & command deprecation

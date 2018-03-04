@@ -76,3 +76,6 @@ class DjangoTest(DjangoTestWorkflow): pass
 
 from mirage.manage.superuser import DjangoCreateSuperUserWorkflow
 class DjangoCreateSuperUser(DjangoCreateSuperUserWorkflow): pass
+
+from mirage.server.debug_server import DjangoLaunchBrowserWorkflow
+class DjangoLaunchBrowser(DjangoLaunchBrowserWorkflow): pass

@@ -27,26 +27,27 @@ Usage:
 
 
 Actions:
-    newproject         new                      Create a new Django project.
-    newproject:react   new:react                Create a new Django API project with React.js front-end.
-    newproject:cms     new:cms                  Create a new Django CMS project. ( Django CMS is required. )
-    backup             b            app         Backup exsiting app.
-    configure          conf                     Generate miragefile or reconfig mirage.
-    console            c                        Launch Django Python shell.
-    console:db         c:db                     Launch databse shell.
-    database:migrate   db:migrate               Make migrations and apply migrations.
-    database:reset     db:reset                 Reset all database. ( Only debugging SQLite is supported. )
-    generate           g            app         Create multiple Django apps at once.
-    generate           g            model       Create Django model class.
-    heroku             heroku_util  configure   Configure setting files for deploing to heroku.
-    manage             m            test        RUn test of Django application.
-    manage             m            superuser   Create super user for Django admin.
-    scaffold           ide                      Launch mirgae Web UI. (Now under development.)
-    server             s                        Launch debugging server.
-    file               f                        Create a new Python source file with copyrights doc string.
+    newproject         new                                      Create a new Django project.
+    newproject:react   new:react                                Create a new Django API project with React.js front-end.
+    newproject:cms     new:cms                                  Create a new Django CMS project. ( Django CMS is required. )
+    backup             b            app         <app name>      Backup exsiting app.
+    launch-browser     browser                  <URL>           Launch browser set as default by system.
+    configure          conf                     <config type>   Generate miragefile or reconfig mirage.
+    console            c                                        Launch Django Python shell.
+    console:db         c:db                                     Launch databse shell.
+    database:migrate   db:migrate                               Make migrations and apply migrations.
+    database:reset     db:reset                                 Reset all database. ( Only debugging SQLite is supported. )
+    generate           g            app         <app names...>  Create multiple Django apps at once.
+    generate           g            model       <model class>   Create Django model class.
+    heroku             heroku_util  configure                   Configure setting files for deploing to heroku.
+    manage             m            test                        Run test of Django application.
+    manage             m            superuser                   Create super user for Django admin.
+    scaffold           ide                                      Launch mirgae Web UI. (Now under development.)
+    server             s                                        Launch debugging server.
+    file               f                                        Create a new Python source file with copyrights doc string.
 
-    help               h                        Show usage of Mirage.
-    version            v                        Print version information.
+    help               h                                        Show usage of Mirage.
+    version            v                                        Print version information.
 
 
 """.format(version.text)

@@ -18,7 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import shutil
 
-from mirage.flow import Flow, Workflow, Stepflow
+from mirage.flow import Workflow
 from mirage.command import log, command
 from mirage.miragefile import source
 from mirage import proj

@@ -20,7 +20,7 @@ import shutil
 
 from mirage import proj
 from mirage import fileable
-from mirage.flow import Flow, Workflow, Stepflow
+from mirage.flow import Workflow
 from mirage.command import log, command
 from mirage.miragefile import source
 from mirage.template import readme_md

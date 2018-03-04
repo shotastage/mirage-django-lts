@@ -16,24 +16,37 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
+import sys
 import time
+import shlex
+import subprocess
 import webbrowser
 from mirage import proj
-from mirage.flow    import Workflow
+from mirage.flow import Workflow
 from mirage import system as mys
 
-class DjangoDebugServerWorkFlow(Workflow):
-    def main(self):
-        mys.log("Runnng server...")
 
+class DjangoDebugServerWorkFlow(Workflow):
+    
+    def main(self):        
         with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
-       
             try:
                 os.system("python manage.py runserver")
-                # time.sleep(1)
-                # webbrowser.open("http://127.0.0.1:8000/")
             except KeyboardInterrupt:
                 mys.log("Good bye!")
             except:
-                mys.log("Failed to launch server!", withError = True)
- 
+                mys.log("Failed to launch web browser!", withError = True)
+
+
+
+class DjangoLaunchBrowserWorkflow(Workflow):
+
+    def constructor(self):
+        self._url = self._option
+
+    def main(self):
+
+        if self._url == None:
+            webbrowser.open("http://127.0.0.1:8000")
+        else:
+            webbrowser.open(self._url)
