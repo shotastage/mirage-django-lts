@@ -45,6 +45,7 @@ def main():
 
     parser.add_argument_with_subaction("db", "database", "migrate", None, "DjangoMigrate")
     parser.add_argument_with_subaction("db", "database", "reset", None, "DjangoDBReset")
+    parser.add_argument_with_subaction("db", "database", "merge", None, "DjangoMergeMigration")
 
     # parser.add_argument("d", "destroy", None, "DjangoDestroy")
 
@@ -58,8 +59,7 @@ def main():
     parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
     parser.add_argument("internal_debug_server_launch", "internal_debug_server_launch", None, "ScaffoldDebugServer")
 
-    parser.add_argument("m", "manage", "test", "DjangoTest")
-    parser.add_argument("m", "manage", "superuser", "DjangoCreateSuperUserWorkflow")
+    parser.add_argument("m", "manage", None, "DjangoManagePy")
     
     parser.add_argument("s", "server", None, "DjangoDebugServer")
     parser.add_argument("browser", "internal-browser", None, "DjangoLaunchBrowser")

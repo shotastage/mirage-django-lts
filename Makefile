@@ -51,7 +51,7 @@ test:
 	python setup.py check
 	python setup.py sdist
 	pip uninstall django-mirage
-	pip install dist/django-mirage-0.0.25.tar.gz
+	pip install dist/django-mirage-0.0.26.tar.gz
 
 fetch:
 	@echo "Fetching assets..."

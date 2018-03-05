@@ -71,11 +71,11 @@ class DjangoModelMake(DjangoModelMakeWorkflow): pass
 from mirage.heroku.configure import DjangoHerokuConfigureWorkFlow
 class DjangoHerokuConfigure(DjangoHerokuConfigureWorkFlow): pass
 
-from mirage.manage.test import DjangoTestWorkflow
-class DjangoTest(DjangoTestWorkflow): pass
-
-from mirage.manage.superuser import DjangoCreateSuperUserWorkflow
-class DjangoCreateSuperUser(DjangoCreateSuperUserWorkflow): pass
-
 from mirage.server.debug_server import DjangoLaunchBrowserWorkflow
 class DjangoLaunchBrowser(DjangoLaunchBrowserWorkflow): pass
+
+from mirage.manage.executor import DjangoManagePyWorkflow
+class DjangoManagePy(DjangoManagePyWorkflow): pass
+
+from mirage.db.merge import DjangoMergeMigrationWorkFlow
+class DjangoMergeMigration(DjangoMergeMigrationWorkFlow): pass

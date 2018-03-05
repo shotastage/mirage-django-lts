@@ -28,11 +28,31 @@ from mirage              import fileable
 from mirage.flow         import Workflow
 from mirage.workspace import storage
 
-class DjangoTestWorkflow(Workflow):
-
+class DjangoCreateSuperUserWorkflow(Workflow):
 
     def main(self):
-        mys.log("Testing Django application...")
-
         with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
-            os.system("python manage.py test")
+            os.system("python manage.py createsuperuser")
+
+
+class DjangoManagePyWorkflow(Workflow):
+
+    def constructor(self):
+        self._cmd = self._option
+
+    def main(self):
+        
+        if self._cmd == "superuser":
+            self.createsuperuser()
+        else:
+            self.excute_manage_cmd()
+
+
+    def createsuperuser(self):
+        self._cmd = "createsuperuser"
+        self.excute_manage_cmd()
+
+
+    def excute_manage_cmd(self):
+        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+            os.system("python manage.py " + self._cmd)

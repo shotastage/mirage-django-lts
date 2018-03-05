@@ -86,7 +86,7 @@ class MirageEvironmet():
 
             current = os.getcwd()
             
-            if pathlib.Path("app.py").is_file():
+            if pathlib.Path("apps.py").is_file():
                 return current
             else:
                 os.chdir("../")
