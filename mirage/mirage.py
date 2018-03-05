@@ -64,6 +64,8 @@ def main():
     parser.add_argument("s", "server", None, "DjangoDebugServer")
     parser.add_argument("browser", "internal-browser", None, "DjangoLaunchBrowser")
 
+    parser.add_argument("t", "transfer", None, "MirageTransfer")
+
     parser.add_argument("f", "file", None, "Touch")
 
     # Excute

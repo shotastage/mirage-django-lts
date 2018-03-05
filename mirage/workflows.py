@@ -79,3 +79,6 @@ class DjangoManagePy(DjangoManagePyWorkflow): pass
 
 from mirage.db.merge import DjangoMergeMigrationWorkFlow
 class DjangoMergeMigration(DjangoMergeMigrationWorkFlow): pass
+
+from mirage.transfer.transfer import MirageTransferWorkflow
+class MirageTransfer(MirageTransferWorkflow): pass
