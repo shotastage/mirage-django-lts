@@ -21,12 +21,11 @@ from mirage import proj
 from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
-from mirage.system.progress import Progress
 from mirage.template import readme_md, gitignore, package_json
 from mirage.miragefile import source
 
 
-class DjangoStartupWorkFlow(Workflow):
+class MirageMinimumStartupWorkFlow(Workflow):
     
     def constructor(self):
         self._project_name = None
@@ -66,7 +65,7 @@ class DjangoStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
         # Create logging instance
-        logger = Progress()
+        logger = mys.progress.Progress()
 
         with proj.InDir("./" + self._project_name):
 
@@ -86,22 +85,6 @@ class DjangoStartupWorkFlow(Workflow):
             # Add remote repo
             logger.update("Adding remote repository...", withLazy = True)
             mys.command("git remote add origin " + git_url)
-
-            # Create React App
-            logger.update("Creating React app...")
-            self._create_package_json()
-            mys.command("yarn add --dev create-react-app")
-            mys.command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
-
-            # Cleaning
-            logger.update("Cleaning...", withLazy = True)
-            fileable.rm("yarn.lock")
-            fileable.rm("package.json")
-            fileable.rm("node_modules/")
-
-            with proj.InDir("./shell"):
-                fileable.rm(".gitignore")
-                fileable.rm("README.md")
 
 
         # Completed

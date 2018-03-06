@@ -20,10 +20,8 @@ class DjangoConsole(DjangoConsoleWorkFlow): pass
 class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass
 
 
-from mirage.projectstartup.general_app_create import DjangoStartupWorkFlow
 from mirage.projectstartup.django_app_create import DjangoCMSStartupWorkFlow
 from mirage.projectstartup.react_app_create import ReactStartupWorkFlow
-class DjangoStartup(DjangoStartupWorkFlow): pass
 class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass
 class ReactStartup(ReactStartupWorkFlow): pass
 
@@ -82,3 +80,10 @@ class DjangoMergeMigration(DjangoMergeMigrationWorkFlow): pass
 
 from mirage.transfer.transfer import MirageTransferWorkflow
 class MirageTransfer(MirageTransferWorkflow): pass
+
+
+###########################################################
+# ALL IMPORT                                              #
+###########################################################
+
+from mirage.projectstartup.minimum_app_create import *

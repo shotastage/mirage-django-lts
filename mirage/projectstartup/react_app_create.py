@@ -65,7 +65,7 @@ class ReactStartupWorkFlow(Workflow):
         self._create_new_django_app()
 
         # Create logging instance
-        logger = mys.progress.Progress()
+        logger = mys.Progress()
 
         with proj.InDir("./" + self._project_name):
 
