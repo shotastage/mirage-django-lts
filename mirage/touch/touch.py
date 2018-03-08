@@ -33,20 +33,31 @@ class TouchWorkFlow(Workflow):
 
     def main(self):
 
-        proj_name = Config().get(Category.project_basic, Detail.project_name)
+        try:
+            proj_name = Config().get(Category.project_basic, Detail.project_name)
+        except:
+            proj_name = mys.log("What's the project name?", withInput = True)
 
         try:
             your_name = Config("secret").get(Category.private_profile, Detail.private_name)
         except:
             your_name = mys.log("What's your name?", withInput = True)
 
+        try:
+            start_year = Config().get(Category.copyright, Detail.copyright_start_year)
+        except:
+            start_year = mys.log("Start year", withInput = True)
 
-        start_year = Config().get(Category.copyright, Detail.copyright_start_year)
-
-        copyrights = Config().get(Category.copyright, Detail.copyright_copyrigtors)
-
-        licensename = Config().get(Category.project_basic, Detail.project_license)
-
+        try:
+            copyrights = Config().get(Category.copyright, Detail.copyright_copyrigtors)
+        except:
+            copyrights = mys.log("Copyrights", withInput = True)
+    
+        try:
+            licensename = Config().get(Category.project_basic, Detail.project_license)
+        except:
+            licensename = mys.log("License name", withInput = True)
+            
         try:
             license_url = Config("secret").get(Category.private_profile, Detail.private_license_url)
         except:

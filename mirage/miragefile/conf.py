@@ -19,7 +19,8 @@ import os
 import enum
 import json
 from mirage import proj
-from mirage import system as sys
+from mirage import system as mys
+from mirage.exceptions import MiragefileUnknownError
 
 
 class Category(enum.Enum):
@@ -52,7 +53,7 @@ class Config():
 
     def __init__(self, file_type = None):
 
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.inproject):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.inproject):
             if file_type == "secret":
                 self._data = self._load_json("Miragefile.secret")
             elif file_type == "addon":
@@ -60,20 +61,22 @@ class Config():
             elif file_type == None:
                 self._data = self._load_json("Miragefile")
             else:
-                sys.log("Wrong configuration type {0}.".format(file_type), withError = True)
+                mys.log("Wrong configuration type {0}.".format(file_type), withError = True)
 
 
     def get(self, category, detail):
         
-        if category == Category.project_basic:
-            return self._get_project(detail)
-        if category == Category.django:
-            return self._get_django(detail)
-        if category == Category.copyright:
-            return self._get_copyright(detail)
-        if category == Category.private_profile:
-            return self._get_private_profile(detail)
-
+        try:
+            if category == Category.project_basic:
+                return self._get_project(detail)
+            if category == Category.django:
+                return self._get_django(detail)
+            if category == Category.copyright:
+                return self._get_copyright(detail)
+            if category == Category.private_profile:
+                return self._get_private_profile(detail)
+        except:
+            mys.log("Failed to get value from Miragefile!", withError = True)
 
 
     def _get_project(self, detail):
@@ -91,8 +94,8 @@ class Config():
         elif detail == Detail.project_description:
             return self._data["project"]["description"]
         else:
-            sys.log("The config information named " + str(detail) + " does not exist!", withError = True) 
-            return self._load_failed()
+            mys.log("The config information named " + str(detail) + " does not exist!", withError = True) 
+            raise MiragefileUnknownError
 
 
     def _get_django(self, detail):
@@ -106,8 +109,8 @@ class Config():
         elif detail == Detail.django_db_backend:
             return self._data["project"]["django"]["database"]
         else:
-            sys.log("The config information named " + str(detail) + " does not exist!", withError = True) 
-            return self._load_failed()
+            mys.log("The config information named " + str(detail) + " does not exist!", withError = True) 
+            raise MiragefileUnknownError
 
 
     def _get_copyright(self, detail):
@@ -117,8 +120,8 @@ class Config():
         elif detail == Detail.copyright_copyrigtors:
             return self._data["project"]["copyright"]["copyrightors"]
         else:
-            sys.log("The config information named " + detail + " does not exist!", withError = True) 
-            return self._load_failed()
+            mys.log("The config information named " + detail + " does not exist!", withError = True) 
+            raise MiragefileUnknownError
 
 
 
@@ -129,21 +132,18 @@ class Config():
         elif detail == Detail.private_license_url:
             return self._data["private_license"]["url"]
         else:
-            sys.log("The config information named " + detail + " does not exist!", withError = True) 
-            return self._load_failed()
+            mys.log("The config information named " + detail + " does not exist!", withError = True) 
+            raise MiragefileUnknownError
 
 
     def _load_json(self, filename):
         if not os.path.exists(filename):
-            sys.log("Failed to find Miragefile!", withError = True)
+            mys.log("Failed to find Miragefile!", withError = True)
             raise FileNotFoundError
 
         with open(filename, "r") as jsonfile:
             try:
                 return json.load(jsonfile)
             except:
-                sys.log("Failed to load Miragefile!", withError = True, errorDetail = sys.raise_error_message(self._load_json))
-                return self._load_failed()
-
-    def _load_failed(self):
-        return "Invalid Miragefile"
+                mys.log("Failed to load Miragefile!", withError = True, errorDetail = mys.raise_error_message(self._load_json))
+                raise FileNotFoundError

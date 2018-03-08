@@ -26,7 +26,7 @@ from mirage import system as mys
 class DjangoMigrateWorkFlow(Workflow):
 
     def main(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             mys.log("Making migrations...")
             self._make_migration()
             self._apply_migration()

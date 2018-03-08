@@ -16,5 +16,5 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 
-from .environ import MirageEvironmet, MirageEvironmetLevel, get_project_name
+from .environ import MirageEnvironment, MirageEnvironmentLevel, get_project_name
 from .utils import InDir

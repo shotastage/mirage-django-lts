@@ -9,7 +9,7 @@ from mirage.flow import Workflow
 class DjangoConsoleWorkFlow(Workflow):
 
     def main(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             mys.log("Launching Django Python Shell")
             os.system("python manage.py shell")
 
@@ -17,6 +17,6 @@ class DjangoConsoleWorkFlow(Workflow):
 class DjangoDBConsoleWorkFlow(Workflow):
 
     def main(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             mys.log("Launching Django Python Shell")
             os.system("python manage.py dbshell")

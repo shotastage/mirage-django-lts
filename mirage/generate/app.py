@@ -46,7 +46,7 @@ class DjangoAppMakeWorkFlow(Workflow):
 
 
     def _create_app(self, name):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             mys.command("python manage.py startapp " + name)
 
 

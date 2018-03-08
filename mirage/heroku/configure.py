@@ -25,7 +25,7 @@ from .templates import procfile, runtime
 class DjangoHerokuConfigureWorkFlow(Workflow):
 
     def main(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.inproject):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.inproject):
             mys.log("Creating heroku configurations...")
             self._create_heroku_configuation()
 

@@ -29,7 +29,7 @@ from mirage import system as mys
 class DjangoDebugServerWorkFlow(Workflow):
     
     def main(self):        
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             try:
                 os.system("python manage.py runserver")
             except KeyboardInterrupt:

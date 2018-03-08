@@ -31,7 +31,7 @@ from mirage.workspace import storage
 class DjangoCreateSuperUserWorkflow(Workflow):
 
     def main(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             os.system("python manage.py createsuperuser")
 
 
@@ -54,5 +54,5 @@ class DjangoManagePyWorkflow(Workflow):
 
 
     def excute_manage_cmd(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
             os.system("python manage.py " + self._cmd)

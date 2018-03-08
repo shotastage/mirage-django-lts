@@ -22,7 +22,7 @@ import sqlite3
 import contextlib
 from mirage import fileable
 from mirage import system as mys
-from mirage.proj import MirageEvironmet, MirageEvironmetLevel
+from mirage.proj import MirageEnvironment, MirageEnvironmentLevel
 
 
 class MirageWorkspace():
@@ -30,7 +30,7 @@ class MirageWorkspace():
     @staticmethod
     def initialize():
 
-        with MirageEvironmet(MirageEvironmetLevel.inproject):
+        with MirageEnvironment(MirageEnvironmentLevel.inproject):
             if not fileable.exists(".mirage"):
                 mys.log("Creating Mirage workspace...")
                 fileable.mkdir(".mirage")
@@ -46,7 +46,7 @@ class MirageWorkspace():
         # Logger instance
         logger = mys.progress.Progress()
 
-        with MirageEvironmet(MirageEvironmetLevel.inproject):
+        with MirageEnvironment(MirageEnvironmentLevel.inproject):
 
             logger.write("Safety caching...", withLazy = True)
             fileable.cd(".mirage/cache/")
@@ -82,7 +82,7 @@ class MirageWorkspace():
 
     @staticmethod
     def __db_connect():
-        return MirageEvironmet.search_project_root() + "/.mirage/mirage_workspace.sqlite3"
+        return MirageEnvironment.search_project_root() + "/.mirage/mirage_workspace.sqlite3"
 
 
     @staticmethod

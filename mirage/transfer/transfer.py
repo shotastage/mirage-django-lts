@@ -18,10 +18,12 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import shutil
 import zipfile
+import hashlib
 from pathlib import Path
 from mirage.flow import Workflow
 from mirage import system as mys
 from mirage import proj
+
 
 class MirageTransferWorkflow(Workflow):
     
@@ -35,7 +37,7 @@ class MirageTransferWorkflow(Workflow):
 
         logger = mys.progress.Progress()
         
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
 
             # In advance checking.
             try:

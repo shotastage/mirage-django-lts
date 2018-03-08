@@ -25,7 +25,7 @@ from mirage.system import warning, log
 from mirage.miragefile import conf
 
 
-class MirageEvironmet():
+class MirageEnvironment():
     
     def __init__(self, env_level):
         self._current = os.getcwd()
@@ -34,19 +34,19 @@ class MirageEvironmet():
 
     def __enter__(self):
 
-        if self._level == MirageEvironmetLevel.inproject:
-            proj_root = MirageEvironmet.search_project_root()
+        if self._level == MirageEnvironmentLevel.inproject:
+            proj_root = MirageEnvironment.search_project_root()
             os.chdir(proj_root)
             return
         
-        if self._level == MirageEvironmetLevel.indjango:
-            os.chdir(MirageEvironmet.search_project_root())
+        if self._level == MirageEnvironmentLevel.indjango:
+            os.chdir(MirageEnvironment.search_project_root())
             django_root = conf.Config().get(conf.Category.django, conf.Detail.django_path)
             os.chdir(django_root)
             return
 
-        if self._level == MirageEvironmetLevel.inapp:
-            app_root = MirageEvironmet.search_app_root()
+        if self._level == MirageEnvironmentLevel.inapp:
+            app_root = MirageEnvironment.search_app_root()
             os.chdir(app_root)
             return
 
@@ -71,6 +71,8 @@ class MirageEvironmet():
             
             if pathlib.Path("Miragefile").is_file():
                 return current
+            elif pathlib.Path.cwd() == "/":
+                raise FileNotFoundError
             else:
                 os.chdir("../")
 
@@ -88,6 +90,8 @@ class MirageEvironmet():
             
             if pathlib.Path("apps.py").is_file():
                 return current
+            elif pathlib.Path.cwd() == "/":
+                raise FileNotFoundError
             else:
                 os.chdir("../")
 
@@ -109,7 +113,7 @@ class MirageEvironmet():
             - (Bool) cwd is in proj dir returns True
         """
         try:
-            MirageEvironmet.set_import_root()
+            MirageEnvironment.set_import_root()
             import manage
             return True
         except ImportError:
@@ -132,7 +136,7 @@ class MirageEvironmet():
             - (Bool) cwd is in app dir returns True
         """
         try:
-            MirageEvironmet.set_import_root()
+            MirageEnvironment.set_import_root()
             import apps
             if os.path.isfile("apps.py"):
                 return True
@@ -159,12 +163,12 @@ class MirageEvironmet():
         list_dir = os.listdir(os.getcwd())
         current = os.getcwd()
 
-        if not MirageEvironmet.in_project(): return
+        if not MirageEnvironment.in_project(): return
 
         for dir_file in list_dir:
             if os.path.isdir(dir_file):
                 os.chdir(dir_file)
-                if MirageEvironmet.in_app():
+                if MirageEnvironment.in_app():
                     apps.append(dir_file)
                 os.chdir(current)
             else:
@@ -174,7 +178,7 @@ class MirageEvironmet():
 
 
 
-class MirageEvironmetLevel(enum.Enum):
+class MirageEnvironmentLevel(enum.Enum):
     inproject   = 0
     indjango    = 1
     inapp       = 2

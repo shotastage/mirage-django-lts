@@ -15,6 +15,4 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-
-from .environ import MirageEnvironment, MirageEnvironmentLevel
-from .utils import InDir
+class MiragefileUnknownError(Exception): pass

@@ -36,7 +36,7 @@ class DjangoMergeMigrationWorkFlow(Workflow):
 
 
     def _merge(self):
-        with proj.MirageEvironmet(proj.MirageEvironmetLevel.inapp):
+        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.inapp):
             mys.log("Integrate migrations...")
 
             with proj.InDir("migrations"):
@@ -48,5 +48,5 @@ class DjangoMergeMigrationWorkFlow(Workflow):
                         mys.log("Removing " + str(path) + "!")
                         os.remove(path)
                 
-            with proj.MirageEvironmet(proj.MirageEvironmetLevel.indjango):
+            with proj.MirageEnvironment(proj.MirageEnvironmentLevel.indjango):
                 os.system("python manage.py makemigrations")

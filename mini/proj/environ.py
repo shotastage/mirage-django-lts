@@ -22,7 +22,7 @@ from mirage import fileable
 from mirage.command import log
 
 
-class MirageEvironmet():
+class MirageEnvironment():
     
     def __init__(self, env_level):
         log("Enter Mirage Environ")
@@ -46,7 +46,7 @@ class MirageEvironmet():
     @staticmethod
     def in_project():
         try:
-            MirageEvironmet.set_import_root()
+            MirageEnvironment.set_import_root()
             import manage
             return True
         except ImportError:
@@ -58,7 +58,7 @@ class MirageEvironmet():
     @staticmethod
     def in_app():
         try:
-            MirageEvironmet.set_import_root()
+            MirageEnvironment.set_import_root()
             import apps
             if os.path.isfile("apps.py"):
                 return True
@@ -77,12 +77,12 @@ class MirageEvironmet():
         list_dir = os.listdir(os.getcwd())
         current = os.getcwd()
 
-        if not MirageEvironmet.in_project(): return
+        if not MirageEnvironment.in_project(): return
 
         for dir_file in list_dir:
             if os.path.isdir(dir_file):
                 os.chdir(dir_file)
-                if MirageEvironmet.in_app():
+                if MirageEnvironment.in_app():
                     apps.append(dir_file)
                 os.chdir(current)
             else:
@@ -92,7 +92,7 @@ class MirageEvironmet():
 
 
 
-class MirageEvironmetLevel(enum.Enum):
+class MirageEnvironmentLevel(enum.Enum):
     inproject   = 0
     inapp       = 1
     outproject  = 2
@@ -105,7 +105,7 @@ def get_project_name():
     directories = os.listdir(".")
     app_name = "FAILED TO GET"
     
-    if MirageEvironmet.in_project():
+    if MirageEnvironment.in_project():
 
         for directory in directories:
             try:
