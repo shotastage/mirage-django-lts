@@ -71,4 +71,4 @@ class TouchWorkFlow(Workflow):
                                                             start_year, copyrights, licensename, license_url)
                 )
         except:
-            mys.log("Failed to touch new python script!", withError = True, errorDetail = mys.raise_error_message(self.main))
+            mys.log("Failed to touch new python script \"" + self._fname + "\"!", withError = True, errorDetail = mys.raise_error_message(self.main))

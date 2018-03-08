@@ -71,7 +71,7 @@ class MirageEnvironment():
             
             if pathlib.Path("Miragefile").is_file():
                 return current
-            elif pathlib.Path.cwd() == "/":
+            elif os.getcwd() == "/":
                 raise FileNotFoundError
             else:
                 os.chdir("../")
@@ -175,7 +175,6 @@ class MirageEnvironment():
                 continue
 
         return apps
-
 
 
 class MirageEnvironmentLevel(enum.Enum):

@@ -54,7 +54,7 @@ def main():
 
     parser.add_argument("g", "generate", "model", "DjangoModelMake")
 
-    parser.add_argument("heroku", "heroku_util", "configure", "DjangoHerokuConfigure")
+    parser.add_argument("heroku", "heroku", "configure", "DjangoHerokuConfigure")
 
     parser.add_argument("ide", "scaffold", None, "Scaffold")
     parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
