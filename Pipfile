@@ -12,6 +12,7 @@ django-mirage = "*"
 
 [dev-packages]
 
+pylint = "*"
 
 
 [requires]

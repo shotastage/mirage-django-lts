@@ -18,33 +18,15 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from mirage.flow import Flow, Workflow
-from mirage.command import log
-from mirage.command import command
+from mirage.flow import Workflow
+from mirage import system as mys
 
 
 
 class DjangoMigrateWorkFlow(Workflow):
 
     def main(self):
-        log("Making migrations...")
-        self._make_migration()
-        self._apply_migration()
-
-    def _make_migration(self):
-        os.system("python manage.py makemigrations")
-
-    def _apply_migration(self):
-        os.system("python manage.py migrate")
-
-
-class DjangoMigrateFlow(Flow):
-
-    def __init__(self, subcommand):
-        self._subcommand = subcommand
-
-    def flow(self):
-        log("Making migrations...")
+        mys.log("Making migrations...")
         self._make_migration()
         self._apply_migration()
 

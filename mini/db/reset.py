@@ -20,14 +20,13 @@ import os
 
 from mirage.flow import Workflow
 from mirage import project
-from mirage.command import log
-from mirage.command import command
+from mirage import system as mys
 
 
 class DjangoDBResetWorkFlow(Workflow):
 
     def main(self):
-        log("Clearing all DB...")
+        mys.log("Clearing all DB...")
         self._reset_db()
 
     def _reset_db(self):
@@ -35,10 +34,10 @@ class DjangoDBResetWorkFlow(Workflow):
         msg = "This action will remove ALL stored data in database and data can't be restored!\nDo you confirm to continue this action?"
 
         if project.in_project():
-            if log(msg, withConfirm = True):
+            if mys.log(msg, withConfirm = True):
                 self._remove_sqlite()
             else:
-                log("Canceled.")
+                mys.log("Canceled.")
     
         else:
             log("Failed to reset database.", withError = True, errorDetail = """
@@ -49,6 +48,6 @@ Currently, Django Console support SQLite database for debug.
                 
 
     def _remove_sqlite(self):
-        log("Removing SQLite3 file...")
+        mys.log("Removing SQLite3 file...")
         if os.path.exists("db.sqlite3"):
             os.remove("db.sqlite3")

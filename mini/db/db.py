@@ -19,14 +19,13 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 
 from mirage.flow import Workflow
-from mirage.command import log
-from mirage.command import command
+from mirage import system as mys
 
 
 class DjangoDataBaseWorkFlow(Workflow):
 
     def __init__(self, subcommand):
-        log("Django DataBase is now unser development!", withError = True)
+        mys.log("Django DataBase is now unser development!", withError = True)
         self._subcommand = subcommand
 
     def flow(self):
