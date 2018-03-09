@@ -29,7 +29,10 @@ class MirageTransferWorkflow(Workflow):
     
     def constructor(self):
         self._app = self._option
-        self._to  = self._values[0]
+        try:
+            self._to  = self._values[0]
+        except:
+            self._to = mys.log("Trasfer to", withInput = True)
 
     def main(self):
         
@@ -45,27 +48,28 @@ class MirageTransferWorkflow(Workflow):
             except:
                 return
 
-            logger.write("Searching application {0}...".format(self._app), withLazy = True)
+            logger.write("Searching application %s..." % self._app, withLazy = True)
 
             if Path(self._app).is_dir():
                 self._compress(logger)
                 self._move(logger)
                 self._extract(logger)
+                self._clean(logger)
                 logger.update("Completed!")
             else:
-                logger.update("Can not detect application {0}!".format(self._app))
-                mys.log("Failed to transfer app {0}!".format(self._app), withError = True,
+                logger.update("Can not detect application %s!" % self._app)
+                mys.log("Failed to transfer app %s!" % self._app, withError = True,
                 errorDetail = mys.raise_error_message(
                     "The application diresctory does not exists!"
                 ))
                 return
 
     def _check(self, logger):
-
+        
         with proj.InDir(self._to):
 
             if Path(self._app).is_dir():
-                if not mys.log("{0} ia already exists.\nAre you sure to replace new one?", withConfirm = True):
+                if not mys.log("%s ia already exists.\nAre you sure to replace new one?" % self._app, withConfirm = True):
                     raise FileExistsError
                 else:
                     os.system("rm -rf " + self._app)
@@ -73,7 +77,13 @@ class MirageTransferWorkflow(Workflow):
 
     def _compress(self, logger):
         logger.update("Compressing application...")
-        shutil.make_archive(self._app, "zip", root_dir = os.getcwd())
+
+        try:
+            shutil.make_archive(self._app, "zip", root_dir = os.getcwd())
+        except:
+            pass
+            # shutil.make_archive raises ZIP does not support timestamps before 1980
+            #
 
     
     def _move(self, logger):
@@ -84,8 +94,18 @@ class MirageTransferWorkflow(Workflow):
 
         with proj.InDir(self._to):
             logger.update("Extracting application...")
-            with zipfile.ZipFile(self._app + ".zip", "r") as contents:
-                contents.extractall()
+
+            try:
+                with zipfile.ZipFile(self._app + ".zip", "r") as contents:
+                    contents.extractall()
+            except:
+                pass
+                # zipfile.ZipFile raises No such file or directory: 'hoge.zip'
+                # But, zip file is extracted!
 
             logger.update("Cleaning...")
             os.remove(self._app + ".zip")
+
+    def _clean(self, logger):
+        logger.update("Cleaning...")
+        os.remove(self._app + ".zip")
