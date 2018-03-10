@@ -35,7 +35,9 @@ class MirageTransferWorkflow(Workflow):
             self._to = mys.log("Trasfer to", withInput = True)
 
     def main(self):
-        
+        # Beta Warning
+        mys.log("This feature is now under Beta version.", withError=True)
+
         # Logger instance
 
         logger = mys.progress.Progress()
@@ -51,10 +53,8 @@ class MirageTransferWorkflow(Workflow):
             logger.write("Searching application %s..." % self._app, withLazy = True)
 
             if Path(self._app).is_dir():
-                self._compress(logger)
-                self._move(logger)
-                self._extract(logger)
-                self._clean(logger)
+                mys.log(os.getcwd())
+                shutil.copytree(self._app, os.path.join(self._to, self._app))
                 logger.update("Completed!")
             else:
                 logger.update("Can not detect application %s!" % self._app)
@@ -104,8 +104,11 @@ class MirageTransferWorkflow(Workflow):
                 # But, zip file is extracted!
 
             logger.update("Cleaning...")
-            os.remove(self._app + ".zip")
+            #os.remove(self._app + ".zip")
+
 
     def _clean(self, logger):
-        logger.update("Cleaning...")
-        os.remove(self._app + ".zip")
+        pass
+        # mys.log(os.getcwd(), withError=True)
+        # logger.update("Cleaning...")
+        # os.remove(self._app + ".zip")
