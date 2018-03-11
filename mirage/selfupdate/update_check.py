@@ -15,8 +15,16 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-text = "0.0.27"
+from urllib import request
+from mirage.flow import Workflow
+from mirage import system as mys
 
 
-if __name__ == "__main__":
-    print(text)
+class UpdateCheckFlow(Workflow):
+
+    def constructor(self):
+        self._url = "https://raw.githubusercontent.com/shotastage/django-mirage/master/mirage/help/version.py"
+
+    def main(self):
+        mys.log("Checking mirage update...")
+        request.urlretrieve(self._url, "mg_version_check.py")
