@@ -1,3 +1,11 @@
+# v0.0.28
+
+- Deprecate scaffold ( Mirage Scaffold will be released as a web application. )
+
+- Deprecate old `djc` command.
+
+- Make mirage no requirements
+
 # v0.0.25
 
 - Add `mg browser` to launch web browser.

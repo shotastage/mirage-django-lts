@@ -15,7 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-text = "0.0.27"
+text = "0.0.28"
 
 
 if __name__ == "__main__":

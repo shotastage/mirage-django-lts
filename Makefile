@@ -45,13 +45,11 @@ pyclean:
 test:
 	@echo "Removing recent buildings..."
 	rm -rf dist/
-	@echo "Building scaffold Sass..."
-	./node_modules/.bin/node-sass ./mirage/scaffold/static/scss/main.scss mirage/scaffold/static/style/main.css
 	@echo "Building Django Console..."
 	python setup.py check
 	python setup.py sdist
 	pip uninstall django-mirage
-	pip install dist/django-mirage-0.0.27.tar.gz
+	pip install dist/django-mirage-0.0.28.tar.gz
 
 fetch:
 	@echo "Fetching assets..."

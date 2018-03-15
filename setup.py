@@ -8,7 +8,7 @@ sys.path.append('./tests')
 if __name__ == "__main__":
     setup(
         name = "django-mirage",
-        version = "0.0.27",
+        version = "0.0.28",
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
@@ -24,7 +24,6 @@ if __name__ == "__main__":
         ],
         entry_points = {
             'console_scripts':[
-                'djc = mirage.mirage:main',  # Recent command
                 'mirage = mirage.mirage:main',
                 'mg = mirage.mirage:main'
             ],
