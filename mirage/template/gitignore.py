@@ -20,7 +20,7 @@ def src():
 #
 # .gitignore for Mirage project 
 #
-#  Version 2018/2/17
+#  Version 2018/3/16
 #
 # Based on github useful .gitignore collections
 # https://github.com/github/gitignore
@@ -216,11 +216,6 @@ typings/
 ## Mirage Ignore                                       ##
 #########################################################
 
-# Previous workspace & configuration file
-.djc/
-DjFile.secret
-
-# Current workspace & configuration file
 .mirage/
 Miragefile.addon
 Miragefile.secret

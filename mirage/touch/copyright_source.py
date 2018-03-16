@@ -17,7 +17,10 @@ Copyright 2017-2018 Shota Shimazu.
 
 import datetime
 import textwrap
+from functools import lru_cache
 
+
+@lru_cache(maxsize = 10)
 def copyright_doc(proj_name, fname, your_name, start, copyrightors, license, license_url):
     return textwrap.dedent('''
 """
