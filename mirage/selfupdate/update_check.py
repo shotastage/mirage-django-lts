@@ -22,9 +22,9 @@ from mirage import system as mys
 
 class UpdateCheckFlow(Workflow):
 
-    def constructor(self):
+    def constructor(self) -> None:
         self._url = "https://raw.githubusercontent.com/shotastage/django-mirage/master/mirage/help/version.py"
 
-    def main(self):
+    def main(self) -> None:
         mys.log("Checking mirage update...")
         request.urlretrieve(self._url, "mg_version_check.py")

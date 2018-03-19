@@ -17,7 +17,8 @@ Copyright 2017-2018 Shota Shimazu.
 
 from . import version
 
-usage = """
+def usage_doc():
+    return """
 Mirage v{0}
 
 Usage:
@@ -54,7 +55,9 @@ Actions:
 
 """.format(version.text)
 
-version = """
+
+def version_doc():
+    return """
 Mirage Version {0}
 
 https://github.com/shotastage/django-mirage

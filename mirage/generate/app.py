@@ -73,9 +73,11 @@ class DjangoAppMakeWorkFlow(Workflow):
             if os.path.isdir("environment"):
                 with proj.InDir("./environment"):
                     self.__insert_app_path(name, "base.py")
+
             elif os.path.isdir("settings"):
                 with proj.InDir("./settings"):
                     self.__insert_app_path(name, "base.py")
+
             else:
                 if os.path.isfile("settings.py"):
                     self.__insert_app_path(name, "settings.py")
@@ -88,10 +90,10 @@ class DjangoAppMakeWorkFlow(Workflow):
     """
     def _check_all(self):
 
-        reserved_names = [
+        reserved_names = (
             "test",
             "os"
-        ]
+        )
 
         for app in self._must_creat_apps:
             for name in reserved_names:

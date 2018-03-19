@@ -18,7 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 
 from mirage.djargparse import ArgumentsParser
-from mirage.command import log, raise_error_message
+
 
 
 def main():

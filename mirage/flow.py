@@ -32,20 +32,20 @@ class Workflow():
         self.constructor()
 
 
-    def constructor(self): pass
+    def constructor(self): ...
 
-    def get_first_arg(self):
+    def get_first_arg(self) -> str:
         try:
             return self._values[0]
         except:
             raise ValueError
 
-    def register(self, flow):
+    def register(self, flow) -> None:
         self.Stepflows.append(flow)
     
-    def main(self):
+    def main(self) -> bool:
         # Main flow struct
-        pass
+        return True
 
     def run(self):
         self.main()

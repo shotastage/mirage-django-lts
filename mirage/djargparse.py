@@ -40,36 +40,43 @@ class ArgumentsParser(object):
         self._exec_flow = None
 
         # Arguments Array 
-        self._arguments = [
+        self._arguments = (
             self._cmd,
             self._sub_action,
             self._option,
             self._option_detail,
             self._values
-        ]
+        )
+
+        # Is Assessmented
+        self._assessmented = False
         
 
 
     def add_argument(self, shorten_cmd, long_cmd, option, execute):
 
+        if self._assessmented: return
         # Check command
 
         if not self._cmd == shorten_cmd and not self._cmd == long_cmd:
             return
 
-        if not self._sub_action == None:
+        if not self._sub_action is None:
             return
 
-        if not option == None:
+        if not option is None:
             if self._option == option:
                 self._exec_flow = execute
         else:
             self._exec_flow = execute
 
+        self._assessmented = True
+
         return
     
 
     def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
+        if self._assessmented: return
 
         if not self._cmd == base_shorten_cmd and not self._cmd == base_long_cmd:
             return
@@ -77,12 +84,14 @@ class ArgumentsParser(object):
         if not self._sub_action == action:
             return
 
-        if not option == None:
+        if not option is None:
             if self._option == option:
                 self._exec_flow = execute
         else:
             self._exec_flow = execute
 
+        self._assessmented = True
+        
         return
 
 
@@ -97,8 +106,8 @@ class ArgumentsParser(object):
         if not self._exec_flow == None: 
             instance = getattr(workflows, self._exec_flow)(self._arguments)
             instance.run()
-
             return
+
         else:
             system.log("Unable to invoke action \"{0}\"!".format(sys.argv[1]), withError = True)
             instance = getattr(workflows, "UsageShow")(self._arguments)

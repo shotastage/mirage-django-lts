@@ -27,4 +27,4 @@ class UsageShowWorkFlow(Workflow):
 class VersionShowWorkFlow(Workflow):
     
     def main(self):
-        print(description.version)
+        print(description.version_doc())

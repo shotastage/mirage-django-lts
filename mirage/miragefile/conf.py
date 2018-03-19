@@ -65,7 +65,7 @@ class Config():
                 mys.log("Wrong configuration type {0}.".format(file_type), withError = True)
 
 
-    @lru_cache(maxsize = 255)
+    @lru_cache(maxsize = 100)
     def get(self, category, detail):
         
         try:
@@ -81,7 +81,7 @@ class Config():
             mys.log("Failed to get value from Miragefile!", withError = True)
 
 
-    @lru_cache(maxsize = 255)
+    @lru_cache(maxsize = 100)
     def _get_project(self, detail):
        
         if detail == Detail.project_name:
@@ -101,7 +101,7 @@ class Config():
             raise MiragefileUnknownError
 
 
-    @lru_cache(maxsize = 255)
+    @lru_cache(maxsize = 100)
     def _get_django(self, detail):
 
         if detail == Detail.django_path:
@@ -117,7 +117,7 @@ class Config():
             raise MiragefileUnknownError
 
 
-    @lru_cache(maxsize = 255)
+    @lru_cache(maxsize = 100)
     def _get_copyright(self, detail):
 
         if detail == Detail.copyright_start_year:
@@ -129,7 +129,7 @@ class Config():
             raise MiragefileUnknownError
 
 
-    @lru_cache(maxsize = 255)
+    @lru_cache(maxsize = 100)
     def _get_private_profile(self, detail):
 
         if detail == Detail.private_name:
@@ -141,7 +141,7 @@ class Config():
             raise MiragefileUnknownError
 
 
-    @lru_cache(maxsize = 255)
+    @lru_cache(maxsize = 100)
     def _load_json(self, filename):
         if not os.path.exists(filename):
             mys.log("Failed to find Miragefile!", withError = True)
