@@ -50,14 +50,16 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
     ).strip()
 
 
+@lru_cache(maxsize = 10)
 def get_current():
     return datetime.datetime.now().strftime("%Y/%m/%d")
 
-
+@lru_cache(maxsize = 10)
 def get_current_year():
     return datetime.datetime.now().strftime("%Y")
 
 
+@lru_cache(maxsize = 10)
 def gen_copyrights(start, current, copyrightors):
 
     string = ""
