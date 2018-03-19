@@ -15,3 +15,20 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+def parse():
+    
+
+    with open("Miragefile", "r") as script:
+        
+        if not format_check(script.readlines[0]): return
+
+        for line in script.readlines():
+            pass
+
+
+def format_check(line: str) -> bool:
+    if "@miragefile" in line:
+        if "0.0.5" in line:
+            return True
+
+    return False
