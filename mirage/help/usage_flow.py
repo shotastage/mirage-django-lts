@@ -21,7 +21,7 @@ from mirage.help import description
 class UsageShowWorkFlow(Workflow):
     
     def main(self):
-        print(description.usage)
+        print(description.usage_doc())
 
 
 class VersionShowWorkFlow(Workflow):
