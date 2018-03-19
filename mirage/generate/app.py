@@ -143,6 +143,8 @@ class DjangoAppMakeWorkFlow(Workflow):
         for i in range(len(lines)):
             if "INSTALLED_APPS = [" in lines[i]:
                 insert_line = i
+            elif "INSTALLED_APPS = (" in lines[i]:
+                insert_line = i
     
         with open(setting_file, "w") as setting:
             app_config = app_name[0].upper() + app_name[1:] + "Config"
