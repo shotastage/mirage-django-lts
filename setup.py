@@ -12,7 +12,6 @@ if __name__ == "__main__":
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
-            'Programming Language :: Python :: 3.5',
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
         ],
