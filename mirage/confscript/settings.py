@@ -15,6 +15,15 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+import sys, os, imp
+import enum
 
-from .environ import MirageEnvironment, MirageEnvironmentLevel, WorkingLevel
-from .utils import InDir
+class Settings(enum.Enum):
+    pass
+
+
+class License(Settings):
+    original = 0
+    EULA     = 1
+    MIT      = 2
+    Apache   = 3

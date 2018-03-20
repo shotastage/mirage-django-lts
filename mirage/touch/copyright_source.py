@@ -21,7 +21,7 @@ from functools import lru_cache
 
 
 @lru_cache(maxsize = 10)
-def copyright_doc(proj_name, fname, your_name, start, copyrightors, license, license_url):
+def copyright_doc(proj_name, fname, your_name, start, copyrightors, license, license_url) -> str:
     return textwrap.dedent('''
 """
 {PROJECT_NAME}
@@ -51,16 +51,16 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
 
 
 @lru_cache(maxsize = 10)
-def get_current():
+def get_current() -> str:
     return datetime.datetime.now().strftime("%Y/%m/%d")
 
 @lru_cache(maxsize = 10)
-def get_current_year():
+def get_current_year() -> str:
     return datetime.datetime.now().strftime("%Y")
 
 
 @lru_cache(maxsize = 10)
-def gen_copyrights(start, current, copyrightors):
+def gen_copyrights(start: int, current: int, copyrightors: tuple) -> str:
 
     string = ""
 

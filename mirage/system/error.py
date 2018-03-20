@@ -20,7 +20,7 @@ import textwrap
 import sys
 
 
-def raise_error_message(func):
+def raise_error_message(func, e = "No traceback"):
 
     try:
         errored_func = func.__name__
@@ -50,9 +50,11 @@ Exceute func name : {func_name}
 Exec Information  : {exec_info}
 Object Info       : {obj_inf}
 Signature         : {func_signature}
+{trace_log}
     """).format(
         func_name = errored_func,
         exec_info = exec_info,
         obj_inf   = errored_obj,
-        func_signature = func_sig
+        func_signature = func_sig,
+        trace_log = e,
     ).strip()

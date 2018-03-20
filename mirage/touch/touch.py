@@ -15,6 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+import traceback
 from mirage.flow import Workflow
 from mirage.miragefile.conf import Config, Category, Detail
 from mirage import system as mys
@@ -66,9 +67,13 @@ class TouchWorkFlow(Workflow):
 
         try:
             with open(str(self._fname), "w") as f:
+
+                # When copyrights is list, copyright_source raises TypeError: unhashable type: 'list'
                 f.write(
                     copyright_source.copyright_doc(proj_name, self._fname, your_name,
-                                                            start_year, copyrights, licensename, license_url)
+                                                   start_year, tuple(copyrights), licensename, license_url)
                 )
         except:
-            mys.log("Failed to touch new python script \"" + self._fname + "\"!", withError = True, errorDetail = mys.raise_error_message(self.main))
+            mys.log("Failed to touch new python script \"" + self._fname + "\"!", withError = True, errorDetail = mys.raise_error_message(self.main, traceback.format_exc()))
+
+        return True
