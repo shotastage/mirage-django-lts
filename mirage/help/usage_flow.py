@@ -15,16 +15,17 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+from mirage.core import Void
 from mirage.flow import Workflow
 from mirage.help import description
 
 class UsageShowWorkFlow(Workflow):
     
-    def main(self):
+    def main(self) -> Void:
         print(description.usage_doc())
 
 
 class VersionShowWorkFlow(Workflow):
     
-    def main(self):
+    def main(self) -> Void:
         print(description.version_doc())

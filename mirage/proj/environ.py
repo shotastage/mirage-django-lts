@@ -19,6 +19,7 @@ import os
 import sys
 import enum
 import pathlib
+from mirage.core import Void
 from mirage import proj
 from mirage import fileable
 from mirage.system import warning, log
@@ -69,7 +70,7 @@ class MirageEnvironment():
 
             current = os.getcwd()
             
-            if pathlib.Path("Miragefile").is_file():
+            if pathlib.Path("Miragefile.py").is_file() or pathlib.Path("Miragefile").is_file():
                 return current
             elif os.getcwd() == "/":
                 raise FileNotFoundError
@@ -97,7 +98,7 @@ class MirageEnvironment():
 
 
     @staticmethod
-    def set_import_root():
+    def set_import_root() -> Void:
         """
         Set path to import current dir Python module.
         """
@@ -105,7 +106,7 @@ class MirageEnvironment():
 
 
     @staticmethod
-    def in_django_project():
+    def in_django_project() -> bool:
         """
         Judge where current working directory is in Django project or not.
 
@@ -123,12 +124,17 @@ class MirageEnvironment():
 
     
     @staticmethod
-    def in_project():
-        return pathlib.Path("Miragefile").is_file()
+    def in_project() -> bool:
+        if pathlib.Path("Miragefile").is_file():
+            return True
+        elif pathlib.Path("Miragefile.py").is_file():
+            return True
+        else:
+            return False
 
 
     @staticmethod
-    def in_app():
+    def in_app() -> bool:
         """
         Judge where current working directory is in Django application or not.
 
@@ -149,7 +155,7 @@ class MirageEnvironment():
 
 
     @staticmethod
-    def get_app_list():
+    def get_app_list() -> list:
         """
         Return application lists.
 
@@ -178,6 +184,13 @@ class MirageEnvironment():
 
 
 class MirageEnvironmentLevel(enum.Enum):
+    inproject   = 0
+    indjango    = 1
+    inapp       = 2
+    outproject  = 3
+
+
+class WorkingLevel(enum.Enum):
     inproject   = 0
     indjango    = 1
     inapp       = 2

@@ -65,5 +65,7 @@ def main():
 
     parser.add_argument("f", "file", None, "Touch")
 
+    parser.add_argument("+", "confscript", None, "MirageConfigScriptFlow")
+
     # Excute
     parser.parse()

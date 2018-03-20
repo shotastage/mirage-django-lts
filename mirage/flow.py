@@ -16,6 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from abc import ABCMeta, abstractmethod
+from mirage.core import Void
 from mirage import system as mys
 
 
@@ -47,7 +48,7 @@ class Workflow():
         # Main flow struct
         return True
 
-    def run(self):
+    def run(self) -> Void:
         self.main()
 
         # Flow
@@ -70,10 +71,10 @@ class Stepflow():
         self._flows         = []
 
 
-    def add(self, func):
+    def add(self, func) -> Void:
         self._flows.append(func)
 
-    def run(self):
+    def run(self) -> Void:
         for flow in self._flows:
             try:
                 flow()

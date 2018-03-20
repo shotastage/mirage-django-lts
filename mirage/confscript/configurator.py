@@ -16,6 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import sys, os, imp
+from mirage.core import Void
 from mirage import system as mys
 from mirage.proj import MirageEnvironment, MirageEnvironmentLevel
 
@@ -40,11 +41,11 @@ class ConfigScript():
         self.deinitialize()
     
 
-    def initialize(self) -> None:
+    def initialize(self) -> Void:
         ...
     
 
-    def deinitialize(self) -> None:
+    def deinitialize(self) -> Void:
         ...
 
     def main(self) -> int:

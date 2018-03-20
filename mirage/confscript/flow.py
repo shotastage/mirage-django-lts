@@ -32,7 +32,9 @@ class MirageConfigScriptFlow(Workflow):
 
     
     def main(self) -> bool:
-        
+        mys.log("Now under construction.")
+        return
+
         with MirageEnvironment(MirageEnvironmentLevel.inproject):
 
             try:
@@ -47,22 +49,20 @@ class MirageConfigScriptFlow(Workflow):
 
     def load_script(self) -> object:
 
-        with MirageEnvironment(MirageEnvironmentLevel.inproject):
-            sys.path.append(os.getcwd())
+        sys.path.append(os.getcwd())
 
-            try:
-                fp, name, desc = imp.find_module("mirage.config")
-                config_script = imp.load_module("config_script", fp, name, desc)
+        try:
+            fp, name, desc = imp.find_module("mirage.config")
+            config_script = imp.load_module("config_script", fp, name, desc)
 
-                if config_script.MirageConfig.assertBool():
-                    mys.log("Config script loaded!")
-                else:
-                    mys.log("Failed to import mirage.config.py !", withError = True)
-                    raise ImportError
-
-
-            except ImportError:
+            if config_script.MirageConfig.assertBool():
+                mys.log("Config script loaded!")
+            else:
                 mys.log("Failed to import mirage.config.py !", withError = True)
+                raise ImportError
+
+        except ImportError:
+            mys.log("Failed to import mirage.config.py !", withError = True)
 
 
     def check_conf_script_version(self) -> bool:

@@ -78,3 +78,5 @@ class MirageTransfer(MirageTransferWorkflow): pass
 ###########################################################
 
 from mirage.projectstartup.minimum_app_create import *
+
+from mirage.confscript import *
