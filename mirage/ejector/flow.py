@@ -16,16 +16,16 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 from mirage.flow import Workflow
+from mirage.core import Void
+from mirage import system as mys
 
-class DjangoRestoreFlow(Workflow):
-  
-  def __init__(self):
-    pass
-  
-  def main(self):
-    pass
-  
-  
-  def _check_backup_existence(self):
-    pass
-  
+
+class EjectWorkflow(Workflow):
+    
+    def main(self) -> Void:
+        ...
+
+
+    def write_file(self, f_name: str) -> Void:
+        with open(f_name, "w") as pf:
+            pf.write()
