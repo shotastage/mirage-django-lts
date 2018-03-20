@@ -1,22 +1,17 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django-mirage = "*"
 
-
 [dev-packages]
-
 pylint = "*"
 django = "*"
 line-profiler = "*"
-
+mkdocs = "*"
+mkdocs-material = "*"
 
 [requires]
-
 python_version = "3.6"
