@@ -35,7 +35,11 @@ class ModuleCreateFlow(Workflow):
             mys.log("Module {0} is already exists!".format(self._module_name), withError = True)
 
         else:
+
+            mys.log("Generating \"{0}\" module...".format(self._module_name))
             Path(self._module_name).mkdir()
 
             with InDir(self._module_name):
                 open("__init__.py", "a")
+
+        return True

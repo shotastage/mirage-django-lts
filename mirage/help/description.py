@@ -41,6 +41,7 @@ Actions:
     database:reset     db:reset                                 Reset all database. ( Only debugging SQLite is supported. )
     generate           g            app         <app names...>  Create multiple Django apps at once.
     generate           g            model       <model class>   Create Django model class.
+    generate           g            module      <module bane>   Create a new Python module with __init__.py
     heroku             heroku       configure                   Configure setting files for deploing to heroku.
     manage             m            test                        Run test of Django application.
     manage             m            superuser                   Create super user for Django admin.

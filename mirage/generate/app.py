@@ -17,6 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import readline
+from mirage.core import Void
 from mirage.flow import Workflow
 from mirage.generate.urlpy import create_urlpy_script as url_script
 from mirage import system as mys
@@ -26,11 +27,11 @@ from mirage import proj
 
 class DjangoAppMakeWorkFlow(Workflow):
 
-    def constructor(self):
+    def constructor(self) -> Void:
         self._must_creat_apps = self._values
 
 
-    def main(self):
+    def main(self) -> bool:
         try:
             self._check_all()
         except:
@@ -43,6 +44,8 @@ class DjangoAppMakeWorkFlow(Workflow):
             self._create_app(app)
             self._create_url(app)
             self._install_app(app)
+
+        return True
 
 
     def _create_app(self, name):

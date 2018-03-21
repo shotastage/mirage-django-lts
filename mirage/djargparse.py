@@ -57,6 +57,7 @@ class ArgumentsParser(object):
     def add_argument(self, shorten_cmd: str, long_cmd: str, option: str, execute: str) -> Void:
 
         if self._assessmented: return
+
         # Check command
 
         if not self._cmd == shorten_cmd and not self._cmd == long_cmd:
@@ -68,16 +69,17 @@ class ArgumentsParser(object):
         if not option is None:
             if self._option == option:
                 self._exec_flow = execute
+                self._assessmented = True
         else:
             self._exec_flow = execute
-
-        self._assessmented = True
+            self._assessmented = True
 
         return
 
 
     def add_argument_with_subaction(self, base_shorten_cmd: str,
                                     base_long_cmd: str, action: str, option: str, execute: str) -> Void:
+
         if self._assessmented: return
 
         if not self._cmd == base_shorten_cmd and not self._cmd == base_long_cmd:
@@ -89,10 +91,11 @@ class ArgumentsParser(object):
         if not option is None:
             if self._option == option:
                 self._exec_flow = execute
+                self._assessmented = True
         else:
             self._exec_flow = execute
+            self._assessmented = True
 
-        self._assessmented = True
 
         return
 

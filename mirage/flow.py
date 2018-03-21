@@ -33,7 +33,8 @@ class Workflow():
         self.constructor()
 
 
-    def constructor(self) -> Void: ...
+    def constructor(self) -> Void:
+        pass
 
     def get_first_arg(self) -> str:
         try:

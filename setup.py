@@ -1,6 +1,8 @@
 # -*- encoding:utf-8 -*-
 from setuptools import setup, find_packages
+from mirage.version import __version__ as ver
 import sys
+
 
 sys.path.append('./mirage')
 sys.path.append('./tests')
@@ -8,7 +10,7 @@ sys.path.append('./tests')
 if __name__ == "__main__":
     setup(
         name = "django-mirage",
-        version = "0.1.1",
+        version = ver,
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
