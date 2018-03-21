@@ -21,11 +21,11 @@ from mirage import system as mys
 
 
 class EjectWorkflow(Workflow):
-    
+
     def main(self) -> Void:
         ...
 
 
-    def write_file(self, f_name: str) -> Void:
+    def write_file(self, f_name: str, contents: str) -> Void:
         with open(f_name, "w") as pf:
-            pf.write()
+            pf.write(contents)

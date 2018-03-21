@@ -18,6 +18,7 @@ Copyright 2017-2018 Shota Shimazu.
 import sys
 import enum
 import functools
+from mirage.core import Void
 from mirage import system
 
 # Flow Classies
@@ -27,19 +28,19 @@ from mirage import workflows
 class ArgumentsParser(object):
 
     def __init__(self):
-        
+
         # Arguments
         self._cmd = None            # ex. **new**
         self._sub_action = None     # ex. new:**cms**
         self._option = None         # ex. g **app**
         self._option_detail = None  # ex. g app **--basic**
         self._values = None         # ex. g **app api mail user**
-        self.__insert_arguments()   # <== Insert real value 
+        self.__insert_arguments()   # <== Insert real value
 
         # Exec flow
         self._exec_flow = None
 
-        # Arguments Array 
+        # Arguments Array
         self._arguments = (
             self._cmd,
             self._sub_action,
@@ -50,10 +51,10 @@ class ArgumentsParser(object):
 
         # Is Assessmented
         self._assessmented = False
-        
 
 
-    def add_argument(self, shorten_cmd, long_cmd, option, execute):
+
+    def add_argument(self, shorten_cmd: str, long_cmd: str, option: str, execute: str) -> Void:
 
         if self._assessmented: return
         # Check command
@@ -73,14 +74,15 @@ class ArgumentsParser(object):
         self._assessmented = True
 
         return
-    
 
-    def add_argument_with_subaction(self, base_shorten_cmd, base_long_cmd, action, option, execute):
+
+    def add_argument_with_subaction(self, base_shorten_cmd: str,
+                                    base_long_cmd: str, action: str, option: str, execute: str) -> Void:
         if self._assessmented: return
 
         if not self._cmd == base_shorten_cmd and not self._cmd == base_long_cmd:
             return
-    
+
         if not self._sub_action == action:
             return
 
@@ -91,19 +93,19 @@ class ArgumentsParser(object):
             self._exec_flow = execute
 
         self._assessmented = True
-        
+
         return
 
 
-    def parse(self):
+    def parse(self) -> Void:
         # If there are no command, show usage.
         if len(sys.argv) == 1:
             instance = getattr(workflows, "UsageShow")(self._arguments)
             instance.run()
             return
-        
+
         # Check excute function is not empty.
-        if not self._exec_flow == None: 
+        if not self._exec_flow == None:
             instance = getattr(workflows, self._exec_flow)(self._arguments)
             instance.run()
             return
@@ -122,7 +124,7 @@ class ArgumentsParser(object):
         # Get subaction new:**cms**
         try: self._sub_action = self.__colon_separate_action(sys.argv[1])
         except: pass
-        
+
         # Get option and detail option
         # optin =           mi g **app**
         # detail option =   mi g app **--basic**
@@ -142,14 +144,14 @@ class ArgumentsParser(object):
         except: pass
 
 
-    def __colon_separate_cmd(self, cmd_colon_value):
+    def __colon_separate_cmd(self, cmd_colon_value: str) -> str:
         if ":" in cmd_colon_value:
             return cmd_colon_value.split(":")[0]
         else:
             return cmd_colon_value
 
 
-    def __colon_separate_action(self, cmd_colon_value):
+    def __colon_separate_action(self, cmd_colon_value: str) -> str:
         if ":" in cmd_colon_value:
             return cmd_colon_value.split(":")[1]
         else:
@@ -166,7 +168,7 @@ class DetailOptionParser():
     def add_argument(self, option, excute):
         if self._option_detail == option:
             self._excute = excute
-    
+
     def parse(self):
         self._excute.excute()
 

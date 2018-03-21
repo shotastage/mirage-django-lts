@@ -15,8 +15,4 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-text = "0.1.1"
-
-
-if __name__ == "__main__":
-    print(text)
+__version__ = "0.1.2"

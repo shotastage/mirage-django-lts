@@ -15,7 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from . import version
+from mirage import version
 
 def usage_doc():
     return """
@@ -53,7 +53,7 @@ Actions:
     version            v                                        Print version information.
 
 
-""".format(version.text)
+""".format(version.__version__)
 
 
 def version_doc():
@@ -64,4 +64,4 @@ https://github.com/shotastage/django-mirage
 
 Copyright (c) 2017-2018 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
-""".format(version.text)
+""".format(version.__version__)

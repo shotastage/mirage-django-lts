@@ -33,7 +33,7 @@ class Workflow():
         self.constructor()
 
 
-    def constructor(self): ...
+    def constructor(self) -> Void: ...
 
     def get_first_arg(self) -> str:
         try:
@@ -41,9 +41,9 @@ class Workflow():
         except:
             raise ValueError
 
-    def register(self, flow) -> None:
+    def register(self, flow) -> Void:
         self.Stepflows.append(flow)
-    
+
     def main(self) -> bool:
         # Main flow struct
         return True
@@ -57,7 +57,7 @@ class Workflow():
                 flow.run()
             except:
                 raise Exception
-          
+
 
 
 class Stepflow():

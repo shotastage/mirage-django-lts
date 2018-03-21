@@ -33,10 +33,10 @@ class DjangoModelMakeWorkflow(Workflow):
         # ModelClass name:string+maxlen=40 no:integer+as_primary=True
 
         model_contents = ""
-        
+
         for data in self._data:
             model_contents += "{0}\n".format(self._parse_data(data))
-            
+
         # Write model file
         sys.log("Writing model...")
 
@@ -49,14 +49,14 @@ class DjangoModelMakeWorkflow(Workflow):
 
 
     def _parse_data(self, data_string):
-        
+
         # data_name:data_type+option=value,option=value
         # ex. name:string+maxlen=100,as_primary=True
 
         data_name = data_string.split(":")[0]
         data_type = self._parse_data_type(data_string)
         data_options = self._parse_option(data_string)
-        
+
         return self._make_col(data_name, data_type, data_options)
 
 
@@ -78,7 +78,7 @@ class DjangoModelMakeWorkflow(Workflow):
                 option_value = option.split("=")[1]
 
                 options_parsed.append((option_name, option_value))
-            
+
             return options_parsed
         else:
             return None
@@ -86,12 +86,12 @@ class DjangoModelMakeWorkflow(Workflow):
 
     def _make_col(self, name, type, ops):
         string = "  {0} = {1}({2})".format(name, self._make_filed(type), self._make_option(ops, type))
-        
+
         return string
 
 
     def _make_filed(self, type):
-        
+
         if type == "string":
             return "models.CharField"
         elif type == "auto":
@@ -151,12 +151,12 @@ class DjangoModelMakeWorkflow(Workflow):
             else: return ""
 
         opstring = ""
-        
+
         # Max len check
         text_is_maxlen = False
         for op in ops:
             if "maxlen" in op[0]: text_is_maxlen = True
-        
+
         if data_type == "string" and text_is_maxlen == False:
             opstring += "max_length = 255, "
 

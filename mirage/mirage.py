@@ -54,10 +54,12 @@ def main():
 
     parser.add_argument("g", "generate", "model", "DjangoModelMake")
 
+    parser.add_argument("g", "generate", "module", "ModuleCreateFlow")
+
     parser.add_argument("heroku", "heroku", "configure", "DjangoHerokuConfigure")
 
     parser.add_argument("m", "manage", None, "DjangoManagePy")
-    
+
     parser.add_argument("s", "server", None, "DjangoDebugServer")
     parser.add_argument("browser", "internal-browser", None, "DjangoLaunchBrowser")
 

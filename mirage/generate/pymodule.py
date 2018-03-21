@@ -15,17 +15,27 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
+import os
+from pathlib import Path
 from mirage.core import Void
+from mirage import system as mys
+from mirage.proj import InDir
 from mirage.flow import Workflow
-from mirage.help import description
-
-class UsageShowWorkFlow(Workflow):
-
-    def main(self) -> Void:
-        print(description.usage_doc())
 
 
-class VersionShowWorkFlow(Workflow):
+class ModuleCreateFlow(Workflow):
 
-    def main(self) -> Void:
-        print(description.version_doc())
+    def constructor(self) -> Void:
+        self._module_name: str = self._values[0]
+
+
+    def main(self) -> bool:
+
+        if Path("self._module_name").is_dir():
+            mys.log("Module {0} is already exists!".format(self._module_name), withError = True)
+
+        else:
+            Path(self._module_name).mkdir()
+
+            with InDir(self._module_name):
+                open("__init__.py", "a")
