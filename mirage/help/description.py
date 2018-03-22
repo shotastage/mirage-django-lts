@@ -22,9 +22,9 @@ def usage_doc():
 Mirage v{0}
 
 Usage:
-    mi [action] option <--sub-option> <inputs>
+    mg [action] option <--sub-option> <inputs>
 
-    mi [action]:[subaction] option <--sub-option> <inputs>
+    mg [action]:[subaction] option <--sub-option> <inputs>
 
 
 Actions:
@@ -52,6 +52,7 @@ Actions:
 
     help               h                                        Show usage of Mirage.
     version            v                                        Print version information.
+    check              ?            update                      Check update
 
 
 """.format(version.__version__)
