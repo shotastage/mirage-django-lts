@@ -82,3 +82,5 @@ from mirage.projectstartup.minimum_app_create import *
 from mirage.confscript import *
 
 from mirage.generate import *
+
+from mirage.checker.update_check import *

@@ -1,3 +1,11 @@
+# v0.1.3
+
+- Support creating React project with JavaScript. `mg new:react --javascript`
+
+- Add update checking command `mg ? update`
+
+================================================================================
+
 # v0.0.28
 
 - Deprecate scaffold ( Mirage Scaffold will be released as a web application. )

@@ -25,9 +25,9 @@ from . import copyright_source
 class TouchWorkFlow(Workflow):
 
     def constructor(self):
-        
+
         self._fname = self._option
-      
+
         if self._fname == None:
             self._fname = mys.log("File Name", withInput = True)
 
@@ -53,12 +53,12 @@ class TouchWorkFlow(Workflow):
             copyrights = Config().get(Category.copyright, Detail.copyright_copyrigtors)
         except:
             copyrights = mys.log("Copyrights", withInput = True)
-    
+
         try:
             licensename = Config().get(Category.project_basic, Detail.project_license)
         except:
             licensename = mys.log("License name", withInput = True)
-            
+
         try:
             license_url = Config("secret").get(Category.private_profile, Detail.private_license_url)
         except:

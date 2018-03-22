@@ -69,5 +69,7 @@ def main():
 
     parser.add_argument("+", "confscript", None, "MirageConfigScriptFlow")
 
+    parser.add_argument("?", "inquiry", "update", "UpdateCheckFlow")
+
     # Excute
     parser.parse()

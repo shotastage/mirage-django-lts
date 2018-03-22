@@ -26,14 +26,14 @@ from mirage.miragefile import source
 
 
 class ReactStartupWorkFlow(Workflow):
-    
+
     def constructor(self):
-        self._project_name = None
+        self._js_runtime = self._option
 
 
     def main(self):
 
-        # Check 
+        # Check
         try:
             self._check_before()
         except:
@@ -61,7 +61,7 @@ class ReactStartupWorkFlow(Workflow):
 
 
 
-        
+
         self._create_new_django_app()
 
         # Create logging instance
@@ -90,7 +90,11 @@ class ReactStartupWorkFlow(Workflow):
             logger.update("Creating React app...")
             self._create_package_json()
             mys.command("yarn add --dev create-react-app")
-            mys.command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
+
+            if self._js_runtime == "--javascript":
+                mys.command("./node_modules/.bin/create-react-app shell")
+            else:
+                mys.command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
 
             logger.update("Installing additional packages...")
             with proj.InDir("./shell"):
@@ -110,7 +114,7 @@ class ReactStartupWorkFlow(Workflow):
 
         # Completed
         logger.update("Completed!")
-    
+
 
     def _create_new_django_app(self):
         mys.command("django-admin startproject " + self._project_name)
@@ -119,9 +123,9 @@ class ReactStartupWorkFlow(Workflow):
     def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):    
         with open("Miragefile", "w") as f:
             f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
-     
 
-    
+
+
     def _create_package_json(self):
         with open("package.json", "w") as f:
             f.write('{"name": "tmpapp", "version": "0.0.1"}')
@@ -142,7 +146,7 @@ class ReactStartupWorkFlow(Workflow):
 
 
     def _check_before(self):
-        
+
         try:
             import django
         except ImportError:

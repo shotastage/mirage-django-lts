@@ -34,7 +34,7 @@ def log(string,
 
     elif withInput:
         string = str(input('\033[32m' + str(string) + ' >> \033[0m'))
-        
+
         if string == "" and default != None:
             return default
         else:
@@ -49,6 +49,6 @@ def log(string,
             if answer in [ "y", "Y", "yes", "Yes", "YES", "Yeah"]:
                 return True
             elif answer in [ "n", "N", "no", "No", "NO", "Nope"]:
-                return False        
+                return False
     else:
         print('\033[32mMirage: \033[0m' + str(string))
