@@ -76,7 +76,7 @@ class ReactStartupWorkFlow(Workflow):
 
             # Generate README.md
             logger.update("Generating readme...", withLazy = True)
-            self._create_docs()
+            self._create_docs(description)
 
             # Generate Miragefile
             logger.update("Generating Miragefile...", withLazy = True)
@@ -140,9 +140,9 @@ class ReactStartupWorkFlow(Workflow):
         mys.command("git init")
 
 
-    def _create_docs(self):
+    def _create_docs(self, description):
         with open("README.md", "a") as readme:
-            readme.write(readme_md.src(self._project_name))
+            readme.write(readme_md.src(self._project_name, description))
 
 
     def _check_before(self):

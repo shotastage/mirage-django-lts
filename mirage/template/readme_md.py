@@ -23,13 +23,13 @@ from pip.utils import get_installed_distributions
 from mirage.command import log
 
 
-def src(name):
+def src(name, desc = "No description provided."):
 
     return textwrap.dedent(
 '''
 # {NAME}
 
-This is your first Django application.
+{DESCRIPTION}
 
 # Info
 Information of development environment.
@@ -50,7 +50,8 @@ Python Version: `{PYTHON_VER}`
     OS = get_os_name(),
     DJANGO_VER = get_django_version(),
     PYTHON_VER = get_python_version(),
-    INSTALLED_PIP_PACKAGES = get_pip_list()
+    INSTALLED_PIP_PACKAGES = get_pip_list(),
+    DESCRIPTION = desc,
 ).strip()
 
 
@@ -84,9 +85,9 @@ def get_pip_list():
     string = ""
 
     ignore_packages = ["setuptools", "pip", "python", "mirage"]
-    
+
     packages = get_installed_distributions(local_only = True, skip = ignore_packages)
-    
+
     for package in packages:
         string += "+ " + package.project_name + " " + package.version + "  \n"
 
