@@ -1,3 +1,11 @@
+# `next release` v0.1.4
+
+- Create `README.md` with description.
+
+- Create `Miragefile@next.py` the next generation miragefile.
+
+- Support creating project with angular.
+
 # v0.1.3
 
 - Support creating React project with JavaScript. `mg new:react --javascript`

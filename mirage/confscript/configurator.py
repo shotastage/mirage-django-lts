@@ -22,7 +22,7 @@ from mirage.proj import MirageEnvironment, MirageEnvironmentLevel
 
 
 class ConfigScript():
-    
+
     def __init__(self):
 
         # Configs
@@ -39,11 +39,11 @@ class ConfigScript():
 
     def __del__(self):
         self.deinitialize()
-    
+
 
     def initialize(self) -> Void:
         ...
-    
+
 
     def deinitialize(self) -> Void:
         ...

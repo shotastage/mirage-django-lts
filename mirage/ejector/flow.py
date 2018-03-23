@@ -18,12 +18,21 @@ Copyright 2017-2018 Shota Shimazu.
 from mirage.flow import Workflow
 from mirage.core import Void
 from mirage import system as mys
+from mirage.template import gitignore
 
 
 class EjectWorkflow(Workflow):
 
+    def constructor(self) -> Void:
+        self._target = self._option
+
     def main(self) -> Void:
-        ...
+
+        if self._target == "ignore" or self._target == "gitignore":
+            self.write_file(".gitignore", gitignore.src())
+
+        if self._target == "":
+            pass
 
 
     def write_file(self, f_name: str, contents: str) -> Void:

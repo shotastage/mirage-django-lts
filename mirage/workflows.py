@@ -20,9 +20,7 @@ class DjangoConsole(DjangoConsoleWorkFlow): pass
 class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass
 
 
-from mirage.projectstartup.django_app_create import DjangoCMSStartupWorkFlow
 from mirage.projectstartup.react_app_create import ReactStartupWorkFlow
-class DjangoCMSStartup(DjangoCMSStartupWorkFlow): pass
 class ReactStartup(ReactStartupWorkFlow): pass
 
 
@@ -84,3 +82,5 @@ from mirage.confscript import *
 from mirage.generate import *
 
 from mirage.checker.update_check import *
+
+from mirage.projectstartup import *

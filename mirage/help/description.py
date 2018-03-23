@@ -30,7 +30,9 @@ Usage:
 Actions:
     newproject         new                                      Create a new Django project.
     newproject:react   new:react                                Create a new Django API project with React.js front-end.
-    newproject:cms     new:cms                                  Create a new Django CMS project. ( Django CMS is required. )
+    newproject:ng      new:ng                                   Create a new Django API project with Angular.
+                                                --nebular       Create a new Angular project with Nebular.
+                                                --material      Create a new Angular project with Material theme.
     backup             b            app         <app name>      Backup exsiting app.
     launch-browser     browser                  <URL>           Launch browser set as default by system.
     configure          conf                     <config type>   Generate miragefile or reconfig mirage.
