@@ -49,8 +49,8 @@ class MirageConfig(ConfigScript):
 
 
     def main(self) -> int:
-        self.register_custom_command("raml-ide", None, "tools/scripts/mirage_raml.py")
-        self.register_custom_command_with_runtime("clean:mac", "tools/setup/clean-mac.rb", "ruby")
+        self.register_custom_command("custom_cli", None, "tools/scripts/cli.py")
+        self.register_custom_command_with_runtime("custom_cli_rb", "tools/scripts/ruby.rb", "ruby")
 
         return 0
 
