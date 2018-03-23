@@ -48,7 +48,6 @@ Actions:
     manage             m            test                        Run test of Django application.
     manage             m            superuser                   Create super user for Django admin.
     manage             m            <manage.py command>         Run manage.py command.
-    scaffold           ide                                      Launch mirgae Web UI. (Now under development.)
     server             s                                        Launch debugging server.
     file               f                                        Create a new Python source file with copyrights doc string.
 
