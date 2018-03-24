@@ -21,7 +21,7 @@ from functools import lru_cache
 
 
 @lru_cache(maxsize = 10)
-def copyright_doc(proj_name, fname, your_name, start, copyrightors, license, license_url) -> str:
+def copyright_script_style_doc(proj_name, fname, your_name, start, copyrightors, license, license_url) -> str:
     return textwrap.dedent('''
 """
 {PROJECT_NAME}
@@ -48,6 +48,37 @@ This software is released under the terms of {LICENSE_NAME}, see LICENSE for det
         LICENSE_NAME = license,
         LICENSE_URL = license_url
     ).strip()
+
+
+
+@lru_cache(maxsize = 10)
+def copyright_c_style_doc(proj_name, fname, your_name, start, copyrightors, license, license_url) -> str:
+    return textwrap.dedent('''
+/*
+{PROJECT_NAME}
+{FILE_NAME}
+
+Created by {YOUR_NAME} on {CURRENT}
+
+{COPYRIGHTS}
+This software is released under the terms of {LICENSE_NAME}, see LICENSE for detail.
+{LICENSE_URL}
+*/
+
+// Code Here
+
+    ''').format(
+        PROJECT_NAME = proj_name,
+        FILE_NAME = fname,
+        YOUR_NAME = your_name,
+        START_YEAR = start,
+        CURRENT = get_current(),
+        COPYRIGHTS = gen_copyrights(start, get_current_year(), copyrightors),
+        LICENSE_NAME = license,
+        LICENSE_URL = license_url
+    ).strip()
+
+
 
 
 @lru_cache(maxsize = 10)

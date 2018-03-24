@@ -22,7 +22,7 @@ from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
 from mirage.template import readme_md, gitignore, package_json
-from mirage.miragefile import source, source2
+from mirage.miragefile import source, source2, source_secret
 
 
 class NgStartupWorkFlow(Workflow):
@@ -56,6 +56,7 @@ class NgStartupWorkFlow(Workflow):
         email        = mys.log("Email",       withInput = True)
         git_url      = mys.log("Git URL",     withInput = True)
         license_name = mys.log("License",     withInput = True)
+        license_url  = mys.log("License Url", withInput = True)
         description  = mys.log("Description", withInput = True)
         copyrightor  = mys.log("Copyrightor", withInput = True, default = author)
 
@@ -80,7 +81,8 @@ class NgStartupWorkFlow(Workflow):
 
             # Generate Miragefile
             logger.update("Generating Miragefile...", withLazy = True)
-            self._create_miragefile(version, author, email, git_url, license_name, description, copyrightor)
+            self._create_miragefile(version, author, email, git_url,
+                                    license_name, license_url, description, copyrightor)
 
             # Add remote repo
             logger.update("Adding remote repository...", withLazy = True)
@@ -138,13 +140,15 @@ class NgStartupWorkFlow(Workflow):
         mys.command("django-admin startproject " + self._project_name)
 
 
-    def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):
+    def _create_miragefile(self, version, author, email, git_url, license_name, license_url, description, copyrightors):
         with open("Miragefile", "w") as f:
             f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
 
         with open("Miragefile@next.py", "w") as f:
             f.write(source2.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
 
+        with open("Miragefile.secret", "w") as f:
+            f.write(source_secret.create(author, email, license_url))
 
 
     def _create_package_json(self):

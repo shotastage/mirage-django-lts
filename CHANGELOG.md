@@ -1,4 +1,10 @@
-# `next release` v0.1.4
+# `next release` v0.1.5
+
+- Support `mg f` to create C style comment following file extension.
+
+- Support `mg new` to create `Miragefile.secret` at once.
+
+# `latest release` v0.1.4
 
 - Create `README.md` with description.
 

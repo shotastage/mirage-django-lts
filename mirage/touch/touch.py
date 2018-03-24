@@ -69,10 +69,17 @@ class TouchWorkFlow(Workflow):
             with open(str(self._fname), "w") as f:
 
                 # When copyrights is list, copyright_source raises TypeError: unhashable type: 'list'
-                f.write(
-                    copyright_source.copyright_doc(proj_name, self._fname, your_name,
+                if [ext for ext in [".py", ".rb", ".sh"] if ext in self._fname]:
+                    f.write(
+                        copyright_source.copyright_script_style_doc(proj_name, self._fname, your_name,
                                                    start_year, tuple(copyrights), licensename, license_url)
-                )
+                    )
+                elif [ext for ext in [".scss", ".js", ".ts", ".swift", ".c"] if ext in self._fname]:
+                    f.write(
+                        copyright_source.copyright_c_style_doc(proj_name, self._fname, your_name,
+                                                   start_year, tuple(copyrights), licensename, license_url)
+                    )
+
         except:
             mys.log("Failed to touch new python script \"" + self._fname + "\"!", withError = True, errorDetail = mys.raise_error_message(self.main, traceback.format_exc()))
 
