@@ -27,33 +27,65 @@ Usage:
     mg [action]:[subaction] option <--sub-option> <inputs>
 
 
-Actions:
-    newproject         new                                      Create a new Django project.
-    newproject:react   new:react                                Create a new Django API project with React.js front-end.
-    newproject:ng      new:ng                                   Create a new Django API project with Angular.
-                                                --nebular       Create a new Angular project with Nebular.
-                                                --material      Create a new Angular project with Material theme.
-    backup             b            app         <app name>      Backup exsiting app.
-    launch-browser     browser                  <URL>           Launch browser set as default by system.
-    configure          conf                     <config type>   Generate miragefile or reconfig mirage.
-    console            c                                        Launch Django Python shell.
-    console:db         c:db                                     Launch databse shell.
-    database:migrate   db:migrate                               Make migrations and apply migrations.
-    database:merge     db:merge                                 Discard & recreate migrations.
-    database:reset     db:reset                                 Reset all database. ( Only debugging SQLite is supported. )
-    generate           g            app         <app names...>  Create multiple Django apps at once.
-    generate           g            model       <model class>   Create Django model class.
-    generate           g            module      <module bane>   Create a new Python module with __init__.py
-    heroku             heroku       configure                   Configure setting files for deploing to heroku.
-    manage             m            test                        Run test of Django application.
-    manage             m            superuser                   Create super user for Django admin.
-    manage             m            <manage.py command>         Run manage.py command.
-    server             s                                        Launch debugging server.
-    file               f                                        Create a new Python source file with copyrights doc string.
 
-    help               h                                        Show usage of Mirage.
-    version            v                                        Print version information.
-    check              ?            update                      Check update
+[Create Project]
+
+new                                         Create a new Django project.
+new:react                                   Create a new Django API project with React.js front-end.
+new:ng                                      Create a new Django API project with Angular.
+                         --nebular          Create a new Angular project with Nebular.
+                         --material         Create a new Angular project with Material theme.
+
+[Utilities]
+
+b             app         <app name>        Backup exsiting app.
+browser                   <URL>             Launch browser set as default by system.
+conf                      <config type>     Generate miragefile or reconfig mirage.
+f                                           Create a new Python source file with copyrights doc string.
+
+
+[Console]
+
+c                                           Launch Django Python shell.
+c:db                                        Launch databse shell.
+
+
+[Database]
+
+db:migrate                                  Make migrations and apply migrations.
+db:merge                                    Discard & recreate migrations.
+db:reset                                    Reset all database. ( Only debugging SQLite is supported. )
+
+
+[Generator]
+
+g             app         <app names...>    Create multiple Django apps at once.
+g             model       <model class>     Create Django model class.
+g             module      <module bane>     Create a new Python module with __init__.py
+
+
+[Heroku]
+
+heroku        configure                     Configure setting files for deploing to heroku.
+
+
+[Management]
+
+m             test                          Run test of Django application.
+m             superuser                     Create super user for Django admin.
+m             <manage.py command>           Run manage.py command.
+
+
+[Server]
+
+s                                           Launch debugging server.
+
+
+[Help]
+
+h                                           Show usage of Mirage.
+v                                           Print version information.
+?             update                        Check update.
 
 
 """.format(version.__version__)

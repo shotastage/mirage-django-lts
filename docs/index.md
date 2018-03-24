@@ -1,12 +1,11 @@
 # Mirage
 
-For full documentation visit [mkdocs.org](http://mkdocs.org).
 
 ## Commands
 
-* `new [project name (optional)]` - Create a new Django project. Running “new” will create Django project and front-end application template at once.
+* `new` - Create a new Django project. Running “new” will create Django project and front-end application template at once.
 
-* `new:api` - Create a new Django REST API project. Running new:api will run pipenv install django-rest-framework internally and install rest framework to Django project automatically.
+* `new:ng` - Create a new Django REST API project. Running new:api will run pipenv install django-rest-framework internally and install rest framework to Django project automatically.
 
 * `new:cms` - Create a new Django CMS project. Running new:cms will run pipenv install django-cms internally and install CMS framework to Django project automatically.
 

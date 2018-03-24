@@ -1,5 +1,7 @@
 # `next release` v0.1.5
 
+- Enhance visibility of help manual.
+
 - Support `mg f` to create C style comment following file extension.
 
 - Support `mg new` to create `Miragefile.secret` at once.
