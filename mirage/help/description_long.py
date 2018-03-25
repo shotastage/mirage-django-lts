@@ -54,7 +54,9 @@ Commands:              Short:       Options:                      Descriptions:
 
     help               h                                          Show usage of Mirage.
     version            v                                          Print version information.
-    check              ?            update                        Check update.
+    inquiry            ?            update                        Check update.
+    inquiry            ?            system                        Check platform and Python version.
+
 
 """.format(version.__version__)
 

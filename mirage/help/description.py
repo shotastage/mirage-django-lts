@@ -86,7 +86,7 @@ s                                           Launch debugging server.
 h                                           Show usage of Mirage.
 v                                           Print version information.
 ?             update                        Check update.
-
+?             system                        Check platform and Python version.
 
 """.format(version.__version__)
 
