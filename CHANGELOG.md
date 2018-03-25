@@ -8,6 +8,8 @@
 
 - Support `mg new` to create `LICENSE` doc at once.
 
+- Support separated model in `mg g model`
+
 - Introduce `mg ? system` to check OS and Python version.
 
 
