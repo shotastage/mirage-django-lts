@@ -1,2 +1,1 @@
-recursive-include mirage/scaffold/templates *
-recursive-include mirage/scaffold/static *
+recursive-include mirage/template/licensedoc *
