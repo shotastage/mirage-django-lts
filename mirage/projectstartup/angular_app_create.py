@@ -23,9 +23,10 @@ from mirage import proj
 from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
+from mirage.mgresource import licensedoc
 from mirage.template import readme_md, gitignore, package_json
 from mirage.miragefile import source, source2, source_secret
-from mirage.template import licensedoc as license_doc
+
 
 
 class NgStartupWorkFlow(Workflow):
@@ -175,25 +176,25 @@ class NgStartupWorkFlow(Workflow):
 
         with open("LICENSE", "w") as doc:
             if [doc for doc in ["mit", "MIT"] if doc in license_name]:
-                doc.write(license_doc.mit_license.src(self._get_current, author))
+                doc.write(licensedoc.mit_license.src(self._get_current, author))
 
             elif [doc for doc in ["agpl", "AGPL", "AGPLv3"] if doc in license_name]:
-                doc.write(license_doc.agpl_v3.src(self._get_current, author))
+                doc.write(licensedoc.agpl_v3.src(self._get_current, author))
 
             elif [doc for doc in ["apache", "Apache", "Apache2"] if doc in license_name]:
-                doc.write(license_doc.apache_v2.src(self._get_current, author))
+                doc.write(licensedoc.apache_v2.src(self._get_current, author))
 
             elif [doc for doc in ["gpl", "GPL", "GPLv3"] if doc in license_name]:
-                doc.write(license_doc.gpl_v3.src(self._get_current, author))
+                doc.write(licensedoc.gpl_v3.src(self._get_current, author))
 
             elif [doc for doc in ["lgpl", "LGPL", "LGPLv3"] if doc in license_name]:
-                doc.write(license_doc.lgpl_v3.src(self._get_current, author))
+                doc.write(licensedoc.lgpl_v3.src(self._get_current, author))
 
             elif [doc for doc in ["mpl", "MPL", "MPLv2"] if doc in license_name]:
-                doc.write(license_doc.mpl_v2.src(self._get_current, author))
+                doc.write(licensedoc.mpl_v2.src(self._get_current, author))
 
             elif [doc for doc in ["unlicense", "Unlicense"] if doc in license_name]:
-                doc.write(license_doc.unlicense.src(self._get_current, author))
+                doc.write(licensedoc.unlicense.src(self._get_current, author))
 
 
 
