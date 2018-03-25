@@ -17,12 +17,15 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import shutil
+import datetime
+from functools import lru_cache
 from mirage import proj
 from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
 from mirage.template import readme_md, gitignore, package_json
 from mirage.miragefile import source, source2, source_secret
+from mirage.template import licensedoc as license_doc
 
 
 class NgStartupWorkFlow(Workflow):
@@ -77,7 +80,7 @@ class NgStartupWorkFlow(Workflow):
 
             # Generate README.md
             logger.update("Generating readme...", withLazy = True)
-            self._create_docs(description)
+            self._create_docs(author, description, license_name)
 
             # Generate Miragefile
             logger.update("Generating Miragefile...", withLazy = True)
@@ -165,9 +168,38 @@ class NgStartupWorkFlow(Workflow):
         mys.command("git init")
 
 
-    def _create_docs(self, description):
+    def _create_docs(self, author, description, license_name):
+
         with open("README.md", "a") as readme:
             readme.write(readme_md.src(self._project_name, description))
+
+        with open("LICENSE", "w") as doc:
+            if [doc for doc in ["mit", "MIT"] if doc in license_name]:
+                doc.write(license_doc.mit_license.src(self._get_current, author))
+
+            elif [doc for doc in ["agpl", "AGPL", "AGPLv3"] if doc in license_name]:
+                doc.write(license_doc.agpl_v3.src(self._get_current, author))
+
+            elif [doc for doc in ["apache", "Apache", "Apache2"] if doc in license_name]:
+                doc.write(license_doc.apache_v2.src(self._get_current, author))
+
+            elif [doc for doc in ["gpl", "GPL", "GPLv3"] if doc in license_name]:
+                doc.write(license_doc.gpl_v3.src(self._get_current, author))
+
+            elif [doc for doc in ["lgpl", "LGPL", "LGPLv3"] if doc in license_name]:
+                doc.write(license_doc.lgpl_v3.src(self._get_current, author))
+
+            elif [doc for doc in ["mpl", "MPL", "MPLv2"] if doc in license_name]:
+                doc.write(license_doc.mpl_v2.src(self._get_current, author))
+
+            elif [doc for doc in ["unlicense", "Unlicense"] if doc in license_name]:
+                doc.write(license_doc.unlicense.src(self._get_current, author))
+
+
+
+    @lru_cache(maxsize = 10)
+    def _get_current(self) -> str:
+        return datetime.datetime.now().strftime("%Y/%m/%d")
 
 
     def _check_before(self):
@@ -176,7 +208,7 @@ class NgStartupWorkFlow(Workflow):
             import django
         except ImportError:
             mys.log("Failed to import Django!", withError = True,
-                                errorDetail = "You have to install Django before creating a new Django project.")
+                    errorDetail = "You have to install Django before creating a new Django project.")
             raise ImportError
 
 

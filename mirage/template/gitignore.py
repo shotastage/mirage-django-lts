@@ -18,9 +18,9 @@ Copyright 2017-2018 Shota Shimazu.
 def src():
     return '''
 #
-# .gitignore for Mirage project 
+# .gitignore for Mirage project
 #
-#  Version 2018/3/16
+#  Version 2018/3/25
 #
 # Based on github useful .gitignore collections
 # https://github.com/github/gitignore
@@ -227,5 +227,13 @@ Miragefile.secret
 
 shell/dist/
 shell/build/
+
+#########################################################
+## Project Ignore                                      ##
+#########################################################
+
+tmp/
+
+# Describe project specified ignore files or directories here.
 
 '''

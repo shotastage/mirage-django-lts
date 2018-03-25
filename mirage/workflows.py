@@ -81,6 +81,7 @@ from mirage.confscript import *
 
 from mirage.generate import *
 
-from mirage.checker.update_check import *
+from mirage.checker import *
 
 from mirage.projectstartup import *
+

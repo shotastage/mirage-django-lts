@@ -16,17 +16,17 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import enum
-from . import licenses
+from . import licensedoc
 
 
 class LicenseTextSource(enum.Enum):
-    AGPLv3      = licenses.agpl_v3.text
-    Apachae2    = licenses.apache_v2.text
-    GPLv3       = licenses.gpl_v3.text
-    LGPLv3      = licenses.lgpl_v3.text
-    MIT         = licenses.mit.text
-    MPLv2       = licenses.mpl_v2.text
-    Unlicensed  = licenses.unlicense.text
+    AGPLv3      = licensedoc.agpl_v3.src("", "")
+    Apachae2    = licensedoc.apache_v2.src("", "")
+    GPLv3       = licensedoc.gpl_v3.src("", "")
+    LGPLv3      = licensedoc.lgpl_v3.src("", "")
+    MIT         = licensedoc.mit_license.src("", "")
+    MPLv2       = licensedoc.mpl_v2.src("", "")
+    Unlicensed  = licensedoc.unlicense.src("", "")
 
 
 def src(license_enum):

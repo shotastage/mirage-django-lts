@@ -16,6 +16,10 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import sys
+import tkinter
+import tkinter.messagebox
+
+
 
 def log(string,
             withError = False, errorDetail = None,
@@ -43,12 +47,17 @@ def log(string,
     elif withConfirm:
         print('\033[31mMirage: ' + str(string) + '\033[0m')
 
-        while True:
-            answer = input('\033[32m' + "Please respond with yes or no [Y/N/y/n]" + ' >> \033[0m').lower()
+        try:
+            answer = tkinter.messagebox.askyesno("Mirage Confirm", str(string))
+            return answer
+        except:
+            while True:
+                answer = input('\033[32m' + "Please respond with yes or no [Y/N/y/n]" + ' >> \033[0m').lower()
 
-            if answer in [ "y", "Y", "yes", "Yes", "YES", "Yeah"]:
-                return True
-            elif answer in [ "n", "N", "no", "No", "NO", "Nope"]:
-                return False
+                if answer in [ "y", "Y", "yes", "Yes", "YES", "Yeah"]:
+                    return True
+                elif answer in [ "n", "N", "no", "No", "NO", "Nope"]:
+                    return False
+
     else:
         print('\033[32mMirage: \033[0m' + str(string))

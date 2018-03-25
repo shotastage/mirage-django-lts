@@ -3,7 +3,8 @@ This source file contains script of license.
 Thus, LICENSE of mirage does not apply for this file.
 """
 
-text = """
+def src(year: str, author: str) -> str:
+    return '''
 Mozilla Public License Version 2.0
 ==================================
 
@@ -377,4 +378,4 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
 
   This Source Code Form is "Incompatible With Secondary Licenses", as
   defined by the Mozilla Public License, v. 2.0.
-"""
+'''
