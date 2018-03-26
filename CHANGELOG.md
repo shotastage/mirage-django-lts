@@ -4,6 +4,8 @@
 
 - Introduce `mg trash` to move removals to trash can.
 
+- Support library vendoring.
+
 
 # `latest release` v0.1.5
 
