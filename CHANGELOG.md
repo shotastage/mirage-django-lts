@@ -5,7 +5,7 @@
 - Introduce `mg trash` to move removals to trash can.
 
 
-# `next release` v0.1.5
+# `latest release` v0.1.5
 
 - Enhance visibility of help manual.
 
@@ -16,7 +16,7 @@
 - Introduce `mg ? system` to check OS and Python version.
 
 
-# `latest release` v0.1.4
+# v0.1.4
 
 - Create `README.md` with description.
 

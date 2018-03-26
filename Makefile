@@ -49,11 +49,4 @@ test:
 	python setup.py check
 	python setup.py sdist
 	pip uninstall django-mirage
-	pip install dist/django-mirage-0.1.4.tar.gz
-
-fetch:
-	@echo "Fetching assets..."
-	curl -O https://raw.githubusercontent.com/jgthms/bulma/master/css/bulma.css
-	curl -O https://raw.githubusercontent.com/jgthms/bulma/master/css/bulma.css.map
-	mv bulma.css ./mirage/scaffold/static/scss/third-party/_bulma.scss
-	mv bulma.css.map ./mirage/scaffold/static/scss/third-party/bulma.css.map
+	pip install dist/django-mirage-0.1.5.tar.gz
