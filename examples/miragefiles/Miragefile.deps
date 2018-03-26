@@ -1,0 +1,11 @@
+@mirage vendoring
+
+
+@define Dependencies begin
+    github@davesque/django-simple-jwt::eb6abc3c796aeeb36bcdf8cd80bca4aefbbaade5
+@end
+
+
+@define Dependencies << CustomDependencies begin
+    github@Bouke/django-two-factor-auth::master
+@end
