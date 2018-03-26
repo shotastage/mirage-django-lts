@@ -23,7 +23,6 @@ from mirage import proj
 from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
-from mirage.mgresource import licensedoc
 from mirage.template import readme_md, gitignore, package_json
 from mirage.miragefile import source, source2, source_secret
 
@@ -173,29 +172,6 @@ class NgStartupWorkFlow(Workflow):
 
         with open("README.md", "a") as readme:
             readme.write(readme_md.src(self._project_name, description))
-
-        with open("LICENSE", "w") as doc:
-            if [doc for doc in ["mit", "MIT"] if doc in license_name]:
-                doc.write(licensedoc.mit_license.src(self._get_current, author))
-
-            elif [doc for doc in ["agpl", "AGPL", "AGPLv3"] if doc in license_name]:
-                doc.write(licensedoc.agpl_v3.src(self._get_current, author))
-
-            elif [doc for doc in ["apache", "Apache", "Apache2"] if doc in license_name]:
-                doc.write(licensedoc.apache_v2.src(self._get_current, author))
-
-            elif [doc for doc in ["gpl", "GPL", "GPLv3"] if doc in license_name]:
-                doc.write(licensedoc.gpl_v3.src(self._get_current, author))
-
-            elif [doc for doc in ["lgpl", "LGPL", "LGPLv3"] if doc in license_name]:
-                doc.write(licensedoc.lgpl_v3.src(self._get_current, author))
-
-            elif [doc for doc in ["mpl", "MPL", "MPLv2"] if doc in license_name]:
-                doc.write(licensedoc.mpl_v2.src(self._get_current, author))
-
-            elif [doc for doc in ["unlicense", "Unlicense"] if doc in license_name]:
-                doc.write(licensedoc.unlicense.src(self._get_current, author))
-
 
 
     @lru_cache(maxsize = 10)

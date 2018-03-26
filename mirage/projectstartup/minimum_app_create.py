@@ -26,7 +26,7 @@ from mirage.miragefile import source
 
 
 class MirageMinimumStartupWorkFlow(Workflow):
-    
+
     def constructor(self):
         self._project_name = None
 

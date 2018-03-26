@@ -1,3 +1,10 @@
+# `next release` v0.1.6
+
+- Support separated model in `mg g model`
+
+- Introduce `mg trash` to move removals to trash can.
+
+
 # `next release` v0.1.5
 
 - Enhance visibility of help manual.
@@ -5,10 +12,6 @@
 - Support `mg f` to create C style comment following file extension.
 
 - Support `mg new` to create `Miragefile.secret` at once.
-
-- Support `mg new` to create `LICENSE` doc at once.
-
-- Support separated model in `mg g model`
 
 - Introduce `mg ? system` to check OS and Python version.
 
