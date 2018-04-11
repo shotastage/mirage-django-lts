@@ -23,15 +23,8 @@ def create(proj_name, proj_ver, proj_author, author_email, git_url,
                                         proj_license, proj_desc, copyrightor):
 
     return textwrap.dedent('''
-#
-# Mirage Configuration Scripts Version 2018/03/23
-# Copyright (c) 2017-2018 Shota Shimazu
-# This software is licensed under the Apache v2, see LICENSE for detail.
-#
-
-from mirage import system as mys
 from mirage.core import Void
-from mirage.miragefile.conf import Category, Detail, Config
+from mirage import system as mys
 from mirage.confscript import ConfigScript
 from mirage.confscript.settings import Settings
 

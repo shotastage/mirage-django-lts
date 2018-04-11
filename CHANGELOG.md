@@ -1,5 +1,7 @@
 # `next release` v0.1.6
 
+- Support Python format `Miragefile`
+
 - Support separated model in `mg g model`
 
 - Introduce `mg trash` to move removals to trash can.

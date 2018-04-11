@@ -25,32 +25,32 @@ from functools import lru_cache
 
 
 class Category(enum.Enum):
-    project_basic   = 0
-    django          = 1
-    frontend        = 2
-    workspace       = 3
-    copyright       = 4
-    private_profile = 5
+    ProjectBasic    = 0
+    DjangoProject   = 1
+    FrontProject    = 2
+    Copyright       = 3
 
 
-class Detail(enum.Enum):
-    project_name    = 0
-    project_version = 1
-    project_author  = 2
-    project_git     = 3
-    project_license = 4
-    project_description = 5
-    django_path     = 6
-    django_module   = 7
-    django_package_manager = 8
-    django_db_backend = 9
-    copyright_start_year = 10
-    copyright_copyrigtors = 11
-    private_name = 12
-    private_license_url = 13
+
 
 
 class Config():
+
+
+    class MirageFormat(enum.Enum):
+        yaml = 0
+        json = 1
+        python = 2
+
+    def __init__(self):
+        self._mirageformat = MirageFormat.python
+
+    def load_miragefile(self):
+        pass
+
+
+
+class A_Config():
 
     def __init__(self, file_type = None):
 
