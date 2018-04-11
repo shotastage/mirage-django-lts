@@ -21,7 +21,7 @@ from mirage.proj import MirageEnvironment, WorkingLevel
 
 
 class Config():
-    
+
     def load_script(self) -> object:
         with MirageEnvironment(WorkingLevel.inproject):
             sys.path.append(os.getcwd())

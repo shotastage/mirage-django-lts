@@ -18,8 +18,9 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import enum
 import json
-from mirage import proj
+import pathlib
 from mirage import system as mys
+from mirage.proj import MirageEnvironment, MirageEnvironmentLevel, Detail
 from mirage.exceptions import MiragefileUnknownError
 from functools import lru_cache
 
@@ -34,19 +35,21 @@ class Category(enum.Enum):
 
 
 
+class MirageFormat(enum.Enum):
+    yaml = 0
+    json = 1
+    python = 2
+
+
 class Config():
-
-
-    class MirageFormat(enum.Enum):
-        yaml = 0
-        json = 1
-        python = 2
 
     def __init__(self):
         self._mirageformat = MirageFormat.python
 
     def load_miragefile(self):
-        pass
+
+        with MirageEnvironment(MirageEnvironmentLevel.inproject):
+            pass
 
 
 
@@ -54,7 +57,7 @@ class A_Config():
 
     def __init__(self, file_type = None):
 
-        with proj.MirageEnvironment(proj.MirageEnvironmentLevel.inproject):
+        with MirageEnvironment(MirageEnvironmentLevel.inproject):
             if file_type == "secret":
                 self._data = self._load_json("Miragefile.secret")
             elif file_type == "addon":

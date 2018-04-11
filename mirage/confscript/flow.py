@@ -30,7 +30,7 @@ class MirageConfigScriptFlow(Workflow):
         self._cli = ""
         self._option = ""
 
-    
+
     def main(self) -> bool:
         mys.log("Now under construction.")
         return
@@ -45,7 +45,7 @@ class MirageConfigScriptFlow(Workflow):
             instance.execute(self._cli, self._option)
 
         return True
-    
+
 
     def load_script(self) -> object:
 
