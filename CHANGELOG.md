@@ -2,6 +2,8 @@
 
 - Support Python format `Miragefile`
 
+- Deprecate JSON, YAML `Miragefile
+
 - Support separated model in `mg g model`
 
 - Introduce `mg trash` to move removals to trash can.
