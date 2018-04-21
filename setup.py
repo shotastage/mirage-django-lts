@@ -27,6 +27,8 @@ if __name__ == "__main__":
             'console_scripts':[
                 'mirage = mirage.mirage:main',
                 'mg = mirage.mirage:main'
+                'mirage-native = miragenative.mirage:main'
+                'mgn = miragenative.mirage:main'
             ],
         },
         description = "Advanced Django Console",
