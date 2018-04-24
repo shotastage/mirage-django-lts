@@ -46,8 +46,8 @@ class ConfigureWorkFlow(Workflow):
                 log("Miragefile is already exists!", withError = True)
                 raise FileExistsError
                 return
-        
-        
+
+
         app_name     = log("App name", withInput = True)
         version      = log("App version", withInput = True)
         author       = log("Author name", withInput = True)
