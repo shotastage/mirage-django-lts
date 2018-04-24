@@ -27,7 +27,7 @@ from mirage.miragefile import conf
 
 
 class MirageEnvironment():
-    
+
     def __init__(self, env_level):
         self._current = os.getcwd()
         self._level = env_level
@@ -39,7 +39,7 @@ class MirageEnvironment():
             proj_root = MirageEnvironment.search_project_root()
             os.chdir(proj_root)
             return
-        
+
         if self._level == MirageEnvironmentLevel.indjango:
             os.chdir(MirageEnvironment.search_project_root())
             django_root = conf.Config().get(conf.Category.django, conf.Detail.django_path)
@@ -51,7 +51,7 @@ class MirageEnvironment():
             os.chdir(app_root)
             return
 
-        
+
     def __exit__(self, exception_type, exception_value, traceback):
         os.chdir(self._current)
 
@@ -69,7 +69,7 @@ class MirageEnvironment():
         while True:
 
             current = os.getcwd()
-            
+
             if pathlib.Path("Miragefile.py").is_file() or pathlib.Path("Miragefile").is_file():
                 return current
             elif os.getcwd() == "/":
@@ -88,7 +88,7 @@ class MirageEnvironment():
         while True:
 
             current = os.getcwd()
-            
+
             if pathlib.Path("apps.py").is_file():
                 return current
             elif pathlib.Path.cwd() == "/":
@@ -122,7 +122,7 @@ class MirageEnvironment():
         except:
             return False
 
-    
+
     @staticmethod
     def in_project() -> bool:
         if pathlib.Path("Miragefile").is_file():

@@ -26,9 +26,7 @@ if __name__ == "__main__":
         entry_points = {
             'console_scripts':[
                 'mirage = mirage.mirage:main',
-                'mg = mirage.mirage:main'
-                'mirage-client = miragenative.mirage:main'
-                'mgc = miragenative.mirage:main'
+                'mg = mirage.mirage:main',
             ],
         },
         description = "Advanced Django Console",
