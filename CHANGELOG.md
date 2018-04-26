@@ -1,4 +1,4 @@
-# `next release` v0.1.6
+# `next release` v0.1.7
 
 - Support Python format `Miragefile`
 
