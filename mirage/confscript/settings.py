@@ -16,14 +16,36 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import sys, os, imp
-import enum
+from enum import Enum
 
-class Settings(enum.Enum):
-    pass
+class Settings(Enum):
+
+    class License(Enum):
+        Original = "Original"
+        MIT = "MIT"
+        GPL = "GPL"
+        AGPL = "AGPL"
+        Apache = "Apache"
+        EULA = "EULA"
 
 
-class License(Settings):
-    original = 0
-    EULA     = 1
-    MIT      = 2
-    Apache   = 3
+    class PackageManager(Enum):
+        default = "pipenv"
+        pipenv = "pipenv"
+        pip = "pip"
+        easy_install = "easy_install"
+        yarn = "yarn"
+
+
+    class Builder(Enum):
+        Webpack = "webpack"
+
+
+    class Database(Enum):
+        default = "PostgreSQL"
+        PostgreSQL = "PostgreSQL"
+        MySQL = "MySQL"
+        MariaDB = "MariaDB"
+
+    class Path(Enum):
+        default = "shell"

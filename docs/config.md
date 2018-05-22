@@ -1,3 +1,7 @@
+# New Python Mirage Configuration
+
+
+```
 from mirage import system as mys
 from mirage.core import Void
 from mirage.confscript import ConfigScript
@@ -27,9 +31,9 @@ class MirageConfig(ConfigScript):
     }
 
     FRONT_END_PROJECT = {
-        "path": Settings.Path.default,
-        "package": Settings.PackageManager.yarn,
-        "builder": Settings.Builder.Webpack,
+        "path": "shell",
+        "package": "yarn",
+        "builder": "webpack",
     }
 
     COPYRIGHT = {
@@ -55,3 +59,5 @@ class MirageConfig(ConfigScript):
 
     def deinitialize(self) -> Void:
         mys.log("Bye : )")
+
+```
