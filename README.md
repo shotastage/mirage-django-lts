@@ -12,7 +12,13 @@
 
 # ⬇️  Installation
 
-Installing with pip is easiest way.
+Installing Mirage with Pipenv is recommended.
+
+```
+pipenv install -d django-mirage
+```
+
+If you don't use `pipenv`, you can install it with pip.
 
 ```
 pip install django-mirage
