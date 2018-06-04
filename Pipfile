@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django-mirage = "*"
+"autopep8" = "*"
 
 [dev-packages]
 pylint = "*"

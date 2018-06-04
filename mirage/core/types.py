@@ -18,3 +18,6 @@ Copyright 2017-2018 Shota Shimazu.
 from typing import NoReturn
 
 Void = NoReturn
+String = str
+Int = int
+Float = float
