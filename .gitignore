@@ -188,3 +188,5 @@ mirage/scaffold/static/style/main.css
 site/
 
 *.lprof
+
+.DS_Store
