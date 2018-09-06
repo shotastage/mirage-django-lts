@@ -9,5 +9,5 @@ pycodestyle==2.4.0
 pyflakes==2.0.0
 requests==2.19.1
 urllib3==1.22
-virtualenv==15.1.0
+virtualenv==16.0.0
 virtualenv-clone==0.2.6
