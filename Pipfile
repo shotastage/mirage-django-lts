@@ -1,18 +1,13 @@
 [[source]]
-url = "https://pypi.python.org/simple"
+url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
 [packages]
-django-mirage = "*"
-"autopep8" = "*"
 
 [dev-packages]
 pylint = "*"
 django = "*"
-line-profiler = "*"
-mkdocs = "*"
-mkdocs-material = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
