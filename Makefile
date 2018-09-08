@@ -11,17 +11,13 @@ before_node:
 build_all:
 	@echo "Building scaffold Sass..."
 	./node_modules/.bin/node-sass ./mirage/scaffold/static/scss/main.scss mirage/scaffold/static/style/main.css
-	@echo "Django Console Building Started!"
+	@echo "Django Mirage Building Started!"
 	python setup.py check
 	python setup.py sdist
 
 
-build_node:
-	./node_modules/.bin/node-sass ./mirage/scaffold/static/scss/main.scss mirage/scaffold/static/style/main.css
-
-
 upload:
-	@echo "Building Django Console..."
+	@echo "Building Django Mirage..."
 	python setup.py check
 	python setup.py sdist
 	@echo "Uploading built package..."
@@ -50,3 +46,6 @@ test:
 	python setup.py sdist
 	pip uninstall django-mirage
 	pip install dist/django-mirage-0.1.5.tar.gz
+
+export-requirements:
+	pipenv lock -r >> requirements.txt
