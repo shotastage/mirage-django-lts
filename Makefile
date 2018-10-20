@@ -38,14 +38,14 @@ clean:
 pyclean:
 	find ./mirage -name '*.pyc' -delete -not -path './mirage/scaffold/static/'
 
-test:
+rebuild:
 	@echo "Removing recent buildings..."
 	rm -rf dist/
 	@echo "Building Django Console..."
 	python setup.py check
 	python setup.py sdist
 	pip uninstall django-mirage
-	pip install dist/django-mirage-0.1.5.tar.gz
+	pip install dist/django-mirage-0.1.7.tar.gz
 
 export-requirements:
 	pipenv lock -r >> requirements.txt
