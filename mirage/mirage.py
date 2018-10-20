@@ -65,8 +65,6 @@ def main():
 
     parser.add_argument("t", "transfer", None, "MirageTransfer")
 
-    parser.add_argument("f", "file", None, "Touch")
-
     parser.add_argument("+", "confscript", None, "MirageConfigScriptFlow")
 
     parser.add_argument("?", "inquiry", "update", "UpdateCheckFlow")

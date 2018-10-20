@@ -49,9 +49,6 @@ class DjangoDestroy(DjangoDestroyWorkFlow): pass
 from mirage.server.debug_server import DjangoDebugServerWorkFlow
 class DjangoDebugServer(DjangoDebugServerWorkFlow): pass
 
-from mirage.touch.touch import TouchWorkFlow
-class Touch(TouchWorkFlow): pass
-
 from mirage.generate.model import DjangoModelMakeWorkflow
 class DjangoModelMake(DjangoModelMakeWorkflow): pass
 
