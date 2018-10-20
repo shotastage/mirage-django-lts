@@ -19,9 +19,10 @@ build_all:
 upload:
 	@echo "Building Django Mirage..."
 	python setup.py check
-	python setup.py sdist
+	python setup.py bdist_wheel
+
 	@echo "Uploading built package..."
-	python setup.py sdist upload
+	twine upload dist/*
 
 doc: docs/
 	@echo "Building documents..."

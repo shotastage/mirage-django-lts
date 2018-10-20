@@ -8,6 +8,8 @@ django = "*"
 
 [dev-packages]
 pylint = "*"
+wheel = "*"
+twine = "*"
 
 [requires]
 python_version = "3.7"
