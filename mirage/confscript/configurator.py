@@ -16,44 +16,12 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import sys, os, imp
-from datetime import datetime
 from mirage.core import Void
 from mirage import system as mys
 from mirage.proj import MirageEnvironment, MirageEnvironmentLevel
 
 
 class ConfigScript():
-
-    BASIC_PROJECT = {
-        "NAME": "No Project Name Provided",
-        "VERSION": "0.0.1",
-        "AUTHOR": "Unknown Author <anonymous@example.com>",
-        "GIT_URL": "No Git Repository URL Provided",
-        "LICENSE": "UNLICENSED",
-        "DESCRIPTION": "Please set description.",
-    }
-
-    DJANGO_PROJECT = {
-        "path": "sample",
-        "module": "sample",
-        "package": "pipenv",
-        "database": "SQLite3",
-    }
-
-    FRONT_END_PROJECT = {
-        "path": "shell",
-        "package": "yarn",
-        "builder": "webpack",
-    }
-
-    COPYRIGHT = {
-        "start_year": datetime.now().strftime("%Y"),
-        "license_doc": "No LICENSE document URL Provided",
-        "copyrightors": [
-            "Unknown Copyrightor",
-        ]
-    }
-
 
     def __init__(self):
 
