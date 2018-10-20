@@ -16,7 +16,11 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import pip
+
+try: # pip >= 10
+    from pip._internal.utils.misc import get_installed_distributions
+except ImportError:  # pip < 10
+    from pip import get_installed_distributions
 
 from mirage.flow import Workflow
 from mirage.command import command
@@ -35,7 +39,7 @@ class DjangoPackageWorkFlow(Workflow):
 
     def _init(self):
         ignore_packages = ["setuptools", "pip", "python"]
-        already_pip = pip.utils.get_installed_distributions(local_only = True, skip = ignore_packages)
+        already_pip = get_installed_distributions(local_only = True, skip = ignore_packages)
 
 
     def _install(self, package_name):

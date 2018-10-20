@@ -19,7 +19,6 @@ import platform
 import sys
 import textwrap
 
-from pip.utils import get_installed_distributions
 from mirage.command import log
 
 
