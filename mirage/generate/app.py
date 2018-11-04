@@ -75,11 +75,11 @@ class DjangoAppMakeWorkFlow(Workflow):
         with proj.InDir(master_app):
             if os.path.isdir("environment"):
                 with proj.InDir("./environment"):
-                    self.__insert_app_path(name, "base.py")
+                    self.__insert_app_path(name, "common.py")
 
             elif os.path.isdir("settings"):
                 with proj.InDir("./settings"):
-                    self.__insert_app_path(name, "base.py")
+                    self.__insert_app_path(name, "common.py")
 
             else:
                 if os.path.isfile("settings.py"):
