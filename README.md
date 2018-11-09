@@ -10,6 +10,9 @@
 [![PyPI](https://img.shields.io/pypi/l/django-mirage.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
+>> This is LTS version of [MIRAGE Framework (now under construction)](https://github.com/shotastage/mirageframework).
+>> New feature will be added to new version of MIRAGE.
+
 **[mirage ~ ♪](https://youtu.be/nhrXbPlpdQQ?t=3m4s)** extended django admin or manage.py command.
 
 # ⬇️  Installation
