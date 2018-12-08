@@ -7,8 +7,7 @@
 [![Build Status](https://travis-ci.org/shotastage/django-mirage.svg?branch=master)](https://travis-ci.org/shotastage/django-mirage)
 [![GitHub release](https://img.shields.io/github/release/shotastage/django-mirage.svg)](https://github.com/shotastage/django-mirage/releases)
 [![PyPI](https://img.shields.io/pypi/format/django-mirage.svg)]()
-[![PyPI](https://img.shields.io/pypi/l/django-mirage.svg)](https://opensource.org/licenses/Apache-2.0)
-
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage?ref=badge_shield)
 
 >> This is LTS version of [MIRAGE Framework (now under construction)](https://github.com/shotastage/mirageframework).
 >> New feature will be added to new version of MIRAGE.
