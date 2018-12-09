@@ -118,3 +118,6 @@ More usage is [here](https://github.com/shotastage/django-mirage/tree/master/doc
 
 Copyright © 2017-2018 Shota Shimazu All Rights Reserved.  
 This software is released under the Apache License, see LICENSE for detail.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage?ref=badge_large)
