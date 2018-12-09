@@ -47,7 +47,9 @@ class UpdateCheckFlow(Workflow):
                     return
 
                 if ver == mg_version_check.__version__:
-                    mys.log("Up-to-date !")
+                    if ver == "0.1.7":
+                        mys.log("New mirage framework tools available!")
+                        mys.log("See, https://github.com/shotastage/mirageframework for detail.")
                 else:
                     mys.log("Update available!", withError=True)
                     print("This version: {0}".format(ver))
