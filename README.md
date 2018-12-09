@@ -1,5 +1,4 @@
 ![Mirage](./docs/assets/logo.png)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage?ref=badge_shield)
 
 [![Updates](https://pyup.io/repos/github/shotastage/django-mirage/shield.svg)](https://pyup.io/repos/github/shotastage/django-mirage/)
 [![Python 3](https://pyup.io/repos/github/shotastage/django-mirage/python-3-shield.svg)](https://pyup.io/repos/github/shotastage/django-mirage/)
