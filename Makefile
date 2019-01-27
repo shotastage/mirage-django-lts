@@ -49,4 +49,4 @@ rebuild:
 	pip install dist/django-mirage-0.1.7.tar.gz
 
 export-requirements:
-	pipenv lock -r >> requirements.txt
+	pipenv lock -r > requirements.txt
