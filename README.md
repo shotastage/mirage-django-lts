@@ -1,10 +1,10 @@
 ![Mirage](./docs/assets/logo.png)
 
+[![Build Status](https://travis-ci.org/shotastage/mirage-django-lts.svg?branch=master)](https://travis-ci.org/shotastage/mirage-django-lts)
 [![Updates](https://pyup.io/repos/github/shotastage/django-mirage/shield.svg)](https://pyup.io/repos/github/shotastage/django-mirage/)
 [![Python 3](https://pyup.io/repos/github/shotastage/django-mirage/python-3-shield.svg)](https://pyup.io/repos/github/shotastage/django-mirage/)
 [![PyPI version](https://badge.fury.io/py/django-mirage.svg)](https://badge.fury.io/py/django-mirage)
 [![PyPI](https://img.shields.io/pypi/pyversions/django-mirage.svg)]()
-[![Build Status](https://travis-ci.org/shotastage/django-mirage.svg?branch=master)](https://travis-ci.org/shotastage/django-mirage)
 [![GitHub release](https://img.shields.io/github/release/shotastage/django-mirage.svg)](https://github.com/shotastage/django-mirage/releases)
 [![PyPI](https://img.shields.io/pypi/format/django-mirage.svg)]()
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage?ref=badge_shield)
