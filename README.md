@@ -7,7 +7,6 @@
 [![PyPI](https://img.shields.io/pypi/pyversions/mirage-django-lts.svg)]()
 [![GitHub release](https://img.shields.io/github/release/shotastage/mirage-django-lts.svg)](https://github.com/shotastage/mirage-django-lts/releases)
 [![PyPI](https://img.shields.io/pypi/format/mirage-django-lts.svg)]()
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts?ref=badge_shield)
 
 >> This is LTS version of [MIRAGE Framework (now under construction)](https://github.com/shotastage/mirage-django).
 >> New feature will be added to new version of MIRAGE.
@@ -118,6 +117,3 @@ More usage is [here](https://github.com/shotastage/mirage-django-lts/tree/master
 
 Copyright © 2017-2018 Shota Shimazu All Rights Reserved.  
 This software is released under the Apache License, see LICENSE for detail.
-
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts?ref=badge_large)
