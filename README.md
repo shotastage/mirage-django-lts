@@ -1,15 +1,15 @@
 ![Mirage](./docs/assets/logo.png)
 
 [![Build Status](https://travis-ci.org/shotastage/mirage-django-lts.svg?branch=master)](https://travis-ci.org/shotastage/mirage-django-lts)
-[![Updates](https://pyup.io/repos/github/shotastage/django-mirage/shield.svg)](https://pyup.io/repos/github/shotastage/django-mirage/)
-[![Python 3](https://pyup.io/repos/github/shotastage/django-mirage/python-3-shield.svg)](https://pyup.io/repos/github/shotastage/django-mirage/)
-[![PyPI version](https://badge.fury.io/py/django-mirage.svg)](https://badge.fury.io/py/django-mirage)
-[![PyPI](https://img.shields.io/pypi/pyversions/django-mirage.svg)]()
-[![GitHub release](https://img.shields.io/github/release/shotastage/django-mirage.svg)](https://github.com/shotastage/django-mirage/releases)
-[![PyPI](https://img.shields.io/pypi/format/django-mirage.svg)]()
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage?ref=badge_shield)
+[![Updates](https://pyup.io/repos/github/shotastage/mirage-django-lts/shield.svg)](https://pyup.io/repos/github/shotastage/mirage-django-lts/)
+[![Python 3](https://pyup.io/repos/github/shotastage/mirage-django-lts/python-3-shield.svg)](https://pyup.io/repos/github/shotastage/mirage-django-lts/)
+[![PyPI version](https://badge.fury.io/py/mirage-django-lts.svg)](https://badge.fury.io/py/django-mirage)
+[![PyPI](https://img.shields.io/pypi/pyversions/mirage-django-lts.svg)]()
+[![GitHub release](https://img.shields.io/github/release/shotastage/mirage-django-lts.svg)](https://github.com/shotastage/mirage-django-lts/releases)
+[![PyPI](https://img.shields.io/pypi/format/mirage-django-lts.svg)]()
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts?ref=badge_shield)
 
->> This is LTS version of [MIRAGE Framework (now under construction)](https://github.com/shotastage/mirageframework).
+>> This is LTS version of [MIRAGE Framework (now under construction)](https://github.com/shotastage/mirage-django).
 >> New feature will be added to new version of MIRAGE.
 
 **[mirage ~ ♪](https://youtu.be/nhrXbPlpdQQ?t=3m4s)** extended django admin or manage.py command.
@@ -108,7 +108,7 @@ v                                           Print version information.
 
 >> Detail documentation is now under construction.
 
-More usage is [here](https://github.com/shotastage/django-mirage/tree/master/docs).
+More usage is [here](https://github.com/shotastage/mirage-django-lts/tree/master/docs).
 
 # 🤪  Author
 
@@ -120,4 +120,4 @@ Copyright © 2017-2018 Shota Shimazu All Rights Reserved.
 This software is released under the Apache License, see LICENSE for detail.
 
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fdjango-mirage?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fshotastage%2Fmirage-django-lts?ref=badge_large)
