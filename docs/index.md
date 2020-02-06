@@ -1,4 +1,4 @@
-# Mirage
+# Mirage LTS
 
 
 ## Commands
@@ -21,24 +21,17 @@
 ## Rest registred commands
 
 ```
- # Usage & Version
-    parser.add_argument("h", "help", None, "UsageShow")
-    parser.add_argument("v", "version", None, "VersionShow")
-
-    parser.add_argument("d", "destroy", "app", "DjangoDestroy")
-
-    parser.add_argument_with_subaction("db", "database", "migrate", None, "DjangoMigrate")
-    parser.add_argument_with_subaction("db", "database", "reset", None, "DjangoDBReset")
-
-    # parser.add_argument("d", "destroy", None, "DjangoDestroy")
-
-    parser.add_argument("g", "generate", "app", "DjangoAppMake")
-
-    parser.add_argument("ide", "scaffold", None, "Scaffold")
-    parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
-
-    parser.add_argument("s", "server", None, "DjangoDebugServer")
-
+# Usage & Version
+parser.add_argument("h", "help", None, "UsageShow")
+parser.add_argument("v", "version", None, "VersionShow")
+parser.add_argument("d", "destroy", "app", "DjangoDestroy")
+parser.add_argument_with_subaction("db", "database", "migrate", None, "DjangoMigrate")
+parser.add_argument_with_subaction("db", "database", "reset", None, "DjangoDBReset")
+parser.add_argument("d", "destroy", None, "DjangoDestroy")
+parser.add_argument("g", "generate", "app", "DjangoAppMake")
+parser.add_argument("ide", "scaffold", None, "Scaffold")
+parser.add_argument("internal_server_launch", "internal_server_launch", None, "ScaffoldServer")
+parser.add_argument("s", "server", None, "DjangoDebugServer")
 ```
 
 ## Project layout
