@@ -31,7 +31,7 @@ if __name__ == "__main__":
                 'mgl = mirage.mirage:main',
             ],
         },
-        description = "Advanced Django Console",
+        description = "Advanced Django Console (LTS Version)",
         long_description = "Advanced extended command line tool for Django.",
         url = "https://github.com/shotastage/mirage-django-lts/",
         license = "Apache",

@@ -28,7 +28,7 @@ from mirage import system as mys
 class UpdateCheckFlow(Workflow):
 
     def constructor(self) -> Void:
-        self._url = "https://raw.githubusercontent.com/shotastage/django-mirage/master/mirage/version.py"
+        self._url = "https://raw.githubusercontent.com/shotastage/mirage-django-lts/master/mirage/version.py"
 
 
     def main(self) -> Void:
@@ -47,10 +47,14 @@ class UpdateCheckFlow(Workflow):
                     return
 
                 if ver == mg_version_check.__version__:
-                    if ver == "0.1.7":
+                    if ver == "0.1.9":
                         mys.log("New mirage framework tools available!")
-                        mys.log("See, https://github.com/shotastage/mirageframework for detail.")
+                        mys.log("See, https://github.com/shotastage/mirage-django for detail.")
+
+                        mys.log("LTS Update available!", withError=True)
+                        print("This version: {0}".format(ver))
+                        print("Available version: {0}".format(mg_version_check.__version__))
                 else:
-                    mys.log("Update available!", withError=True)
+                    mys.log("LTS Update available!", withError=True)
                     print("This version: {0}".format(ver))
                     print("Available version: {0}".format(mg_version_check.__version__))
