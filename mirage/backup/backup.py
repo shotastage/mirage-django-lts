@@ -27,7 +27,6 @@ from mirage import proj
 from mirage              import project
 from mirage              import fileable
 from mirage.flow         import Workflow
-from mirage.database     import DBConnection
 
 from mirage.workspace import storage
 
