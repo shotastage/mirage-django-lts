@@ -3,12 +3,11 @@ sudo: false
 language: python
 
 python:
-  - 3.6
-  - "3.7-dev"
+  - 3.7
+  - 3.8
 
 install:
   - pip install coveralls
-  - pip install -r ./requirements/pipenv.txt
   - pipenv install
 
 script:
