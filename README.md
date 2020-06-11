@@ -18,13 +18,13 @@
 Installing Mirage with Pipenv is recommended.
 
 ```
-pipenv install -d django-mirage
+pipenv install -d mirage-django-lts
 ```
 
 If you don't use `pipenv`, you can install it with pip.
 
 ```
-pip install django-mirage
+pip install mirage-django-lts
 ```
 
 You can build this package manually.
