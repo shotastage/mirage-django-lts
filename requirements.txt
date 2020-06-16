@@ -1,5 +1,5 @@
 -i https://pypi.org/simple/
-asgiref==3.2.6
+asgiref==3.2.9
 django==3.0.4
 pytz==2019.3
 sqlparse==0.3.1
