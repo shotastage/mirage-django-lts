@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright 2017-2018 Shota Shimazu.
+Copyright 2017-2020 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ def main():
     parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
-    parser.add_argument("new", "newproject", None, "ReactStartup")
+    parser.add_argument("new", "newproject", None, "Startup")
     parser.add_argument_with_subaction("new", "newproject", "react", None, "ReactStartup")
     parser.add_argument_with_subaction("new", "newproject", "ng", None, "NgStartupWorkFlow")
     parser.add_argument_with_subaction("new", "newproject", "mini", None, "MirageMinimumStartupWorkFlow")

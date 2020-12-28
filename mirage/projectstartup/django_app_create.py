@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copyright 2017-2018 Shota Shimazu.
+Copyright 2017-2020 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,16 +16,14 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import shutil
 from mirage import proj
-from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
-from mirage.template import readme_md, gitignore, package_json
+from mirage.template import readme_md, gitignore
 from mirage.miragefile import source
 
 
-class ReactStartupWorkFlow(Workflow):
+class StartupWorkFlow(Workflow):
 
     def constructor(self):
         self._js_runtime = self._option
@@ -86,32 +84,6 @@ class ReactStartupWorkFlow(Workflow):
             logger.update("Adding remote repository...", withLazy = True)
             mys.command("git remote add origin " + git_url)
 
-            # Create React App
-            logger.update("Creating React app...")
-            self._create_package_json()
-            mys.command("yarn add --dev create-react-app")
-
-            if self._js_runtime == "--javascript":
-                mys.command("./node_modules/.bin/create-react-app shell")
-            else:
-                mys.command("./node_modules/.bin/create-react-app --scripts-version=react-scripts-ts shell")
-
-            logger.update("Installing additional packages...")
-            with proj.InDir("./shell"):
-                mys.command("yarn add redux react-redux")
-                mys.command("yarn add react-router react-router-dom")
-
-            # Cleaning
-            logger.update("Cleaning...", withLazy = True)
-            fileable.rm("yarn.lock")
-            fileable.rm("package.json")
-            fileable.rm("node_modules/")
-
-            with proj.InDir("./shell"):
-                fileable.rm(".gitignore")
-                fileable.rm("README.md")
-
-
         # Completed
         logger.update("Completed!")
 
@@ -123,13 +95,6 @@ class ReactStartupWorkFlow(Workflow):
     def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):    
         with open("Miragefile", "w") as f:
             f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
-
-
-
-    def _create_package_json(self):
-        with open("package.json", "w") as f:
-            f.write('{"name": "tmpapp", "version": "0.0.1"}')
-
 
     def _create_template_git_project(self):
         ignorance = gitignore.src()

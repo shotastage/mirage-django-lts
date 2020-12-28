@@ -23,6 +23,8 @@ class DjangoDBConsole(DjangoDBConsoleWorkFlow): pass
 from mirage.projectstartup.react_app_create import ReactStartupWorkFlow
 class ReactStartup(ReactStartupWorkFlow): pass
 
+from mirage.projectstartup.django_app_create import StartupWorkFlow
+class Startup(StartupWorkFlow): pass
 
 from mirage.help.usage_flow import UsageShowWorkFlow, VersionShowWorkFlow
 class UsageShow(UsageShowWorkFlow): pass
