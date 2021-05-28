@@ -33,7 +33,7 @@ rebuild:
 	python setup.py check
 	python setup.py sdist
 	pip uninstall mirage-django-lts
-	pip install dist/mirage-django-lts-0.2.tar.gz
+	pip install dist/mirage-django-lts-0.2.1.tar.gz
 
 export-requirements:
 	pipenv lock -r > requirements.txt
