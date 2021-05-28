@@ -1,5 +1,4 @@
 import os
-import sys
 
 from mirage import proj
 from mirage import system as mys

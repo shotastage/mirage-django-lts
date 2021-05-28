@@ -16,12 +16,10 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import shutil
 from mirage import proj
-from mirage import fileable
 from mirage.flow import Workflow
 from mirage import system as mys
-from mirage.template import readme_md, gitignore, package_json
+from mirage.template import readme_md, gitignore
 from mirage.miragefile import source
 
 

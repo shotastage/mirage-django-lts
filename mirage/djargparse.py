@@ -16,7 +16,6 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import sys
-import enum
 import functools
 from mirage.core import Void
 from mirage import system

@@ -15,8 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import os
-
 try: # pip >= 10
     from pip._internal.utils.misc import get_installed_distributions
 except ImportError:  # pip < 10

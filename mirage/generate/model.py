@@ -15,8 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import os
-import enum
 from mirage import system as sys
 from mirage.flow import Workflow
 from .model_template import create_model_class

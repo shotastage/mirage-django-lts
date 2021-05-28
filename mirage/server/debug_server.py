@@ -16,10 +16,6 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import sys
-import time
-import shlex
-import subprocess
 import webbrowser
 from mirage import proj
 from mirage.flow import Workflow

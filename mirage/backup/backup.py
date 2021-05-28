@@ -15,18 +15,8 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import os
-import shutil
-import sys
-import time
-import distutils
-
 from mirage import system as mys
-from mirage import proj
-
-from mirage              import project
-from mirage              import fileable
-from mirage.flow         import Workflow
+from mirage.flow import Workflow
 
 from mirage.workspace import storage
 

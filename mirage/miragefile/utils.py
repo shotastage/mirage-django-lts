@@ -22,7 +22,6 @@ Copyright 2017-2018 Shota Shimazu.
 import os
 import enum
 import json
-from mirage import system as sys
 from mirage.command import log, raise_error_message
 
 

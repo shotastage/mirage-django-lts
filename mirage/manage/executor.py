@@ -16,17 +16,8 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import shutil
-import sys
-import time
-import distutils
-
-from mirage import system as mys
 from mirage import proj
-
-from mirage              import fileable
-from mirage.flow         import Workflow
-from mirage.workspace import storage
+from mirage.flow import Workflow
 
 class DjangoCreateSuperUserWorkflow(Workflow):
 

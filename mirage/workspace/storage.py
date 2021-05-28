@@ -19,7 +19,6 @@ import os
 import uuid
 import shutil
 import sqlite3
-import contextlib
 from mirage import fileable
 from mirage import system as mys
 from mirage.proj import MirageEnvironment, MirageEnvironmentLevel

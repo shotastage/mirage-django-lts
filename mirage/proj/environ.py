@@ -20,9 +20,7 @@ import sys
 import enum
 import pathlib
 from mirage.core import Void
-from mirage import proj
-from mirage import fileable
-from mirage.system import warning, log
+from mirage.system import warning
 from mirage.miragefile import conf
 
 

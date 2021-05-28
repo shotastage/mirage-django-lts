@@ -17,11 +17,9 @@ Copyright 2017-2018 Shota Shimazu.
 
 from mirage.flow    import Workflow
 from mirage.command import log, raise_error_message
-from mirage         import fileable
 
 
 class DjangoWorkspaceTogetherWorkFlow(Workflow):
-    pass
 
     def main(self):
         log("Not implemented!")

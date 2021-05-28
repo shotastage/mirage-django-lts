@@ -15,12 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import os
-import inspect
-import warnings
-import sys
-import textwrap
-import functools
 from subprocess import check_output, DEVNULL, STDOUT
 from .log import log
 
