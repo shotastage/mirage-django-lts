@@ -15,13 +15,8 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-
-import os
-
 from mirage.flow import Workflow
 from mirage.command import log
-from mirage.command import command
-
 
 class DjangoDataBaseWorkFlow(Workflow):
 

@@ -15,10 +15,7 @@ Copyright 2017-2020 Shota Shimazu.
    limitations under the License.
 """
 
-import sys
-
 from mirage.djargparse import ArgumentsParser
-
 
 
 def main():

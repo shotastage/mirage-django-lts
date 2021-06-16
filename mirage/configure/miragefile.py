@@ -15,11 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import platform
-import sys
 import textwrap
-
-from mirage.command import log
 
 
 def create_djfile(name, version, author, git_url, license, description, dj_app_path, python_pkg_m, default_db, 

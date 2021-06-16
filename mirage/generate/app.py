@@ -16,7 +16,6 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import readline
 from mirage.core import Void
 from mirage.flow import Workflow
 from mirage.generate.urlpy import create_urlpy_script as url_script

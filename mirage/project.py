@@ -17,14 +17,8 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 import json
-import warnings
-from mirage         import fileable
-from mirage.command import log
-from mirage.system import warning
-
-
-# New
 import sys
+from mirage.system import warning
 
 def in_project():
     warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)

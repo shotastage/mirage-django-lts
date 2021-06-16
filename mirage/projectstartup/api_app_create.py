@@ -16,7 +16,6 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 import os
-import shutil
 
 from mirage.flow import Workflow
 from mirage.command import log, command

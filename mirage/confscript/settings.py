@@ -15,7 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import sys, os, imp
 import enum
 
 class Settings(enum.Enum):

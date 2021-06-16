@@ -15,7 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from abc import ABCMeta, abstractmethod
 from mirage.core import Void
 from mirage import system as mys
 

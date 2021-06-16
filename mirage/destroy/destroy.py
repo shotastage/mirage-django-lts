@@ -16,12 +16,7 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 
-from mirage.command import log
 from mirage.flow import Workflow
-from mirage.destroy import app
-from mirage.project import in_project
-
-
 
 
 class DjangoDestroyWorkFlow(Workflow):    

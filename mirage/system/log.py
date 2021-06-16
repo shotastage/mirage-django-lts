@@ -15,9 +15,6 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import sys
-
-
 def log(string,
             withError = False, errorDetail = None,
             withInput = False, withConfirm = False, default = None):

@@ -15,11 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import os
-
 from mirage.flow import Workflow
-from mirage.command import log, command
-from mirage.generate.model_template import create_model_class
 
 class DjangoModelMakeFlow(Workflow):
 

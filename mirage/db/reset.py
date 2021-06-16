@@ -21,7 +21,6 @@ import os
 from mirage.flow import Workflow
 from mirage import project
 from mirage.command import log
-from mirage.command import command
 
 
 class DjangoDBResetWorkFlow(Workflow):

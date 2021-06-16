@@ -15,7 +15,7 @@ Copyright 2017 Shota Shimazu.
    limitations under the License.
 """
 
-version = "0.0.7"
+version = "0.2.2"
 build = "01"
 description = """
 Copyright (C) 2017 Shot| Shimazu

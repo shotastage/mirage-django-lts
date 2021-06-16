@@ -17,7 +17,6 @@ Copyright 2017-2018 Shota Shimazu.
 
 from mirage.flow import Workflow
 from mirage.core import Void
-from mirage import system as mys
 from mirage.template import gitignore
 
 
