@@ -17,10 +17,7 @@ Copyright 2017-2018 Shota Shimazu.
 
 import pip
 
-from pip.commands.install import InstallCommand
-from mirage.command import log, raise_error_message
-from mirage.command import command
-
+from mirage.command import log
 
 def pip_install(package_name):
     log("Installing {0} ...".format(package_name))

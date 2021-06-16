@@ -16,4 +16,4 @@ Copyright 2017-2018 Shota Shimazu.
 """
 
 def src():
-    return "python-3.9.0"
+    return "python-3.9.5"
