@@ -15,10 +15,10 @@ Copyright 2017 Shota Shimazu.
    limitations under the License.
 """
 
-version = "0.2.2"
+version = "0.2.3"
 build = "01"
 description = """
-Copyright (C) 2017 Shot| Shimazu
+Copyright (C) 2017-2021 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
 
 """
