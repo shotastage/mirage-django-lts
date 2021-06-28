@@ -15,7 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-from mirage.flow    import Workflow
+from mirage.flow import Workflow
 from mirage.command import log, raise_error_message
 
 

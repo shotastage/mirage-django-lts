@@ -17,9 +17,9 @@ Copyright 2017-2018 Shota Shimazu.
 
 import os
 
-from mirage          import fileable
-from mirage.flow     import Workflow
-from mirage.command  import log
+from mirage import fileable
+from mirage.flow import Workflow
+from mirage.command import log
 from mirage.miragefile import source
 from mirage.configure.miragefile import create_additional
 
