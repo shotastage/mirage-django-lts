@@ -25,7 +25,7 @@ def create(proj_name, proj_ver, proj_author, author_email, git_url,
     return textwrap.dedent('''
 #
 # Mirage Configuration Scripts Version 2018/03/23
-# Copyright (c) 2017-2018 Shota Shimazu
+# Copyright (c) 2017-2021 Shota Shimazu
 # This software is licensed under the Apache v2, see LICENSE for detail.
 #
 
@@ -71,11 +71,8 @@ class MirageConfig(ConfigScript):
         ]
     }}
 
-
-
     def initialize(self) -> Void:
         mys.log("Mirage Setting Script v0.0.1")
-
 
     def main(self) -> int:
         # Add custom CLI script written in Python3

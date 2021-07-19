@@ -24,7 +24,6 @@ from mirage.flow import Workflow
 from mirage import system as mys
 from mirage.template import readme_md, gitignore
 from mirage.miragefile import source, source2, source_secret
-from mirage.template import licenses
 
 
 class NgStartupWorkFlow(Workflow):
@@ -146,7 +145,7 @@ class NgStartupWorkFlow(Workflow):
         with open("Miragefile", "w") as f:
             f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
 
-        with open("Miragefile@next.py", "w") as f:
+        with open("Mirage@next.py", "w") as f:
             f.write(source2.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
 
         with open("Miragefile.secret", "w") as f:
@@ -171,30 +170,6 @@ class NgStartupWorkFlow(Workflow):
 
         with open("README.md", "a") as readme:
             readme.write(readme_md.src(self._project_name, description))
-
-        with open("LICENSE", "w") as doc:
-            if [doc for doc in ["mit", "MIT"] if doc in license_name]:
-                doc.write(licenses.mit.src(self._get_current, author))
-
-            elif [doc for doc in ["agpl", "AGPL", "AGPLv3"] if doc in license_name]:
-                doc.write(licenses.agpl_v3.src(self._get_current, author))
-
-            elif [doc for doc in ["apache", "Apache", "Apache2"] if doc in license_name]:
-                doc.write(licenses.apache_v2.src(self._get_current, author))
-
-            elif [doc for doc in ["gpl", "GPL", "GPLv3"] if doc in license_name]:
-                doc.write(licenses.gpl_v3.src(self._get_current, author))
-
-            elif [doc for doc in ["lgpl", "LGPL", "LGPLv3"] if doc in license_name]:
-                doc.write(licenses.lgpl_v3.src(self._get_current, author))
-
-            elif [doc for doc in ["mpl", "MPL", "MPLv2"] if doc in license_name]:
-                doc.write(licenses.mpl_v2.src(self._get_current, author))
-
-            elif [doc for doc in ["unlicense", "Unlicense"] if doc in license_name]:
-                doc.write(licenses.unlicense.src(self._get_current, author))
-
-
 
     @lru_cache(maxsize = 10)
     def _get_current(self) -> str:
