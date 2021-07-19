@@ -8,9 +8,6 @@
 [![GitHub release](https://img.shields.io/github/release/shotastage/mirage-django-lts.svg)](https://github.com/shotastage/mirage-django-lts/releases)
 [![PyPI](https://img.shields.io/pypi/format/mirage-django-lts.svg)]()
 
->> This is LTS version of [MIRAGE Framework (now under construction)](https://github.com/shotastage/mirage-django).
->> New feature will be added to new version of MIRAGE.
-
 **[mirage ~ ♪](https://youtu.be/nhrXbPlpdQQ?t=3m4s)** extended django admin or manage.py command.
 
 # ⬇️  Installation
