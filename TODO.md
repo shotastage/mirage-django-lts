@@ -2,6 +2,8 @@
 
 >> `mi`
 
+# Remove unused modules and functions
+
 # Create new application
 
 - `new:api`
@@ -11,12 +13,12 @@
 
 # Generate models, apps and so on
 
-Basic command: `generate`  
-Shorten command: `g` 
+Basic command: `generate`
+Shorten command: `g`
 
 ### Options
 
-+ app 
++ app
 + model
 + view
 + routing
