@@ -22,7 +22,7 @@ import textwrap
 try: # pip >= 10
     from pip._internal.utils.misc import get_installed_distributions
 except ImportError:  # pip < 10
-    from pip import get_installed_distributions
+    from pkg_resources import working_set
 
 from mirage.command import log
 
@@ -90,7 +90,7 @@ def get_pip_list():
 
     ignore_packages = ["setuptools", "pip", "python", "mirage"]
 
-    packages = get_installed_distributions(local_only = True, skip = ignore_packages)
+    packages = working_set
 
     for package in packages:
         string += "+ " + package.project_name + " " + package.version + "  \n"

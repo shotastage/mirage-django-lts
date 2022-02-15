@@ -18,7 +18,8 @@ Copyright 2017-2018 Shota Shimazu.
 try: # pip >= 10
     from pip._internal.utils.misc import get_installed_distributions
 except ImportError:  # pip < 10
-    from pip import get_installed_distributions
+    from pkg_resources import working_set
+
 
 from mirage.flow import Workflow
 from mirage.command import command
@@ -28,7 +29,7 @@ from mirage import system as mys
 class DjangoPackageWorkFlow(Workflow):
 
     def constructor(self):
-        
+
         self._action = self._option
         self._packages = self._values
 
@@ -37,7 +38,7 @@ class DjangoPackageWorkFlow(Workflow):
 
     def _init(self):
         ignore_packages = ["setuptools", "pip", "python"]
-        already_pip = get_installed_distributions(local_only = True, skip = ignore_packages)
+        already_pip = working_set
 
 
     def _install(self, package_name):

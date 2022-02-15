@@ -40,7 +40,7 @@ def in_app():
         set_import_root()
 
         import apps
-        
+
         if os.path.isfile("apps.py"):
             return True
         else:
@@ -62,7 +62,7 @@ def get_project_name():
     current_dir = os.getcwd()
     directories = os.listdir(".")
     app_name = "FAILED TO GET"
-    
+
     if in_project():
 
         for directory in directories:
@@ -77,14 +77,14 @@ def get_project_name():
                 pass
     else:
         app_name = "Out of project dir"
-    
+
     return app_name
 
 
 
 def get_app_list():
     warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
-    
+
     apps = []
     list_dir = os.listdir(os.getcwd())
     current = os.getcwd()
@@ -107,7 +107,7 @@ def get_app_list():
 # Old
 def project_name():
     warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
-    
+
     status = False
 
     if os.path.isfile("manage.py"):
@@ -132,7 +132,7 @@ def project_name():
 
 def load_djfile():
     warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
-    
+
     with open("Miragefile", "r") as djfile:
         try:
             return json.load(djfile)
@@ -142,7 +142,7 @@ def load_djfile():
 
 def load_additional_conf():
     warning.warn("mirage.project is now pending deprecation.", warning.PendingDeprecationWarning)
-    
+
     with open("Miragefile.addon", "r") as djfile:
         try:
             return json.load(djfile)
