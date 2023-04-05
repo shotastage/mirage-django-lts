@@ -264,6 +264,7 @@
                 "sha256:fe913f20024eb2cb2f323e42a64bdf2911bb9738a15dba7d3cce48151034e3a8"
             ],
             "markers": "python_version >= '3.6'",
+            "index": "pypi",
             "version": "==39.0.1"
         },
         "docutils": {
@@ -465,6 +466,11 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==67.3.2"
+                "sha256:16ccf598aab3b506593c17378473978908a2734d7336755a8769b480906bec1c",
+                "sha256:b440ee5f7e607bb8c9de15259dba2583dd41a38879a7abc1d43a71c59524da48"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==67.2.0"
         },
         "six": {
             "hashes": [
@@ -585,6 +591,11 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.13.0"
+                "sha256:6c4fe274b8f85ec73c37a8e4e3fa00df9fb9335da96fb789e3b96b318e5097b3",
+                "sha256:a3cac813d40993596b39ea9e93a18e8a2076d5c378b8bc88ec32ab264e04ad02"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==3.12.1"
         }
     }
 }
