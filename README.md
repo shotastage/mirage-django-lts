@@ -1,6 +1,6 @@
 ![Mirage](./docs/assets/logo.png)
 
-[![Build Status](https://travis-ci.org/shotastage/mirage-django-lts.svg?branch=master)](https://travis-ci.org/shotastage/mirage-django-lts)
+[![Build Status](https://travis-ci.com/shotastage/mirage-django-lts.svg?branch=master)](https://travis-ci.com/shotastage/mirage-django-lts)
 [![Updates](https://pyup.io/repos/github/shotastage/mirage-django-lts/shield.svg)](https://pyup.io/repos/github/shotastage/mirage-django-lts/)
 [![Python 3](https://pyup.io/repos/github/shotastage/mirage-django-lts/python-3-shield.svg)](https://pyup.io/repos/github/shotastage/mirage-django-lts/)
 [![PyPI version](https://badge.fury.io/py/mirage-django-lts.svg)](https://badge.fury.io/py/django-mirage)
