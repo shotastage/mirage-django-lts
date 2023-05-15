@@ -28,7 +28,7 @@ from mirage import system as mys
 class UpdateCheckFlow(Workflow):
 
     def constructor(self) -> Void:
-        self._url = "https://raw.githubusercontent.com/shotastage/mirage-django-lts/master/mirage/version.py"
+        self._url = "https://raw.githubusercontent.com/shotastage/mirage-django-lts/main/mirage/version.py"
 
 
     def main(self) -> Void:
