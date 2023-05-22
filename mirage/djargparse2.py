@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Copyright 2017-2023 Shota Shimazu.
 
@@ -17,28 +16,21 @@ Copyright 2017-2023 Shota Shimazu.
 
 import sys
 from mirage.core import Void
-from mirage import system
-
-# Flow Classies
-from mirage import workflows
+from mirage import system, workflows
 
 
-class ArgumentsParser(object):
-
+class ArgumentsParser:
     def __init__(self):
-
-        # Arguments
-        self._cmd = None            # ex. **new**
-        self._sub_action = None     # ex. new:**cms**
-        self._option = None         # ex. g **app**
-        self._option_detail = None  # ex. g app **--basic**
-        self._values = None         # ex. g **app api mail user**
-        self.__insert_arguments()   # <== Insert real value
-
-        # Exec flow
+        self._cmd = None
+        self._sub_action = None
+        self._option = None
+        self._option_detail = None
+        self._values = None
         self._exec_flow = None
+        self._assessmented = False
 
-        # Arguments Array
+        self._insert_arguments()
+
         self._arguments = (
             self._cmd,
             self._sub_action,
@@ -47,113 +39,41 @@ class ArgumentsParser(object):
             self._values
         )
 
-        # Is Assessmented
-        self._assessmented = False
-
-
-
     def add_argument(self, shorten_cmd: str, long_cmd: str, option: str, execute: str) -> Void:
-
-        if self._assessmented: return
-
-        # Check command
-
-        if not self._cmd == shorten_cmd and not self._cmd == long_cmd:
-            return
-
-        if not self._sub_action is None:
-            return
-
-        if not option is None:
-            if self._option == option:
+        if not self._assessmented and self._cmd in {shorten_cmd, long_cmd} and self._sub_action is None:
+            if option is None or self._option == option:
                 self._exec_flow = execute
                 self._assessmented = True
-        else:
-            self._exec_flow = execute
-            self._assessmented = True
 
-        return
-
-
-    def add_argument_with_subaction(self, base_shorten_cmd: str,
-                                    base_long_cmd: str, action: str, option: str, execute: str) -> Void:
-
-        if self._assessmented: return
-
-        if not self._cmd == base_shorten_cmd and not self._cmd == base_long_cmd:
-            return
-
-        if not self._sub_action == action:
-            return
-
-        if not option is None:
-            if self._option == option:
+    def add_argument_with_subaction(self, base_shorten_cmd: str, base_long_cmd: str, action: str, option: str, execute: str) -> Void:
+        if not self._assessmented and self._cmd in {base_shorten_cmd, base_long_cmd} and self._sub_action == action:
+            if option is None or self._option == option:
                 self._exec_flow = execute
                 self._assessmented = True
-        else:
-            self._exec_flow = execute
-            self._assessmented = True
-
-
-        return
-
 
     def parse(self) -> Void:
-        # If there are no command, show usage.
-        if len(sys.argv) == 1:
-            instance = getattr(workflows, "UsageShow")(self._arguments)
-            instance.run()
-            return
-
-        # Check excute function is not empty.
-        if not self._exec_flow == None:
-            instance = getattr(workflows, self._exec_flow)(self._arguments)
-            instance.run()
-            return
-
+        if len(sys.argv) == 1 or self._exec_flow is None:
+            self._run_workflow("UsageShow")
         else:
-            system.log("Unable to invoke action \"{0}\"!".format(sys.argv[1]), withError = True)
-            instance = getattr(workflows, "UsageShow")(self._arguments)
-            instance.run()
+            self._run_workflow(self._exec_flow)
 
+    def _run_workflow(self, workflow_name: str) -> Void:
+        instance = getattr(workflows, workflow_name)(self._arguments)
+        instance.run()
 
-    def __insert_arguments(self):
-        # Get main command **new**:cms
-        try: self._cmd = self.__colon_separate_cmd(sys.argv[1])
-        except: pass
+    def _insert_arguments(self):
+        if len(sys.argv) > 1:
+            self._cmd, self._sub_action = self._split_on_colon(sys.argv[1])
 
-        # Get subaction new:**cms**
-        try: self._sub_action = self.__colon_separate_action(sys.argv[1])
-        except: pass
-
-        # Get option and detail option
-        # optin =           mi g **app**
-        # detail option =   mi g app **--basic**
-        try:
+        if len(sys.argv) > 2:
             self._option = sys.argv[2]
 
-            if "--" in sys.argv[3]:
-                self._option_detail = sys.argv[3]
-        except: pass
+        if len(sys.argv) > 3 and "--" in sys.argv[3]:
+            self._option_detail = sys.argv[3]
 
-        # Get values
-        try:
-            if "--" in sys.argv[3]:
-                self._values = sys.argv[4:]
-            else:
-                self._values = sys.argv[3:]
-        except: pass
+        if len(sys.argv) > 3:
+            self._values = sys.argv[4:] if "--" in sys.argv[3] else sys.argv[3:]
 
-
-    def __colon_separate_cmd(self, cmd_colon_value: str) -> str:
-        if ":" in cmd_colon_value:
-            return cmd_colon_value.split(":")[0]
-        else:
-            return cmd_colon_value
-
-
-    def __colon_separate_action(self, cmd_colon_value: str) -> str:
-        if ":" in cmd_colon_value:
-            return cmd_colon_value.split(":")[1]
-        else:
-            raise ValueError
+    @staticmethod
+    def _split_on_colon(value: str):
+        return value.split(":") if ":" in value else (value, None)
