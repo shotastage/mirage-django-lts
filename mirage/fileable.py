@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Copyright 2017-2018 Shota Shimazu.
+Copyright 2017-2023 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,41 +14,41 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import os
+from pathlib import Path
 import shutil
 
+def exists(path: str) -> bool:
+    return Path(path).exists()
 
-def exists(path):
-    return os.path.exists(path)
-
-
-def copy(from_path, to_path, force = False):
-    if os.path.exists(to_path):
+def copy(from_path: str, to_path: str, force: bool = False) -> None:
+    to_path_obj = Path(to_path)
+    if to_path_obj.exists():
         if force:
             shutil.rmtree(to_path)
         else:
-            raise FileExistsError
-            return
-    
+            raise FileExistsError(f"Destination path '{to_path}' already exists.")
     shutil.copytree(from_path, to_path)
 
-
-def move(from_path, to_path, force = False):
+def move(from_path: str, to_path: str, force: bool = False) -> None:
+    to_path_obj = Path(to_path)
+    if to_path_obj.exists() and not force:
+        raise FileExistsError(f"Destination path '{to_path}' already exists.")
     shutil.move(from_path, to_path)
 
+def mkdir(path: str) -> None:
+    Path(path).mkdir(parents=True, exist_ok=True)
 
-def mkdir(path):
-    os.makedirs(path)
+def rm(path: str) -> None:
+    path_obj = Path(path)
+    if path_obj.is_dir():
+        shutil.rmtree(path)
+    elif path_obj.is_file():
+        path_obj.unlink()
+    else:
+        raise FileNotFoundError(f"No file or directory found at '{path}'.")
 
+def cwd() -> str:
+    return str(Path.cwd())
 
-def rm(path):
-    if os.path.isdir(path): shutil.rmtree(path)
-    if os.path.isfile(path): os.remove(path)
-
-
-def cwd():
-    return os.getcwd()
-
-
-def cd(path):
-    os.chdir(path)
+def cd(path: str) -> None:
+    Path(path).chdir()
