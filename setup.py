@@ -14,9 +14,10 @@ if __name__ == "__main__":
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
-            'Programming Language :: Python :: 3.8',
+            'Programming La
             'Programming Language :: Python :: 3.9',
             'Programming Language :: Python :: 3.10',
+            'Programming Language :: Python :: 3.11',
         ],
         packages = find_packages(exclude=('tests', 'shell')),
         include_package_data = True,
