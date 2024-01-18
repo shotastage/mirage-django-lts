@@ -14,5 +14,3 @@ Copyright 2017-2018 Shota Shimazu.
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-
-from .angular_app_create import NgStartupWorkFlow

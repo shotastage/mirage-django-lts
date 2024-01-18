@@ -1,19 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Copyright 2017-2018 Shota Shimazu.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-"""
 
 import os
 
@@ -27,13 +11,12 @@ from mirage.template import package_json
 
 
 class DjangoStartupWorkFlow(Workflow):
-    
     def constructor(self):
         self._project_name = None
 
 
     def main(self):
-        # Check 
+        # Check
 
         try:
             self._check_before()
@@ -61,13 +44,10 @@ class DjangoStartupWorkFlow(Workflow):
         copyrightor  = log("Copyrightor", withInput = True, default = author)
 
 
-
-        
         self._create_new_django_app()
 
 
         with proj.InDir("./" + self._project_name):
-            
             # Generate .gitignore
             log("Generating gitignore...")
             self._create_template_git_project()
@@ -101,23 +81,19 @@ class DjangoStartupWorkFlow(Workflow):
 
         # Completed
         log("Completed!")
-    
 
     def _create_new_django_app(self):
         command("django-admin startproject " + self._project_name)
 
 
-    def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):    
+    def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):
         with open("Miragefile", "w") as f:
             f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
-     
 
-    
     def _create_package_json(self, version, description, git_repository, author_name, email, license_name):
         with open("package.json", "w") as f:
             data = package_json.src(self._project_name, version, description, git_repository, author_name, email, license_name)
             f.write(data)
-
 
     def _create_template_git_project(self):
         ignorance = gitignore.src()
@@ -127,14 +103,12 @@ class DjangoStartupWorkFlow(Workflow):
 
         command("git init")
 
-
     def _create_docs(self):
         with open("README.md", "a") as readme:
             readme.write(readme_md.src(self._project_name))
 
 
     def _check_before(self):
-        
         try:
             import django
         except ImportError:
@@ -168,7 +142,6 @@ class DjangoCMSStartupWorkFlow(Workflow):
         except:
             log("Project {0} is already exists.".format(self._project_name), withError = True)
 
-        
         self._create_new_django_app(self._project_name)
 
         with proj.InDir("./" + self._project_name):

@@ -15,7 +15,7 @@ Copyright 2017-2018 Shota Shimazu.
    limitations under the License.
 """
 
-import sys, os, imp
+import sys, os
 from mirage.flow import Workflow
 from mirage import system as mys
 from mirage.proj import MirageEnvironment, MirageEnvironmentLevel

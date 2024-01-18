@@ -26,9 +26,8 @@ def main():
     parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
-    parser.add_argument("new", "newproject", None, "Startup")
+    parser.add_argument("new", "newproject", None, "StartupWorkFlow")
     parser.add_argument_with_subaction("new", "newproject", "react", None, "ReactStartup")
-    parser.add_argument_with_subaction("new", "newproject", "ng", None, "NgStartupWorkFlow")
     parser.add_argument_with_subaction("new", "newproject", "mini", None, "MirageMinimumStartupWorkFlow")
 
     parser.add_argument("b", "backup", "app", "DjangoBackupApp")
@@ -63,8 +62,8 @@ def main():
 
     parser.add_argument("+", "confscript", None, "MirageConfigScriptFlow")
 
-    parser.add_argument("?", "inquiry", "update", "UpdateCheckFlow")
-    parser.add_argument("?", "inquiry", "system", "SystemCheckFlow")
+    parser.add_argument("q", "inquiry", "update", "UpdateCheckFlow")
+    parser.add_argument("q", "inquiry", "system", "SystemCheckFlow")
 
     # Excute
     parser.parse()

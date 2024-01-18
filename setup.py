@@ -14,10 +14,10 @@ if __name__ == "__main__":
         author = "Shota Shimazu",
         author_email = "hornet.live.mf@gmail.com",
         classifiers=[
-            'Programming La
             'Programming Language :: Python :: 3.9',
             'Programming Language :: Python :: 3.10',
             'Programming Language :: Python :: 3.11',
+            'Programming Language :: Python :: 3.12',
         ],
         packages = find_packages(exclude=('tests', 'shell')),
         include_package_data = True,
@@ -30,9 +30,10 @@ if __name__ == "__main__":
                 'mirage = mirage.mirage:main',
                 'mg = mirage.mirage:main',
                 'mgl = mirage.mirage:main',
+                'dj = mirage.mirage:main',
             ],
         },
-        description = "Advanced Django Console (LTS Version)",
+        description = "Advanced Django Console",
         long_description = "Advanced extended command line tool for Django.",
         url = "https://github.com/shotastage/mirage-django-lts/",
         license = "Apache",

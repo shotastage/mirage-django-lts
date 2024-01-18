@@ -1,5 +1,5 @@
 """
-Copyright 2017-2023 Shota Shimazu.
+Copyright 2017-2024 Shota Shimazu.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,4 +14,4 @@ Copyright 2017-2023 Shota Shimazu.
    limitations under the License.
 """
 
-__version__ = "0.2.5"
+__version__ = "0.2.6"
