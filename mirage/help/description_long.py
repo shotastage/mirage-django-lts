@@ -31,9 +31,6 @@ Commands:              Short:       Options:                      Descriptions:
 
     newproject         new                                        Create a new Django project.
     newproject:react   new:react                                  Create a new Django API project with React.js front-end.
-    newproject:ng      new:ng                                     Create a new Django API project with Angular.
-                                                --nebular         Create a new Angular project with Nebular.
-                                                --material        Create a new Angular project with Material theme.
     backup             b            app         <app name>        Backup exsiting app.
     launch-browser     browser                  <URL>             Launch browser set as default by system.
     configure          conf                     <config type>     Generate miragefile or reconfig mirage.
@@ -54,8 +51,8 @@ Commands:              Short:       Options:                      Descriptions:
 
     help               h                                          Show usage of Mirage.
     version            v                                          Print version information.
-    inquiry            ?            update                        Check update.
-    inquiry            ?            system                        Check platform and Python version.
+    inquiry            q            update                        Check update.
+    inquiry            q            system                        Check platform and Python version.
 
 
 """.format(version.__version__)

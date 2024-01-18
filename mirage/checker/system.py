@@ -35,19 +35,13 @@ class SystemCheckFlow(Workflow):
         elif self.get_os() == "Linux":
             print("OS: Linux")
 
-        print(
-            "Python: ",
-            self.get_python_version()[0], ".",
-            self.get_python_version()[1], ".",
-            self.get_python_version()[2]
-        )
+        python_version = self.get_python_version()
+        print(f"Python: {python_version[0]}.{python_version[1]}.{python_version[2]}")
 
-
-    @lru_cache(maxsize = 100)
+    @lru_cache(maxsize=100)
     def get_os(self) -> str:
-       return  platform.system()
+        return platform.system()
 
-
-    @lru_cache(maxsize = 100)
+    @lru_cache(maxsize=100)
     def get_python_version(self) -> tuple:
         return platform.python_version_tuple()

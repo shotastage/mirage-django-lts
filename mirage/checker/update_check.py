@@ -51,10 +51,10 @@ class UpdateCheckFlow(Workflow):
                         mys.log("New mirage framework tools available!")
                         mys.log("See, https://github.com/shotastage/mirage-django for detail.")
 
-                        mys.log("LTS Update available!", withError=True)
+                        mys.log("Update available!", withError=True)
                         print("This version: {0}".format(ver))
                         print("Available version: {0}".format(mg_version_check.__version__))
                 else:
-                    mys.log("LTS Update available!", withError=True)
+                    mys.log("Update available!", withError=True)
                     print("This version: {0}".format(ver))
                     print("Available version: {0}".format(mg_version_check.__version__))

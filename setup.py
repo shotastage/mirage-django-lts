@@ -30,6 +30,7 @@ if __name__ == "__main__":
                 'mirage = mirage.mirage:main',
                 'mg = mirage.mirage:main',
                 'mgl = mirage.mirage:main',
+                'dj = mirage.mirage:main',
             ],
         },
         description = "Advanced Django Console",
