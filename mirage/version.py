@@ -14,4 +14,4 @@ Copyright 2017-2024 Shota Shimazu.
    limitations under the License.
 """
 
-__version__ = "0.2.5"
+__version__ = "0.2.3"

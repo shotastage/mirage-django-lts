@@ -1,8 +1,8 @@
 build_all:
 	@echo "Django Mirage Building Started!"
+	pip install --upgrade pip setuptools wheel
 	python setup.py check
 	python setup.py sdist
-
 
 upload:
 	@echo "Building Django Mirage..."

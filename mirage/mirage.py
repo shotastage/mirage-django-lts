@@ -26,9 +26,8 @@ def main():
     parser.add_argument("v", "version", None, "VersionShow")
 
     # Commands
-    parser.add_argument("new", "newproject", None, "Startup")
+    parser.add_argument("new", "newproject", None, "StartupWorkFlow")
     parser.add_argument_with_subaction("new", "newproject", "react", None, "ReactStartup")
-    parser.add_argument_with_subaction("new", "newproject", "ng", None, "NgStartupWorkFlow")
     parser.add_argument_with_subaction("new", "newproject", "mini", None, "MirageMinimumStartupWorkFlow")
 
     parser.add_argument("b", "backup", "app", "DjangoBackupApp")

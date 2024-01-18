@@ -152,7 +152,6 @@ class ReactStartupWorkFlow(Workflow):
         mys.command("git init")
 
 
-
     def _create_docs(self, author, description, license_name):
 
         with open("README.md", "a") as readme:

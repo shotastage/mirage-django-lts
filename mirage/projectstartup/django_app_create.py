@@ -92,7 +92,7 @@ class StartupWorkFlow(Workflow):
         mys.command("django-admin startproject " + self._project_name)
 
 
-    def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):    
+    def _create_miragefile(self, version, author, email, git_url, license_name, description, copyrightors):
         with open("Miragefile", "w") as f:
             f.write(source.create(self._project_name, version, author, email, git_url, license_name, description, copyrightors))
 
