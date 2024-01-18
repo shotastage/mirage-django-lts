@@ -1,20 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Copyright 2017-2018 Shota Shimazu.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-"""
-
 from mirage import version
 
 def usage_doc():
@@ -32,9 +15,6 @@ Usage:
 
 new                                         Create a new Django project.
 new:react                                   Create a new Django API project with React.js front-end.
-new:ng                                      Create a new Django API project with Angular.
-                         --nebular          Create a new Angular project with Nebular.
-                         --material         Create a new Angular project with Material theme.
 
 [Utilities]
 
@@ -85,8 +65,8 @@ s                                           Launch debugging server.
 
 h                                           Show usage of Mirage.
 v                                           Print version information.
-?             update                        Check update.
-?             system                        Check platform and Python version.
+q             update                        Check update.
+q             system                        Check platform and Python version.
 
 """.format(version.__version__)
 
@@ -97,6 +77,6 @@ Mirage Version {0}
 
 https://github.com/shotastage/django-mirage
 
-Copyright (c) 2017-2018 Shota Shimazu
+Copyright (c) 2017-2024 Shota Shimazu
 This software is licensed under the Apache v2, see LICENSE for detail.
 """.format(version.__version__)
