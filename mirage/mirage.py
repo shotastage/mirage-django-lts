@@ -37,9 +37,9 @@ def main():
 
     parser.add_argument("heroku", "heroku", "configure", "DjangoHerokuConfigure")
 
-    parser.add_argument("git", "git", "pull", "DjangoGitPull")
+    parser.add_argument("git", "gg", "pull", "DjangoGitPull")
 
-    parser.add_argument("git", "git", "push", "DjangoGitPush")
+    parser.add_argument("git", "gg", "push", "DjangoGitPush")
 
     parser.add_argument("m", "manage", None, "DjangoManagePy")
 

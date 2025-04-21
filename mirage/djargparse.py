@@ -73,8 +73,6 @@ class ArgumentsParser(object):
             self._exec_flow = execute
             self._assessmented = True
 
-        return
-
 
     def add_argument_with_subaction(self, base_shorten_cmd: str,
                                     base_long_cmd: str, action: str, option: str, execute: str) -> Void:

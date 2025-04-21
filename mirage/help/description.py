@@ -44,6 +44,12 @@ g             model       <model class>     Create Django model class.
 g             module      <module bane>     Create a new Python module with __init__.py
 
 
+[Git]
+
+gg            pull                          Pull latest source base from remote repository.
+gg            push                          Create and push current changes to remote repository.
+
+
 [Heroku]
 
 heroku        configure                     Configure setting files for deploing to heroku.
